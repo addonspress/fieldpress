@@ -1,0 +1,1720 @@
+# Copyright (C) 2018 the AddonsPress
+# This file is distributed under the GNU General Public License v2 or later.
+
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Project-Id-Version: FieldPress\n"
+"POT-Creation-Date: 2018-07-23 14:13+0545\n"
+"PO-Revision-Date: 2018-07-23 14:12+0545\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.8\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-WPHeader: fieldpress.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: classes/fp-menu-framework.php:481
+msgid "You don't have access to this page"
+msgstr ""
+
+#: example/menu.php:18 example/menu.php:19
+msgid "FieldPress General"
+msgstr ""
+
+#: example/menu.php:23 example/menu.php:24
+msgid "FieldPress Options"
+msgstr ""
+
+#: example/menu.php:36
+msgid "Overview"
+msgstr ""
+
+#: example/menu.php:47 example/menu.php:152 example/menu.php:451
+#: example/menu.php:579 example/menu.php:1299 example/menu.php:1541
+#: example/menu.php:1707 example/menu.php:1732 example/menu.php:2241
+#: example/menu.php:2358 example/menu.php:2514 example/menu.php:2571
+#: example/menu.php:2636 example/meta.php:46 example/meta.php:154
+#: example/meta.php:898 example/meta.php:1146 example/meta.php:1309
+#: example/meta.php:1333 example/meta.php:1888 example/meta.php:2021
+#: example/meta.php:2091 example/widget.php:143 example/widget.php:863
+#: example/widget.php:1105 example/widget.php:1271 example/widget.php:1296
+#: example/widget.php:1805 example/widget.php:1922 example/widget.php:2078
+#: example/widget.php:2135 example/widget.php:2200
+msgid "Checkbox"
+msgstr ""
+
+#: example/menu.php:51 example/meta.php:50 example/widget.php:41
+msgid "Colors"
+msgstr ""
+
+#: example/menu.php:55 example/menu.php:190 example/menu.php:756
+#: example/menu.php:1327 example/menu.php:1515 example/menu.php:2332
+#: example/menu.php:2610 example/meta.php:54 example/meta.php:332
+#: example/meta.php:925 example/meta.php:1117 example/meta.php:1859
+#: example/meta.php:2062 example/widget.php:45 example/widget.php:320
+#: example/widget.php:891 example/widget.php:1079 example/widget.php:1896
+#: example/widget.php:2174
+msgid "Date"
+msgstr ""
+
+#: example/menu.php:59 example/menu.php:213 example/menu.php:810
+#: example/menu.php:1344 example/menu.php:1481 example/menu.php:1632
+#: example/menu.php:2226 example/menu.php:2302 example/menu.php:2449
+#: example/menu.php:2499 example/menu.php:2727 example/meta.php:58
+#: example/meta.php:393 example/meta.php:945 example/meta.php:1081
+#: example/meta.php:1238 example/meta.php:1827 example/meta.php:1979
+#: example/meta.php:2182 example/widget.php:49 example/widget.php:374
+#: example/widget.php:908 example/widget.php:1045 example/widget.php:1196
+#: example/widget.php:1790 example/widget.php:1866 example/widget.php:2013
+#: example/widget.php:2063 example/widget.php:2291
+msgid "Email"
+msgstr ""
+
+#: example/menu.php:63 example/menu.php:841 example/meta.php:423
+#: example/widget.php:53 example/widget.php:405
+msgid "File Upload"
+msgstr ""
+
+#: example/menu.php:67 example/menu.php:225 example/menu.php:277
+#: example/menu.php:456 example/menu.php:473 example/menu.php:877
+#: example/menu.php:1353 example/menu.php:1505 example/menu.php:2322
+#: example/menu.php:2600 example/meta.php:66 example/meta.php:471
+#: example/meta.php:954 example/meta.php:1105 example/meta.php:1847
+#: example/meta.php:2050 example/widget.php:57 example/widget.php:441
+#: example/widget.php:917 example/widget.php:1069 example/widget.php:1886
+#: example/widget.php:2164
+msgid "Gallery"
+msgstr ""
+
+#: example/menu.php:71 example/menu.php:238 example/menu.php:468
+#: example/menu.php:907 example/menu.php:1361 example/menu.php:1500
+#: example/menu.php:2317 example/menu.php:2595 example/meta.php:70
+#: example/meta.php:504 example/meta.php:963 example/meta.php:1100
+#: example/meta.php:1842 example/meta.php:2045 example/widget.php:61
+#: example/widget.php:471 example/widget.php:925 example/widget.php:1064
+#: example/widget.php:1881 example/widget.php:2159
+msgid "Image"
+msgstr ""
+
+#: example/menu.php:75 example/meta.php:74 example/widget.php:65
+msgid "Icon"
+msgstr ""
+
+#: example/menu.php:79 example/menu.php:244 example/menu.php:490
+#: example/menu.php:979 example/menu.php:1366 example/menu.php:1535
+#: example/menu.php:2352 example/menu.php:2630 example/meta.php:78
+#: example/meta.php:581 example/meta.php:967 example/meta.php:1140
+#: example/meta.php:1882 example/meta.php:2085 example/widget.php:69
+#: example/widget.php:543 example/widget.php:930 example/widget.php:1099
+#: example/widget.php:1916 example/widget.php:2194
+msgid "Map"
+msgstr ""
+
+#: example/menu.php:83 example/menu.php:250 example/menu.php:317
+#: example/menu.php:1033 example/menu.php:1371 example/menu.php:1470
+#: example/menu.php:1621 example/menu.php:2216 example/menu.php:2291
+#: example/menu.php:2438 example/menu.php:2489 example/menu.php:2559
+#: example/menu.php:2716 example/meta.php:82 example/meta.php:634
+#: example/meta.php:972 example/meta.php:1070 example/meta.php:1227
+#: example/meta.php:1816 example/meta.php:1968 example/meta.php:2009
+#: example/meta.php:2171 example/widget.php:73 example/widget.php:597
+#: example/widget.php:935 example/widget.php:1034 example/widget.php:1185
+#: example/widget.php:1780 example/widget.php:1855 example/widget.php:2002
+#: example/widget.php:2053 example/widget.php:2123 example/widget.php:2280
+msgid "Number"
+msgstr ""
+
+#: example/menu.php:87 example/menu.php:255 example/menu.php:305
+#: example/menu.php:522 example/menu.php:1122 example/menu.php:1375
+#: example/menu.php:1599 example/menu.php:1670 example/menu.php:1737
+#: example/menu.php:2247 example/menu.php:2416 example/menu.php:2520
+#: example/menu.php:2694 example/meta.php:86 example/meta.php:721
+#: example/meta.php:976 example/meta.php:1205 example/meta.php:1273
+#: example/meta.php:1338 example/meta.php:1946 example/meta.php:2149
+#: example/widget.php:77 example/widget.php:686 example/widget.php:939
+#: example/widget.php:1163 example/widget.php:1234 example/widget.php:1301
+#: example/widget.php:1811 example/widget.php:1980 example/widget.php:2084
+#: example/widget.php:2258
+msgid "Radio"
+msgstr ""
+
+#: example/menu.php:91 example/menu.php:1702 example/menu.php:2566
+#: example/meta.php:90 example/meta.php:1304 example/meta.php:2016
+#: example/widget.php:81 example/widget.php:1266 example/widget.php:2130
+msgid "Repeater"
+msgstr ""
+
+#: example/menu.php:95 example/meta.php:94 example/widget.php:85
+msgid "Nested Repeater"
+msgstr ""
+
+#: example/menu.php:99 example/meta.php:98 example/widget.php:89
+msgid "Nested Menu Repeater"
+msgstr ""
+
+#: example/menu.php:103 example/menu.php:350 example/menu.php:1386
+#: example/menu.php:1777 example/meta.php:102 example/meta.php:987
+#: example/meta.php:1376 example/widget.php:93 example/widget.php:950
+#: example/widget.php:1341 fields/image.php:31 fields/image.php:32
+msgid "Select Image"
+msgstr ""
+
+#: example/menu.php:107 example/menu.php:359 example/menu.php:511
+#: example/menu.php:1394 example/menu.php:1568 example/menu.php:1681
+#: example/menu.php:1748 example/menu.php:1849 example/menu.php:2385
+#: example/menu.php:2663 example/meta.php:106 example/meta.php:995
+#: example/meta.php:1173 example/meta.php:1284 example/meta.php:1349
+#: example/meta.php:1447 example/meta.php:1915 example/meta.php:2118
+#: example/widget.php:97 example/widget.php:958 example/widget.php:1132
+#: example/widget.php:1245 example/widget.php:1312 example/widget.php:1413
+#: example/widget.php:1949 example/widget.php:2227
+msgid "Select"
+msgstr ""
+
+#: example/menu.php:111 example/menu.php:391 example/menu.php:1423
+#: example/menu.php:2026 example/menu.php:2046 example/meta.php:110
+#: example/meta.php:1023 example/meta.php:1626 example/meta.php:1646
+#: example/widget.php:101 example/widget.php:987 example/widget.php:1590
+#: example/widget.php:1610
+msgid "Sortable"
+msgstr ""
+
+#: example/menu.php:115 example/menu.php:412 example/menu.php:1443
+#: example/menu.php:1691 example/menu.php:1759 example/menu.php:2066
+#: example/meta.php:114 example/meta.php:1043 example/meta.php:1294
+#: example/meta.php:1359 example/meta.php:1666 example/widget.php:105
+#: example/widget.php:1007 example/widget.php:1255 example/widget.php:1323
+#: example/widget.php:1630
+msgid "Switcher"
+msgstr ""
+
+#: example/menu.php:119 example/meta.php:118 example/widget.php:109
+msgid "Tabs"
+msgstr ""
+
+#: example/menu.php:123 example/menu.php:300 example/menu.php:436
+#: example/menu.php:542 example/menu.php:1465 example/menu.php:1616
+#: example/menu.php:1639 example/menu.php:1666 example/menu.php:1712
+#: example/menu.php:1728 example/menu.php:2211 example/menu.php:2286
+#: example/menu.php:2433 example/menu.php:2484 example/menu.php:2554
+#: example/menu.php:2576 example/menu.php:2711 example/menu.php:2737
+#: example/meta.php:122 example/meta.php:1065 example/meta.php:1222
+#: example/meta.php:1245 example/meta.php:1269 example/meta.php:1314
+#: example/meta.php:1329 example/meta.php:1811 example/meta.php:1963
+#: example/meta.php:2004 example/meta.php:2026 example/meta.php:2166
+#: example/meta.php:2193 example/widget.php:113 example/widget.php:1029
+#: example/widget.php:1180 example/widget.php:1203 example/widget.php:1230
+#: example/widget.php:1276 example/widget.php:1292 example/widget.php:1775
+#: example/widget.php:1850 example/widget.php:1997 example/widget.php:2048
+#: example/widget.php:2118 example/widget.php:2140 example/widget.php:2275
+#: example/widget.php:2301
+msgid "Text"
+msgstr ""
+
+#: example/menu.php:127 example/menu.php:322 example/menu.php:441
+#: example/menu.php:547 example/menu.php:1490 example/menu.php:1643
+#: example/menu.php:1764 example/menu.php:2231 example/menu.php:2307
+#: example/menu.php:2504 example/menu.php:2585 example/menu.php:2833
+#: example/meta.php:126 example/meta.php:1090 example/meta.php:1249
+#: example/meta.php:1364 example/meta.php:1832 example/meta.php:2035
+#: example/meta.php:2292 example/widget.php:117 example/widget.php:1054
+#: example/widget.php:1207 example/widget.php:1328 example/widget.php:1795
+#: example/widget.php:1871 example/widget.php:2068 example/widget.php:2149
+#: example/widget.php:2397
+msgid "Textarea"
+msgstr ""
+
+#: example/menu.php:131 example/menu.php:327 example/menu.php:552
+#: example/menu.php:1475 example/menu.php:1626 example/menu.php:1648
+#: example/menu.php:2221 example/menu.php:2296 example/menu.php:2443
+#: example/menu.php:2494 example/menu.php:2721 example/menu.php:2890
+#: example/meta.php:130 example/meta.php:1075 example/meta.php:1232
+#: example/meta.php:1253 example/meta.php:1821 example/meta.php:1973
+#: example/meta.php:2176 example/meta.php:2348 example/widget.php:121
+#: example/widget.php:1039 example/widget.php:1190 example/widget.php:1212
+#: example/widget.php:1785 example/widget.php:1860 example/widget.php:2007
+#: example/widget.php:2058 example/widget.php:2285 example/widget.php:2454
+msgid "Url"
+msgstr ""
+
+#: example/menu.php:135 example/menu.php:282 example/menu.php:534
+#: example/menu.php:557 example/menu.php:1611 example/menu.php:1653
+#: example/menu.php:1696 example/menu.php:1768 example/menu.php:2428
+#: example/menu.php:2706 example/menu.php:2918 example/meta.php:134
+#: example/meta.php:1217 example/meta.php:1257 example/meta.php:1299
+#: example/meta.php:1368 example/meta.php:1958 example/meta.php:2161
+#: example/meta.php:2376 example/widget.php:125 example/widget.php:1175
+#: example/widget.php:1217 example/widget.php:1260 example/widget.php:1332
+#: example/widget.php:1992 example/widget.php:2270 example/widget.php:2482
+msgid "Wysiwyg"
+msgstr ""
+
+#: example/menu.php:139 example/meta.php:138 example/widget.php:129
+msgid "General Options"
+msgstr ""
+
+#: example/menu.php:153 example/menu.php:154 example/menu.php:161
+#: example/menu.php:162 example/menu.php:177 example/menu.php:178
+#: example/menu.php:185 example/menu.php:191 example/menu.php:197
+#: example/menu.php:204 example/menu.php:214 example/menu.php:220
+#: example/menu.php:226 example/menu.php:233 example/menu.php:239
+#: example/menu.php:267 example/menu.php:447 example/menu.php:617
+#: example/meta.php:192 example/widget.php:181
+msgid "Some Description goes here"
+msgstr ""
+
+#: example/menu.php:155 example/menu.php:273 example/menu.php:452
+#: example/menu.php:580 example/menu.php:588 example/menu.php:601
+#: example/menu.php:618 example/menu.php:625 example/menu.php:1300
+#: example/menu.php:1542 example/menu.php:1708 example/menu.php:1713
+#: example/menu.php:1733 example/menu.php:2242 example/menu.php:2359
+#: example/menu.php:2515 example/menu.php:2572 example/menu.php:2577
+#: example/menu.php:2637 example/meta.php:155 example/meta.php:163
+#: example/meta.php:176 example/meta.php:193 example/meta.php:200
+#: example/meta.php:899 example/meta.php:1147 example/meta.php:1310
+#: example/meta.php:1315 example/meta.php:1334 example/meta.php:1889
+#: example/meta.php:2022 example/meta.php:2027 example/meta.php:2092
+#: example/widget.php:144 example/widget.php:152 example/widget.php:165
+#: example/widget.php:182 example/widget.php:189 example/widget.php:864
+#: example/widget.php:1106 example/widget.php:1272 example/widget.php:1277
+#: example/widget.php:1297 example/widget.php:1806 example/widget.php:1923
+#: example/widget.php:2079 example/widget.php:2136 example/widget.php:2141
+#: example/widget.php:2201
+msgid "check for something"
+msgstr ""
+
+#: example/menu.php:160 example/menu.php:332 example/menu.php:496
+#: example/menu.php:1304 example/menu.php:1547 example/menu.php:2364
+#: example/menu.php:2642 example/meta.php:903 example/meta.php:1152
+#: example/meta.php:1894 example/meta.php:2097 example/widget.php:868
+#: example/widget.php:1111 example/widget.php:1928 example/widget.php:2206
+msgid "Checkbox Multiple"
+msgstr ""
+
+#: example/menu.php:164 example/menu.php:257 example/menu.php:307
+#: example/menu.php:334 example/menu.php:361 example/menu.php:372
+#: example/menu.php:394 example/menu.php:498 example/menu.php:513
+#: example/menu.php:524 example/menu.php:591 example/menu.php:607
+#: example/menu.php:628 example/menu.php:1124 example/menu.php:1139
+#: example/menu.php:1154 example/menu.php:1169 example/menu.php:1181
+#: example/menu.php:1195 example/menu.php:1208 example/menu.php:1306
+#: example/menu.php:1377 example/menu.php:1396 example/menu.php:1406
+#: example/menu.php:1426 example/menu.php:1549 example/menu.php:1570
+#: example/menu.php:1581 example/menu.php:1601 example/menu.php:1672
+#: example/menu.php:1683 example/menu.php:1739 example/menu.php:1750
+#: example/menu.php:1851 example/menu.php:1863 example/menu.php:1876
+#: example/menu.php:1889 example/menu.php:1902 example/menu.php:1914
+#: example/menu.php:1929 example/menu.php:2029 example/menu.php:2249
+#: example/menu.php:2366 example/menu.php:2387 example/menu.php:2398
+#: example/menu.php:2418 example/menu.php:2522 example/menu.php:2644
+#: example/menu.php:2665 example/menu.php:2676 example/menu.php:2696
+#: example/meta.php:166 example/meta.php:182 example/meta.php:203
+#: example/meta.php:723 example/meta.php:738 example/meta.php:753
+#: example/meta.php:768 example/meta.php:780 example/meta.php:794
+#: example/meta.php:807 example/meta.php:905 example/meta.php:978
+#: example/meta.php:997 example/meta.php:1007 example/meta.php:1026
+#: example/meta.php:1154 example/meta.php:1175 example/meta.php:1186
+#: example/meta.php:1207 example/meta.php:1275 example/meta.php:1286
+#: example/meta.php:1340 example/meta.php:1351 example/meta.php:1449
+#: example/meta.php:1461 example/meta.php:1474 example/meta.php:1487
+#: example/meta.php:1500 example/meta.php:1513 example/meta.php:1529
+#: example/meta.php:1629 example/meta.php:1896 example/meta.php:1917
+#: example/meta.php:1928 example/meta.php:1948 example/meta.php:2099
+#: example/meta.php:2120 example/meta.php:2131 example/meta.php:2151
+#: example/widget.php:155 example/widget.php:171 example/widget.php:192
+#: example/widget.php:688 example/widget.php:703 example/widget.php:718
+#: example/widget.php:733 example/widget.php:745 example/widget.php:759
+#: example/widget.php:772 example/widget.php:870 example/widget.php:941
+#: example/widget.php:960 example/widget.php:970 example/widget.php:990
+#: example/widget.php:1113 example/widget.php:1134 example/widget.php:1145
+#: example/widget.php:1165 example/widget.php:1236 example/widget.php:1247
+#: example/widget.php:1303 example/widget.php:1314 example/widget.php:1415
+#: example/widget.php:1427 example/widget.php:1440 example/widget.php:1453
+#: example/widget.php:1466 example/widget.php:1478 example/widget.php:1493
+#: example/widget.php:1593 example/widget.php:1813 example/widget.php:1930
+#: example/widget.php:1951 example/widget.php:1962 example/widget.php:1982
+#: example/widget.php:2086 example/widget.php:2208 example/widget.php:2229
+#: example/widget.php:2240 example/widget.php:2260
+msgid "Red"
+msgstr ""
+
+#: example/menu.php:165 example/menu.php:258 example/menu.php:308
+#: example/menu.php:335 example/menu.php:362 example/menu.php:373
+#: example/menu.php:395 example/menu.php:499 example/menu.php:514
+#: example/menu.php:525 example/menu.php:592 example/menu.php:608
+#: example/menu.php:629 example/menu.php:1125 example/menu.php:1140
+#: example/menu.php:1155 example/menu.php:1170 example/menu.php:1182
+#: example/menu.php:1196 example/menu.php:1209 example/menu.php:1307
+#: example/menu.php:1378 example/menu.php:1397 example/menu.php:1407
+#: example/menu.php:1427 example/menu.php:1550 example/menu.php:1571
+#: example/menu.php:1582 example/menu.php:1602 example/menu.php:1673
+#: example/menu.php:1684 example/menu.php:1740 example/menu.php:1751
+#: example/menu.php:1852 example/menu.php:1864 example/menu.php:1877
+#: example/menu.php:1890 example/menu.php:1903 example/menu.php:1915
+#: example/menu.php:1930 example/menu.php:2030 example/menu.php:2250
+#: example/menu.php:2367 example/menu.php:2388 example/menu.php:2399
+#: example/menu.php:2419 example/menu.php:2523 example/menu.php:2645
+#: example/menu.php:2666 example/menu.php:2677 example/menu.php:2697
+#: example/meta.php:167 example/meta.php:183 example/meta.php:204
+#: example/meta.php:724 example/meta.php:739 example/meta.php:754
+#: example/meta.php:769 example/meta.php:781 example/meta.php:795
+#: example/meta.php:808 example/meta.php:906 example/meta.php:979
+#: example/meta.php:998 example/meta.php:1008 example/meta.php:1027
+#: example/meta.php:1155 example/meta.php:1176 example/meta.php:1187
+#: example/meta.php:1208 example/meta.php:1276 example/meta.php:1287
+#: example/meta.php:1341 example/meta.php:1352 example/meta.php:1450
+#: example/meta.php:1462 example/meta.php:1475 example/meta.php:1488
+#: example/meta.php:1501 example/meta.php:1514 example/meta.php:1530
+#: example/meta.php:1630 example/meta.php:1897 example/meta.php:1918
+#: example/meta.php:1929 example/meta.php:1949 example/meta.php:2100
+#: example/meta.php:2121 example/meta.php:2132 example/meta.php:2152
+#: example/widget.php:156 example/widget.php:172 example/widget.php:193
+#: example/widget.php:689 example/widget.php:704 example/widget.php:719
+#: example/widget.php:734 example/widget.php:746 example/widget.php:760
+#: example/widget.php:773 example/widget.php:871 example/widget.php:942
+#: example/widget.php:961 example/widget.php:971 example/widget.php:991
+#: example/widget.php:1114 example/widget.php:1135 example/widget.php:1146
+#: example/widget.php:1166 example/widget.php:1237 example/widget.php:1248
+#: example/widget.php:1304 example/widget.php:1315 example/widget.php:1416
+#: example/widget.php:1428 example/widget.php:1441 example/widget.php:1454
+#: example/widget.php:1467 example/widget.php:1479 example/widget.php:1494
+#: example/widget.php:1594 example/widget.php:1814 example/widget.php:1931
+#: example/widget.php:1952 example/widget.php:1963 example/widget.php:1983
+#: example/widget.php:2087 example/widget.php:2209 example/widget.php:2230
+#: example/widget.php:2241 example/widget.php:2261
+msgid "Green"
+msgstr ""
+
+#: example/menu.php:166 example/menu.php:259 example/menu.php:309
+#: example/menu.php:336 example/menu.php:363 example/menu.php:374
+#: example/menu.php:396 example/menu.php:500 example/menu.php:515
+#: example/menu.php:526 example/menu.php:593 example/menu.php:609
+#: example/menu.php:630 example/menu.php:1126 example/menu.php:1141
+#: example/menu.php:1156 example/menu.php:1171 example/menu.php:1183
+#: example/menu.php:1197 example/menu.php:1210 example/menu.php:1308
+#: example/menu.php:1379 example/menu.php:1398 example/menu.php:1408
+#: example/menu.php:1428 example/menu.php:1551 example/menu.php:1572
+#: example/menu.php:1583 example/menu.php:1603 example/menu.php:1674
+#: example/menu.php:1685 example/menu.php:1741 example/menu.php:1752
+#: example/menu.php:1853 example/menu.php:1865 example/menu.php:1878
+#: example/menu.php:1891 example/menu.php:1904 example/menu.php:1916
+#: example/menu.php:1931 example/menu.php:2031 example/menu.php:2251
+#: example/menu.php:2368 example/menu.php:2389 example/menu.php:2400
+#: example/menu.php:2420 example/menu.php:2524 example/menu.php:2646
+#: example/menu.php:2667 example/menu.php:2678 example/menu.php:2698
+#: example/meta.php:168 example/meta.php:184 example/meta.php:205
+#: example/meta.php:725 example/meta.php:740 example/meta.php:755
+#: example/meta.php:770 example/meta.php:782 example/meta.php:796
+#: example/meta.php:809 example/meta.php:907 example/meta.php:980
+#: example/meta.php:999 example/meta.php:1009 example/meta.php:1028
+#: example/meta.php:1156 example/meta.php:1177 example/meta.php:1188
+#: example/meta.php:1209 example/meta.php:1277 example/meta.php:1288
+#: example/meta.php:1342 example/meta.php:1353 example/meta.php:1451
+#: example/meta.php:1463 example/meta.php:1476 example/meta.php:1489
+#: example/meta.php:1502 example/meta.php:1515 example/meta.php:1531
+#: example/meta.php:1631 example/meta.php:1898 example/meta.php:1919
+#: example/meta.php:1930 example/meta.php:1950 example/meta.php:2101
+#: example/meta.php:2122 example/meta.php:2133 example/meta.php:2153
+#: example/widget.php:157 example/widget.php:173 example/widget.php:194
+#: example/widget.php:690 example/widget.php:705 example/widget.php:720
+#: example/widget.php:735 example/widget.php:747 example/widget.php:761
+#: example/widget.php:774 example/widget.php:872 example/widget.php:943
+#: example/widget.php:962 example/widget.php:972 example/widget.php:992
+#: example/widget.php:1115 example/widget.php:1136 example/widget.php:1147
+#: example/widget.php:1167 example/widget.php:1238 example/widget.php:1249
+#: example/widget.php:1305 example/widget.php:1316 example/widget.php:1417
+#: example/widget.php:1429 example/widget.php:1442 example/widget.php:1455
+#: example/widget.php:1468 example/widget.php:1480 example/widget.php:1495
+#: example/widget.php:1595 example/widget.php:1815 example/widget.php:1932
+#: example/widget.php:1953 example/widget.php:1964 example/widget.php:1984
+#: example/widget.php:2088 example/widget.php:2210 example/widget.php:2231
+#: example/widget.php:2242 example/widget.php:2262
+msgid "Blue"
+msgstr ""
+
+#: example/menu.php:167 example/menu.php:260 example/menu.php:310
+#: example/menu.php:337 example/menu.php:364 example/menu.php:375
+#: example/menu.php:397 example/menu.php:501 example/menu.php:516
+#: example/menu.php:527 example/menu.php:594 example/menu.php:610
+#: example/menu.php:631 example/menu.php:1127 example/menu.php:1142
+#: example/menu.php:1157 example/menu.php:1172 example/menu.php:1184
+#: example/menu.php:1198 example/menu.php:1211 example/menu.php:1309
+#: example/menu.php:1380 example/menu.php:1399 example/menu.php:1409
+#: example/menu.php:1429 example/menu.php:1552 example/menu.php:1573
+#: example/menu.php:1584 example/menu.php:1604 example/menu.php:1675
+#: example/menu.php:1686 example/menu.php:1742 example/menu.php:1753
+#: example/menu.php:1854 example/menu.php:1866 example/menu.php:1879
+#: example/menu.php:1892 example/menu.php:1905 example/menu.php:1917
+#: example/menu.php:1932 example/menu.php:2032 example/menu.php:2252
+#: example/menu.php:2369 example/menu.php:2390 example/menu.php:2401
+#: example/menu.php:2421 example/menu.php:2525 example/menu.php:2647
+#: example/menu.php:2668 example/menu.php:2679 example/menu.php:2699
+#: example/meta.php:169 example/meta.php:185 example/meta.php:206
+#: example/meta.php:726 example/meta.php:741 example/meta.php:756
+#: example/meta.php:771 example/meta.php:783 example/meta.php:797
+#: example/meta.php:810 example/meta.php:908 example/meta.php:981
+#: example/meta.php:1000 example/meta.php:1010 example/meta.php:1029
+#: example/meta.php:1157 example/meta.php:1178 example/meta.php:1189
+#: example/meta.php:1210 example/meta.php:1278 example/meta.php:1289
+#: example/meta.php:1343 example/meta.php:1354 example/meta.php:1452
+#: example/meta.php:1464 example/meta.php:1477 example/meta.php:1490
+#: example/meta.php:1503 example/meta.php:1516 example/meta.php:1532
+#: example/meta.php:1632 example/meta.php:1899 example/meta.php:1920
+#: example/meta.php:1931 example/meta.php:1951 example/meta.php:2102
+#: example/meta.php:2123 example/meta.php:2134 example/meta.php:2154
+#: example/widget.php:158 example/widget.php:174 example/widget.php:195
+#: example/widget.php:691 example/widget.php:706 example/widget.php:721
+#: example/widget.php:736 example/widget.php:748 example/widget.php:762
+#: example/widget.php:775 example/widget.php:873 example/widget.php:944
+#: example/widget.php:963 example/widget.php:973 example/widget.php:993
+#: example/widget.php:1116 example/widget.php:1137 example/widget.php:1148
+#: example/widget.php:1168 example/widget.php:1239 example/widget.php:1250
+#: example/widget.php:1306 example/widget.php:1317 example/widget.php:1418
+#: example/widget.php:1430 example/widget.php:1443 example/widget.php:1456
+#: example/widget.php:1469 example/widget.php:1481 example/widget.php:1496
+#: example/widget.php:1596 example/widget.php:1816 example/widget.php:1933
+#: example/widget.php:1954 example/widget.php:1965 example/widget.php:1985
+#: example/widget.php:2089 example/widget.php:2211 example/widget.php:2232
+#: example/widget.php:2243 example/widget.php:2263
+msgid "Yellow"
+msgstr ""
+
+#: example/menu.php:176 example/menu.php:1317 example/menu.php:1562
+#: example/menu.php:2379 example/menu.php:2657 example/meta.php:916
+#: example/meta.php:1167 example/meta.php:1909 example/meta.php:2112
+#: example/widget.php:881 example/widget.php:1126 example/widget.php:1943
+#: example/widget.php:2221
+msgid "Checkbox Post"
+msgstr ""
+
+#: example/menu.php:184 example/menu.php:463 example/menu.php:726
+#: example/menu.php:1322 example/menu.php:1495 example/menu.php:2236
+#: example/menu.php:2312 example/menu.php:2509 example/menu.php:2590
+#: example/meta.php:301 example/meta.php:921 example/meta.php:1095
+#: example/meta.php:1837 example/meta.php:2040 example/widget.php:290
+#: example/widget.php:886 example/widget.php:1059 example/widget.php:1800
+#: example/widget.php:1876 example/widget.php:2073 example/widget.php:2154
+msgid "Color"
+msgstr ""
+
+#: example/menu.php:196 example/menu.php:484 example/menu.php:1331
+#: example/menu.php:1520 example/menu.php:2337 example/menu.php:2615
+#: example/meta.php:930 example/meta.php:1123 example/meta.php:1865
+#: example/meta.php:2068 example/widget.php:895 example/widget.php:1084
+#: example/widget.php:1901 example/widget.php:2179
+msgid "Date and Time"
+msgstr ""
+
+#: example/menu.php:203 example/menu.php:778 example/menu.php:1336
+#: example/menu.php:1526 example/menu.php:2343 example/menu.php:2621
+#: example/meta.php:357 example/meta.php:936 example/meta.php:1130
+#: example/meta.php:1872 example/meta.php:2075 example/widget.php:342
+#: example/widget.php:900 example/widget.php:1090 example/widget.php:1907
+#: example/widget.php:2185
+msgid "Time Only"
+msgstr ""
+
+#: example/menu.php:219 example/menu.php:479 example/menu.php:1349
+#: example/menu.php:1510 example/menu.php:2327 example/menu.php:2605
+#: example/meta.php:62 example/meta.php:949 example/meta.php:1111
+#: example/meta.php:1853 example/meta.php:2056 example/widget.php:913
+#: example/widget.php:1074 example/widget.php:1891 example/widget.php:2169
+msgid "File"
+msgstr ""
+
+#: example/menu.php:232 example/menu.php:951 example/menu.php:1357
+#: example/meta.php:554 example/meta.php:959 example/widget.php:515
+#: example/widget.php:921
+msgid "Icon Selector"
+msgstr ""
+
+#: example/menu.php:245 example/menu.php:491 example/menu.php:980
+#: example/menu.php:991 example/menu.php:999 example/menu.php:1007
+#: example/menu.php:1367 example/menu.php:1536 example/menu.php:2353
+#: example/menu.php:2631 example/meta.php:582 example/meta.php:593
+#: example/meta.php:601 example/meta.php:609 example/meta.php:968
+#: example/meta.php:1141 example/meta.php:1883 example/meta.php:2086
+#: example/widget.php:544 example/widget.php:555 example/widget.php:563
+#: example/widget.php:571 example/widget.php:931 example/widget.php:1100
+#: example/widget.php:1917 example/widget.php:2195
+msgid "Search Map"
+msgstr ""
+
+#: example/menu.php:272
+msgid "Checkbox something"
+msgstr ""
+
+#: example/menu.php:288
+msgid "Repeater Tab1"
+msgstr ""
+
+#: example/menu.php:291
+msgid "Repeater Tab2"
+msgstr ""
+
+#: example/menu.php:294
+msgid "Repeater Tab3"
+msgstr ""
+
+#: example/menu.php:370 example/menu.php:1404 example/menu.php:1579
+#: example/menu.php:2396 example/menu.php:2674 example/meta.php:1005
+#: example/meta.php:1184 example/meta.php:1926 example/meta.php:2129
+#: example/widget.php:968 example/widget.php:1143 example/widget.php:1960
+#: example/widget.php:2238
+msgid "Select Multiple"
+msgstr ""
+
+#: example/menu.php:385 example/menu.php:1417 example/menu.php:1593
+#: example/menu.php:2410 example/menu.php:2688 example/meta.php:1018
+#: example/meta.php:1199 example/meta.php:1940 example/meta.php:2143
+#: example/widget.php:981 example/widget.php:1157 example/widget.php:1974
+#: example/widget.php:2252
+msgid "Select Post"
+msgstr ""
+
+#: example/menu.php:398 example/menu.php:1430 example/menu.php:2033
+#: example/meta.php:1030 example/meta.php:1633 example/widget.php:994
+#: example/widget.php:1597
+msgid "Orange"
+msgstr ""
+
+#: example/menu.php:399 example/menu.php:1431 example/menu.php:2034
+#: example/meta.php:1031 example/meta.php:1634 example/widget.php:995
+#: example/widget.php:1598
+msgid "Ocean"
+msgstr ""
+
+#: example/menu.php:402 example/menu.php:1434 example/menu.php:2037
+#: example/meta.php:1034 example/meta.php:1637 example/widget.php:998
+#: example/widget.php:1601
+msgid "Black"
+msgstr ""
+
+#: example/menu.php:403 example/menu.php:1435 example/menu.php:2038
+#: example/meta.php:1035 example/meta.php:1638 example/widget.php:999
+#: example/widget.php:1602
+msgid "White"
+msgstr ""
+
+#: example/menu.php:406 example/menu.php:1438 example/meta.php:1038
+#: example/widget.php:1002
+msgid "Active Colors"
+msgstr ""
+
+#: example/menu.php:407 example/menu.php:1439 example/meta.php:1039
+#: example/widget.php:1003
+msgid "Deactivate Colors"
+msgstr ""
+
+#: example/menu.php:413 example/menu.php:1444 example/menu.php:1692
+#: example/menu.php:1760 example/menu.php:2067 example/menu.php:2075
+#: example/menu.php:2089 example/menu.php:2100 example/menu.php:2109
+#: example/menu.php:2118 example/menu.php:2127 example/menu.php:2144
+#: example/menu.php:2162 example/menu.php:2180 example/meta.php:1044
+#: example/meta.php:1295 example/meta.php:1360 example/meta.php:1667
+#: example/meta.php:1675 example/meta.php:1689 example/meta.php:1700
+#: example/meta.php:1709 example/meta.php:1718 example/meta.php:1727
+#: example/meta.php:1744 example/meta.php:1762 example/meta.php:1780
+#: example/widget.php:1008 example/widget.php:1256 example/widget.php:1324
+#: example/widget.php:1631 example/widget.php:1639 example/widget.php:1653
+#: example/widget.php:1664 example/widget.php:1673 example/widget.php:1682
+#: example/widget.php:1691 example/widget.php:1708 example/widget.php:1726
+#: example/widget.php:1744
+msgid "Switch something"
+msgstr ""
+
+#: example/menu.php:418
+msgid "Tab with Repeater"
+msgstr ""
+
+#: example/menu.php:421 example/menu.php:1450 example/menu.php:2192
+#: example/menu.php:2267 example/menu.php:2461 example/menu.php:2539
+#: example/meta.php:1050 example/meta.php:1791 example/meta.php:1989
+#: example/widget.php:1014 example/widget.php:1756 example/widget.php:1831
+#: example/widget.php:2025 example/widget.php:2103
+msgid "Tab1"
+msgstr ""
+
+#: example/menu.php:424 example/menu.php:1453 example/menu.php:2196
+#: example/menu.php:2271 example/menu.php:2466 example/menu.php:2542
+#: example/meta.php:1053 example/meta.php:1796 example/meta.php:1992
+#: example/widget.php:1017 example/widget.php:1760 example/widget.php:1835
+#: example/widget.php:2030 example/widget.php:2106
+msgid "Tab2"
+msgstr ""
+
+#: example/menu.php:427 example/menu.php:2200 example/menu.php:2275
+#: example/menu.php:2471 example/menu.php:2545 example/meta.php:1056
+#: example/meta.php:1800 example/meta.php:1995 example/widget.php:1764
+#: example/widget.php:1839 example/widget.php:2035 example/widget.php:2109
+msgid "Tab3"
+msgstr ""
+
+#: example/menu.php:430 example/menu.php:1459 example/menu.php:2204
+#: example/menu.php:2279 example/menu.php:2476 example/menu.php:2548
+#: example/meta.php:1059 example/meta.php:1804 example/meta.php:1998
+#: example/widget.php:1023 example/widget.php:1768 example/widget.php:1843
+#: example/widget.php:2040 example/widget.php:2112
+msgid "Tab4"
+msgstr ""
+
+#: example/menu.php:587 example/meta.php:162 example/widget.php:151
+msgid "Checkbox with Multiple Options"
+msgstr ""
+
+#: example/menu.php:600 example/meta.php:175 example/widget.php:164
+msgid "Checkbox with Multiple Options Horizontal"
+msgstr ""
+
+#: example/menu.php:616 example/meta.php:191 example/widget.php:180
+msgid "Checkbox with Help Information"
+msgstr ""
+
+#: example/menu.php:624 example/meta.php:199 example/widget.php:188
+msgid "Checkbox with Options and Default"
+msgstr ""
+
+#: example/menu.php:638 example/meta.php:214 example/widget.php:202
+msgid "Checkbox with Posts"
+msgstr ""
+
+#: example/menu.php:639 example/menu.php:1232 example/menu.php:1953
+#: example/menu.php:2102 example/meta.php:215 example/meta.php:831
+#: example/meta.php:1553 example/meta.php:1702 example/widget.php:203
+#: example/widget.php:796 example/widget.php:1517 example/widget.php:1666
+msgid "Set choices => posts"
+msgstr ""
+
+#: example/menu.php:646 example/menu.php:1224 example/menu.php:1945
+#: example/menu.php:2129 example/meta.php:222 example/meta.php:823
+#: example/meta.php:1545 example/meta.php:1729 example/widget.php:210
+#: example/widget.php:788 example/widget.php:1509 example/widget.php:1693
+msgid "Set choices => pages"
+msgstr ""
+
+#: example/menu.php:647 example/meta.php:223 example/widget.php:211
+msgid "Checkbox with Pages"
+msgstr ""
+
+#: example/menu.php:654 example/meta.php:230 example/widget.php:218
+msgid "Checkbox with Post Categories"
+msgstr ""
+
+#: example/menu.php:655 example/meta.php:231 example/widget.php:219
+msgid "Uncategorized"
+msgstr ""
+
+#: example/menu.php:656 example/menu.php:1240 example/menu.php:1961
+#: example/menu.php:2111 example/meta.php:232 example/meta.php:839
+#: example/meta.php:1561 example/meta.php:1711 example/widget.php:220
+#: example/widget.php:804 example/widget.php:1525 example/widget.php:1675
+msgid "Set choices => categories"
+msgstr ""
+
+#: example/menu.php:663 example/meta.php:239 example/widget.php:227
+msgid "Checkbox with Post tags"
+msgstr ""
+
+#: example/menu.php:664 example/meta.php:240 example/widget.php:228
+msgid "tags"
+msgstr ""
+
+#: example/menu.php:665 example/menu.php:1248 example/menu.php:1969
+#: example/menu.php:2120 example/meta.php:241 example/meta.php:847
+#: example/meta.php:1569 example/meta.php:1720 example/widget.php:229
+#: example/widget.php:812 example/widget.php:1533 example/widget.php:1684
+msgid "Set choices => tags"
+msgstr ""
+
+#: example/menu.php:680 example/menu.php:1264 example/menu.php:1985
+#: example/menu.php:2146 example/meta.php:256 example/meta.php:863
+#: example/meta.php:1585 example/meta.php:1746 example/widget.php:244
+#: example/widget.php:828 example/widget.php:1549 example/widget.php:1710
+msgid ""
+"query_args and choices are required.\"query_args\" accepts all the args of "
+"wp_query & \"choices\" must be \"post\""
+msgstr ""
+
+#: example/menu.php:681 example/meta.php:257 example/widget.php:245
+msgid "Checkbox with CPT posts"
+msgstr ""
+
+#: example/menu.php:682 example/meta.php:258 example/widget.php:246
+msgid "Post 1"
+msgstr ""
+
+#: example/menu.php:699 example/menu.php:1276 example/menu.php:2002
+#: example/menu.php:2164 example/menu.php:2182 example/meta.php:275
+#: example/meta.php:875 example/meta.php:1603 example/meta.php:1764
+#: example/meta.php:1782 example/widget.php:263 example/widget.php:840
+#: example/widget.php:1566 example/widget.php:1728 example/widget.php:1746
+msgid ""
+"query_args and choices are required.\"query_args\" accepts all the args of "
+"get_terms & \"choices\" must be \"taxonomy\""
+msgstr ""
+
+#: example/menu.php:700 example/meta.php:276 example/widget.php:264
+msgid "Checkbox with CPT categories"
+msgstr ""
+
+#: example/menu.php:701 example/meta.php:277 example/widget.php:265
+msgid "CPT uncategories"
+msgstr ""
+
+#: example/menu.php:717 example/menu.php:1289 example/menu.php:2018
+#: example/meta.php:293 example/meta.php:888 example/meta.php:1619
+#: example/widget.php:281 example/widget.php:853 example/widget.php:1582
+msgid ""
+" query_args and choices are required.\"query_args\" accepts all the args of "
+"get_terms & \"choices\" must be \"taxonomy\""
+msgstr ""
+
+#: example/menu.php:718 example/meta.php:294 example/widget.php:282
+msgid "Checkbox with CPT tags"
+msgstr ""
+
+#: example/menu.php:719 example/meta.php:295 example/widget.php:283
+msgid "CPT tags"
+msgstr ""
+
+#: example/menu.php:733 example/meta.php:308 example/widget.php:297
+msgid "Color Picker With Default"
+msgstr ""
+
+#: example/menu.php:739 example/meta.php:314 example/widget.php:303
+msgid "Color Picker With RGBA"
+msgstr ""
+
+#: example/menu.php:748 example/meta.php:323 example/widget.php:312
+msgid "Please select your favourite colour"
+msgstr ""
+
+#: example/menu.php:749 example/meta.php:324 example/widget.php:313
+msgid "Color Picker with Help Information"
+msgstr ""
+
+#: example/menu.php:763 example/meta.php:340 example/widget.php:327
+msgid "Date with Default"
+msgstr ""
+
+#: example/menu.php:769 example/meta.php:347 example/widget.php:333
+msgid "Date With Time"
+msgstr ""
+
+#: example/menu.php:790 example/meta.php:370 example/widget.php:354
+msgid "Date in MM/DD/YY format"
+msgstr ""
+
+#: example/menu.php:800 example/meta.php:381 example/widget.php:364
+msgid "Date in DD-MM-YY format"
+msgstr ""
+
+#: example/menu.php:816 example/meta.php:399 example/widget.php:380
+msgid "Email With Placeholder"
+msgstr ""
+
+#: example/menu.php:825 example/meta.php:408
+msgid ""
+"Email With Help Information.\n"
+"\t\t\t\t\t"
+msgstr ""
+
+#: example/menu.php:827 example/meta.php:410 example/widget.php:391
+msgid "Please enter valid email address here."
+msgstr ""
+
+#: example/menu.php:833 example/meta.php:416 example/widget.php:397
+msgid "xyz@gmail.com"
+msgstr ""
+
+#: example/menu.php:834 example/meta.php:417 example/widget.php:398
+msgid "Email With Default value."
+msgstr ""
+
+#: example/menu.php:847 example/widget.php:411
+msgid "File upload with Description"
+msgstr ""
+
+#: example/menu.php:848 example/meta.php:431 example/widget.php:412
+msgid "Max: File size upto 5 MB"
+msgstr ""
+
+#: example/menu.php:854 example/widget.php:418
+msgid "File upload with Help Information"
+msgstr ""
+
+#: example/menu.php:855 example/menu.php:2769 example/meta.php:439
+#: example/meta.php:2228 example/widget.php:419 example/widget.php:2333
+msgid "This is required field."
+msgstr ""
+
+#: example/menu.php:861 example/meta.php:454 example/widget.php:425
+msgid "Custom Upload Title"
+msgstr ""
+
+#: example/menu.php:862 example/widget.php:426
+msgid "File upload with Custom Uploder Title"
+msgstr ""
+
+#: example/menu.php:869 example/meta.php:463 example/widget.php:433
+msgid "Custom Button"
+msgstr ""
+
+#: example/menu.php:870 example/widget.php:434
+msgid "File upload with Custom Selector Title"
+msgstr ""
+
+#: example/menu.php:883 example/widget.php:447
+msgid "Gallery with Help Information"
+msgstr ""
+
+#: example/menu.php:884 example/meta.php:479 example/widget.php:448
+msgid "Selected images are used as slider image."
+msgstr ""
+
+#: example/menu.php:890 example/meta.php:486 example/widget.php:454
+msgid "Select Slider"
+msgstr ""
+
+#: example/menu.php:891 example/widget.php:455
+msgid "Gallery with Custom Uploader title"
+msgstr ""
+
+#: example/menu.php:900 example/widget.php:464
+msgid "Gallery with Before Text"
+msgstr ""
+
+#: example/menu.php:913 example/widget.php:477
+msgid "Image with Help Information"
+msgstr ""
+
+#: example/menu.php:914 example/menu.php:957 example/menu.php:2911
+#: example/meta.php:518 example/meta.php:560 example/meta.php:2370
+#: example/widget.php:478 example/widget.php:521 example/widget.php:2475
+msgid "This is required field"
+msgstr ""
+
+#: example/menu.php:920 example/meta.php:524 example/widget.php:484
+msgid "Image with After Field Information"
+msgstr ""
+
+#: example/menu.php:921 example/menu.php:929 example/meta.php:525
+#: example/meta.php:533 example/widget.php:485 example/widget.php:493
+msgid "Maximum upload file size: 5 MB."
+msgstr ""
+
+#: example/menu.php:927 example/meta.php:531 example/widget.php:491
+msgid "Image with Before Field Information"
+msgstr ""
+
+#: example/menu.php:936 example/meta.php:540 example/widget.php:500
+msgid "Custom Uploader"
+msgstr ""
+
+#: example/menu.php:937 example/widget.php:501
+msgid "Image with Custom Uploader Title"
+msgstr ""
+
+#: example/menu.php:943 example/meta.php:547 example/widget.php:507
+msgid "Custom Selector"
+msgstr ""
+
+#: example/menu.php:944 example/widget.php:508
+msgid "Image with Custom Selector Title"
+msgstr ""
+
+#: example/menu.php:958 example/widget.php:522
+msgid "Icon Selector with help Information"
+msgstr ""
+
+#: example/menu.php:965 example/widget.php:529
+msgid "Icon with Default"
+msgstr ""
+
+#: example/menu.php:971 example/widget.php:535
+msgid "Icon with After Field Text"
+msgstr ""
+
+#: example/menu.php:972 example/meta.php:575 example/widget.php:536
+msgid "Select Icon for the page."
+msgstr ""
+
+#: example/menu.php:990 example/widget.php:554
+msgid "Map with Default Location"
+msgstr ""
+
+#: example/menu.php:997 example/widget.php:561
+msgid "Map with Custom search Placeholder"
+msgstr ""
+
+#: example/menu.php:998 example/meta.php:600 example/widget.php:562
+msgid "Custom Placeholder"
+msgstr ""
+
+#: example/menu.php:1005 example/widget.php:569
+msgid "Map with Custom Search Button Text"
+msgstr ""
+
+#: example/menu.php:1006 example/meta.php:608 example/widget.php:570
+msgid "Search"
+msgstr ""
+
+#: example/menu.php:1013 example/widget.php:577
+msgid "Map with Custom Show Map Text"
+msgstr ""
+
+#: example/menu.php:1014 example/meta.php:616 example/widget.php:578
+msgid "Display Map"
+msgstr ""
+
+#: example/menu.php:1020 example/widget.php:584
+msgid "Map with Zoom level"
+msgstr ""
+
+#: example/menu.php:1022 example/widget.php:586
+msgid "E.g Zoom => 10"
+msgstr ""
+
+#: example/menu.php:1040 example/meta.php:641 example/widget.php:604
+msgid "Some help information before the label"
+msgstr ""
+
+#: example/menu.php:1042 example/widget.php:606
+msgid "Number with Before Label Text"
+msgstr ""
+
+#: example/menu.php:1049 example/meta.php:650 example/widget.php:613
+msgid "Some help information after the label"
+msgstr ""
+
+#: example/menu.php:1051 example/widget.php:615
+msgid "Number with After Label Text"
+msgstr ""
+
+#: example/menu.php:1058 example/meta.php:659 example/widget.php:622
+msgid "Please provide us your age number."
+msgstr ""
+
+#: example/menu.php:1060 example/widget.php:624
+msgid "Number with Before Field Text"
+msgstr ""
+
+#: example/menu.php:1067 example/meta.php:668 example/widget.php:631
+msgid "Only positive number are allowed."
+msgstr ""
+
+#: example/menu.php:1069 example/widget.php:633
+msgid "Number with After Field Text"
+msgstr ""
+
+#: example/menu.php:1075 example/menu.php:3039 example/meta.php:676
+#: example/meta.php:2451 example/widget.php:639 example/widget.php:2601
+msgid "This field is required."
+msgstr ""
+
+#: example/menu.php:1076 example/meta.php:677 example/widget.php:640
+msgid "Number with Help Information"
+msgstr ""
+
+#: example/menu.php:1083 example/meta.php:684 example/widget.php:647
+msgid "Number with Default"
+msgstr ""
+
+#: example/menu.php:1089 example/widget.php:653
+msgid "Number with Placeholder"
+msgstr ""
+
+#: example/menu.php:1092 example/meta.php:692 example/widget.php:656
+msgid "Allowed number from 0 to 10 only..."
+msgstr ""
+
+#: example/menu.php:1099 example/widget.php:663
+msgid "Number with Max Value"
+msgstr ""
+
+#: example/menu.php:1100 example/meta.php:700 example/widget.php:664
+msgid "Note: Max number allowed is 10"
+msgstr ""
+
+#: example/menu.php:1109 example/widget.php:673
+msgid "Number with Min and Max Value"
+msgstr ""
+
+#: example/menu.php:1110 example/meta.php:710 example/widget.php:674
+msgid "Note: Number accepted between Min 10 & Max 20. "
+msgstr ""
+
+#: example/menu.php:1135 example/menu.php:1150 example/meta.php:734
+#: example/meta.php:749 example/widget.php:699 example/widget.php:714
+msgid "Choose any of them from available option:-"
+msgstr ""
+
+#: example/menu.php:1137 example/meta.php:736 example/widget.php:701
+msgid "Radio with Before Field Text"
+msgstr ""
+
+#: example/menu.php:1152 example/meta.php:751 example/widget.php:716
+msgid "Radio with After Field Text"
+msgstr ""
+
+#: example/menu.php:1165 example/meta.php:764 example/widget.php:729
+msgid "Choose any of the option:-"
+msgstr ""
+
+#: example/menu.php:1167 example/meta.php:766 example/widget.php:731
+msgid "Radio with After Label Text"
+msgstr ""
+
+#: example/menu.php:1179 example/meta.php:778 example/widget.php:743
+msgid "Radio with Default Red Value"
+msgstr ""
+
+#: example/menu.php:1192 example/meta.php:791 example/widget.php:756
+msgid "Select your suitable item."
+msgstr ""
+
+#: example/menu.php:1193 example/widget.php:757
+msgid "Radio with Help Information"
+msgstr ""
+
+#: example/menu.php:1206 example/meta.php:805 example/widget.php:770
+msgid "Radio On Horizontal View"
+msgstr ""
+
+#: example/menu.php:1222 example/meta.php:821 example/widget.php:786
+msgid "Radio with Pages"
+msgstr ""
+
+#: example/menu.php:1230 example/meta.php:829 example/widget.php:794
+msgid "Radio with Posts"
+msgstr ""
+
+#: example/menu.php:1238 example/meta.php:837 example/widget.php:802
+msgid "Radio with Posts Categories"
+msgstr ""
+
+#: example/menu.php:1246 example/meta.php:845 example/widget.php:810
+msgid "Radio with Posts Tags"
+msgstr ""
+
+#: example/menu.php:1262 example/meta.php:861 example/widget.php:826
+msgid "Radio with CPT Posts"
+msgstr ""
+
+#: example/menu.php:1274 example/meta.php:873 example/widget.php:838
+msgid "Radio with CPT Categories"
+msgstr ""
+
+#: example/menu.php:1287 example/meta.php:886 example/widget.php:851
+msgid "Radio with CPT Tags"
+msgstr ""
+
+#: example/menu.php:1456 example/widget.php:1020
+msgid "Tab13"
+msgstr ""
+
+#: example/menu.php:1787 example/meta.php:1386 example/widget.php:1351
+msgid "Select Image With Default"
+msgstr ""
+
+#: example/menu.php:1798 example/meta.php:1397 example/widget.php:1362
+msgid "Select Image With Multiple Select"
+msgstr ""
+
+#: example/menu.php:1811 example/meta.php:1410 example/widget.php:1375
+msgid "Select Image With Help Information"
+msgstr ""
+
+#: example/menu.php:1812 example/meta.php:1411 example/widget.php:1376
+msgid "Select Image for Slider"
+msgstr ""
+
+#: example/menu.php:1825 example/meta.php:1424 example/widget.php:1389
+msgid "Select Image With Before Field Text"
+msgstr ""
+
+#: example/menu.php:1838 example/meta.php:1437 example/widget.php:1402
+msgid "Select Image With After Field Text"
+msgstr ""
+
+#: example/menu.php:1861 example/meta.php:1459 example/widget.php:1425
+msgid "Noraml Select"
+msgstr ""
+
+#: example/menu.php:1874 example/meta.php:1472 example/widget.php:1438
+msgid "Select With First Empty Values"
+msgstr ""
+
+#: example/menu.php:1886 example/meta.php:1484 example/widget.php:1450
+msgid "Select your Favourite Colour:-"
+msgstr ""
+
+#: example/menu.php:1887 example/meta.php:1485 example/widget.php:1451
+msgid "Select With Help"
+msgstr ""
+
+#: example/menu.php:1899 example/meta.php:1497 example/widget.php:1463
+msgid "Select With Default Value"
+msgstr ""
+
+#: example/menu.php:1912 example/meta.php:1511 example/widget.php:1476
+msgid "Select With Multiple Select Value"
+msgstr ""
+
+#: example/menu.php:1927 example/meta.php:1527 example/widget.php:1491
+msgid "Select With Multiple Select With Default"
+msgstr ""
+
+#: example/menu.php:1943 example/meta.php:1543 example/widget.php:1507
+msgid "Select With Pages"
+msgstr ""
+
+#: example/menu.php:1951 example/meta.php:1551 example/widget.php:1515
+msgid "Select With Posts"
+msgstr ""
+
+#: example/menu.php:1959 example/meta.php:1559 example/widget.php:1523
+msgid "Select With Post categories"
+msgstr ""
+
+#: example/menu.php:1967 example/meta.php:1567 example/widget.php:1531
+msgid "Select With Posts Tages"
+msgstr ""
+
+#: example/menu.php:1983 example/meta.php:1583 example/widget.php:1547
+msgid "Select With CPT Posts"
+msgstr ""
+
+#: example/menu.php:2000 example/meta.php:1601 example/widget.php:1564
+msgid "Select With CPT Categories"
+msgstr ""
+
+#: example/menu.php:2019 example/meta.php:1620 example/widget.php:1583
+msgid "Select With CPT Tags"
+msgstr ""
+
+#: example/menu.php:2049 example/meta.php:1649 example/widget.php:1613
+msgid "Facebook"
+msgstr ""
+
+#: example/menu.php:2050 example/meta.php:1650 example/widget.php:1614
+msgid "Instagram"
+msgstr ""
+
+#: example/menu.php:2051 example/meta.php:1651 example/widget.php:1615
+msgid "Twitter"
+msgstr ""
+
+#: example/menu.php:2052 example/widget.php:1616
+msgid "Googleplus"
+msgstr ""
+
+#: example/menu.php:2055 example/meta.php:1655 example/widget.php:1619
+msgid "Linkedin"
+msgstr ""
+
+#: example/menu.php:2056 example/meta.php:1656 example/widget.php:1620
+msgid "Pinterest"
+msgstr ""
+
+#: example/menu.php:2059 example/meta.php:1659 example/widget.php:1623
+msgid "Active Social Sharing"
+msgstr ""
+
+#: example/menu.php:2060 example/meta.php:1660 example/widget.php:1624
+msgid "Deactivate Social Sharing"
+msgstr ""
+
+#: example/menu.php:2073 example/meta.php:1673 example/widget.php:1637
+msgid "Enable Or Disable the setting"
+msgstr ""
+
+#: example/menu.php:2074 example/meta.php:1674 example/widget.php:1638
+msgid "Switcher With Help Information"
+msgstr ""
+
+#: example/menu.php:2081 example/meta.php:1681 example/widget.php:1645
+msgid "Switcher Without After Text"
+msgstr ""
+
+#: example/menu.php:2087 example/meta.php:1687 example/widget.php:1651
+msgid "Switcher With description"
+msgstr ""
+
+#: example/menu.php:2088 example/meta.php:1688 example/widget.php:1652
+msgid "Switcher helps to enable or disable the setting"
+msgstr ""
+
+#: example/menu.php:2099 example/meta.php:1699 example/widget.php:1663
+msgid "Switcher With Posts"
+msgstr ""
+
+#: example/menu.php:2108 example/meta.php:1708 example/widget.php:1672
+msgid "Switcher With Post Categories"
+msgstr ""
+
+#: example/menu.php:2117 example/meta.php:1717 example/widget.php:1681
+msgid "Switcher With Post Tags"
+msgstr ""
+
+#: example/menu.php:2126 example/meta.php:1726 example/widget.php:1690
+msgid "Switcher With Pages"
+msgstr ""
+
+#: example/menu.php:2143 example/meta.php:1743 example/widget.php:1707
+msgid "Switcher With CPT Posts"
+msgstr ""
+
+#: example/menu.php:2161 example/meta.php:1761 example/widget.php:1725
+msgid "Switcher With CPT categories"
+msgstr ""
+
+#: example/menu.php:2179 example/meta.php:1779 example/widget.php:1743
+msgid "Switcher With CPT Tags"
+msgstr ""
+
+#: example/menu.php:2263 example/menu.php:2264 example/widget.php:1827
+#: example/widget.php:1828
+msgid "Tabs with Label"
+msgstr ""
+
+#: example/menu.php:2458 example/widget.php:2022
+msgid "Tabs with Icon only"
+msgstr ""
+
+#: example/menu.php:2536 example/widget.php:2100
+msgid "Tabs with Repeater"
+msgstr ""
+
+#: example/menu.php:2755 example/meta.php:2211 example/widget.php:2319
+msgid "Enter your full name."
+msgstr ""
+
+#: example/menu.php:2756 example/meta.php:2212 example/widget.php:2320
+msgid "Text With Description"
+msgstr ""
+
+#: example/menu.php:2762 example/meta.php:2221 example/widget.php:2326
+msgid "Text with Default Value"
+msgstr ""
+
+#: example/menu.php:2770 example/meta.php:2229 example/widget.php:2334
+msgid "Text With Help"
+msgstr ""
+
+#: example/menu.php:2776 example/meta.php:2235 example/widget.php:2340
+msgid "Text With Placeholder"
+msgstr ""
+
+#: example/menu.php:2778 example/meta.php:2237 example/widget.php:2342
+msgid "Only characters are allowed..."
+msgstr ""
+
+#: example/menu.php:2786 example/menu.php:2795 example/meta.php:2245
+#: example/meta.php:2254 example/widget.php:2350 example/widget.php:2359
+msgid "Enter your favourite pluign name"
+msgstr ""
+
+#: example/menu.php:2788 example/meta.php:2247 example/widget.php:2352
+msgid "Text with After Field Text"
+msgstr ""
+
+#: example/menu.php:2797 example/meta.php:2256 example/widget.php:2361
+msgid "Text with Before Field Text"
+msgstr ""
+
+#: example/menu.php:2804 example/meta.php:2263 example/widget.php:2368
+msgid "Text with Read Only"
+msgstr ""
+
+#: example/menu.php:2813 example/meta.php:2272 example/widget.php:2377
+msgid "Text With Max Length"
+msgstr ""
+
+#: example/menu.php:2814 example/meta.php:2273 example/widget.php:2378
+msgid "Only 12 characters are accepted "
+msgstr ""
+
+#: example/menu.php:2823 example/meta.php:2282 example/widget.php:2387
+msgid "Text With Custom Style"
+msgstr ""
+
+#: example/menu.php:2839 example/meta.php:2298 example/widget.php:2403
+msgid "Textarea With Placeholder"
+msgstr ""
+
+#: example/menu.php:2841 example/meta.php:2300 example/widget.php:2405
+msgid "Your text goes here..."
+msgstr ""
+
+#: example/menu.php:2848 example/meta.php:2307 example/widget.php:2412
+msgid ""
+"FieldPress is awesome plugin which provide you multiple facilities like "
+"create  metabox, framework option, customizer options, widget, shortcode, "
+"menu options."
+msgstr ""
+
+#: example/menu.php:2849 example/meta.php:2308 example/widget.php:2413
+msgid "Textarea With Default"
+msgstr ""
+
+#: example/menu.php:2855 example/meta.php:2314 example/widget.php:2419
+msgid "This field is required"
+msgstr ""
+
+#: example/menu.php:2856 example/meta.php:2315 example/widget.php:2420
+msgid "Textarea With Help"
+msgstr ""
+
+#: example/menu.php:2862 example/meta.php:2321 example/widget.php:2426
+msgid "Enter your current details."
+msgstr ""
+
+#: example/menu.php:2863 example/meta.php:2322 example/widget.php:2427
+msgid "Textarea With Description"
+msgstr ""
+
+#: example/menu.php:2872 example/meta.php:2331 example/widget.php:2436
+msgid "Textarea With Before Text"
+msgstr ""
+
+#: example/menu.php:2878 example/meta.php:2337 example/widget.php:2442
+msgid "Textarea With Row and Column"
+msgstr ""
+
+#: example/menu.php:2879 example/meta.php:2338 example/widget.php:2443
+msgid "Note: Rows= 4 & cols = 50"
+msgstr ""
+
+#: example/menu.php:2896 example/meta.php:2354 example/widget.php:2460
+msgid "Url With Description"
+msgstr ""
+
+#: example/menu.php:2897 example/meta.php:2355 example/widget.php:2461
+msgid "Enter your email @ddress"
+msgstr ""
+
+#: example/menu.php:2903 example/meta.php:2362 example/widget.php:2467
+msgid "Url With Default Value"
+msgstr ""
+
+#: example/menu.php:2904 example/meta.php:2363 example/widget.php:2468
+msgid "https://wordpress.org/"
+msgstr ""
+
+#: example/menu.php:2910 example/meta.php:2369 example/widget.php:2474
+msgid "Url With Help Information"
+msgstr ""
+
+#: example/menu.php:2924 example/meta.php:2382 example/widget.php:2488
+msgid "Wysiwyg with Help"
+msgstr ""
+
+#: example/menu.php:2925 example/menu.php:2932 example/menu.php:2942
+#: example/menu.php:2953 example/menu.php:2964 example/meta.php:2383
+#: example/widget.php:2489 example/widget.php:2496 example/widget.php:2506
+#: example/widget.php:2517 example/widget.php:2528
+msgid "Enter your article here."
+msgstr ""
+
+#: example/menu.php:2931 example/widget.php:2495
+msgid "Wysiwyg without Media Button"
+msgstr ""
+
+#: example/menu.php:2941 example/widget.php:2505
+msgid "Wysiwyg without Quicktags"
+msgstr ""
+
+#: example/menu.php:2952 example/widget.php:2516
+msgid "Wysiwyg without Editor Tool"
+msgstr ""
+
+#: example/menu.php:2963 example/widget.php:2527
+msgid "Wysiwyg with Certain Editor Tool"
+msgstr ""
+
+#: example/menu.php:2994 example/meta.php:2406 example/widget.php:2556
+msgid "This description can directly pass through \"desc\"."
+msgstr ""
+
+#: example/menu.php:2996 example/meta.php:2408 example/widget.php:2558
+msgid "Text with Direct Description"
+msgstr ""
+
+#: example/menu.php:3002 example/meta.php:2414 example/widget.php:2564
+msgid "This description show before label of the field."
+msgstr ""
+
+#: example/menu.php:3005 example/meta.php:2417 example/widget.php:2567
+msgid "Text Field with Text Before Label"
+msgstr ""
+
+#: example/menu.php:3011 example/meta.php:2423 example/widget.php:2573
+msgid "This description show after label of the field."
+msgstr ""
+
+#: example/menu.php:3014 example/meta.php:2426 example/widget.php:2576
+msgid "Text Field with Text After label"
+msgstr ""
+
+#: example/menu.php:3020 example/meta.php:2432 example/widget.php:2582
+msgid "This description will display before the field."
+msgstr ""
+
+#: example/menu.php:3023 example/meta.php:2435 example/widget.php:2585
+msgid "Text Field with Text Before Field"
+msgstr ""
+
+#: example/menu.php:3029 example/meta.php:2441 example/widget.php:2591
+msgid "This description will display after the field."
+msgstr ""
+
+#: example/menu.php:3032 example/menu.php:3038 example/meta.php:2444
+#: example/meta.php:2450 example/widget.php:2594 example/widget.php:2600
+msgid "Text Field with Text After Field"
+msgstr ""
+
+#: example/menu.php:3045 example/meta.php:2457 example/widget.php:2607
+msgid "Text Field with Custom Class"
+msgstr ""
+
+#: example/menu.php:3046 example/meta.php:2458 example/widget.php:2608
+msgid "\"Custom Class\" class will appear in this field class."
+msgstr ""
+
+#: example/meta.php:18
+msgid "Simple Meta Box Demo 1"
+msgstr ""
+
+#: example/meta.php:28
+msgid "Simple Meta Box Demo 2"
+msgstr ""
+
+#: example/meta.php:430
+msgid "File upload With Description"
+msgstr ""
+
+#: example/meta.php:438
+msgid "File upload With Help Information"
+msgstr ""
+
+#: example/meta.php:447
+msgid "File upload With Help Default"
+msgstr ""
+
+#: example/meta.php:455
+msgid "File upload With Custom Uploder Title"
+msgstr ""
+
+#: example/meta.php:464
+msgid "File upload With Custom Selector Title"
+msgstr ""
+
+#: example/meta.php:478
+msgid "Gallery With Help Information"
+msgstr ""
+
+#: example/meta.php:487
+msgid "Gallery With Custom Uploader title"
+msgstr ""
+
+#: example/meta.php:497
+msgid "Gallery With Before Text"
+msgstr ""
+
+#: example/meta.php:511
+msgid "Image With Default"
+msgstr ""
+
+#: example/meta.php:517
+msgid "Image With Help Information"
+msgstr ""
+
+#: example/meta.php:541
+msgid "Image With Custom Uploader Title"
+msgstr ""
+
+#: example/meta.php:548
+msgid "Image With Custom Selector Title"
+msgstr ""
+
+#: example/meta.php:561
+msgid "Icon Selector With help Information"
+msgstr ""
+
+#: example/meta.php:568
+msgid "Icon With Default"
+msgstr ""
+
+#: example/meta.php:574
+msgid "Icon With After Field Text"
+msgstr ""
+
+#: example/meta.php:592
+msgid "Map With Default Location"
+msgstr ""
+
+#: example/meta.php:599
+msgid "Map With Custom search Placeholder"
+msgstr ""
+
+#: example/meta.php:607
+msgid "Map With Custom Search Button Text"
+msgstr ""
+
+#: example/meta.php:615
+msgid "Map With Custom Show Map Text"
+msgstr ""
+
+#: example/meta.php:622
+msgid "Map With Zoom level"
+msgstr ""
+
+#: example/meta.php:628
+msgid "Set Marker in Map"
+msgstr ""
+
+#: example/meta.php:643
+msgid "Number With Before Label Text"
+msgstr ""
+
+#: example/meta.php:652
+msgid "Number With After Label Text"
+msgstr ""
+
+#: example/meta.php:661
+msgid "Number With Before Field Text"
+msgstr ""
+
+#: example/meta.php:670
+msgid "Number With After Field Text"
+msgstr ""
+
+#: example/meta.php:690
+msgid "Number With Placeholder"
+msgstr ""
+
+#: example/meta.php:699
+msgid "Number With Max Value"
+msgstr ""
+
+#: example/meta.php:709
+msgid "Number With Min and Max Value"
+msgstr ""
+
+#: example/meta.php:792
+msgid "Radio With Help Information"
+msgstr ""
+
+#: example/meta.php:1652
+msgid "GooglePlus"
+msgstr ""
+
+#: example/meta.php:1788
+msgid "Tabs Label"
+msgstr ""
+
+#: example/widget.php:22
+msgid "Blog Description."
+msgstr ""
+
+#: example/widget.php:24
+msgid "FieldPress Example Title"
+msgstr ""
+
+#: example/widget.php:389
+msgid ""
+"Email With Help Information.\n"
+"\t\t\t\t\t\t\t"
+msgstr ""
+
+#: fields/file.php:37 fields/file.php:38
+msgid "Select File"
+msgstr ""
+
+#: fields/gallery.php:30 fields/gallery.php:32
+msgid "Add Gallery"
+msgstr ""
+
+#: fields/gallery.php:31
+msgid "Edit Gallery"
+msgstr ""
+
+#: fields/gallery.php:33
+msgid "Remove"
+msgstr ""
+
+#: fields/icon.php:28 includes/fieldpress-functions.php:1576
+msgid "Select Icon"
+msgstr ""
+
+#: fields/map.php:37
+msgid "Find"
+msgstr ""
+
+#: fields/map.php:38
+msgid "Search Place"
+msgstr ""
+
+#: fields/map.php:39
+msgid "Show Map"
+msgstr ""
+
+#: fields/map.php:55 fields/repeater.php:73 fields/repeater.php:136
+msgid "Close"
+msgstr ""
+
+#: fields/repeater.php:72 fields/repeater.php:135
+msgid "Delete"
+msgstr ""
+
+#: fields/repeater.php:153
+msgid "Add field"
+msgstr ""
+
+#: fields/sortable.php:29
+msgid "Active Fields"
+msgstr ""
+
+#: fields/sortable.php:30
+msgid "Inactive Fields"
+msgstr ""
+
+#: fields/wysiwyg.php:29
+msgid "Open Editor"
+msgstr ""
+
+#: includes/fieldpress-functions.php:1581
+msgid "Search Icons"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "FieldPress"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://addonspress.com/item/fieldpress-framework/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"FieldPress is WordPress Back-end builder framework to create advanced back-"
+"end section like meta-box,"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "AddonsPress"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://addonspress.com/"
+msgstr ""

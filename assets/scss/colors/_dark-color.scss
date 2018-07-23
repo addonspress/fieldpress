@@ -1,0 +1,294 @@
+
+/*----------------------
+  ---------------------
+	Dark Color Theme
+  ---------------------
+  -----------------------*/
+/*----------------------
+	Global Input
+-----------------------*/
+.fieldpress-wrap{
+	input:not([type=checkbox]):not([type=radio]):not(.button):not([type="submit"]){
+		border:1px solid $darkbase-light-border-color;
+	}
+}
+/*--------------------------
+	Select 2 DropDown color
+---------------------------*/
+.fieldpress-field{
+	.select2-selection--single {
+	}
+	.select2-selection--multiple{
+
+		.select2-selection__choice{
+		}
+	}
+
+	.select2-container--default.select2-container--focus{
+		.select2-selection--multiple {
+			border: 1px solid $darkbase-light-border-color !important;
+		}
+	}
+}
+.select2-container{
+	.select2-dropdown{
+		border-color:$darkbase-light-border-color;
+	}
+}
+
+/*---------------------------
+	Global FieldPress Color
+----------------------------*/
+.dark-theme .fieldpress-header,
+.dark-theme .fieldpress-footer{
+	background:$darkbase-color;
+	border:1px solid lighten(saturate(adjust-hue($darkbase-color, -2), 0.48), 10.00);;
+	.fieldpress-title{
+		h1{
+			color:$white-color;
+		}
+		
+	}
+	.fieldpress-info{
+		p{
+			color:$white-color;
+		}
+	}
+}
+.dark-theme{
+	&.fieldpress-addons{
+		.fieldpress-tabs-content-wrapper{
+			background:$white-color;
+			.fieldpress-field{
+				&:not(:first-child){
+					border-top:1px dashed $base-lighten-color;
+					
+				}
+				.fieldpress-desc{
+					color:lighten($base-color, 25%);
+				}
+			}
+			//file preview
+			.fieldpress-file-preview {
+				border: 1px solid $darkbase-light-border-color;
+				.fieldpress-file-wrap{
+					i{
+						color:$warning-color;
+					}
+				}
+			}
+			//icon selector
+			.fieldpress-icon-preview{
+				.fieldpress-icon-wrap{
+					border: 1px solid $darkbase-lighten-color;
+					.fieldpress-icon-clear{
+						background:$warning-color;
+						color:$white-color;
+					}
+				}
+			}
+			//image preview
+			.fieldpress-image-wrap {
+				.fieldpress-clear {
+					background:$warning-color;
+					color:$white-color;
+				}
+			}
+			//gallery preview
+			.fieldpress-gallery{
+				.fieldpress-gallery-preview{
+					li{
+						display: inline-block;
+						&:not(:first-child){
+							margin-left: 10px;
+						}
+					}
+				}
+				.fieldpress-remove{
+					background:$warning-color;
+					color:$white-color;
+					border-color: darken($warning-color, 10%) darken($warning-color, 20%) darken($warning-color, 20%);
+					@include prefix('box-shadow', 0 1px 0 darken($warning-color, 20%), webkit ms o);
+				}
+			}
+			//Drag and Drop
+			.fieldpress-sortable-wrap {
+				.ui-sortable {
+					border: 1px dashed $darkbase-lighten-color;
+					li{
+						background: $darkbase-light-border-color;
+						&:hover{
+							background: $darkbase-light-bg-color;
+							color:$white-color;
+						}
+						&.ui-sortable-placeholder{
+							border:1px dashed $darkbase-lighten-color;
+						}
+					}
+				}
+			}
+			//Map Content
+			.fieldpress-map-content {
+				.fieldpress-map-clear {
+					background:$warning-color;
+					color:$white-color;
+					border-color: darken($warning-color, 10%) darken($warning-color, 20%) darken($warning-color, 20%);
+					@include prefix('box-shadow', 0 1px 0 darken($warning-color, 20%), webkit ms o);
+				}
+				.fieldpress-map-wrapper{
+					border: 1px solid $darkbase-lighten-color;
+				}
+			}
+			//Image Select
+			.fieldpress-select-image{
+				.fieldpress-fields-box{
+					ul{
+						li{
+							input[type="radio"]:checked ~ img,
+							input[type="checkbox"]:checked ~ img{
+								border:2px solid $darkbase-lighten-color;
+							}
+						}
+					}
+				}
+			}
+			//Switch
+			.fieldpress-switcher{
+				label{
+					input[type="checkbox"] + span{
+						background:$darkbase-lighten-color;
+						&:after{
+							background-color:$white-color;
+						}
+					}
+					input[type="checkbox"]:checked + span {
+						background-color:$primary-color;
+					}
+				}
+			}
+			//Tab menu
+			.fieldpress-tabs{
+				.fields-tabs{
+					li{
+						border: 1px solid transparent;
+						a{
+							color:$darkbase-color;
+							&:hover,
+							&:focus{
+								color:$primary-color;
+							}
+						}
+					}
+					li.active{
+						border: 1px solid $base-lighten-color;
+						border-top: 2px solid $primary-color;
+						border-bottom: 1px solid $white-color;
+						a{
+							color:$primary-color;
+						}
+					}
+				}
+				//inner tab content
+				.fieldpress-inner-tabs-content{
+					border: 1px solid $base-lighten-color;
+				}
+			}
+			//Repeater field
+			.fieldpress-repeater{
+				.repeater-table{
+					.fieldpress-repeater-top {
+						background:$base-light-background-color;
+						border: 1px solid $base-lighten-color;
+						
+						&:hover{
+							border: 1px solid darken($base-lighten-color,10%);
+						}
+					}
+					.fieldpress-repeater-inside{
+						border-color:transparent $base-lighten-color $base-lighten-color;
+						.fieldpress-repeater-control-actions{
+							background:lighten($base-color, 95%);
+						}
+					}
+				}
+				.fp-sortable-placeholder{
+					 border: 1px dotted $base-lighten-color;
+				}
+			}
+			.fieldpress-add-repeater{
+				background:$success-color;
+				color:$white-color;
+				border-color:darken($success-color,11%) darken($success-color,12%) darken($success-color,12%);
+				box-shadow: 0 1px 0 darken($success-color,12%);
+				text-shadow: 0 -1px 1px darken($success-color,12%),
+				1px 0 1px darken($success-color,12%),0 1px 1px #006799,
+				-1px 0 1px darken($success-color,12%);
+				&:hover,
+				&:focus{
+					background:lighten($success-color,5%);
+				}
+			}
+		}
+	}
+	
+}
+/*----------------------
+	Vertical Tab Menu
+-----------------------*/
+.dark-theme .fieldpress-vertical-tab{
+	.fieldpress-tabs-menu {
+		background:$darkbase-light-bg-color;
+		border-right:1px solid $darkbase-light-border-color;
+		ul{
+			li{	
+				&:not(:first-child){
+					a{
+						border-top:1px solid lighten(desaturate(adjust-hue($darkbase-color, -210), 12.50), 7.06);					
+					}
+				} 
+				a{
+					color:$white-color;
+				}
+				&:hover,
+				&:focus,
+				&.active{
+					background:lighten(saturate(adjust-hue($darkbase-color, -2), 0.48), 10.00);
+					a{
+						color:$white-color;
+					}
+				}
+			}
+		}
+	}
+	.fieldpress-tabs-content{
+		background:$white-color;
+	}
+}
+
+/*----------------------
+	Horizontal Tab Menu
+-----------------------*/
+.dark-theme {
+	.fieldpress-horizontal-tab{
+		.fieldpress-main-tabs{
+			li{
+				a{
+					color:$base-color;
+					&:hover,
+					&:focus{
+						color:$white-color;
+						background:lighten(saturate(adjust-hue($darkbase-color, -2), 0.48), 10.00);
+					}
+				}
+			}
+			li.active{
+
+				a{
+					color:$white-color;
+					background:lighten(saturate(adjust-hue($darkbase-color, -2), 0.48), 10.00);
+				}
+			}
+		}
+	}
+	
+}

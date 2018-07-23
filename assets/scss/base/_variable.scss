@@ -1,0 +1,27 @@
+//font size
+$base-font-size:14px;
+
+//color options
+$base-color:#464646;
+$darkbase-color:#23282d;
+
+//color options for base color
+$base-lighten-color:lighten($base-color, 62.35%);
+$base-light-background-color:lighten($base-color, 70.20%);
+$base-light-text-color:lighten($base-color, 5.88%);
+$base-light-border-color:lighten($base-color, 65.88%);
+
+$darkbase-lighten-color:lighten($base-color,12.55%);
+$darkbase-light-bg-color:lighten(desaturate($darkbase-color, 1.14), 1.57);
+//$base-light-text-color:lighten($base-color, 5.88%);
+$darkbase-light-border-color:lighten(desaturate(adjust-hue($darkbase-color, -210), 12.50), 66.27);
+
+
+$primary-color:#2196F3;
+$secondary-color:#999;
+$white-color:#fff;
+$overlay-color:#000;
+$warning-color:#e14d43;
+$success-color:#28a745;
+
+

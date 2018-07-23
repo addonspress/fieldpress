@@ -1,0 +1,878 @@
+/*----------------------
+	Select 2 DropDown
+-----------------------*/
+.fieldpress-field{
+	.select2-container--default {
+		width: 100% !important;
+		@include prefix('box-sizing', border-box, webkit ms o);
+
+		.select2-selection--single {
+			
+			@include border-radius(0px);
+			height: 34px;
+			.select2-selection__rendered {
+				color: #444;
+				line-height: 31px ;
+			}
+			.select2-selection__arrow {
+				height: 34px;
+				right: 10px;
+			}
+		}
+		.select2-selection--multiple{
+			@include border-radius(3px);
+			padding: 10px;
+
+			input[type="search"]{
+				width: 100% !important;
+			}
+			.select2-search--inline{
+				width: 100%;
+				margin-bottom: 0;
+			}
+			.select2-selection__choice {
+				@include border-radius(3px);
+				cursor: default;
+				float: left;
+				margin-right: 5px;
+				margin-top: 5px;
+				padding: 5px 10px;
+
+				.select2-selection__choice__remove {
+
+					margin-right: 0;
+					float: right;
+					margin-left: 6px;
+				}
+			}
+		}
+		 
+	}
+	.select2-container--default.select2-container--focus{
+
+		.select2-selection--multiple {
+			outline: 0;
+		}
+
+	}
+	
+}
+.select2-container{
+
+	.select2-dropdown{
+
+		.select2-results__option{
+			padding: 15px;
+		}
+	}
+	
+}
+
+
+/*----------------------
+	Global FieldPress
+-----------------------*/
+.fieldpress-header,
+.fieldpress-footer{
+	margin-right: 20px;
+	margin-top: 20px;
+	padding: 10px 20px;
+	.fieldpress-title{
+		h1{
+			font-size: 1.4em;
+			font-weight: normal;
+		}
+	}
+	div{
+		display: inline-block;
+
+		&.fieldpress-actions{
+			float: right;
+			margin-top: 15px;
+		}
+	}
+}
+.fieldpress-footer{
+	margin-top: 0;
+}
+
+.widget-inside{
+	.fieldpress-addons{
+		margin-left: -15px;
+		margin-right: -15px;
+	}
+}
+.fieldpress-addons{
+
+		ul{
+			margin-top: 0;
+		}
+
+		.fieldpress-field{
+			padding:20px;		
+			position: relative;	
+			@include clearfix();
+			@include prefix('box-sizing', border-box, webkit ms o);
+
+			.fieldpress-desc{
+				margin-top: 5px;
+				font-size: 14px;
+				font-style: italic;
+			}
+
+			&:last-child{
+				border:medium none;
+			}
+
+			.fieldpress-label{
+				margin-bottom: 10px;
+				width: 30%;
+				float: left;
+
+				label{
+					font-weight: 700;
+				}
+			}
+			.fieldpress-label + .fieldpress-fields-box{
+			   width: 70%;
+			   margin-left: 30%;
+			   position: relative;
+			   padding-left: 30px;
+			   @include prefix('box-sizing', border-box, webkit ms o);
+			}
+
+		}
+		//inline fb class
+		.fp-inline{
+			.fieldpress-fields-box{
+				ul{
+					li{
+						display: inline-block;
+						&:not(:first-child){
+							margin-left: 15px;
+						}
+					}
+				}
+			}
+		}
+
+		//file preview
+		.fieldpress-file-preview {
+				padding: 20px;
+				margin-bottom: 20px;
+				@include clearfix();
+				.fieldpress-file-wrap{
+					i{
+						float: right;
+						line-height:2;
+						cursor:pointer;
+					}
+					.fieldpress-icon-wrapper{
+						float: left;
+
+						img{
+							height: 30px;
+						}
+					}
+					.fieldpress-file-details{
+						float: left;
+
+						div{
+							float: left;
+							padding:10px;
+						}
+					}
+				}
+		}
+		
+		//icon selector
+		.fieldpress-icon-preview{
+
+			.fieldpress-icon-wrap{
+
+				width: 100px;
+				height: 100px;
+				line-height: 100px;
+				text-align: center;
+				font-size: 30px;
+				position: relative;
+				margin-bottom: 20px;
+				position: relative;
+
+				.fieldpress-icon-clear{
+				    position: absolute;
+				    right: -5px;
+				    top: -5px;
+				   @include border-radius(50%);
+				    width: 25px;
+				    height: 25px;
+				    line-height: 1.4;
+				    font-size: 18px;
+				    cursor: pointer;
+				}
+			}
+
+		}
+		//image preview
+		.fieldpress-image-wrap {
+			width: 150px;
+			height: 150px;
+			margin-bottom: 20px;
+			position: relative;
+
+			.fieldpress-clear {
+				position: absolute;
+				right: -5px;
+				top: -5px;
+				@include border-radius(50%);
+				width: 25px;
+				height: 25px;
+				line-height: 1.4;
+				font-size: 18px;
+				cursor:pointer;
+			}
+		}
+
+		//gallery preview
+		.fieldpress-gallery{
+			.fieldpress-gallery-preview{
+				li{
+					display: inline-block;
+					
+					&:not(:first-child){
+						margin-left: 10px;
+					}
+				}
+			}
+			.fieldpress-remove{
+				margin-left: 10px;
+
+				i.dashicons{
+					font-size: 14px;
+					line-height:2;
+				}
+		
+			}
+			
+		}
+
+		//Drag and Drop
+		.fieldpress-sortable-wrap {
+			width: 48%;
+			float: left;
+			@include prefix('box-sizing', border-box, webkit ms o);
+			padding: 15px;
+			
+			.ui-sortable {
+				padding: 20px;
+
+				li{
+					padding: 15px;
+					cursor:pointer;
+					height: 25px;
+					&.ui-sortable-placeholder{
+						background: transparent;
+					}
+				}
+			}
+			.inactive-sortable{
+				li{
+					opacity: 0.5;
+					cursor:default;
+					@include transition(opacity,0.15s,ease-in-out,0s)
+					
+				}
+			}
+		}
+		
+		//Map Content
+		.fieldpress-map-content {
+			margin-top: 20px;
+			position: relative;
+
+			.fieldpress-map-clear {
+				margin-top: 10px;			
+				font-size: 13px;
+				line-height: 26px;
+				height: 28px;
+				padding: 0 10px 1px;
+				cursor: pointer;
+				border-width: 1px;
+				border-style: solid;
+				-webkit-appearance: none;
+				@include border-radius(3px);
+				white-space: nowrap;
+				@include prefix('box-sizing', border-box, webkit ms o);
+				text-decoration:none;
+			}
+			.fieldpress-map-wrapper{
+				padding: 20px;
+				input[type="text"]{
+					width: 77%;
+					float: left;
+					margin-right: 15px;
+					margin-bottom: 15px;
+				}
+				.fieldpress-find-map{
+					width: 19%;
+					height: 45px;
+					margin: 0;
+					display: inline-block;
+					line-height: 2.8;
+					text-align: center;
+					font-size: 16px;
+					font-weight: 600;
+				}
+				.fieldpress-map-holder{
+					height: 400px;
+				}
+			}
+		}
+		
+		//Image Select
+		.fieldpress-select-image{
+			.fieldpress-fields-box{
+				ul{
+					li{
+						display: inline-block;
+						width: 100px;
+						height: 100px;
+						position: relative;
+
+						input[type="radio"],
+						input[type="checkbox"]{
+							opacity:0;
+							visibility:hidden;
+							position: absolute;
+						}
+
+						img{
+							opacity:0.5;
+							border:2px solid transparent;
+							max-width:100%;
+							height: 100px;
+							width: 100px;
+							@include transition(all,0.5s,ease-in-out,0s)
+						}
+
+						&:not(:first-child){
+							margin-left: 10px;
+						}
+						input[type="radio"]:checked ~ img,
+						input[type="checkbox"]:checked ~ img{
+							opacity:1;
+						}
+
+					}
+				}
+			}
+		}
+		
+		//Color Selection
+		.fieldpress-color{
+			.wp-picker-container {
+
+				//color picker button
+				.wp-color-result.button {
+					height: 35px;
+					padding: 0 0 0 35px;
+					.wp-color-result-text {
+						line-height: 33px;
+					}
+				}
+				//color picker input
+				.wp-picker-input-wrap{
+					input.wp-color-picker{
+						height: 35px;
+					}
+					.button{
+						height: 35px;
+						padding: 0 29px 1px;
+					}
+				}
+
+				//color picker holder
+				.wp-picker-holder{
+					.iris-picker{
+
+					}
+					.fp-rgba-wrap{
+						display: none;
+						position: relative;
+						top: -1px;
+						width: 235px;
+						padding: 9px 10px;
+						border: 1px solid #dfdfdf;
+						border-top: none;
+						background-color: #fff;
+
+						.fp-rgba-slider {
+							position: absolute;
+							width:199px;
+							height: 18px;
+							background-color: transparent;
+
+							.ui-slider-handle {
+								height: 1.7em;
+								width:0.5em;	
+								background: transparent;
+								border-width:2px;
+							}
+						}
+
+						.fp-rgba-slider-offset{
+							height: 19px;
+							width: 201px;
+							background: url(../images/fp-alpha-bg.png) repeat-y center left scroll #fff;
+							-moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.4) inset;
+							-webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.4) inset;
+							box-shadow: 0 0 5px rgba(0, 0, 0, 0.4) inset;
+							-moz-border-radius: 2px;
+							-webkit-border-radius: 2px;
+							border-radius: 2px;
+						}
+						.fp-rgba-text {
+							position: absolute;
+							top: 12px;
+							right: 10px;
+							width: 30px;
+							font-size: 12px;
+							line-height: 12px;
+							text-align: center;
+							color: #999;
+						}
+					}					
+				}
+			}
+		}
+		
+		//Switch
+		.fieldpress-switcher{
+			ul{
+				margin-bottom: 0;
+				li{
+					margin-bottom: 0;
+					label{
+						float: left;
+						input[type="checkbox"]{
+							height: 0;
+							width: 0;
+							opacity: 0;
+							visibility:hidden;
+							position: absolute;
+						}
+						input[type="checkbox"] + span{
+
+							display: inline-block;
+							width:48px;
+							height:24px;
+							position: relative;
+
+							&:after{
+							 position: absolute;
+							  content: "";
+							  height: 16px;
+							  width: 16px;
+							  left: 4px;
+							  bottom: 4px;
+							  @include transition(all, 0.4s, ease-in-out, 0s)
+								
+
+							}
+						}
+
+						input[type="checkbox"]:checked + span{
+
+							&:after{
+							    -webkit-transform: translateX(24px);
+								  -ms-transform: translateX(24px);
+								  transform: translateX(24px);
+								
+							}
+						}
+						
+					}
+					.switcher-label{
+						margin: 0;
+						display: inline-block;
+						padding-left: 10px;
+						line-height:24px;
+					}
+				&:not(:first-child){
+					margin-top: 15px;
+				}
+
+				}
+			}
+		}
+		
+		//Tab menu
+		.fieldpress-tabs{
+			.fieldpress-fields-box{
+				padding-left: 0;
+				@include prefix('box-sizing', border-box, webkit moz);
+				&.fp-has-tooltip{
+					margin-left: 30px;
+					width: 97% !important;
+
+					.fieldpress-tooltip{
+						left: -30px;
+					}
+				}
+
+				.fieldpress-inner-tabs-content{
+					.fieldpress-label{
+						width: 30%;
+						float: left;
+					}
+					.fieldpress-fields-box{
+						width: 70%;
+						margin-left: 30%;
+					}
+				}
+				.fieldpress-repeater{
+					max-width:100%;
+				}
+			}
+			.fieldpress-label{
+				width: 100%;
+				float: none;
+			}
+			.fp-has-tooltip{
+				padding-left: 40px;
+				.fieldpress-tooltip{
+					left: 0;
+					z-index:10000;
+				}
+			}
+			.fields-tabs{
+				margin-bottom: 0;
+				li{
+					display: inline-block;
+					margin: 0 0 -1px;
+					padding: 15px 35px;
+					text-align: center;
+					a{
+						font-weight: 600;
+						text-decoration:none;
+						&.fp-has-label{
+							i{
+								margin-right: 10px;
+							}
+						}
+						i{
+							&.fp-icon{
+								font-size: 20px;
+							}
+						}
+
+						&:hover,
+						&:focus{
+							@include prefix('box-shadow', none, webkit moz);
+						}
+					}
+				}
+			}
+
+			//inner tab content
+			.fieldpress-inner-tabs-content{
+				padding: 20px;
+
+			}
+			.fieldpress-label + .fieldpress-fields-box{
+				margin-left: 0;
+				padding-left: 0;
+				width: 100%;
+				@include prefix('box-sizing', border-box, webkit moz);
+				
+			}
+			
+		}
+
+		//Repeater field
+		.fieldpress-repeater{
+			&.ui-sortable{
+				max-width:95%;
+
+				.fieldpress-repeater {
+					&.ui-sortable{
+						max-width: 100%;
+					}
+				}
+			}
+			//max-width:80%;
+			.fp-has-tooltip{
+				padding-left: 40px;
+				.fieldpress-tooltip{
+					left: 0;
+					z-index:10000;
+				}
+			}
+			> .fieldpress-fields-box{
+				margin: 0;
+
+				@include prefix('box-sizing', border-box, webkit ms );
+
+				.fieldpress-fields-box{
+
+					@include prefix('box-sizing', border-box, webkit ms );
+
+					.fieldpress-repeater{
+
+					}
+					
+				}
+				
+			}
+			.repeater-table{
+				margin-top:10px;
+				margin-bottom:10px;
+				clear: both;
+
+				.fieldpress-repeater-top {
+					padding: 15px 20px;
+					@include transition(all, 0.2s, ease-in-out, 0s);
+					&:hover{
+						cursor:move;
+					}
+					.fieldpress-repeater-title{
+						h3{
+							margin: 0;
+						}
+					}
+					.fieldpress-repeater-action{
+						float: right;
+						background-color: transparent;
+						border:medium none;
+						padding: 0;
+						cursor:pointer;
+
+						.toggle-indicator{
+							&:before{
+
+								display: block;
+								font: 400 20px/1 dashicons;
+								content: "\f140";
+								text-decoration: none;
+							}
+						}
+						
+					}
+				}
+				&.open{
+					@include prefix('box-sizing', border-box, webkit ms o);
+					.fieldpress-repeater-action{
+						.toggle-indicator{
+							&:before{
+								content: "\f142";
+							}
+						}
+					}
+				}
+
+				.fieldpress-repeater-inside{
+					border-width:0 1px 1px;
+					border-style:solid;
+					margin-bottom: 20px;
+
+					.fieldpress-repeater-control-actions{
+						padding: 10px;
+						text-align: right;
+					}
+					
+				}
+
+			}
+			.fp-sortable-placeholder{
+				 height: 50px;
+				 width: 100%;
+				 margin-bottom: 15px;
+			}
+
+			.fieldpress-repeater{
+				.fieldpress-repeater{
+					.fieldpress-fields-box{
+					}
+				}
+			}
+		}
+		.fieldpress-add-repeater{
+			padding: 10px 30px;
+			line-height: normal;
+			height: auto;
+			font-size: 14px;
+			font-weight: 700;
+			float: right;
+			i{
+				font-size: 14px;
+				line-height: 25px;
+				margin-right: 5px;
+			}
+		}
+
+
+	}
+
+
+/*----------------------
+	Vertical Tab Menu
+-----------------------*/
+
+.fieldpress-vertical-tab{
+
+	padding-right: 20px;
+	display: flex;
+	flex-wrap: wrap; 
+	align-content: center;
+
+	.fieldpress-tabs-menu {
+		flex: 0 0 auto; 
+		 flex-basis:20%;
+
+		ul{
+			margin: 0;
+			li{	
+				margin: 0;
+
+				a{
+					padding: 15px 20px;
+					display: block;
+					text-decoration:none;
+					font-size: $base-font-size;
+				}
+
+				&:hover,
+				&:focus,
+				&.active{
+					a{
+						@include prefix('box-shadow',none, webkit ms o);
+						font-weight:700;
+					}
+				}
+			}
+		}
+
+	}
+	.fieldpress-tabs-content{
+    	
+    	flex: 1 1 auto;
+    	flex-basis:75%;
+
+    	//nested tab (.fieldpress-field > .fieldpress-field.fieldpress-tabs)
+    	.fieldpress-field.fieldpress-tabs{
+
+    		.fieldpress-label{
+
+			}
+
+    		.fieldpress-fields-box{
+
+				&.fp-has-tooltip{
+					margin-left: 30px;
+
+					.fieldpress-tooltip{
+						left: -30px;
+					}
+				}
+			
+
+			   .fieldpress-fields-box{
+		   			.select2-container--default{
+		   				width: 100% !important;
+		   				@include prefix('box-sizing', border-box, webkit ms o);
+		   			}
+		   			.fieldpress-map-wrapper{
+		   				input[type="text"]{
+		   					width: 76%;
+		   				}
+		   			}
+
+		   		}
+			}
+			
+    	}
+    	//nested tab (.fieldpress-field > .fieldpress-repeater .fieldpress-field)
+    	.fieldpress-repeater{
+			>.fieldpress-fields-box{
+				@include prefix('box-sizing', border-box, webkit ms o);
+
+				.select2-container--default{
+	   				width: 100% !important;
+	   				@include prefix('box-sizing', border-box, webkit ms o);
+	   			}
+			}
+    	}
+		
+	}
+}
+/*----------------------
+	Horizintal Tab Menu
+-----------------------*/
+.fieldpress-horizontal-tab{
+	margin-right: 20px;
+	margin-top: 20px;
+	.fieldpress-main-tabs{
+			margin: 0;
+			li{	
+				display: inline-block;
+				margin: 0 0 -1px;
+				text-align: center;
+
+				a{
+					padding:10px;
+					display: block;
+					text-decoration:none;
+					font-size: $base-font-size;
+				}
+
+				&:hover,
+				&:focus,
+				&.active{
+					a{
+						@include prefix('box-shadow',none, webkit ms o);
+					}
+				}
+			}
+	}
+	
+}
+/*-------------------------
+	FieldPress Tooltips
+--------------------------*/
+.fieldpress-tooltip{
+ 		position: absolute;
+ 		left: 0px;
+
+    > .tooltiptext {
+    	width: 200px;
+    	background-color: #000;
+    	color:$white-color;
+    	text-align: center;
+    	padding: 5px;
+    	border-radius: 6px;
+    	position: absolute;
+    	z-index: 1;
+    	top: -100%;
+    	left: 50%;
+    	@include prefix('transform',translate(-50%,-80%), webkit ms o);
+    	
+    	visibility:hidden;
+
+		&:after{
+			content: "";
+			width: 0;
+			height: 0;
+			border-left: 5px solid transparent;
+			border-right: 5px solid transparent;
+			border-top: 5px solid #000;
+			position: absolute;
+			bottom: -5px;
+			left: 0;
+			right: 0;
+			margin: 0 auto;
+		}
+	}
+	&:hover .tooltiptext{
+		visibility: visible;
+	}
+}

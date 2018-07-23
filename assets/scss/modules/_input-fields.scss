@@ -1,0 +1,22 @@
+/*----------------------
+	Global Input
+-----------------------*/
+.fieldpress-addons{
+	input:not([type=checkbox]):not([type=radio]):not(.button):not([type="submit"]){
+
+		width: 100%;
+		@include prefix('box-sizing', border-box, webkit ms o);
+		// @include prefix('box-shadow', none, webkit ms o);
+		// height: 45px;
+		padding:3px 5px;
+		// @include border-radius(3px !important);
+	}
+	textarea{
+		
+		width: 100%;
+		// @include prefix('box-shadow', none, webkit ms o);
+		// @include border-radius(3px !important);
+	}
+	
+}
+
