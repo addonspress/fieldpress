@@ -11,7 +11,10 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  */
 function fieldpress_field_wrap( $field_details ) {
-	$wrap_attr = $field_details['wrap-attr'];
+	$wrap_attr = array();
+	if( isset( $field_details['wrap-attr'] )){
+		$wrap_attr = $field_details['wrap-attr'];
+	}
 	$wrap_attr['class'] = (isset($wrap_attr['class'])?$wrap_attr['class'].' '."fieldpress-field fieldpress-{$field_details['type']}":"fieldpress-field fieldpress-{$field_details['type']}");
 
 	$output = '<div ';
@@ -37,7 +40,7 @@ add_action('fieldpress_render_field_before', 'fieldpress_field_wrap',10);
 function fieldpress_label( $field_details ) {
 
 	$output ='';
-	if ( $field_details['label'] != '' || $field_details['label'] != FALSE ) {
+	if ( isset( $field_details['label']) && ( $field_details['label'] != '' || $field_details['label'] != FALSE ) ) {
 		$output .= "<div class='fieldpress-label'>";
 		/*show description before label*/
 		if ( isset($field_details['desc']) && is_array( $field_details['desc'] ) && isset($field_details['desc']['before-label'] ) ){

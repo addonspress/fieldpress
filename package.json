@@ -13,8 +13,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "npm": "^6.1.0",
-    "grunt": "^1.0.3"
+    "grunt": "^1.0.3",
+    "grunt-contrib-cssmin": "^2.2.1",
+    "npm": "^6.1.0"
   },
   "devDependencies": {
     "grunt-contrib-concat": "^1.0.1",

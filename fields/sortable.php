@@ -29,14 +29,19 @@ function fieldpress_render_sortable( $field_details, $field_value ) {
 	$active_title   = ( isset( $field_details['active_title'] ) ) ? $field_details['active_title'] : esc_html__( 'Active Fields', 'fieldpress' );
 	$inactive_title = ( isset( $field_details['inactive_title'] ) ) ? $field_details['inactive_title'] : esc_html__( 'Inactive Fields', 'fieldpress' );
 
-	$fixed_name = $attributes['name'];
+	$fixed_name ='';
+	if( isset( $attributes['name'])){
+		$fixed_name = $attributes['name'];
+	}
 
 	$output     = '<div class="fieldpress-sortable-wrap">';
 	$output    .= '<h3>'. esc_html( $active_title ) .'</h3>';
 	$output    .= '<ul class="active-sortable">';
 	if( ! empty( $active ) ) {
 		foreach ( $active as $active_id => $active_label ) {
-			$attributes['name'] = $fixed_name.'[active]'.'['.esc_attr( $active_id ).']';
+			if( !empty($fixed_name)){
+				$attributes['name'] = $fixed_name.'[active]'.'['.esc_attr( $active_id ).']';
+			}
 			$attributes['value'] = $active_id;
 			$output .= '<li>';
 			$output .= '<label>';
@@ -62,7 +67,9 @@ function fieldpress_render_sortable( $field_details, $field_value ) {
 	$output    .= '<ul class="inactive-sortable">';
 	if( ! empty( $inactive ) ) {
 		foreach ( $inactive as $inactive_id => $inactive_label ) {
-			$attributes['name'] = $fixed_name.'[inactive]'.'['.esc_attr( $inactive_id ).']';
+			if( !empty( $fixed_name ) ){
+				$attributes['name'] = $fixed_name.'[inactive]'.'['.esc_attr( $inactive_id ).']';
+			}
 			$attributes['value'] = $inactive_id;
 			$output .= '<li>';
 			$output .= '<label>';

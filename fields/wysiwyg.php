@@ -21,7 +21,8 @@ function fieldpress_render_wysiwyg( $field_details, $field_value ) {
 		'mediaButtons'  => true,
 		'quicktags'     => true,
 		'plugins'       => 'charmap colorpicker compat3x directionality fullscreen hr image link lists media paste tabfocus textcolor wordpress wpautoresize wpdialogs wpeditimage wpemoji wpgallery wplink wptextpattern wpview',
-		'toolbar1'      => 'formatselect bold italic | bullist numlist | blockquote | alignleft aligncenter alignright | link unlink | wp_more | spellchecker'
+		'toolbar1'      => 'formatselect bold italic | bullist numlist | blockquote | alignleft aligncenter alignright | link unlink | wp_more | spellchecker',
+		'block_formats' => ''
 
 	) );
 	$field_attr = $field_details['attr'];
@@ -37,26 +38,29 @@ function fieldpress_render_wysiwyg( $field_details, $field_value ) {
 		$output .= sprintf('%1$s="%2$s"', esc_attr( $name ), esc_attr( $value ));
 	}
 	$output .= '>';
-	/*formatting same Text widget*/
-	if ( user_can_richedit() ) {
-		add_filter( 'the_editor_content', 'format_for_editor', 10, 2 );
-		$default_editor = 'tinymce';
-	} else {
-		$default_editor = 'html';
+	if( !empty( $field_value )){
+		/*formatting same Text widget*/
+		if ( user_can_richedit() ) {
+			add_filter( 'the_editor_content', 'format_for_editor', 10, 2 );
+			$default_editor = 'tinymce';
+		} else {
+			$default_editor = 'html';
+		}
+
+		/** This filter is documented in wp-includes/class-wp-editor.php */
+		$text = apply_filters( 'the_editor_content', stripslashes( $field_value ), $default_editor );
+
+		/* Reset filter addition. */
+		if ( user_can_richedit() ) {
+			remove_filter( 'the_editor_content', 'format_for_editor' );
+		}
+
+		/* Prevent premature closing of textarea in case format_for_editor() didn't apply or the_editor_content filter did a wrong thing. */
+		$escaped_text = preg_replace( '#</textarea#i', '&lt;/textarea', $text );
+
+		$output .= $escaped_text;
 	}
 
-	/** This filter is documented in wp-includes/class-wp-editor.php */
-	$text = apply_filters( 'the_editor_content', stripslashes( $field_value ), $default_editor );
-
-	/* Reset filter addition. */
-	if ( user_can_richedit() ) {
-		remove_filter( 'the_editor_content', 'format_for_editor' );
-	}
-
-	/* Prevent premature closing of textarea in case format_for_editor() didn't apply or the_editor_content filter did a wrong thing. */
-	$escaped_text = preg_replace( '#</textarea#i', '&lt;/textarea', $text );
-
-	$output .= $escaped_text;
 	$output .= '</textarea>';
 	$output .= '</div>';/*.fieldpress-wysiwyg-wrapper*/
 	$output .= '</div>';/*.fieldpress-wysiwyg-content*/

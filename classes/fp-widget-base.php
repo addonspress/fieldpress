@@ -160,17 +160,18 @@ if(!class_exists('FieldPress_Widget')) {
 		/*Basic variables initialization with filter*/
 		$this->widget_sections_fields = apply_filters( 'fieldpress_widget_sections_fields', $widget_sections_fields );
 
-		$this->widget_sections = apply_filters( 'fieldpress_widget_sections', $this->widget_sections_fields['sections'] );
-
-		$this->widget_fields = apply_filters( 'filed_press_widget_fields', $this->widget_sections_fields['fields'] );
-
-		/*Set default values for widget sections*/
-		if( is_array( $this->widget_sections )){
-			foreach( $this->widget_sections as $section_id=>$section ){
-				$this->widget_section_default_values( $section_id, $section );
+		/*Since section is optional*/
+		if( isset( $this->widget_sections_fields['sections'] ) ){
+			$this->widget_sections = apply_filters( 'fieldpress_widget_sections', $this->widget_sections_fields['sections'] );
+			/*Set default values for widget sections*/
+			if( is_array( $this->widget_sections )){
+				foreach( $this->widget_sections as $section_id=>$section ){
+					$this->widget_section_default_values( $section_id, $section );
+				}
 			}
 		}
 
+		$this->widget_fields = apply_filters( 'filed_press_widget_fields', $this->widget_sections_fields['fields'] );
 		/*Set default values for widget fields*/
 		foreach( $this->widget_fields as $field_id=>$single_field ){
 			$this->widget_field_default_values($field_id, $single_field);
@@ -268,7 +269,7 @@ if(!class_exists('FieldPress_Widget')) {
 				}
 
 				$this->unique_field_types[] = $single_field['type'];
-				if($single_field['type'] == 'repeater'){
+				if( $single_field['type'] == 'tabs' || $single_field['type'] == 'repeater'){
 					$this->current_widget_fields( $single_field['fields'], 1, $single_field['section'] );
 				}
 			}
@@ -278,7 +279,7 @@ if(!class_exists('FieldPress_Widget')) {
 					$this->current_fields['fieldpress-default-section'][$field_id]= $single_field;
 				}
 				$this->unique_field_types[] = $single_field['type'];
-				if($single_field['type'] == 'repeater'){
+				if( $single_field['type'] == 'tabs' || $single_field['type'] == 'repeater'){
 					$this->current_widget_fields( $single_field['fields'], 1, $single_field['section'] );
 				}
 			}
@@ -324,7 +325,7 @@ if(!class_exists('FieldPress_Widget')) {
 				$single_field['attr']['name'] = $this->get_field_name( $field_id );
 				$single_field['fieldpress-unique'] = $this->id;
 				$value = isset( $instance[ $field_id ] ) ? $instance[ $field_id ] : '';
-				fieldpress_render_field( $single_field, $value, $instance );
+				fieldpress_render_field( $field_id, $single_field, $value, $instance );
 			}
 		}
 
@@ -389,7 +390,7 @@ if(!class_exists('FieldPress_Widget')) {
 				$single_field['attr']['name'] = $this->get_field_name( $field_id );
 				$single_field['fieldpress-unique'] = $this->id;
 				$value = isset( $instance[ $field_id ] ) ? $instance[ $field_id ] : '';
-				fieldpress_render_field( $single_field, $value, $instance );
+				fieldpress_render_field( $field_id, $single_field, $value, $instance );
 			}
 			echo "</div>";/*.fieldpress-tabs-content-wrapper*/
 			$i++;

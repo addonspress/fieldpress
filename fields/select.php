@@ -27,8 +27,10 @@ function fieldpress_render_select( $field_details, $field_value ) {
 	$query_args = ( isset( $field_details['query_args'] ) ? $field_details['query_args'] : array() );
 
 	$output = '<select ';
-	if( 'multiple' == $attributes['multiple'] ){
-		$attributes['name'] = $attributes['name'].'[]';
+	if( isset($attributes['multiple']) && 'multiple' == $attributes['multiple'] ){
+		if( isset( $attributes['name'])){
+			$attributes['name'] = $attributes['name'].'[]';
+		}
 	}
 	foreach ($attributes as $name => $value) {
 		$output .= sprintf('%1$s="%2$s"', esc_attr( $name ), esc_attr( $value ));
@@ -36,9 +38,11 @@ function fieldpress_render_select( $field_details, $field_value ) {
 	$output .= '>';
 	if ( !empty( $choices ) ){
 		$choices  = ( is_array( $choices ) ) ? $choices : fieldpress_get_choices( $choices, $query_args );
-		$attributes['name'] = $attributes['name'].'[]';
+		if( isset( $attributes['name'])){
+			$attributes['name'] = $attributes['name'].'[]';
+		}
 		foreach ( $choices as $choice_value => $choice ) {
-			if( 'multiple' == $attributes['multiple'] ){
+			if( isset($attributes['multiple']) &&  'multiple' == $attributes['multiple'] ){
 				$output .= "<option value='".esc_attr( $choice_value )."' " . selected( (is_array( $field_value) ? in_array( $choice_value, $field_value ):false), true, false ) . ">".esc_html( $choice )."</option>";
 			}
 			else{

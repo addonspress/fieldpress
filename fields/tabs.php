@@ -81,8 +81,17 @@ function fieldpress_render_tabs( $field_details, $all_fields_value ) {
 				$tab_single_field['attr']['name'] = $field_id;
 			}
 
-			$value = isset( $all_fields_value[$field_id] ) ? $all_fields_value[$field_id] : '';
-			fieldpress_render_field( $tab_single_field, $value );
+			$value = '';
+			if ( ! isset( $all_fields_value[ $field_id ] ) ) {
+				if ( isset( $tab_single_field['default'] ) ) {
+					$value = $tab_single_field['default'];
+				}
+			}
+			else {
+				$value = $all_fields_value[ $field_id ];
+			}
+
+			fieldpress_render_field( $field_id, $tab_single_field, $value );
 		}
 		echo '</div>';
 		$i ++;

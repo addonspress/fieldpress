@@ -116,23 +116,23 @@ if(!class_exists('FieldPress_Meta_Framework')) {
             $this->meta_sections_fields = apply_filters( 'fieldpress_meta_sections_fields', $meta_sections_fields );
 
             $this->meta_boxes = apply_filters( 'fieldpress_meta_boxes', $this->meta_sections_fields['meta_boxes'] );
-
-	        $this->meta_sections = apply_filters( 'fieldpress_meta_sections', $this->meta_sections_fields['sections'] );
-
-	        $this->meta_fields = apply_filters( 'meta_fields', $this->meta_sections_fields['fields'] );
-
-            /*Set default values for meta box*/
-            foreach( $this->meta_boxes as $meta_box_id=>$meta_box_details ){
-                $this->meta_box_default_values($meta_box_id, $meta_box_details);
-            }
-
-	        /*Set default values for meta sections*/
-	        if( is_array( $this->meta_sections )){
-		        foreach( $this->meta_sections as $meta_details_section_id=>$meta_details_section ){
-			        $this->meta_section_default_values( $meta_details_section_id, $meta_details_section );
-		        }
+	        /*Set default values for meta box*/
+	        foreach( $this->meta_boxes as $meta_box_id=>$meta_box_details ){
+		        $this->meta_box_default_values($meta_box_id, $meta_box_details);
 	        }
 
+	        /*Since section is optional*/
+	        if( isset( $this->meta_sections_fields['sections'] ) ){
+		        $this->meta_sections = apply_filters( 'fieldpress_meta_sections', $this->meta_sections_fields['sections'] );
+		        /*Set default values for meta sections*/
+		        if( is_array( $this->meta_sections ) ){
+			        foreach( $this->meta_sections as $meta_details_section_id=>$meta_details_section ){
+				        $this->meta_section_default_values( $meta_details_section_id, $meta_details_section );
+			        }
+		        }
+            }
+
+	        $this->meta_fields = apply_filters( 'meta_fields', $this->meta_sections_fields['fields'] );
             /*Set default values for meta fields*/
             foreach( $this->meta_fields as $field_id=>$single_field ){
                 $this->meta_fields_default_values( $field_id, $single_field );
@@ -261,7 +261,7 @@ if(!class_exists('FieldPress_Meta_Framework')) {
                         }
 
 			            $this->unique_field_types[] = $single_field['type'];
-			            if($single_field['type'] == 'repeater'){
+			            if( $single_field['type'] == 'tabs' || $single_field['type'] == 'repeater'){
 				            $this->current_meta_fields( $meta_box_id, $single_field['fields'], 1, $single_field['section'] );
 			            }
 		            endif;
@@ -274,7 +274,7 @@ if(!class_exists('FieldPress_Meta_Framework')) {
                         }
 
 			            $this->unique_field_types[] = $single_field['type'];
-			            if($single_field['type'] == 'repeater'){
+			            if( $single_field['type'] == 'tabs' || $single_field['type'] == 'repeater'){
 				            $this->current_meta_fields( $meta_box_id, $single_field['fields'], 1, $single_field['section'] );
 			            }
 		            }
@@ -439,7 +439,7 @@ if(!class_exists('FieldPress_Meta_Framework')) {
 			        } else {
 				        $value = $get_meta_by_metabox[ $single_field['id'] ];
 			        }
-			        fieldpress_render_field( $single_field, $value, $get_meta_by_metabox);
+			        fieldpress_render_field( $field_id, $single_field, $value, $get_meta_by_metabox);
 		        }
 	        }
 
@@ -511,7 +511,7 @@ if(!class_exists('FieldPress_Meta_Framework')) {
 			                    $value = $get_meta_by_metabox[ $single_field['id'] ];
 		                    }
 
-		                    fieldpress_render_field( $single_field, $value, $get_meta_by_metabox);
+		                    fieldpress_render_field( $field_id, $single_field, $value, $get_meta_by_metabox);
 	                    }
 	                    echo "</div>";/*.fieldpress-tabs-content-wrapper*/
 	                    $i++;

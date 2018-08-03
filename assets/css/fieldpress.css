@@ -812,6 +812,7 @@
   width: 0.5em;
   background: transparent;
   border-width: 2px;
+  cursor: e-resize;
 }
 .fieldpress-addons .fieldpress-color .wp-picker-container .wp-picker-holder .fp-rgba-wrap .fp-rgba-slider-offset {
   height: 19px;
@@ -895,6 +896,10 @@
 }
 .fieldpress-addons .fieldpress-tabs .fieldpress-fields-box.fp-has-tooltip .fieldpress-tooltip {
   left: -30px;
+}
+.fieldpress-addons .fieldpress-tabs .fieldpress-fields-box .fieldpress-fields-box.fp-has-tooltip {
+  width: 70% !important;
+  margin-left: 30% !important;
 }
 .fieldpress-addons .fieldpress-tabs .fieldpress-fields-box .fieldpress-inner-tabs-content .fieldpress-label {
   width: 30%;

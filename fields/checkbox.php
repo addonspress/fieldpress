@@ -30,7 +30,9 @@ function fieldpress_render_checkbox( $field_details, $field_value ) {
 	$output = '<ul>';
 	if ( !empty( $choices ) ){
 		$choices  = ( is_array( $choices ) ) ? $choices : fieldpress_get_choices( $choices, $query_args );
-		$attributes['name'] = $attributes['name'].'[]';
+		if( isset( $attributes['name'])){
+			$attributes['name'] = $attributes['name'].'[]';
+		}
 		foreach ( $choices as $choice_value => $choice ) {
 			$attributes['value'] = $choice_value;
 			$output .= '<li>';

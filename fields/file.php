@@ -29,7 +29,7 @@ function fieldpress_render_file( $field_details, $field_value ) {
 	$attributes['type'] = 'hidden';
 	$attributes['value'] = $field_value;
 
-	if( 'multiple' == $attributes['multiple'] ){
+	if( isset($attributes['multiple']) && 'multiple' == $attributes['multiple'] ){
 		$attributes['data-multiple'] = true;
 	}
 

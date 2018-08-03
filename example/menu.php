@@ -2285,6 +2285,8 @@ if(class_exists('FieldPress_Menu_Framework')) {
 						'type'  => 'text',
 						'label' => esc_html__( 'Text', 'fieldpress' ),
 						'tab'  => 'fp-option-tab1',
+						'info' => esc_html__( 'Tabs with Label', 'fieldpress' ),
+
 					),
 					'fp-option-tab1-number'  => array(
 						'type'  => 'number',

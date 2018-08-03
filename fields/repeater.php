@@ -13,15 +13,21 @@ function fieldpress_render_repeater( $field_details, $field_value, $all_fields_v
 
 	$label_repeater = ( isset($field_details['label-repeater'] )? $field_details['label-repeater'] : 'Repeater' );
 	$data_nested = '';
+	$data_max_depth = '';
 	$fp_parent = '';
 	$fp_depth = '';
+	$fp_index = '';
 	$margin_left = '';
 
 	if( isset($field_details['nested'] ) && true === $field_details['nested'] ){
 		$data_nested = "data-nested=1";
+		$max_depth = isset($field_details['attr']['max-depth']) ? $field_details['attr']['max-depth'] : 10;
+		$data_max_depth = " data-max-depth=".$max_depth;
 	}
+
+
 	$class = '';
-	echo "<div class='fieldpress-repeater".$class.( isset($field_details['class'])? ' ' . $field_details['class'] : '' )."' id='{$field_details['id']}' ".$data_nested.">";
+	echo "<div class='fieldpress-repeater".$class.( isset($field_details['class'])? ' ' . $field_details['class'] : '' )."' id='{$field_details['id']}' ".$data_nested.$data_max_depth.">";
 
 	/*count repeater field*/
 	$total_repeater = 0;
@@ -65,7 +71,7 @@ function fieldpress_render_repeater( $field_details, $field_value, $all_fields_v
 					$field_cr['repeater-details'] = $field_details;
 					$field_cr['repeater-depth'] = $total_repeater;
 				}
-				fieldpress_render_field( $field_cr, $field_value, $field_saved_value );
+				fieldpress_render_field( $field_id, $field_cr, $field_value, $field_saved_value );
 
 			}
 			echo '<div class="fieldpress-repeater-control-actions">
@@ -128,7 +134,7 @@ function fieldpress_render_repeater( $field_details, $field_value, $all_fields_v
 			$field_cr['repeater-depth'] = $field_repeater_depth;
 
 		}
-		fieldpress_render_field( $field_cr, $field_value );
+		fieldpress_render_field( $field_id, $field_cr, $field_value );
 
 	}
 	echo '<div class="fieldpress-repeater-control-actions">

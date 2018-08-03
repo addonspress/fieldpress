@@ -57,16 +57,19 @@ function fieldpress_enqueue_scripts( $all_fields, $unique = false ) {
 		$unique_fields =  fieldpress_unique_fields( $all_fields );
 	}
 
-	wp_enqueue_style( 'fieldpress', FIELDPRESS_URL . 'assets/css/fieldpress.css' );
+	wp_enqueue_style( 'fieldpress', FIELDPRESS_URL . 'assets/css/fieldpress'.FIELDPRESS_SCRIPT_PREFIX.'.css' );
+
+	wp_enqueue_script( 'underscore' );
 
 	if( in_array('select', $unique_fields ) ){
-		wp_enqueue_style('select2', FIELDPRESS_URL . 'assets/frameworks/select2/css/select2.css', array(), null);
-		wp_enqueue_script('select2', FIELDPRESS_URL . 'assets/frameworks/select2/js/select2.js', array('jquery'), false, true);
+		wp_enqueue_style('select2', FIELDPRESS_URL . 'assets/frameworks/select2/css/select2'.FIELDPRESS_SCRIPT_PREFIX.'.css', array(), null);
+		wp_enqueue_script('select2', FIELDPRESS_URL . 'assets/frameworks/select2/js/select2'.FIELDPRESS_SCRIPT_PREFIX.'.js', array('jquery'), false, true);
 	}
 	if( in_array('file', $unique_fields) || in_array('image', $unique_fields ) ){
 		wp_enqueue_media();
 	}
 	if( in_array('color', $unique_fields ) ){
+		wp_enqueue_style( 'jquery-ui', FIELDPRESS_URL . 'assets/frameworks/jquery-ui/jquery-ui'.FIELDPRESS_SCRIPT_PREFIX.'.css' );
 		wp_enqueue_style( 'wp-color-picker' );
 		wp_enqueue_script( 'wp-color-picker' );
 	}
@@ -77,12 +80,12 @@ function fieldpress_enqueue_scripts( $all_fields, $unique = false ) {
 		wp_enqueue_script( 'jquery-ui-sortable' );
 	}
 	if( in_array('date', $unique_fields) || in_array('time', $unique_fields ) ){
-		wp_enqueue_style( 'jquery-ui', FIELDPRESS_URL . 'assets/frameworks/jquery-ui/jquery-ui.css' );
+		wp_enqueue_style( 'jquery-ui', FIELDPRESS_URL . 'assets/frameworks/jquery-ui/jquery-ui'.FIELDPRESS_SCRIPT_PREFIX.'.css' );
 	}
 	if( in_array('date', $unique_fields ) ){
 		wp_enqueue_script( 'jquery-ui-datepicker');
-		wp_enqueue_style( 'timepicker-addon', FIELDPRESS_URL . 'assets/frameworks/jQuery-Timepicker-Addon/jquery-ui-timepicker-addon.css');
-		wp_enqueue_script( 'timepicker-addon', FIELDPRESS_URL . 'assets/frameworks/jQuery-Timepicker-Addon/jquery-ui-timepicker-addon.js', array( 'jquery-ui-slider','jquery-ui-datepicker' ),false,true );
+		wp_enqueue_style( 'timepicker-addon', FIELDPRESS_URL . 'assets/frameworks/jQuery-Timepicker-Addon/jquery-ui-timepicker-addon'.FIELDPRESS_SCRIPT_PREFIX.'.css');
+		wp_enqueue_script( 'timepicker-addon', FIELDPRESS_URL . 'assets/frameworks/jQuery-Timepicker-Addon/jquery-ui-timepicker-addon'.FIELDPRESS_SCRIPT_PREFIX.'.js', array( 'jquery-ui-slider','jquery-ui-datepicker' ),false,true );
 
 	}
 	if( in_array('map', $unique_fields ) ){
@@ -90,17 +93,18 @@ function fieldpress_enqueue_scripts( $all_fields, $unique = false ) {
 		wp_enqueue_script( 'google-map', 'https://maps.googleapis.com/maps/api/js??key=AIzaSyAsb-vsNWI3ZO-RxEVrpDdeBC5BsRSI_lk', '',false,false );
 	}
 	if( in_array('wysiwyg', $unique_fields ) ){
+		wp_enqueue_media();
 		wp_enqueue_editor();
 	}
 
 	if( in_array('icon', $unique_fields ) ){
 		wp_enqueue_script( 'jquery-ui-dialog' );
 		wp_enqueue_style( 'wp-jquery-ui-dialog' );
-		wp_enqueue_style( 'font-awesome', FIELDPRESS_URL . 'assets/frameworks/font-awesome-5/css/fontawesome-all.css');
+		wp_enqueue_style( 'font-awesome', FIELDPRESS_URL . 'assets/frameworks/font-awesome-5/css/fontawesome-all'.FIELDPRESS_SCRIPT_PREFIX.'.css');
 
 	}
 
-	wp_enqueue_script( 'fieldpress', FIELDPRESS_URL . 'assets/js/fieldpress.js', array( 'jquery','jquery-ui-tabs' ), null, true );
+	wp_enqueue_script( 'fieldpress', FIELDPRESS_URL . 'assets/js/fieldpress'.FIELDPRESS_SCRIPT_PREFIX.'.js', array( 'jquery','jquery-ui-tabs' ), null, true );
 	$translation_array = array(
 		'FIELDPRESS_URL' => FIELDPRESS_URL,
 		'ajaxurl'        => admin_url( 'admin-ajax.php' ),
@@ -118,10 +122,21 @@ function fieldpress_enqueue_scripts( $all_fields, $unique = false ) {
  * @return void
  *
  */
-function fieldpress_render_field ( $field_details, $field_value, $all_fields_value = array() ){
+function fieldpress_render_field ( $field_id, $field_details, $field_value, $all_fields_value = array() ){
 	$field_details = apply_filters( 'fieldpress_render_field', $field_details);
 	$field_value = apply_filters( 'fieldpress_render_value', $field_value);
 	do_action( 'fieldpress_render_field_before', $field_details, $field_value );
+
+	if( !isset($field_details['id'])){
+		$field_details['id'] = $field_id;
+    }
+    if( !isset( $field_details['attr']['id'])){
+	    $field_details['attr']['id'] = $field_details['id'];
+    }
+	if( !isset( $field_details['attr']['name'])){
+		$field_details['attr']['name'] = $field_details['id'];
+	}
+
 
 	switch ( $field_details['type'] ) {
 		case 'text':
@@ -326,9 +341,11 @@ function fieldpress_sanitize_field ( $field_details, $field_value){
 				foreach ( $field_details['fields'] as $field_id => $single_field ){
 					if( is_array( $field_value ) ){
 						foreach ( $field_value as $key=> $field_val ){
-							$actual_value = $field_val[$field_id];
-							$inner_output = fieldpress_sanitize_field ( $single_field, $actual_value );
-							$output[$key][$field_id] = $inner_output;
+						    if( isset( $field_val[$field_id] ) ){
+							    $actual_value = $field_val[$field_id];
+							    $inner_output = fieldpress_sanitize_field ( $single_field, $actual_value );
+							    $output[$key][$field_id] = $inner_output;
+                            }
 						}
 					}
 				}
@@ -1605,15 +1622,15 @@ if( ! function_exists( 'fieldpress_icon_holder' ) ) {
 /*=====================Sanitization Start=====================*/
 
 function fieldpress_sanitize_text_field( $input ) {
-	return sanitize_text_field( $input );
+	return sanitize_text_field( wp_unslash($input) );
 }
 
 function fieldpress_sanitize_email( $input ) {
-	return sanitize_email( $input );
+	return sanitize_email( wp_unslash($input ) );
 }
 
 function fieldpress_sanitize_url( $input ) {
-	return esc_url_raw( $input );
+	return wp_slash( esc_url_raw( wp_unslash( $input ) ) );
 }
 
 function fieldpress_sanitize_positive_integer( $input ) {
@@ -1625,14 +1642,14 @@ function fieldpress_sanitize_number ( $input ) {
 }
 
 function fieldpress_sanitize_allowed_html ( $input ) {
-	$allowed_html = wp_kses_allowed_html();
-	$output = wp_kses($input, $allowed_html );
+	$allowed_html = wp_kses_allowed_html('post');
+	$output = wp_kses( wp_unslash($input ), $allowed_html );
 	return $output;
 }
 
 function fieldpress_sanitize_textarea( $input ) {
 	if ( current_user_can( 'unfiltered_html' ) ) {
-		$output = $input;
+		$output = wp_unslash($input );
 	} else {
 		$output = fieldpress_sanitize_allowed_html( $input );
 	}

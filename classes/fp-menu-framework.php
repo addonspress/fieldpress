@@ -158,23 +158,21 @@ if(!class_exists('FieldPress_Menu_Framework')) {
             $this->menus_sections_fields = apply_filters( 'fieldpress_menus_sections_fields', $menus_sections_fields );
 
             $this->menus = apply_filters( 'fieldpress_menus', $this->menus_sections_fields['menus'] );
-
-            $this->menus_sections = apply_filters( 'fieldpress_menus_sections', $this->menus_sections_fields['sections'] );
-
-            $this->menus_fields = apply_filters( 'filed_press_menus_fields', $this->menus_sections_fields['fields'] );
-
-            /*Set default values for menus*/
-            foreach( $this->menus as $menu_id=>$menu_details ){
-                $this->menu_default_values( $menu_id, $menu_details );
-            }
-
-            /*Set default values for menus sections*/
-	        if( is_array( $this->menus_sections )){
-		        foreach( $this->menus_sections as $section_id=>$section ){
-			        $this->menu_section_default_values( $section_id, $section );
+	        /*Set default values for menus*/
+	        foreach( $this->menus as $menu_id=>$menu_details ){
+		        $this->menu_default_values( $menu_id, $menu_details );
+	        }
+	        if( isset( $this->menus_sections_fields['sections'] ) ){
+		        $this->menus_sections = apply_filters( 'fieldpress_menus_sections', $this->menus_sections_fields['sections'] );
+		        /*Set default values for menus sections*/
+		        if( is_array( $this->menus_sections )){
+			        foreach( $this->menus_sections as $section_id=>$section ){
+				        $this->menu_section_default_values( $section_id, $section );
+			        }
 		        }
             }
 
+            $this->menus_fields = apply_filters( 'filed_press_menus_fields', $this->menus_sections_fields['fields'] );
             /*Set default values for menu fields*/
             foreach( $this->menus_fields as $field_id=>$single_field ){
                 $this->menu_field_default_values($field_id, $single_field);
@@ -315,7 +313,7 @@ if(!class_exists('FieldPress_Menu_Framework')) {
                         }
 
 			            $this->unique_field_types[] = $single_field['type'];
-			            if($single_field['type'] == 'repeater'){
+			            if( $single_field['type'] == 'tabs' || $single_field['type'] == 'repeater'){
 				            $this->current_menu_fields( $menu_id, $single_field['fields'], 1, $single_field['section'] );
 			            }
 		            endif;
@@ -328,7 +326,7 @@ if(!class_exists('FieldPress_Menu_Framework')) {
                         }
 		                
 		                $this->unique_field_types[] = $single_field['type'];
-			            if($single_field['type'] == 'repeater'){
+			            if( $single_field['type'] == 'tabs' || $single_field['type'] == 'repeater' ){
 				            $this->current_menu_fields( $menu_id,$single_field['fields'], 1, $single_field['section'] );
 			            }
 		            }
@@ -530,7 +528,7 @@ if(!class_exists('FieldPress_Menu_Framework')) {
 		                    } else {
 			                    $value = $get_menu_fields[ $single_field['id'] ];
 		                    }
-		                    fieldpress_render_field( $single_field, $value, $get_menu_fields);
+		                    fieldpress_render_field( $field_id, $single_field, $value, $get_menu_fields);
 	                    }
                     }
                     echo '<div id="fieldpress-menu-tabs" class="fieldpress-wrap fieldpress-vertical-tab">';
@@ -603,7 +601,7 @@ if(!class_exists('FieldPress_Menu_Framework')) {
 								        $value = $get_menu_fields[ $single_field['id'] ];
 							        }
 
-							        fieldpress_render_field( $single_field, $value, $get_menu_fields );
+							        fieldpress_render_field( $field_id, $single_field, $value, $get_menu_fields );
 						        }
 						        echo "</div>";/*.fieldpress-tabs-content-wrapper*/
 						        $i++;

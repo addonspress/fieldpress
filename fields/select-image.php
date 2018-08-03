@@ -24,8 +24,10 @@ function fieldpress_render_select_image( $field_details, $field_value ) {
 
 	$output = '<ul>';
 	if ( !empty( $choices ) && is_array( $choices ) ){
-		if( 'multiple' == $attributes['multiple'] ){
-			$attributes['name'] = $attributes['name'].'[]';
+		if( isset($attributes['multiple']) && 'multiple' == $attributes['multiple'] ){
+			if( isset( $attributes['name'])){
+				$attributes['name'] = $attributes['name'].'[]';
+			}
 			$attributes['type'] = 'checkbox'; /*force any type to checkbox*/
 		}
 		foreach ( $choices as $choice_value => $choice ) {

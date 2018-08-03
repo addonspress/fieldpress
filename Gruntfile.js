@@ -24,24 +24,30 @@ module.exports=function(grunt){
 			}
 		},
 
-		//watch
-		watch: {
-			css: {
-				files: ['assets/scss/**/*.scss'],
-				tasks: ['sass']
-			}
-		},
-		//concat
-		concat : {
-			js: { 
-				src: [
-					'./assets/js/*.js'
-				],
-				dest: './assets/js/main.js'
-			}
-		},
+        //css minify
+        cssmin: {
+            target: {
+                files: [{
+                    expand: true,
+                    cwd: 'assets/css',
+                    src: ['*.css', '!*.min.css'],
+                    dest: 'assets/css',
+                    ext: '.min.css'
+                }]
+            }
+        },
 
-		// Uglify JS.
+        //grunt watch
+        watch: {
+            css: {
+                files: ['assets/scss/**/*.scss'],
+                tasks: ['sass', 'cssmin', 'uglify']
+            }
+
+        },
+
+
+        // Uglify JS.
 		uglify: {
 			target: {
 				options: {
@@ -71,7 +77,6 @@ module.exports=function(grunt){
 					'!node_modules/**',
 					'!npm-debug.log',
 					'!assets/scss/**',
-					'!assets/js/**'
 				],
 				dest: 'deploy/<%= pkg.name %>',
 				expand: true,
@@ -84,15 +89,15 @@ module.exports=function(grunt){
 	//load plugins
 
 	// Load NPM tasks to be used here
-	grunt.loadNpmTasks( 'grunt-contrib-copy' );
+    grunt.loadNpmTasks( 'grunt-contrib-cssmin' );
+    grunt.loadNpmTasks( 'grunt-contrib-copy' );
 	grunt.loadNpmTasks( 'grunt-contrib-watch' );
 	grunt.loadNpmTasks( 'grunt-contrib-sass' );
 	grunt.loadNpmTasks( 'grunt-contrib-uglify' );
-	grunt.loadNpmTasks( 'grunt-contrib-concat' );
 
 	// Register tasks
 	grunt.registerTask( 'default', [ 'sass',] );
 	grunt.registerTask( 'css', [ 'sass' ] );
-	grunt.registerTask( 'js', [ 'concat', 'uglify' ] );
-	grunt.registerTask( 'deploy', [ 'concat', 'sass', 'uglify', 'copy:deploy' ] );
+	grunt.registerTask( 'js', [ 'uglify' ] );
+	grunt.registerTask( 'deploy', [ 'sass', 'cssmin', 'uglify', 'copy:deploy' ] );
 }

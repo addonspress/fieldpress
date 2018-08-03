@@ -5,7 +5,31 @@
     fieldpress_body = $('body'),
     fieldpress_window = $(window);
 
-    /*color picker*/
+    /*Color Picker*/
+    if( typeof Color === 'function' ) {
+
+        /*adding alpha support for Automattic Color.js toString function.*/
+        Color.fn.toString = function () {
+
+            /*check for alpha*/
+            if ( this._alpha < 1 ) {
+                return this.toCSS('rgba', this._alpha).replace(/\s+/g, '');
+            }
+
+            var hex = parseInt( this._color, 10 ).toString( 16 );
+
+            if ( this.error ) { return ''; }
+
+            /*maybe left pad it*/
+            if ( hex.length < 6 ) {
+                for (var i = 6 - hex.length - 1; i >= 0; i--) {
+                    hex = '0' + hex;
+                }
+            }
+            return '#' + hex;
+        };
+    }
+
     var FPPARSERGBACOLOR = function( val ) {
 
         var value = val.replace(/\s+/g, ''),
@@ -790,8 +814,13 @@
             mediaButtons = textarea.attr( 'mediaButtons' ),
             quicktags = textarea.attr( 'quicktags' ),
             plugins = textarea.attr( 'plugins' ),
-            toolbar1 = textarea.attr( 'toolbar1' );
+            toolbar1 = textarea.attr( 'toolbar1' ),
+            block_formats = textarea.attr( 'block_formats' );
 
+        /*tabs fixed*/
+        if( FIELD_PRES_IS_PROCESS(textarea)){
+            return;
+        }
         /**
          * Build (or re-build) the visual editor.
          * Main JS wp-admin/js/editor.js
@@ -819,7 +848,8 @@
                 tinymce: {
                     wpautop : true,
                     plugins : plugins,
-                    toolbar1 : toolbar1
+                    toolbar1 : toolbar1,
+                    block_formats : block_formats,
                 },
                 mediaButtons : mediaButtons,
                 quicktags : quicktags
@@ -963,7 +993,7 @@
             current_depth, 
             depth,
             pos_position = 32,
-            max_depth = 10,
+            max_depth,
             min_allowed_depth,
             max_allowed_depth;
 
@@ -981,6 +1011,10 @@
                 fpsorttrigger = ui.item.closest('.fieldpress-repeater');
                 if( fpsorttrigger.data( 'nested') !== 1 ){
                     return;
+                }
+                max_depth = fpsorttrigger.attr('data-max-depth')?fpsorttrigger.data('max-depth'):10;
+                if( max_depth > 10 ){
+                    max_depth = 10;
                 }
                 transport = ui.item.children('.fs-repeater-transport');
 
@@ -1288,7 +1322,7 @@
     };
     /*CHECK IF ANCESTOR IS PLACEHOLDER OF REPEATER*/
     var FIELD_PRES_IS_PROCESS = function ( child ) {
-        return (child.closest('.fieldpress-code-for-repeater').length > 0 ) ? true : false;
+        return (child.closest('.fieldpress-code-for-repeater').length > 0 )
     };
     /*RELOAD METHODS*/
     var FIELDPRESS_RELOAD_METHODS = function( wrapper ) {
@@ -1316,8 +1350,12 @@
                 FPWYSIWYG($(this));
             }
         });
-        FPREPEATERSORTABLE();
-        FPSORTABLE();
+        if ($('.fieldpress-repeater').length > 0) {
+            FPREPEATERSORTABLE();
+        }
+        if ($('.fieldpress-sortable').length > 0) {
+            FPSORTABLE();
+        }
     };
 
     var WIDGET_RELOAD_METHODS = function() {

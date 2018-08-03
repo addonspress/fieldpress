@@ -417,6 +417,7 @@
 								width:0.5em;	
 								background: transparent;
 								border-width:2px;
+								cursor: e-resize;
 							}
 						}
 
@@ -517,6 +518,12 @@
 
 					.fieldpress-tooltip{
 						left: -30px;
+					}
+				}
+				.fieldpress-fields-box{
+					&.fp-has-tooltip{
+						width: 70% !important;
+						margin-left:30% !important;
 					}
 				}
 
