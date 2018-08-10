@@ -24,6 +24,7 @@ function fieldpress_render_color( $field_details, $field_value ) {
 	$field_attr = $field_details['attr'];
 	$attributes = wp_parse_args( $field_attr, $default_attr );
 	$attributes['value'] = $field_value;
+	echo $field_value;
 	$attributes['class'] = (isset($attributes['class'])?$attributes['class'].' '.'fieldpress-color-picker':'fieldpress-color-picker');
 	$output = '<input ';
 	foreach ($attributes as $name => $value) {

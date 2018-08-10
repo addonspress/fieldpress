@@ -1673,7 +1673,7 @@ function fieldpress_sanitize_choices( $input ) {
 function fieldpress_sanitize_color( $input ) {
 
 	if ( empty( $input ) || is_array( $input ) )
-		return 'rgba(0,0,0,0)';
+		return '';
 
 	/* 
 	*  If string does not start with 'rgba', then treat as hex
@@ -1692,6 +1692,7 @@ function fieldpress_sanitize_color( $input ) {
 	sscanf( $input, 'rgba(%d,%d,%d,%f)', $red, $green, $blue, $alpha );
 	return 'rgba('.$red.','.$green.','.$blue.','.$alpha.')';
 }
+
 function fieldpress_sanitize_explode_array( $input ) {
 	$gallery_items = explode(',', $input);
 	$gallery_sanitize_items = array();

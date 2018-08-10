@@ -41,24 +41,12 @@
     var FPCOLORPICKER = function( $this ) {
        
         /*Default Color Picker*/
-        if( !$this.data('rgba') ){
-            $this.wpColorPicker( {
-                change: _.throttle( function() {  /* For Customizer  */
-                
-                    $this.trigger( 'change' );
-                }, 3000 ),
-                clear: _.throttle( function() {  /* For Customizer  */
-                    $this.trigger( 'change' );
-                }, 4000 )
-            })
-        }
-        else{
-
+        if( $this.data('rgba') && $this.data('rgba') === 1 ){
             /*parse rgba*/
             var picker = FPPARSERGBACOLOR( $this.val() );
             $this.wpColorPicker({
 
-               /*wpColorPicker.clear*/
+                /*wpColorPicker.clear*/
                 clear: function() {
                     $this.trigger('keyup');
                 },
@@ -85,7 +73,7 @@
                             '<div class="fp-rgba-slider"></div>' +
                             '<div class="fp-rgba-slider-offset"></div>' +
                             '<div class="fp-rgba-text"></div>' +
-                        '</div>').appendTo( $container.find('.wp-picker-holder') ),
+                            '</div>').appendTo( $container.find('.wp-picker-holder') ),
 
                         $alpha_slider = $alpha_wrap.find('.fp-rgba-slider'),
                         $alpha_text   = $alpha_wrap.find('.fp-rgba-text'),
@@ -152,6 +140,17 @@
                         max: 100
                     });
                 }
+            });
+        }
+        else{
+            $this.wpColorPicker( {
+                change: _.throttle( function() {  /* For Customizer  */
+
+                    $this.trigger( 'change' );
+                }, 3000 ),
+                clear: _.throttle( function() {  /* For Customizer  */
+                    $this.trigger( 'change' );
+                }, 4000 )
             });
         }
     };
