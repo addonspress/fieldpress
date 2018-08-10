@@ -115,6 +115,10 @@ function fieldpress_render_repeater( $field_details, $field_value, $all_fields_v
 	foreach ($field_details['fields'] as $field_id => $field_cr){
 
 		$field_value ='';
+
+		if ( isset( $field_cr['default'] ) ) {
+			$field_value = $field_cr['default'];
+		}
 		/*reset var $repeater_id for repeater*/
 
 		$repeater_id  = $field_details['attr']['id'].$field_repeater_depth.$field_id;
