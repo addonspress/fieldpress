@@ -1385,6 +1385,68 @@
         });
     };
 
+    /*Dependencies Fields*/
+    var fieldpress_addons = $('.fieldpress-addons');
+    // Handle individual checkboxes & radio
+    function controller_value(controller) {
+        if ( controller.attr("type") === "checkbox" || controller.attr("type") === "radio" ) {
+            return controller.is(":checked");
+        }
+        return controller.val();
+    }
+    function check_condition(id, value){
+        fieldpress_addons.find('.fieldpress-dependent.'+id).each(function () {
+            var dependent = $(this),
+                condition = dependent.data('condition'),
+                conditional_value = dependent.data('conditional-value'),
+                result;
+
+            if( condition == "==" ) {
+                result = value == conditional_value;
+            }
+            else if( condition == "!=" ) {
+                result = value != conditional_value;
+            }
+            else if( condition == ">=" ) {
+                result = Number( value ) >= Number( conditional_value );
+            }
+            else if( condition == "<=" ) {
+                result = Number( value ) <= Number( conditional_value );
+            }
+            else if( condition == ">" ) {
+                result = Number( value ) > Number( conditional_value );
+            }
+            else if( condition == "<" ) {
+                result = Number( value ) < Number ( conditional_value );
+            }
+            else if( condition == "empty" ) {
+                result = value.length === 0;
+            }
+            else if( condition == "!empty" ) {
+                result = value.length !== 0;
+            }
+            else {
+                result = false;
+                throw new Error("Undefined condition: " + condition);
+            }
+            if( result ){
+                dependent.show();
+            }
+            else{
+                dependent.hide();
+            }
+        });
+    }
+    fieldpress_addons.find('.fieldpress-controller').each(function () {
+
+        var controller = $(this),
+            value = controller_value( controller ),
+            id = controller.attr('id');
+
+        check_condition(id, value )
+    });
+    /*Dependencies Fields End*/
+
     /*call all methods on window load*/
     fieldpress_window.on("load", function() {
         FIELDPRESS_MAIN_LOAD_METHODS();
@@ -1405,6 +1467,16 @@
             var form = $(this).closest('form');
             FPVALIDATION(form);
         });
+
+        /*conditional field*/
+        fieldpress_document.on('keyup change','.fieldpress-controller',function (e) {
+            var controller = $(this),
+                value = controller_value( controller ),
+                id = controller.attr('id');
+
+            check_condition(id, value )
+        });
+
     });
 
 })( jQuery, window, document );

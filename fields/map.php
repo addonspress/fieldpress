@@ -20,7 +20,8 @@ function fieldpress_render_map( $field_details, $field_value ) {
 		'size'          => 40,
 		'style'         => '',
 		'zoom'         => 8,
-	) );
+	), $field_details, $field_value );
+
 	$unique = sanitize_key( $field_details['attr']['id'] );
 	$field_attr = $field_details['attr'];
 	if( empty( $field_value ) ) {
@@ -30,9 +31,13 @@ function fieldpress_render_map( $field_details, $field_value ) {
 	$lat = $lat_long[0];
 	$long = $lat_long[1];
 
-	$attributes = wp_parse_args( $field_attr, $default_attr );
+	$attributes = apply_filters('fieldpress_field_attributes', wp_parse_args( $field_attr, $default_attr ), $field_details, $field_value );
+
 	$attributes['value'] = $field_value;
-	$attributes['class'] = (isset($attributes['class'])?$attributes['class'].' '.'fieldpress-map-lat-long':'fieldpress-map-lat-long');
+
+	/*filter the classes*/
+	$class = isset($attributes['class'])?$attributes['class'].' '.'fieldpress-map-lat-long':'fieldpress-map-lat-long';
+	$attributes['class'] = fieldpress_get_single_field_class( $field_details, $field_value, $class );
 
 	$find_label = (isset( $field_details['find-label']) && !empty( $field_details['find-label'] ) ? $field_details['find-label']:__('Find','fieldpress') );
 	$search_placeholder = (isset( $field_details['search-placeholder']) && !empty( $field_details['search-placeholder'] ) ? $field_details['search-placeholder']:__('Search Place','fieldpress') );

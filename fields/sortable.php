@@ -16,9 +16,14 @@ function fieldpress_render_sortable( $field_details, $field_value ) {
 		'id'            => '',
 		'class'         => '',
 		'style'         => '',
-	) );
+	), $field_details, $field_value );
+
 	$field_attr = $field_details['attr'];
 	$attributes = wp_parse_args( $field_attr, $default_attr );
+
+	/*filter the classes*/
+	$class = isset($attributes['class'])?$attributes['class']:'';
+	$attributes['class'] = fieldpress_get_single_field_class( $field_details, $field_value, $class );
 
 	$choices = ( isset( $field_details['choices'] ) ? $field_details['choices'] : '' );
 

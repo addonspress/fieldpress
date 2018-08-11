@@ -15,12 +15,17 @@ function fieldpress_render_select( $field_details, $field_value ) {
 		'id'            => '',
 		'class'         => '',
 		'style'         => '',
-	) );
+	), $field_details, $field_value );
+
 	$field_attr = $field_details['attr'];
 	$attributes = wp_parse_args( $field_attr, $default_attr );
+
+	/*filter the classes*/
+	$class = '';
 	if( !isset( $field_details['normal'] ) || ( isset( $field_details['normal'] ) && $field_details['normal'] != true ) ){
-		$attributes['class'] = (isset($attributes['class'])?$attributes['class'].' '.'fieldpress-select2':'fieldpress-select2');
+		$class = (isset($attributes['class'])?$attributes['class'].' '.'fieldpress-select2':'fieldpress-select2');
 	}
+	$attributes['class'] = fieldpress_get_single_field_class( $field_details, $field_value, $class );
 
 	$choices = (isset( $field_details['choices'] ) ? $field_details['choices'] : '' );
 	$field_value = ( !empty( $field_value )? $field_value : '' );

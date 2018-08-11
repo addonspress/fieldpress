@@ -19,12 +19,18 @@ function fieldpress_render_text( $field_details, $field_value ) {
 		'placeholder'   => '',
 		'size'          => 40,
 		'style'         => '',
-	) );
+	), $field_details, $field_value );
+
 	$field_attr = $field_details['attr'];
 
 	$field_attr['type'] = $field_details['type']; /*not working for url and email*/
 
 	$attributes = wp_parse_args( $field_attr, $default_attr );
+
+	/*filter the classes*/
+	$class = isset($attributes['class'])?$attributes['class']:'';
+	$attributes['class'] = fieldpress_get_single_field_class( $field_details, $field_value, $class );
+
 	$attributes['value'] = $field_value;
 
 	$output = '<input ';

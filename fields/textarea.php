@@ -18,9 +18,14 @@ function fieldpress_render_textarea( $field_details, $field_value ) {
 		'cols'          => 50,
 		'rows'          => 8,
 		'style'         => ''
-	) );
+	), $field_details, $field_value );
+
 	$field_attr = $field_details['attr'];
 	$attributes = wp_parse_args( $field_attr, $default_attr );
+
+	/*filter the classes*/
+	$class = isset($attributes['class'])?$attributes['class']:'';
+	$attributes['class'] = fieldpress_get_single_field_class( $field_details, $field_value, $class );
 
 	$output = '<textarea ';
 	foreach ($attributes as $name => $value) {

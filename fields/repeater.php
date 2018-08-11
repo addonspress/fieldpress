@@ -11,23 +11,42 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function fieldpress_render_repeater( $field_details, $field_value, $all_fields_value ) {
 
+	/*defaults values for fields*/
+	$default_attr = apply_filters( 'fieldpress_radio_field_default_args',array(
+		'type'          => 'repeater',
+		'id'            => '',
+		'class'         => '',
+		'style'         => '',
+	), $field_details, $field_value );
+	$field_attr = $field_details['attr'];
+	$attributes = apply_filters('fieldpress_field_attributes', wp_parse_args( $field_attr, $default_attr ), $field_details, $field_value );
+
 	$label_repeater = ( isset($field_details['label-repeater'] )? $field_details['label-repeater'] : 'Repeater' );
-	$data_nested = '';
-	$data_max_depth = '';
 	$fp_parent = '';
 	$fp_depth = '';
 	$fp_index = '';
 	$margin_left = '';
 
+
 	if( isset($field_details['nested'] ) && true === $field_details['nested'] ){
-		$data_nested = "data-nested=1";
-		$max_depth = isset($field_details['attr']['max-depth']) ? $field_details['attr']['max-depth'] : 10;
-		$data_max_depth = " data-max-depth=".$max_depth;
+		$max_depth = isset($field_attr['max-depth']) ? $field_attr['max-depth'] : 10;
+
+		$attributes = array(
+			'data-nested'       => 1,
+			'data-max-depth'    => $max_depth
+		);
 	}
+	/*filter the classes*/
+	$class = isset($attributes['class'])?$attributes['class'].' '.'fieldpress-repeater':'fieldpress-repeater';
+	$attributes['class'] = fieldpress_get_single_field_class( $field_details, $field_value, $class );
 
+	$output = '<div ';
 
-	$class = '';
-	echo "<div class='fieldpress-repeater".$class.( isset($field_details['class'])? ' ' . $field_details['class'] : '' )."' id='{$field_details['id']}' ".$data_nested.$data_max_depth.">";
+	foreach ($attributes as $name => $value) {
+		$output .= sprintf('%1$s="%2$s"', esc_attr( $name ), esc_attr( $value ));
+	}
+	$output .= '>';
+	echo $output;
 
 	/*count repeater field*/
 	$total_repeater = 0;
@@ -56,8 +75,8 @@ function fieldpress_render_repeater( $field_details, $field_value, $all_fields_v
 			foreach ( $field_details['fields'] as $field_id => $field_cr ){
 
 				/*reset var $repeater_id for repeater*/
-				$repeater_id  = $field_details['attr']['id'].$total_repeater.$field_id;
-				$repeater_name  = $field_details['attr']['name'].'['.$total_repeater.']['.$field_id.']';
+				$repeater_id  = $field_attr['id'].$total_repeater.$field_id;
+				$repeater_name  = $field_attr['name'].'['.$total_repeater.']['.$field_id.']';
 
 				$field_value = isset($field_saved_value[$field_id]) ? $field_saved_value[$field_id]: '';
 
@@ -79,9 +98,9 @@ function fieldpress_render_repeater( $field_details, $field_value, $all_fields_v
 				<button type="button" class="button-link fieldpress-repeater-close">'.esc_html__('Close','fieldpress').'</button>
 			</div>';
 
-			echo'<input class="fp-parent" type="hidden" name="'.$field_details['attr']['name'].'['.$total_repeater.'][fp-parent]'.'" value="'.$fp_parent.'">';/*.parent*/
-			echo'<input class="fp-depth" type="hidden" name="'.$field_details['attr']['name'].'['.$total_repeater.'][fp-depth]'.'" value="'.$fp_depth.'">';/*.depth*/
-			echo'<input class="fp-index" type="hidden" name="'.$field_details['attr']['name'].'['.$total_repeater.'][fp-index]'.'" value="'.$total_repeater.'">';/*.index*/
+			echo'<input class="fp-parent" type="hidden" name="'.$field_attr['name'].'['.$total_repeater.'][fp-parent]'.'" value="'.$fp_parent.'">';/*.parent*/
+			echo'<input class="fp-depth" type="hidden" name="'.$field_attr['name'].'['.$total_repeater.'][fp-depth]'.'" value="'.$fp_depth.'">';/*.depth*/
+			echo'<input class="fp-index" type="hidden" name="'.$field_attr['name'].'['.$total_repeater.'][fp-index]'.'" value="'.$total_repeater.'">';/*.index*/
 
 			echo'</div>'/*.fieldpress-repeater-inside*/;
 			echo '<div class="fs-repeater-transport"></div>';/*for sub items*/
@@ -121,8 +140,8 @@ function fieldpress_render_repeater( $field_details, $field_value, $all_fields_v
 		}
 		/*reset var $repeater_id for repeater*/
 
-		$repeater_id  = $field_details['attr']['id'].$field_repeater_depth.$field_id;
-		$repeater_name  = $field_details['attr']['name'].'['.$field_repeater_depth.']['.$field_id.']';
+		$repeater_id  = $field_attr['id'].$field_repeater_depth.$field_id;
+		$repeater_name  = $field_attr['name'].'['.$field_repeater_depth.']['.$field_id.']';
 		$field_cr['repeater_depth'] = $field_repeater_depth;
 
 		/*set new id for field in array format*/
@@ -146,9 +165,9 @@ function fieldpress_render_repeater( $field_details, $field_value, $all_fields_v
 				<button type="button" class="button-link fieldpress-repeater-close">'.esc_html__('Close','fieldpress').'</button>
 			</div>';
 
-	echo'<input class="fp-parent" type="hidden" fieldpress-filed-name="'.$field_details['attr']['name'].'['.$field_repeater_depth.'][fp-parent]'.'">';/*.parent*/
-	echo'<input class="fp-depth" type="hidden" fieldpress-filed-name="'.$field_details['attr']['name'].'['.$field_repeater_depth.'][fp-depth]'.'">';/*.depth*/
-	echo'<input class="fp-index" type="hidden" fieldpress-filed-name="'.$field_details['attr']['name'].'['.$field_repeater_depth.'][fp-index]'.'">';/*.depth*/
+	echo'<input class="fp-parent" type="hidden" fieldpress-filed-name="'.$field_attr['name'].'['.$field_repeater_depth.'][fp-parent]'.'">';/*.parent*/
+	echo'<input class="fp-depth" type="hidden" fieldpress-filed-name="'.$field_attr['name'].'['.$field_repeater_depth.'][fp-depth]'.'">';/*.depth*/
+	echo'<input class="fp-index" type="hidden" fieldpress-filed-name="'.$field_attr['name'].'['.$field_repeater_depth.'][fp-index]'.'">';/*.depth*/
 
 	echo '</div>';/*.fieldpress-repeater-inside*/
 	echo '<div class="fs-repeater-transport"></div>';/*for sub items*/

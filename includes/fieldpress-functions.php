@@ -1702,3 +1702,81 @@ function fieldpress_sanitize_explode_array( $input ) {
 	return implode(',', $gallery_sanitize_items);
 }
 /*=====================Sanitization End=====================*/
+
+/*=====================Field Class Start=====================*/
+/**
+ * get classes of field
+ * @since 0.0.1
+ * @param array $field_details
+ * @param mixed $field_value
+ * @param mixed $class
+ * @return string
+ */
+function fieldpress_get_single_field_class( $field_details, $field_value, $class = '' ) {
+
+	$classes = array();
+
+	if ( ! empty( $class ) ) {
+		if ( !is_array( $class ) )
+			$class = preg_split( '#\s+#', $class );
+		$classes = array_merge( $classes, $class );
+	} else {
+		// Ensure that we always coerce class to being an array.
+		$class = array();
+	}
+
+	/**
+	 * Filters fieldpress_get_single_field_class
+	 *
+	 * @since 0.0.1
+	 *
+	 * @param array $classes An array of single field classes.
+	 * @param array $class   An array of additional classes added to the body.
+	 * @param array $field_details   An array of field.
+	 * @param mixed $field_value value of field.
+	 */
+	$classes = apply_filters( 'fieldpress_get_single_field_class', $classes, $class, $field_details, $field_value );
+	$classes = array_unique( $classes );
+
+	/*lets sanitize it*/
+	$classes = array_map( 'esc_attr', $classes );
+
+	// Separates classes with a single space, collates classes for body element
+	$classes = join( ' ', $classes );
+	return $classes;
+}
+
+function fieldpress_get_field_wrap_class( $field_details, $field_value, $class = '' ) {
+
+	$classes = array();
+
+	if ( ! empty( $class ) ) {
+		if ( !is_array( $class ) )
+			$class = preg_split( '#\s+#', $class );
+		$classes = array_merge( $classes, $class );
+	} else {
+		// Ensure that we always coerce class to being an array.
+		$class = array();
+	}
+
+	/**
+	 * Filters fieldpress_get_single_field_class
+	 *
+	 * @since 0.0.1
+	 *
+	 * @param array $classes An array of single field classes.
+	 * @param array $class   An array of additional classes added to the body.
+	 * @param array $field_details   An array of field.
+	 * @param mixed $field_value value of field.
+	 */
+	$classes = apply_filters( 'fieldpress_get_field_wrap_class', $classes, $class, $field_details, $field_value );
+	$classes = array_unique( $classes );
+
+	/*lets sanitize it*/
+	$classes = array_map( 'esc_attr', $classes );
+
+	// Separates classes with a single space, collates classes for body element
+	$classes = join( ' ', $classes );
+	return $classes;
+}
+/*=====================Field Class End=====================*/

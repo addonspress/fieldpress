@@ -22,16 +22,21 @@ function fieldpress_render_file( $field_details, $field_value ) {
 		'size'          => 40,
 		'style'         => '',
 		'data-multiple'         => true,
-	) );
+	), $field_details, $field_value );
 
 	$field_attr = $field_details['attr'];
-	$attributes = wp_parse_args( $field_attr, $default_attr );
+
+	$attributes = apply_filters('fieldpress_field_attributes', wp_parse_args( $field_attr, $default_attr ), $field_details, $field_value );
+
 	$attributes['type'] = 'hidden';
 	$attributes['value'] = $field_value;
 
 	if( isset($attributes['multiple']) && 'multiple' == $attributes['multiple'] ){
 		$attributes['data-multiple'] = true;
 	}
+	/*filter the classes*/
+	$class = isset($attributes['class'])?$attributes['class']:'';
+	$attributes['class'] = fieldpress_get_single_field_class( $field_details, $field_value, $class );
 
 	$preview = $title = $size = $url = $name = '';
 	$upload_title     = ( ! empty( $field_details['upload_title'] ) ) ? $field_details['upload_title'] : __( 'Select File', 'fieldpress' );

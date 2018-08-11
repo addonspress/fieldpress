@@ -20,11 +20,18 @@ function fieldpress_render_icon( $field_details, $field_value ) {
 		'placeholder'   => '',
 		'size'          => 40,
 		'style'         => '',
-	) );
+	), $field_details, $field_value );
 
 	$field_attr = $field_details['attr'];
-	$attributes = wp_parse_args( $field_attr, $default_attr );
+
+	$attributes = apply_filters('fieldpress_field_attributes', wp_parse_args( $field_attr, $default_attr ), $field_details, $field_value );
+
 	$attributes['value'] = $field_value;
+
+	/*filter the classes*/
+	$class = isset($attributes['class'])?$attributes['class']:'';
+	$attributes['class'] = fieldpress_get_single_field_class( $field_details, $field_value, $class );
+
 	$upload_title     = ( ! empty( $field_details['upload_title'] ) ) ? $field_details['upload_title'] : __( 'Select Icon', 'fieldpress' );
 	$hidden  = ( empty( $field_value ) ) ? ' hidden' : '';
 

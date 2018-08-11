@@ -163,6 +163,7 @@ class FieldPress {
 		/*Hooks File*/
 		fieldpress_load_file('hooks/field-before.php');
 		fieldpress_load_file('hooks/field-after.php');
+		fieldpress_load_file('hooks/field-conditional.php');
 
 	}
 	/**

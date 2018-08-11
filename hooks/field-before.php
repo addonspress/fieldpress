@@ -10,23 +10,28 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @return void
  *
  */
-function fieldpress_field_wrap( $field_details ) {
-	$wrap_attr = array();
+function fieldpress_field_wrap( $field_details, $field_value ) {
+	$attributes = array();
 	if( isset( $field_details['wrap-attr'] )){
-		$wrap_attr = $field_details['wrap-attr'];
+		$attributes = $field_details['wrap-attr'];
 	}
-	$wrap_attr['class'] = (isset($wrap_attr['class'])?$wrap_attr['class'].' '."fieldpress-field fieldpress-{$field_details['type']}":"fieldpress-field fieldpress-{$field_details['type']}");
+
+	$attributes = apply_filters('fieldpress_field_wrap_attributes', $attributes, $field_details, $field_value );
+
+	/*filter the classes*/
+	$class = isset($attributes['class'])?$attributes['class'].' '."fieldpress-field fieldpress-{$field_details['type']}":"fieldpress-field fieldpress-{$field_details['type']}";
+	$attributes['class'] = fieldpress_get_field_wrap_class( $field_details, $field_value, $class );
 
 	$output = '<div ';
 
-	foreach ($wrap_attr as $name => $value) {
+	foreach ($attributes as $name => $value) {
 		$output .= sprintf('%1$s="%2$s"', esc_attr( $name ), esc_attr( $value ));
 	}
 	$output .= '>';
 
 	echo $output;
 }
-add_action('fieldpress_render_field_before', 'fieldpress_field_wrap',10);
+add_action('fieldpress_render_field_before', 'fieldpress_field_wrap', 10, 2 );
 
 /**
  * Show description before and after every label

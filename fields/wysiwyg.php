@@ -24,12 +24,17 @@ function fieldpress_render_wysiwyg( $field_details, $field_value ) {
 		'toolbar1'      => 'formatselect bold italic | bullist numlist | blockquote | alignleft aligncenter alignright | link unlink | wp_more | spellchecker',
 		'block_formats' => ''
 
-	) );
+	), $field_details, $field_value );
+
 	$field_attr = $field_details['attr'];
-	$field_attr['class'] = ( isset($field_attr['class'])? $field_attr['class'].' '.'fieldpress-wysiwyg-textarea':'fieldpress-wysiwyg-textarea' );
 	$show_editor_label = (isset( $field_details['show-editor-label']) && !empty( $field_details['show-editor-label'] ) ? $field_details['show-editor-label']:__('Open Editor','fieldpress') );
 
 	$attributes = wp_parse_args( $field_attr, $default_attr );
+
+	/*filter the classes*/
+	$class = ( isset($attributes['class'])? $attributes['class'].' '.'fieldpress-wysiwyg-textarea':'fieldpress-wysiwyg-textarea' );
+	$attributes['class'] = fieldpress_get_single_field_class( $field_details, $field_value, $class );
+
 	$output = "<div class='fieldpress-wysiwyg-content'><a href='#' class='button button-secondary fieldpress-open-wysiwyg'>".esc_html( $show_editor_label )."</a>";
 	$output .= "<div class='fieldpress-wysiwyg-wrapper'>";
 	$output .= '<textarea ';
