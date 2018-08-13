@@ -1,3 +1,9 @@
+
+.fieldpress-addons {
+	*{
+		@include prefix('box-sizing', border-box, webkit ms o);
+	}
+}
 /*----------------------
 	Select 2 DropDown
 -----------------------*/
@@ -617,7 +623,7 @@
 					}
 				}
 				.fieldpress-inner-tabs-content{
-					width: 75%;
+					width: 80%;
 					float: left;
 				}
 			}

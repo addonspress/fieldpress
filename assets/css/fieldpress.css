@@ -466,6 +466,13 @@
   background-color: #f7f7f7;
 }
 
+.fieldpress-addons * {
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
 /*----------------------
 	Select 2 DropDown
 -----------------------*/
@@ -1004,7 +1011,7 @@
   z-index: 1;
 }
 .fieldpress-addons .fieldpress-tabs .fiedpress-inner-vertical-tab .fieldpress-inner-tabs-content {
-  width: 75%;
+  width: 80%;
   float: left;
 }
 .fieldpress-addons .fieldpress-repeater.ui-sortable {
