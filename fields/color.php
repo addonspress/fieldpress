@@ -13,13 +13,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 function fieldpress_render_color( $field_details, $field_value ) {
 	/*defaults values for fields*/
 	$default_attr = apply_filters( 'fieldpress_color_field_default_args',array(
-		'type'          => 'text',
-		'value'         => '',
-		'id'            => '',
-		'class'         => '',
-		'placeholder'   => '',
-		'size'          => 40,
-		'style'         => '',
+		'type'              => 'text',
+		'value'             => '',
+		'id'                => '',
+		'class'             => '',
+		'placeholder'       => '',
+		'size'              => 40,
+		'style'             => '',
+		'data-default-color' => '',
 	) ,$field_details, $field_value );
 
 	$field_attr = $field_details['attr'];
@@ -31,6 +32,11 @@ function fieldpress_render_color( $field_details, $field_value ) {
 	$class = isset($attributes['class'])?$attributes['class'].' '.'fieldpress-color-picker':'fieldpress-color-picker';
 	$attributes['class'] = fieldpress_get_single_field_class( $field_details, $field_value, $class );
 
+	/*default color*/
+	if( isset( $field_details['default'] ) ) {
+		$attributes['data-default-color'] = $field_details['default'];
+	}
+	
 	$output = '<input ';
 	foreach ($attributes as $name => $value) {
 		$output .= sprintf('%1$s="%2$s"', esc_attr( $name ), esc_attr( $value ));
