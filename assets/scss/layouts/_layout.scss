@@ -578,6 +578,10 @@
 							@include prefix('box-shadow', none, webkit moz);
 						}
 					}
+					&.active{
+						position: relative;
+						z-index: 1;
+					}
 				}
 			}
 
@@ -592,6 +596,30 @@
 				width: 100%;
 				@include prefix('box-sizing', border-box, webkit moz);
 				
+			}
+
+			//Inner Vertical Tab
+			.fiedpress-inner-vertical-tab{
+				.fieldpress-inner-tabs-menu {
+					float: left;
+					width: 20%;
+					ul{
+						li{
+							display: block;
+							border: 1px solid transparent;
+							margin:0 -1px 0 0;
+
+							&.active{
+								position: relative;
+								z-index: 1;
+							}
+						}
+					}
+				}
+				.fieldpress-inner-tabs-content{
+					width: 75%;
+					float: left;
+				}
 			}
 			
 		}

@@ -127,9 +127,23 @@
 .fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-tabs .fields-tabs li.active {
   border: 1px solid #e5e5e5;
   border-top: 2px solid #2196F3;
-  border-bottom: 1px solid #fff;
+  border-bottom: 2px solid #fff;
 }
 .fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-tabs .fields-tabs li.active a {
+  color: #2196F3;
+}
+.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-tabs .fiedpress-inner-vertical-tab .fieldpress-inner-tabs-menu ul li a {
+  color: #464646;
+}
+.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-tabs .fiedpress-inner-vertical-tab .fieldpress-inner-tabs-menu ul li a:hover, .fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-tabs .fiedpress-inner-vertical-tab .fieldpress-inner-tabs-menu ul li a:focus {
+  color: #2196F3;
+}
+.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-tabs .fiedpress-inner-vertical-tab .fieldpress-inner-tabs-menu ul li.active {
+  border: 1px solid #e5e5e5;
+  border-left: 2px solid #2196F3;
+  border-right: 2px solid #fff;
+}
+.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-tabs .fiedpress-inner-vertical-tab .fieldpress-inner-tabs-menu ul li.active a {
   color: #2196F3;
 }
 .fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-tabs .fieldpress-inner-tabs-content {
@@ -333,13 +347,27 @@
 .dark-theme.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-tabs .fields-tabs li.active {
   border: 1px solid #e5e5e5;
   border-top: 2px solid #2196F3;
-  border-bottom: 1px solid #fff;
+  border-bottom: 2px solid #fff;
 }
 .dark-theme.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-tabs .fields-tabs li.active a {
   color: #2196F3;
 }
 .dark-theme.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-tabs .fieldpress-inner-tabs-content {
   border: 1px solid #e5e5e5;
+}
+.dark-theme.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-tabs .fiedpress-inner-vertical-tab .fieldpress-inner-tabs-menu ul li a {
+  color: #23282d;
+}
+.dark-theme.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-tabs .fiedpress-inner-vertical-tab .fieldpress-inner-tabs-menu ul li a:hover, .dark-theme.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-tabs .fiedpress-inner-vertical-tab .fieldpress-inner-tabs-menu ul li a:focus {
+  color: #2196F3;
+}
+.dark-theme.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-tabs .fiedpress-inner-vertical-tab .fieldpress-inner-tabs-menu ul li.active {
+  border: 1px solid #e5e5e5;
+  border-left: 2px solid #2196F3;
+  border-right: 2px solid #fff;
+}
+.dark-theme.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-tabs .fiedpress-inner-vertical-tab .fieldpress-inner-tabs-menu ul li.active a {
+  color: #2196F3;
 }
 .dark-theme.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-repeater .repeater-table .fieldpress-repeater-top {
   background: #f9f9f9;
@@ -947,6 +975,10 @@
   -moz-box-shadow: none;
   box-shadow: none;
 }
+.fieldpress-addons .fieldpress-tabs .fields-tabs li.active {
+  position: relative;
+  z-index: 1;
+}
 .fieldpress-addons .fieldpress-tabs .fieldpress-inner-tabs-content {
   padding: 20px;
 }
@@ -957,6 +989,23 @@
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+}
+.fieldpress-addons .fieldpress-tabs .fiedpress-inner-vertical-tab .fieldpress-inner-tabs-menu {
+  float: left;
+  width: 20%;
+}
+.fieldpress-addons .fieldpress-tabs .fiedpress-inner-vertical-tab .fieldpress-inner-tabs-menu ul li {
+  display: block;
+  border: 1px solid transparent;
+  margin: 0 -1px 0 0;
+}
+.fieldpress-addons .fieldpress-tabs .fiedpress-inner-vertical-tab .fieldpress-inner-tabs-menu ul li.active {
+  position: relative;
+  z-index: 1;
+}
+.fieldpress-addons .fieldpress-tabs .fiedpress-inner-vertical-tab .fieldpress-inner-tabs-content {
+  width: 75%;
+  float: left;
 }
 .fieldpress-addons .fieldpress-repeater.ui-sortable {
   max-width: 95%;

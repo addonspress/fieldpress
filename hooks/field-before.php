@@ -71,16 +71,37 @@ add_action('fieldpress_render_field_before', 'fieldpress_label',30);
  * @return void
  *
  */
-function fieldpress_box_wrap( $field_details ){
+function fieldpress_box_wrap( $field_details, $field_value ){
 
-	$has_tool_tip ='';
-	if( isset($field_details['info'])){
-		$has_tool_tip = ' fp-has-tooltip';
+	$attributes = array();
+	if( isset( $field_details['box-attr'] )){
+		$attributes = $field_details['box-attr'];
 	}
-	 echo '<div class="fieldpress-fields-box'.$has_tool_tip.'">';
-	
+
+	$attributes = apply_filters('fieldpress_field_box_attributes', $attributes, $field_details, $field_value );
+
+	/*filter the classes*/
+	$class = isset($attributes['class'])?$attributes['class'].' '."fieldpress-fields-box":"fieldpress-fields-box";
+
+	if( isset($field_details['info'])){
+		$class .= ' fp-has-tooltip';
+	}
+	if( isset($field_details['layout'])){
+		$class .= ' fiedpress-inner-'.$field_details['layout'].'-tab ';
+	}
+	$attributes['class'] = fieldpress_get_field_box_class( $field_details, $field_value, $class );
+
+	$output = '<div ';
+
+	foreach ($attributes as $name => $value) {
+		$output .= sprintf('%1$s="%2$s"', esc_attr( $name ), esc_attr( $value ));
+	}
+	$output .= '>';
+
+	echo $output;
+
 }
-add_action('fieldpress_render_field_before', 'fieldpress_box_wrap',50);
+add_action('fieldpress_render_field_before', 'fieldpress_box_wrap', 50, 2 );
 
 /**
  * Show tooltip between label and field

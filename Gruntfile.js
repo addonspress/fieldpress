@@ -96,7 +96,7 @@ module.exports=function(grunt){
 	grunt.loadNpmTasks( 'grunt-contrib-uglify' );
 
 	// Register tasks
-	grunt.registerTask( 'default', [ 'sass',] );
+	grunt.registerTask( 'default', [ 'sass','uglify'] );
 	grunt.registerTask( 'css', [ 'sass' ] );
 	grunt.registerTask( 'js', [ 'uglify' ] );
 	grunt.registerTask( 'deploy', [ 'sass', 'cssmin', 'uglify', 'copy:deploy' ] );

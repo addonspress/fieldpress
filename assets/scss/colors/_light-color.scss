@@ -162,13 +162,41 @@
 							color:$primary-color;
 						}
 					}
+
+					&.active {
+						border: 1px solid $base-lighten-color;
+						border-top: 2px solid $primary-color;
+						border-bottom: 2px solid $white-color;
+						a {
+							color: $primary-color;
+						}
+					}
 				}
-				li.active{
-					border: 1px solid $base-lighten-color;
-					border-top: 2px solid $primary-color;
-					border-bottom: 1px solid $white-color;
-					a{
-						color:$primary-color;
+
+			}
+			//Inner Vertical Tab
+			.fiedpress-inner-vertical-tab{
+				.fieldpress-inner-tabs-menu {
+					ul{
+						li{
+
+							a{
+								color:$base-color;
+								&:hover,
+								&:focus{
+									color:$primary-color;
+								}
+							}
+
+							&.active{
+								border: 1px solid $base-lighten-color;
+								border-left: 2px solid $primary-color;
+								border-right: 2px solid $white-color;
+								a {
+									color: $primary-color;
+								}
+							}
+						}
 					}
 				}
 			}

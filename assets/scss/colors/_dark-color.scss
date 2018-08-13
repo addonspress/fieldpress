@@ -182,7 +182,7 @@
 					li.active{
 						border: 1px solid $base-lighten-color;
 						border-top: 2px solid $primary-color;
-						border-bottom: 1px solid $white-color;
+						border-bottom: 2px solid $white-color;
 						a{
 							color:$primary-color;
 						}
@@ -191,6 +191,32 @@
 				//inner tab content
 				.fieldpress-inner-tabs-content{
 					border: 1px solid $base-lighten-color;
+				}
+				//Inner Vertical Tab
+				.fiedpress-inner-vertical-tab{
+					.fieldpress-inner-tabs-menu {
+						ul{
+							li{
+
+								a{
+									color:$darkbase-color;
+									&:hover,
+									&:focus{
+										color:$primary-color;
+									}
+								}
+
+								&.active{
+									border: 1px solid $base-lighten-color;
+									border-left: 2px solid $primary-color;
+									border-right: 2px solid $white-color;
+									a {
+										color: $primary-color;
+									}
+								}
+							}
+						}
+					}
 				}
 			}
 			//Repeater field

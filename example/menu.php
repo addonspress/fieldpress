@@ -2260,8 +2260,9 @@ if(class_exists('FieldPress_Menu_Framework')) {
 			// tabs with label
 			'fp-option-field-tabs' => array(
 				'type' => 'tabs',
+				'layout' => 'vertical',
 				'label' => esc_html__( 'Tabs with Label', 'fieldpress' ),
-				'info' => esc_html__( 'Tabs with Label', 'fieldpress' ),
+				'info' => esc_html__( 'Tabs with Label and Vertical', 'fieldpress' ),
 				'tabs' => array(
 					'fp-option-tab1'=>array(
 						'label'     => esc_html__( 'Tab1', 'fieldpress' ),
