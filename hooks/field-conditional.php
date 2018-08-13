@@ -38,6 +38,7 @@ function fieldpress_field_wrap_add_controller( $classes, $class, $field_details,
 		$conditional = $field_details['conditional'];
 		$controller = $conditional['controller'];
 		$classes[] = 'fieldpress-dependent';
+		$classes[] = 'fieldpress-hidden';
 		$classes[] = $controller;
 	}
 	return $classes;

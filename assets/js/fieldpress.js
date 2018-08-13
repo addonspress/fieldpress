@@ -1430,10 +1430,10 @@
                 throw new Error("Undefined condition: " + condition);
             }
             if( result ){
-                dependent.show();
+                dependent.removeClass('fieldpress-hidden');
             }
             else{
-                dependent.hide();
+                dependent.addClass('fieldpress-hidden');
             }
         });
     }

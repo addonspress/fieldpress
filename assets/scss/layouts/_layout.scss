@@ -1,7 +1,9 @@
-
 .fieldpress-addons {
 	*{
 		@include prefix('box-sizing', border-box, webkit ms o);
+	}
+	.fieldpress-hidden{
+		display: none;
 	}
 }
 /*----------------------
