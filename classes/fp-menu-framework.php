@@ -505,8 +505,8 @@ if(!class_exists('FieldPress_Menu_Framework')) {
                             <h1><?php echo esc_html( $menu_details['page_title'])?></h1>
                         </div>
                         <div class="fieldpress-actions">
-                            <input type="submit" name="submit" class="button button-primary action" value="<?php esc_attr_e('Save','fieldpress');?>" />
-                            <input type="submit" name="reset" class="button secondary" value="<?php esc_attr_e('Reset','fieldpress');?>">
+                            <input type="submit" name="submit" id="fieldpress-submit" class="button button-primary action" value="<?php esc_attr_e('Save','fieldpress');?>" />
+                            <input type="submit" name="reset" id="fieldpress-reset" class="button secondary" value="<?php esc_attr_e('Reset','fieldpress');?>">
                         </div>
                     </header>
 					<?php

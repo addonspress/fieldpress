@@ -108,6 +108,7 @@ function fieldpress_enqueue_scripts( $all_fields, $unique = false ) {
 	$translation_array = array(
 		'FIELDPRESS_URL' => FIELDPRESS_URL,
 		'ajaxurl'        => admin_url( 'admin-ajax.php' ),
+		'reset_confirm'  => esc_html__('Resetting will reset all the options. Are you sure?','fieldpress')
 	);
 	wp_localize_script( 'fieldpress', 'fieldpress', $translation_array );
 }

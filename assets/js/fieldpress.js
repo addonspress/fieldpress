@@ -1477,6 +1477,17 @@
             check_condition(id, value )
         });
 
+        /*Reset Notification*/
+        fieldpress_document.on('click','#fieldpress-reset',function (e) {
+            var is_confirm = confirm( fieldpress.reset_confirm );
+            if ( is_confirm == true ) {
+                return true;
+            } else {
+                e.preventDefault();
+                return false;
+            }
+        });
+
     });
 
 })( jQuery, window, document );
