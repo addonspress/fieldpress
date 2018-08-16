@@ -389,8 +389,7 @@ if(!class_exists('FieldPress_Meta_Framework')) {
                         array( $this, 'meta_screen' ),
                         $post_type,
                         $meta_box_details['context'],
-                        $meta_box_details['priority'],
-                        $meta_box_id
+                        $meta_box_details['priority']
                     );
                 }
             }
@@ -413,8 +412,8 @@ if(!class_exists('FieldPress_Meta_Framework')) {
 
 	        do_action( 'meta_screen_before', $post, $meta_box_details );
 
-	        /*$meta_box_id is always in args of callback meta data*/
-            $meta_box_id = $meta_box_details['args'];
+	        /*$meta_box_id is always in id of callback meta data*/
+            $meta_box_id = $meta_box_details['id'];
             $get_meta_by_metabox = $this->get_meta_by_metabox( $post->ID, $meta_box_id );
             echo '<div class="fieldpress-addons fieldpress-meta-framework">';
 
