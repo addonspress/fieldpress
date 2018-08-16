@@ -1713,7 +1713,7 @@ function fieldpress_sanitize_explode_array( $input ) {
  * @param mixed $class
  * @return string
  */
-function fieldpress_get_single_field_class( $field_details, $field_value, $class = '' ) {
+function fieldpress_get_single_field_class( $field_details, $field_value = '', $class = '' ) {
 
 	$classes = array();
 
