@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * render the tabs output 
  * @since 0.0.1
  * @param array $field_details
- * @param mix $field_value
+ * @param mixed $field_value
  * @return void
  */
 function fieldpress_render_tabs( $field_details, $all_fields_value ) {
@@ -20,6 +20,9 @@ function fieldpress_render_tabs( $field_details, $all_fields_value ) {
 	uasort ($fields,'fieldpress_uasort');
 
 	$tabs_and_fields = array();
+	if( isset( $field_details['tabs-layout']) && 'vertical' == $field_details['tabs-layout'] ){
+		echo '<div class="fiedpress-inner-vertical-tab">';
+	}
 	echo '<div class="fieldpress-inner-tabs-menu">';
 	echo '<ul class="fields-tabs">';
 	$i = 1;
@@ -101,5 +104,8 @@ function fieldpress_render_tabs( $field_details, $all_fields_value ) {
 		echo '</div>';
 		$i ++;
 	}
-	echo '</div>';
+	echo '</div>';/*fieldpress-inner-tabs-menu*/
+	if( isset( $field_details['tabs-layout']) && 'vertical' == $field_details['tabs-layout'] ){
+		echo '</div>';/*fiedpress-inner-vertical-tab*/
+	}
 }
