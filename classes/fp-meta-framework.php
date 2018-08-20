@@ -105,7 +105,7 @@ if(!class_exists('FieldPress_Meta_Framework')) {
          */
         public function __construct( $meta_sections_fields = array() ) {
             /*If we are not in admin area exit.*/
-            if ( ! is_admin() ){
+            if ( ! is_admin() || empty( $meta_sections_fields ) ){
                 return;
             }
 
@@ -151,7 +151,6 @@ if(!class_exists('FieldPress_Meta_Framework')) {
 
             /*Save necessary meta boxes 1st on save post*/
             add_action('save_post', array($this,'save_post_metas'), 12, -1);
-
 
             /*Hook before any function of class end */
             do_action( 'fieldpress_meta_framework_after', $this->meta_sections_fields );
