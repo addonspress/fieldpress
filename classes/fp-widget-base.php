@@ -333,8 +333,13 @@ if(!class_exists('FieldPress_Widget')) {
 			}
 		}
 
-		echo '<div class="fieldpress-wrap fieldpress-vertical-tab">';
-
+		if( isset( $this->widget_sections_fields['section-layout']) && 'horizontal' == $this->widget_sections_fields['section-layout'] ){
+			$section_layout = 'fieldpress-horizontal-tab';
+		}
+		else{
+			$section_layout = 'fieldpress-vertical-tab';
+		}
+		echo '<div class="fieldpress-wrap '.$section_layout.'">';
 		$transient  = get_transient( 'fieldpress-transient-'.esc_attr( $this->id ) );
 		$active_section = ( ! empty( $transient['section_id'] ) ) ? $transient['section_id'] : '';
 		echo '<input type="hidden" name="'.esc_attr( $this->get_field_name( 'fieldpress-current-section' ) ).'" class="fieldpress-current-section" value="'.esc_attr( $active_section ).'">';

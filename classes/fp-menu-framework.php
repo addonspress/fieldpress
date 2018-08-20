@@ -500,8 +500,9 @@ if(!class_exists('FieldPress_Menu_Framework')) {
 			}
 
 			$menu_details = $this->current_menu;
-			$menu_id = $this->current_menu['id'];
+			$menu_id = $menu_details['id'];
 			$get_menu_fields = $this->get_menu_fields($menu_id);
+
 			?>
             <div class="fieldpress-addons fieldpress-menu-framework">
 
@@ -541,7 +542,14 @@ if(!class_exists('FieldPress_Menu_Framework')) {
 							fieldpress_render_field( $field_id, $single_field, $value, $get_menu_fields);
 						}
 					}
-					echo '<div id="fieldpress-menu-tabs" class="fieldpress-wrap fieldpress-vertical-tab">';
+
+					if( isset( $menu_details['section-layout']) && 'horizontal' == $menu_details['section-layout'] ){
+						$section_layout = 'fieldpress-horizontal-tab';
+					}
+					else{
+						$section_layout = 'fieldpress-vertical-tab';
+					}
+					echo '<div id="fieldpress-menu-tabs" class="fieldpress-wrap '.$section_layout.'">';
 					$transient  = get_transient( 'fieldpress-transient-'.esc_attr( $current_menu ) );
 					$active_section = ( ! empty( $transient['section_id'] ) ) ? $transient['section_id'] : '';
 

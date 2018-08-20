@@ -1819,10 +1819,10 @@ function fieldpress_get_field_box_class( $field_details, $field_value, $class = 
 /*=====================Sort according to priority=====================*/
 function fieldpress_uasort( $a,$b ) {
     if( !isset($a['priority'])){
-	    $a['priority'];
+	    $a['priority'] = 10;
     }
 	if( !isset($b['priority'])){
-		$b['priority'];
+		$b['priority'] = 10;
 	}
 
 	if ($a['priority'] == $b['priority'] ) {

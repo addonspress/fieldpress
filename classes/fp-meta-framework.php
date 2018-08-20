@@ -387,13 +387,17 @@ if(!class_exists('FieldPress_Meta_Framework')) {
         public function add_post_meta_boxes($post_type) {
             foreach( $this->meta_boxes as $meta_box_id=>$meta_box_details ){
                 if( in_array( $post_type, $meta_box_details['post_types'] ) ) {
+	                $section_layout = isset( $meta_box_details['section-layout'] ) ? $meta_box_details['section-layout']:'';
                     add_meta_box(
                         $meta_box_id,
                         $meta_box_details['title'],
                         array( $this, 'meta_screen' ),
                         $post_type,
                         $meta_box_details['context'],
-                        $meta_box_details['priority']
+                        $meta_box_details['priority'],
+                        array(
+                                'fb-section-layout' => $section_layout
+                        )
                     );
                 }
             }
@@ -407,12 +411,13 @@ if(!class_exists('FieldPress_Meta_Framework')) {
          * @since 0.0.1
          *
          * @param object $post Current post object
-         * @param string $meta_box_details Extra parameters in add_meta_box
+         * @param array $meta_box_details Extra parameters in add_meta_box
          *
          * @return void
          *
          */
         public function meta_screen( $post, $meta_box_details ){
+
 
 	        do_action( 'meta_screen_before', $post, $meta_box_details );
 
@@ -446,7 +451,9 @@ if(!class_exists('FieldPress_Meta_Framework')) {
 		        }
 	        }
 
-            echo '<div class="fieldpress-wrap fieldpress-vertical-tab">';
+	        /*sections layout*/
+	        $section_layout = ('horizontal' == $meta_box_details['args']['fb-section-layout'])? 'fieldpress-horizontal-tab':'fieldpress-vertical-tab';
+	        echo '<div class="fieldpress-wrap '.$section_layout.'">';
 
 	        $i = 1;
 	        foreach($this->meta_sections as $section_id => $section) :
