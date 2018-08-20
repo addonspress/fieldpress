@@ -72,7 +72,11 @@ function fieldpress_render_repeater( $field_details, $field_value, $all_fields_v
 					</div>';
 			echo "<div class='fieldpress-repeater-inside hidden'>";
 
-			foreach ( $field_details['fields'] as $field_id => $field_cr ){
+			$fields = $field_details['fields'];
+			/*Sort fields according to priority*/
+			uasort ($fields,'fieldpress_uasort');
+
+			foreach ( $fields as $field_id => $field_cr ){
 
 				/*reset var $repeater_id for repeater*/
 				$repeater_id  = $field_attr['id'].$total_repeater.$field_id;
@@ -131,7 +135,11 @@ function fieldpress_render_repeater( $field_details, $field_value, $all_fields_v
 	else{
 		$field_repeater_depth = 'coderRepeaterDepth_'.'0';
 	}
-	foreach ($field_details['fields'] as $field_id => $field_cr){
+	$fields = $field_details['fields'];
+	/*Sort fields according to priority*/
+	uasort ($fields,'fieldpress_uasort');
+
+	foreach ($fields as $field_id => $field_cr){
 
 		$field_value ='';
 

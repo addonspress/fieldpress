@@ -116,6 +116,7 @@ if(!class_exists('FieldPress_Meta_Framework')) {
             $this->meta_sections_fields = apply_filters( 'fieldpress_meta_sections_fields', $meta_sections_fields );
 
             $this->meta_boxes = apply_filters( 'fieldpress_meta_boxes', $this->meta_sections_fields['meta_boxes'] );
+
 	        /*Set default values for meta box*/
 	        foreach( $this->meta_boxes as $meta_box_id=>$meta_box_details ){
 		        $this->meta_box_default_values($meta_box_id, $meta_box_details);
@@ -129,6 +130,8 @@ if(!class_exists('FieldPress_Meta_Framework')) {
 			        foreach( $this->meta_sections as $meta_details_section_id=>$meta_details_section ){
 				        $this->meta_section_default_values( $meta_details_section_id, $meta_details_section );
 			        }
+			        /*Sort section according to priority*/
+			        uasort ($this->meta_sections,'fieldpress_uasort');
 		        }
             }
 
@@ -137,6 +140,8 @@ if(!class_exists('FieldPress_Meta_Framework')) {
             foreach( $this->meta_fields as $field_id=>$single_field ){
                 $this->meta_fields_default_values( $field_id, $single_field );
             }
+	        /*Sort fields according to priority*/
+	        uasort ($this->meta_fields,'fieldpress_uasort');
 
             /*Enqueue necessary styles and scripts 2nd*/
             add_action('admin_enqueue_scripts', array($this,'enqueue_admin_scripts'), 12);

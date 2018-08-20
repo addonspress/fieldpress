@@ -12,7 +12,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 function fieldpress_render_tabs( $field_details, $all_fields_value ) {
 
 	$tabs = $field_details['tabs'];
+	/*Sort tabs according to priority*/
+	uasort ($tabs,'fieldpress_uasort');
+
 	$fields = $field_details['fields'];
+	/*Sort fields according to priority*/
+	uasort ($fields,'fieldpress_uasort');
 
 	$tabs_and_fields = array();
 	echo '<div class="fieldpress-inner-tabs-menu">';

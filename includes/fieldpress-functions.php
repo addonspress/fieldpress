@@ -1815,3 +1815,18 @@ function fieldpress_get_field_box_class( $field_details, $field_value, $class = 
 	return $classes;
 }
 /*=====================Field Class End=====================*/
+
+/*=====================Sort according to priority=====================*/
+function fieldpress_uasort( $a,$b ) {
+    if( !isset($a['priority'])){
+	    $a['priority'];
+    }
+	if( !isset($b['priority'])){
+		$b['priority'];
+	}
+
+	if ($a['priority'] == $b['priority'] ) {
+		return 0;
+	}
+	return ($a['priority'] < $b['priority']) ? -1 : 1;
+}

@@ -147,7 +147,7 @@ if(!class_exists('FieldPress_Menu_Framework')) {
 		public function __construct( $menus_sections_fields = array() ) {
 
 			/*check admin area if not then exit.*/
-			if ( ! is_admin() ){
+			if ( ! is_admin() || empty( $menus_sections_fields ) ){
 				return;
 			}
 
@@ -158,10 +158,13 @@ if(!class_exists('FieldPress_Menu_Framework')) {
 			$this->menus_sections_fields = apply_filters( 'fieldpress_menus_sections_fields', $menus_sections_fields );
 
 			$this->menus = apply_filters( 'fieldpress_menus', $this->menus_sections_fields['menus'] );
+
 			/*Set default values for menus*/
 			foreach( $this->menus as $menu_id=>$menu_details ){
 				$this->menu_default_values( $menu_id, $menu_details );
 			}
+
+			/*Since section is optional*/
 			if( isset( $this->menus_sections_fields['sections'] ) ){
 				$this->menus_sections = apply_filters( 'fieldpress_menus_sections', $this->menus_sections_fields['sections'] );
 				/*Set default values for menus sections*/
@@ -169,7 +172,10 @@ if(!class_exists('FieldPress_Menu_Framework')) {
 					foreach( $this->menus_sections as $section_id=>$section ){
 						$this->menu_section_default_values( $section_id, $section );
 					}
+					/*Sort section according to priority*/
+					uasort ($this->menus_sections,'fieldpress_uasort');
 				}
+
 			}
 
 			$this->menus_fields = apply_filters( 'filed_press_menus_fields', $this->menus_sections_fields['fields'] );
@@ -177,6 +183,8 @@ if(!class_exists('FieldPress_Menu_Framework')) {
 			foreach( $this->menus_fields as $field_id=>$single_field ){
 				$this->menu_field_default_values($field_id, $single_field);
 			}
+			/*Sort fields according to priority*/
+			uasort ($this->menus_fields,'fieldpress_uasort');
 
 			/*Enqueue necessary styles and scripts*/
 			add_action('admin_enqueue_scripts', array($this,'enqueue_admin_scripts'), 12);
@@ -247,7 +255,8 @@ if(!class_exists('FieldPress_Menu_Framework')) {
 		public function menu_section_default_values($section_id, $section) {
 			$menu_details_section_default_values = array(
 				'title' => '',
-				'menu' => ''
+				'menu' => '',
+				'priority' => 10,
 			);
 
 			$menu_details_section_default_values = apply_filters( '$menu_details_section_default_values', $menu_details_section_default_values);
@@ -275,7 +284,8 @@ if(!class_exists('FieldPress_Menu_Framework')) {
 				'label' => '',
 				'desc' => '',
 				'type' => 'text',
-				'section' => ''
+				'section' => '',
+				'priority' => 10,
 			);
 			$field_details_default_values = apply_filters( 'menu_field_default_values', $field_details_default_values);
 
