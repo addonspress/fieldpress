@@ -240,7 +240,7 @@ function fieldpress_render_field ( $field_id, $field_details, $field_value, $all
 function fieldpress_sanitize_field ( $field_details, $field_value){
 
 	if ( isset( $field_details['sanitize_callback'] ) && is_callable( $field_details['sanitize_callback'] ) ) {
-		$output = call_user_func( $field_details['sanitize_callback'], $field_details, $field_value );
+		$output = call_user_func( $field_details['sanitize_callback'], $field_value, $field_details );
 		return $output;
 	}
 	switch ($field_details['type']) {
