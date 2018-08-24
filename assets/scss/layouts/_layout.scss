@@ -5,6 +5,9 @@
 	.fieldpress-hidden{
 		display: none;
 	}
+	.wp-switch-editor{
+		@include prefix('box-sizing', content-box, webkit ms o);
+	}
 }
 /*----------------------
 	Select 2 DropDown
@@ -277,7 +280,6 @@
 				li{
 					padding: 15px;
 					cursor:pointer;
-					height: 25px;
 					&.ui-sortable-placeholder{
 						background: transparent;
 					}
@@ -286,7 +288,6 @@
 			.inactive-sortable{
 				li{
 					opacity: 0.5;
-					cursor:default;
 					@include transition(opacity,0.15s,ease-in-out,0s)
 					
 				}

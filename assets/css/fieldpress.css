@@ -475,6 +475,12 @@
 .fieldpress-addons .fieldpress-hidden {
   display: none;
 }
+.fieldpress-addons .wp-switch-editor {
+  -webkit-box-sizing: content-box;
+  -ms-box-sizing: content-box;
+  -o-box-sizing: content-box;
+  box-sizing: content-box;
+}
 
 /*----------------------
 	Select 2 DropDown
@@ -723,14 +729,12 @@
 .fieldpress-addons .fieldpress-sortable-wrap .ui-sortable li {
   padding: 15px;
   cursor: pointer;
-  height: 25px;
 }
 .fieldpress-addons .fieldpress-sortable-wrap .ui-sortable li.ui-sortable-placeholder {
   background: transparent;
 }
 .fieldpress-addons .fieldpress-sortable-wrap .inactive-sortable li {
   opacity: 0.5;
-  cursor: default;
   -webkit-transition: opacity 0.15s ease-in-out 0s;
   -moz-transition: opacity 0.15s ease-in-out 0s;
   -ms-transition: opacity 0.15s ease-in-out 0s;
