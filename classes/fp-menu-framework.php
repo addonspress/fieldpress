@@ -550,7 +550,7 @@ if(!class_exists('FieldPress_Menu_Framework')) {
 						$section_layout = 'fieldpress-vertical-tab';
 					}
 					echo '<div id="fieldpress-menu-tabs" class="fieldpress-wrap '.$section_layout.'">';
-					$transient  = get_transient( 'fieldpress-transient-'.esc_attr( $current_menu ) );
+					$transient  = get_transient( 'fieldpress-transient-'.esc_attr( $menu_id ) );
 					$active_section = ( ! empty( $transient['section_id'] ) ) ? $transient['section_id'] : '';
 
 					echo '<input type="hidden" name="fieldpress-current-section" class="fieldpress-current-section" value="'.esc_attr( $active_section ).'">';
