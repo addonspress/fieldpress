@@ -50,7 +50,7 @@ function fieldpress_render_repeater( $field_details, $field_value, $all_fields_v
 
 	/*count repeater field*/
 	$total_repeater = 0;
-	if (count($field_value) > 0 && is_array($field_value) ){
+	if ( !empty( $field_value ) && is_array($field_value) && count($field_value) > 0 ){
 		foreach ($field_value as $field_saved_value){
 
 			if( isset($field_details['nested'] ) && true === $field_details['nested'] ){
