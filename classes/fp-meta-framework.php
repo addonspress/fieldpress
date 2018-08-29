@@ -254,8 +254,13 @@ if(!class_exists('FieldPress_Meta_Framework')) {
         public function current_meta_fields( $meta_box_id, $process_meta_fields, $is_subfield = 0, $section_id = '' ){
 
             foreach( $process_meta_fields as $field_id => $single_field ){
-	            if( 1 == $is_subfield){
-		            $single_field['section'] = $section_id;
+	            if( 1 == $is_subfield ){
+		            if( !empty( $section_id ) ){
+			            $single_field['section'] = $section_id;
+		            }
+		            else{
+			            $single_field['meta_box'] = $meta_box_id;
+		            }
 	            }
 
 	            if( isset($single_field['section']) && !empty( $this->current_sections_id[$meta_box_id] )){

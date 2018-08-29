@@ -312,8 +312,13 @@ if(!class_exists('FieldPress_Menu_Framework')) {
 		public function current_menu_fields( $menu_id, $process_menu_fields, $is_subfield = 0,  $section_id = '' ){
 
 			foreach( $process_menu_fields as $field_id => $single_field ){
-				if( 1 == $is_subfield){
-					$single_field['section'] = $section_id;
+				if( 1 == $is_subfield ){
+					if( !empty( $section_id ) ){
+						$single_field['section'] = $section_id;
+					}
+					else{
+						$single_field['menu'] = $menu_id;
+					}
 				}
 
 				if( isset($single_field['section']) && !empty( $this->current_sections_id  )){

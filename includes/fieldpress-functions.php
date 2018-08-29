@@ -76,7 +76,7 @@ function fieldpress_enqueue_scripts( $all_fields, $unique = false ) {
 	if( in_array('date', $unique_fields) || in_array('time', $unique_fields ) || in_array('repeater', $unique_fields ) ){
 		wp_enqueue_script( 'jquery-ui-core');
 	}
-	if( in_array('repeater', $unique_fields ) ){
+	if( in_array('repeater', $unique_fields ) || in_array('sortable',$unique_fields )){
 		wp_enqueue_script( 'jquery-ui-sortable' );
 	}
 	if( in_array('date', $unique_fields) || in_array('time', $unique_fields ) ){
