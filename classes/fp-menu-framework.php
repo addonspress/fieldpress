@@ -173,7 +173,7 @@ if(!class_exists('FieldPress_Menu_Framework')) {
 						$this->menu_section_default_values( $section_id, $section );
 					}
 					/*Sort section according to priority*/
-					uasort ($this->menus_sections,'fieldpress_uasort');
+					fieldpress_stable_uasort ($this->menus_sections,'fieldpress_uasort');
 				}
 
 			}
@@ -184,7 +184,7 @@ if(!class_exists('FieldPress_Menu_Framework')) {
 				$this->menu_field_default_values($field_id, $single_field);
 			}
 			/*Sort fields according to priority*/
-			uasort ($this->menus_fields,'fieldpress_uasort');
+			fieldpress_stable_uasort ($this->menus_fields,'fieldpress_uasort');
 
 			/*Enqueue necessary styles and scripts*/
 			add_action('admin_enqueue_scripts', array($this,'enqueue_admin_scripts'), 12);

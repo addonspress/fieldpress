@@ -74,7 +74,7 @@ function fieldpress_render_repeater( $field_details, $field_value, $all_fields_v
 
 			$fields = $field_details['fields'];
 			/*Sort fields according to priority*/
-			uasort ($fields,'fieldpress_uasort');
+			fieldpress_stable_uasort ($fields,'fieldpress_uasort');
 
 			foreach ( $fields as $field_id => $field_cr ){
 
@@ -137,7 +137,7 @@ function fieldpress_render_repeater( $field_details, $field_value, $all_fields_v
 	}
 	$fields = $field_details['fields'];
 	/*Sort fields according to priority*/
-	uasort ($fields,'fieldpress_uasort');
+	fieldpress_stable_uasort ($fields,'fieldpress_uasort');
 
 	foreach ($fields as $field_id => $field_cr){
 

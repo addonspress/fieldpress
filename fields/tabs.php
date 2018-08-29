@@ -13,11 +13,11 @@ function fieldpress_render_tabs( $field_details, $all_fields_value ) {
 
 	$tabs = $field_details['tabs'];
 	/*Sort tabs according to priority*/
-	uasort ($tabs,'fieldpress_uasort');
+	fieldpress_stable_uasort ($tabs,'fieldpress_uasort');
 
 	$fields = $field_details['fields'];
 	/*Sort fields according to priority*/
-	uasort ($fields,'fieldpress_uasort');
+	fieldpress_stable_uasort ($fields,'fieldpress_uasort');
 
 	$tabs_and_fields = array();
 	if( isset( $field_details['tabs-layout']) && 'vertical' == $field_details['tabs-layout'] ){

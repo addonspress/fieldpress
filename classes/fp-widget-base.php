@@ -169,7 +169,7 @@ if(!class_exists('FieldPress_Widget')) {
 					$this->widget_section_default_values( $section_id, $section );
 				}
 				/*Sort section according to priority*/
-				uasort ($this->widget_sections,'fieldpress_uasort');
+				fieldpress_stable_uasort ($this->widget_sections,'fieldpress_uasort');
 			}
 		}
 
@@ -179,7 +179,7 @@ if(!class_exists('FieldPress_Widget')) {
 			$this->widget_field_default_values($field_id, $single_field);
 		}
 		/*Sort fields according to priority*/
-		uasort ($this->widget_fields,'fieldpress_uasort');
+		fieldpress_stable_uasort ($this->widget_fields,'fieldpress_uasort');
 
 		/*Hook before any function of class start */
 		do_action( 'fieldpress_widget_framework_after', $widget_sections_fields );

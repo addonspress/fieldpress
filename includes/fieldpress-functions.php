@@ -1817,16 +1817,53 @@ function fieldpress_get_field_box_class( $field_details, $field_value, $class = 
 /*=====================Field Class End=====================*/
 
 /*=====================Sort according to priority=====================*/
-function fieldpress_uasort( $a,$b ) {
-    if( !isset($a['priority'])){
-	    $a['priority'] = 10;
-    }
+function fieldpress_stable_uasort(&$array, $cmp_function) {
+	if(count($array) < 2) {
+		return;
+	}
+	$halfway = count($array) / 2;
+	$array1 = array_slice($array, 0, $halfway, TRUE);
+	$array2 = array_slice($array, $halfway, NULL, TRUE);
+
+	fieldpress_stable_uasort($array1, $cmp_function);
+	fieldpress_stable_uasort($array2, $cmp_function);
+	if(call_user_func($cmp_function, end($array1), reset($array2)) < 1) {
+		$array = $array1 + $array2;
+		return;
+	}
+	$array = array();
+	reset($array1);
+	reset($array2);
+	while(current($array1) && current($array2)) {
+		if(call_user_func($cmp_function, current($array1), current($array2)) < 1) {
+			$array[key($array1)] = current($array1);
+			next($array1);
+		} else {
+			$array[key($array2)] = current($array2);
+			next($array2);
+		}
+	}
+	while(current($array1)) {
+		$array[key($array1)] = current($array1);
+		next($array1);
+	}
+	while(current($array2)) {
+		$array[key($array2)] = current($array2);
+		next($array2);
+	}
+	return;
+}
+
+function fieldpress_uasort($a, $b) {
+	if( !isset($a['priority'])){
+		$a['priority'] = 10;
+	}
 	if( !isset($b['priority'])){
 		$b['priority'] = 10;
 	}
 
-	if ($a['priority'] == $b['priority'] ) {
+	if($a["priority"] == $b["priority"]) {
 		return 0;
 	}
-	return ($a['priority'] < $b['priority']) ? -1 : 1;
+	return ($a["priority"] > $b["priority"]) ? -1 : 1;
 }

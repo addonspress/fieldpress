@@ -131,7 +131,7 @@ if(!class_exists('FieldPress_Meta_Framework')) {
 				        $this->meta_section_default_values( $meta_details_section_id, $meta_details_section );
 			        }
 			        /*Sort section according to priority*/
-			        uasort ($this->meta_sections,'fieldpress_uasort');
+			        fieldpress_stable_uasort ($this->meta_sections,'fieldpress_uasort');
 		        }
             }
 
@@ -141,7 +141,7 @@ if(!class_exists('FieldPress_Meta_Framework')) {
                 $this->meta_fields_default_values( $field_id, $single_field );
             }
 	        /*Sort fields according to priority*/
-	        uasort ($this->meta_fields,'fieldpress_uasort');
+	        fieldpress_stable_uasort ($this->meta_fields,'fieldpress_uasort');
 
             /*Enqueue necessary styles and scripts 2nd*/
             add_action('admin_enqueue_scripts', array($this,'enqueue_admin_scripts'), 12);
