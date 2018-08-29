@@ -40,36 +40,36 @@
 .fieldpress-addons .fieldpress-tabs-content-wrapper {
   background: #fff;
 }
-.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-field:not(:first-child) {
+.fieldpress-addons .fieldpress-field:not(:first-child) {
   border-top: 1px dashed #e5e5e5;
 }
-.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-field .fieldpress-desc {
+.fieldpress-addons .fieldpress-field .fieldpress-desc {
   color: #989898;
 }
-.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-file-preview {
+.fieldpress-addons .fieldpress-file-preview {
   border: 1px solid #eeeeee;
 }
-.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-file-preview .fieldpress-file-wrap i {
+.fieldpress-addons .fieldpress-file-preview .fieldpress-file-wrap i {
   color: #e14d43;
 }
-.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-icon-preview .fieldpress-icon-wrap {
+.fieldpress-addons .fieldpress-icon-preview .fieldpress-icon-wrap {
   border: 1px solid #e5e5e5;
 }
-.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-icon-preview .fieldpress-icon-wrap .fieldpress-icon-clear {
+.fieldpress-addons .fieldpress-icon-preview .fieldpress-icon-wrap .fieldpress-icon-clear {
   background: #e14d43;
   color: #fff;
 }
-.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-image-wrap .fieldpress-clear {
+.fieldpress-addons .fieldpress-image-wrap .fieldpress-clear {
   background: #e14d43;
   color: #fff;
 }
-.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-gallery .fieldpress-gallery-preview li {
+.fieldpress-addons .fieldpress-gallery .fieldpress-gallery-preview li {
   display: inline-block;
 }
-.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-gallery .fieldpress-gallery-preview li:not(:first-child) {
+.fieldpress-addons .fieldpress-gallery .fieldpress-gallery-preview li:not(:first-child) {
   margin-left: 10px;
 }
-.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-gallery .fieldpress-remove {
+.fieldpress-addons .fieldpress-gallery .fieldpress-remove {
   background: #e14d43;
   color: #fff;
   border-color: #d02c21 #a4231a #a4231a;
@@ -78,19 +78,19 @@
   -o-box-shadow: 0 1px 0 #a4231a;
   box-shadow: 0 1px 0 #a4231a;
 }
-.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-sortable-wrap .ui-sortable {
+.fieldpress-addons .fieldpress-sortable-wrap .ui-sortable {
   border: 1px dashed #e5e5e5;
 }
-.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-sortable-wrap .ui-sortable li {
+.fieldpress-addons .fieldpress-sortable-wrap .ui-sortable li {
   background: #eeeeee;
 }
-.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-sortable-wrap .ui-sortable li:hover {
+.fieldpress-addons .fieldpress-sortable-wrap .ui-sortable li:hover {
   background: #f9f9f9;
 }
-.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-sortable-wrap .ui-sortable li.ui-sortable-placeholder {
+.fieldpress-addons .fieldpress-sortable-wrap .ui-sortable li.ui-sortable-placeholder {
   border: 1px dashed #e5e5e5;
 }
-.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-map-content .fieldpress-map-clear {
+.fieldpress-addons .fieldpress-map-content .fieldpress-map-clear {
   background: #e14d43;
   color: #fff;
   border-color: #d02c21 #a4231a #a4231a;
@@ -99,80 +99,80 @@
   -o-box-shadow: 0 1px 0 #a4231a;
   box-shadow: 0 1px 0 #a4231a;
 }
-.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-map-content .fieldpress-map-wrapper {
+.fieldpress-addons .fieldpress-map-content .fieldpress-map-wrapper {
   border: 1px solid #e5e5e5;
 }
-.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-select-image .fieldpress-fields-box ul li input[type=radio]:checked ~ img,
-.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-select-image .fieldpress-fields-box ul li input[type=checkbox]:checked ~ img {
+.fieldpress-addons .fieldpress-select-image .fieldpress-fields-box ul li input[type=radio]:checked ~ img,
+.fieldpress-addons .fieldpress-select-image .fieldpress-fields-box ul li input[type=checkbox]:checked ~ img {
   border: 2px solid #e5e5e5;
 }
-.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-switcher label input[type=checkbox] + span {
+.fieldpress-addons .fieldpress-switcher label input[type=checkbox] + span {
   background: #e5e5e5;
 }
-.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-switcher label input[type=checkbox] + span:after {
+.fieldpress-addons .fieldpress-switcher label input[type=checkbox] + span:after {
   background-color: #fff;
 }
-.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-switcher label input[type=checkbox]:checked + span {
+.fieldpress-addons .fieldpress-switcher label input[type=checkbox]:checked + span {
   background-color: #2196F3;
 }
-.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-tabs .fields-tabs li {
+.fieldpress-addons .fieldpress-tabs .fields-tabs li {
   border: 1px solid transparent;
 }
-.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-tabs .fields-tabs li a {
+.fieldpress-addons .fieldpress-tabs .fields-tabs li a {
   color: #464646;
 }
-.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-tabs .fields-tabs li a:hover, .fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-tabs .fields-tabs li a:focus {
+.fieldpress-addons .fieldpress-tabs .fields-tabs li a:hover, .fieldpress-addons .fieldpress-tabs .fields-tabs li a:focus {
   color: #2196F3;
 }
-.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-tabs .fields-tabs li.active {
+.fieldpress-addons .fieldpress-tabs .fields-tabs li.active {
   border: 1px solid #e5e5e5;
   border-top: 2px solid #2196F3;
   border-bottom: 2px solid #fff;
 }
-.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-tabs .fields-tabs li.active a {
+.fieldpress-addons .fieldpress-tabs .fields-tabs li.active a {
   color: #2196F3;
 }
-.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-tabs .fiedpress-inner-vertical-tab .fieldpress-inner-tabs-menu ul li a {
+.fieldpress-addons .fieldpress-tabs .fiedpress-inner-vertical-tab .fieldpress-inner-tabs-menu ul li a {
   color: #464646;
 }
-.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-tabs .fiedpress-inner-vertical-tab .fieldpress-inner-tabs-menu ul li a:hover, .fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-tabs .fiedpress-inner-vertical-tab .fieldpress-inner-tabs-menu ul li a:focus {
+.fieldpress-addons .fieldpress-tabs .fiedpress-inner-vertical-tab .fieldpress-inner-tabs-menu ul li a:hover, .fieldpress-addons .fieldpress-tabs .fiedpress-inner-vertical-tab .fieldpress-inner-tabs-menu ul li a:focus {
   color: #2196F3;
 }
-.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-tabs .fiedpress-inner-vertical-tab .fieldpress-inner-tabs-menu ul li.active {
+.fieldpress-addons .fieldpress-tabs .fiedpress-inner-vertical-tab .fieldpress-inner-tabs-menu ul li.active {
   border: 1px solid #e5e5e5;
   border-left: 2px solid #2196F3;
   border-right: 2px solid #fff;
 }
-.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-tabs .fiedpress-inner-vertical-tab .fieldpress-inner-tabs-menu ul li.active a {
+.fieldpress-addons .fieldpress-tabs .fiedpress-inner-vertical-tab .fieldpress-inner-tabs-menu ul li.active a {
   color: #2196F3;
 }
-.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-tabs .fieldpress-inner-tabs-content {
+.fieldpress-addons .fieldpress-tabs .fieldpress-inner-tabs-content {
   border: 1px solid #e5e5e5;
 }
-.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-repeater .repeater-table .fieldpress-repeater-top {
+.fieldpress-addons .fieldpress-repeater .repeater-table .fieldpress-repeater-top {
   background: #f9f9f9;
   border: 1px solid #e5e5e5;
 }
-.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-repeater .repeater-table .fieldpress-repeater-top:hover {
+.fieldpress-addons .fieldpress-repeater .repeater-table .fieldpress-repeater-top:hover {
   border: 1px solid #cbcbcb;
 }
-.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-repeater .repeater-table .fieldpress-repeater-inside {
+.fieldpress-addons .fieldpress-repeater .repeater-table .fieldpress-repeater-inside {
   border-color: transparent #e5e5e5 #e5e5e5;
 }
-.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-repeater .repeater-table .fieldpress-repeater-inside .fieldpress-repeater-control-actions {
+.fieldpress-addons .fieldpress-repeater .repeater-table .fieldpress-repeater-inside .fieldpress-repeater-control-actions {
   background: white;
 }
-.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-repeater .fp-sortable-placeholder {
+.fieldpress-addons .fieldpress-repeater .fp-sortable-placeholder {
   border: 1px dotted #e5e5e5;
 }
-.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-add-repeater {
+.fieldpress-addons .fieldpress-add-repeater {
   background: #28a745;
   color: #fff;
   border-color: #1d7a32 #1c7631 #1c7631;
   box-shadow: 0 1px 0 #1c7631;
   text-shadow: 0 -1px 1px #1c7631, 1px 0 1px #1c7631, 0 1px 1px #006799, -1px 0 1px #1c7631;
 }
-.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-add-repeater:hover, .fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-add-repeater:focus {
+.fieldpress-addons .fieldpress-add-repeater:hover, .fieldpress-addons .fieldpress-add-repeater:focus {
   background: #2dbc4e;
 }
 
@@ -259,36 +259,36 @@
 .dark-theme.fieldpress-addons .fieldpress-tabs-content-wrapper {
   background: #fff;
 }
-.dark-theme.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-field:not(:first-child) {
+.dark-theme.fieldpress-addons .fieldpress-field:not(:first-child) {
   border-top: 1px dashed #e5e5e5;
 }
-.dark-theme.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-field .fieldpress-desc {
+.dark-theme.fieldpress-addons .fieldpress-field .fieldpress-desc {
   color: #868686;
 }
-.dark-theme.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-file-preview {
+.dark-theme.fieldpress-addons .fieldpress-file-preview {
   border: 1px solid #d1d1d1;
 }
-.dark-theme.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-file-preview .fieldpress-file-wrap i {
+.dark-theme.fieldpress-addons .fieldpress-file-preview .fieldpress-file-wrap i {
   color: #e14d43;
 }
-.dark-theme.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-icon-preview .fieldpress-icon-wrap {
+.dark-theme.fieldpress-addons .fieldpress-icon-preview .fieldpress-icon-wrap {
   border: 1px solid #666666;
 }
-.dark-theme.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-icon-preview .fieldpress-icon-wrap .fieldpress-icon-clear {
+.dark-theme.fieldpress-addons .fieldpress-icon-preview .fieldpress-icon-wrap .fieldpress-icon-clear {
   background: #e14d43;
   color: #fff;
 }
-.dark-theme.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-image-wrap .fieldpress-clear {
+.dark-theme.fieldpress-addons .fieldpress-image-wrap .fieldpress-clear {
   background: #e14d43;
   color: #fff;
 }
-.dark-theme.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-gallery .fieldpress-gallery-preview li {
+.dark-theme.fieldpress-addons .fieldpress-gallery .fieldpress-gallery-preview li {
   display: inline-block;
 }
-.dark-theme.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-gallery .fieldpress-gallery-preview li:not(:first-child) {
+.dark-theme.fieldpress-addons .fieldpress-gallery .fieldpress-gallery-preview li:not(:first-child) {
   margin-left: 10px;
 }
-.dark-theme.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-gallery .fieldpress-remove {
+.dark-theme.fieldpress-addons .fieldpress-gallery .fieldpress-remove {
   background: #e14d43;
   color: #fff;
   border-color: #d02c21 #a4231a #a4231a;
@@ -297,20 +297,20 @@
   -o-box-shadow: 0 1px 0 #a4231a;
   box-shadow: 0 1px 0 #a4231a;
 }
-.dark-theme.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-sortable-wrap .ui-sortable {
+.dark-theme.fieldpress-addons .fieldpress-sortable-wrap .ui-sortable {
   border: 1px dashed #666666;
 }
-.dark-theme.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-sortable-wrap .ui-sortable li {
+.dark-theme.fieldpress-addons .fieldpress-sortable-wrap .ui-sortable li {
   background: #d1d1d1;
 }
-.dark-theme.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-sortable-wrap .ui-sortable li:hover {
+.dark-theme.fieldpress-addons .fieldpress-sortable-wrap .ui-sortable li:hover {
   background: #272c31;
   color: #fff;
 }
-.dark-theme.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-sortable-wrap .ui-sortable li.ui-sortable-placeholder {
+.dark-theme.fieldpress-addons .fieldpress-sortable-wrap .ui-sortable li.ui-sortable-placeholder {
   border: 1px dashed #666666;
 }
-.dark-theme.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-map-content .fieldpress-map-clear {
+.dark-theme.fieldpress-addons .fieldpress-map-content .fieldpress-map-clear {
   background: #e14d43;
   color: #fff;
   border-color: #d02c21 #a4231a #a4231a;
@@ -319,80 +319,80 @@
   -o-box-shadow: 0 1px 0 #a4231a;
   box-shadow: 0 1px 0 #a4231a;
 }
-.dark-theme.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-map-content .fieldpress-map-wrapper {
+.dark-theme.fieldpress-addons .fieldpress-map-content .fieldpress-map-wrapper {
   border: 1px solid #666666;
 }
-.dark-theme.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-select-image .fieldpress-fields-box ul li input[type=radio]:checked ~ img,
-.dark-theme.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-select-image .fieldpress-fields-box ul li input[type=checkbox]:checked ~ img {
+.dark-theme.fieldpress-addons .fieldpress-select-image .fieldpress-fields-box ul li input[type=radio]:checked ~ img,
+.dark-theme.fieldpress-addons .fieldpress-select-image .fieldpress-fields-box ul li input[type=checkbox]:checked ~ img {
   border: 2px solid #666666;
 }
-.dark-theme.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-switcher label input[type=checkbox] + span {
+.dark-theme.fieldpress-addons .fieldpress-switcher label input[type=checkbox] + span {
   background: #666666;
 }
-.dark-theme.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-switcher label input[type=checkbox] + span:after {
+.dark-theme.fieldpress-addons .fieldpress-switcher label input[type=checkbox] + span:after {
   background-color: #fff;
 }
-.dark-theme.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-switcher label input[type=checkbox]:checked + span {
+.dark-theme.fieldpress-addons .fieldpress-switcher label input[type=checkbox]:checked + span {
   background-color: #2196F3;
 }
-.dark-theme.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-tabs .fields-tabs li {
+.dark-theme.fieldpress-addons .fieldpress-tabs .fields-tabs li {
   border: 1px solid transparent;
 }
-.dark-theme.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-tabs .fields-tabs li a {
+.dark-theme.fieldpress-addons .fieldpress-tabs .fields-tabs li a {
   color: #23282d;
 }
-.dark-theme.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-tabs .fields-tabs li a:hover, .dark-theme.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-tabs .fields-tabs li a:focus {
+.dark-theme.fieldpress-addons .fieldpress-tabs .fields-tabs li a:hover, .dark-theme.fieldpress-addons .fieldpress-tabs .fields-tabs li a:focus {
   color: #2196F3;
 }
-.dark-theme.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-tabs .fields-tabs li.active {
+.dark-theme.fieldpress-addons .fieldpress-tabs .fields-tabs li.active {
   border: 1px solid #e5e5e5;
   border-top: 2px solid #2196F3;
   border-bottom: 2px solid #fff;
 }
-.dark-theme.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-tabs .fields-tabs li.active a {
+.dark-theme.fieldpress-addons .fieldpress-tabs .fields-tabs li.active a {
   color: #2196F3;
 }
-.dark-theme.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-tabs .fieldpress-inner-tabs-content {
+.dark-theme.fieldpress-addons .fieldpress-tabs .fieldpress-inner-tabs-content {
   border: 1px solid #e5e5e5;
 }
-.dark-theme.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-tabs .fiedpress-inner-vertical-tab .fieldpress-inner-tabs-menu ul li a {
+.dark-theme.fieldpress-addons .fieldpress-tabs .fiedpress-inner-vertical-tab .fieldpress-inner-tabs-menu ul li a {
   color: #23282d;
 }
-.dark-theme.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-tabs .fiedpress-inner-vertical-tab .fieldpress-inner-tabs-menu ul li a:hover, .dark-theme.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-tabs .fiedpress-inner-vertical-tab .fieldpress-inner-tabs-menu ul li a:focus {
+.dark-theme.fieldpress-addons .fieldpress-tabs .fiedpress-inner-vertical-tab .fieldpress-inner-tabs-menu ul li a:hover, .dark-theme.fieldpress-addons .fieldpress-tabs .fiedpress-inner-vertical-tab .fieldpress-inner-tabs-menu ul li a:focus {
   color: #2196F3;
 }
-.dark-theme.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-tabs .fiedpress-inner-vertical-tab .fieldpress-inner-tabs-menu ul li.active {
+.dark-theme.fieldpress-addons .fieldpress-tabs .fiedpress-inner-vertical-tab .fieldpress-inner-tabs-menu ul li.active {
   border: 1px solid #e5e5e5;
   border-left: 2px solid #2196F3;
   border-right: 2px solid #fff;
 }
-.dark-theme.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-tabs .fiedpress-inner-vertical-tab .fieldpress-inner-tabs-menu ul li.active a {
+.dark-theme.fieldpress-addons .fieldpress-tabs .fiedpress-inner-vertical-tab .fieldpress-inner-tabs-menu ul li.active a {
   color: #2196F3;
 }
-.dark-theme.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-repeater .repeater-table .fieldpress-repeater-top {
+.dark-theme.fieldpress-addons .fieldpress-repeater .repeater-table .fieldpress-repeater-top {
   background: #f9f9f9;
   border: 1px solid #e5e5e5;
 }
-.dark-theme.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-repeater .repeater-table .fieldpress-repeater-top:hover {
+.dark-theme.fieldpress-addons .fieldpress-repeater .repeater-table .fieldpress-repeater-top:hover {
   border: 1px solid #cbcbcb;
 }
-.dark-theme.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-repeater .repeater-table .fieldpress-repeater-inside {
+.dark-theme.fieldpress-addons .fieldpress-repeater .repeater-table .fieldpress-repeater-inside {
   border-color: transparent #e5e5e5 #e5e5e5;
 }
-.dark-theme.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-repeater .repeater-table .fieldpress-repeater-inside .fieldpress-repeater-control-actions {
+.dark-theme.fieldpress-addons .fieldpress-repeater .repeater-table .fieldpress-repeater-inside .fieldpress-repeater-control-actions {
   background: white;
 }
-.dark-theme.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-repeater .fp-sortable-placeholder {
+.dark-theme.fieldpress-addons .fieldpress-repeater .fp-sortable-placeholder {
   border: 1px dotted #e5e5e5;
 }
-.dark-theme.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-add-repeater {
+.dark-theme.fieldpress-addons .fieldpress-add-repeater {
   background: #28a745;
   color: #fff;
   border-color: #1d7a32 #1c7631 #1c7631;
   box-shadow: 0 1px 0 #1c7631;
   text-shadow: 0 -1px 1px #1c7631, 1px 0 1px #1c7631, 0 1px 1px #006799, -1px 0 1px #1c7631;
 }
-.dark-theme.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-add-repeater:hover, .dark-theme.fieldpress-addons .fieldpress-tabs-content-wrapper .fieldpress-add-repeater:focus {
+.dark-theme.fieldpress-addons .fieldpress-add-repeater:hover, .dark-theme.fieldpress-addons .fieldpress-add-repeater:focus {
   background: #2dbc4e;
 }
 
