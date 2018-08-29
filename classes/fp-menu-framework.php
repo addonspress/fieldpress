@@ -342,7 +342,7 @@ if(!class_exists('FieldPress_Menu_Framework')) {
 
 						$this->unique_field_types[] = $single_field['type'];
 						if( $single_field['type'] == 'tabs' || $single_field['type'] == 'repeater' ){
-							$this->current_menu_fields( $menu_id,$single_field['fields'], 1, $single_field['section'] );
+							$this->current_menu_fields( $menu_id,$single_field['fields'], 1 );
 						}
 					}
 				}
