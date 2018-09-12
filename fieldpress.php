@@ -35,49 +35,47 @@ defined('FIELDPRESS_TEMPLATE_PATH') or define('FIELDPRESS_TEMPLATE_PATH', 'field
  * @param  $file_path
  * @return string
  */
+if( !function_exists( 'fieldpress_load_file' )){
 
-function fieldpress_load_file( $file_path = '' ) {
+	function fieldpress_load_file( $file_path = '' ) {
 
-	$fp_file = '';
-	$template_path = FIELDPRESS_TEMPLATE_PATH;
+		$fp_file = '';
+		$template_path = FIELDPRESS_TEMPLATE_PATH;
 
-	/**
-	 * Look in yourtheme and child theme to override 
-	 * @theme   	: yourtheme/fieldpress/$file_path
-	 * @childtheme 	: childtheme/fieldpress/$file_path
-	 */
-	if ( $file_path ) {
-		if ( file_exists(get_stylesheet_directory() . '/' .$template_path. $file_path)) {
-			$fp_file = get_stylesheet_directory() . '/' . $template_path.$file_path;
-		} elseif ( file_exists(get_template_directory() . '/' .$template_path. $file_path) ) {
-			$fp_file = get_template_directory() . '/' . $template_path. $file_path;
+		/**
+		 * Look in yourtheme and child theme to override
+		 * @theme   	: yourtheme/fieldpress/$file_path
+		 * @childtheme 	: childtheme/fieldpress/$file_path
+		 */
+		if ( $file_path ) {
+			if ( file_exists(get_stylesheet_directory() . '/' .$template_path. $file_path)) {
+				$fp_file = get_stylesheet_directory() . '/' . $template_path.$file_path;
+			} elseif ( file_exists(get_template_directory() . '/' .$template_path. $file_path) ) {
+				$fp_file = get_template_directory() . '/' . $template_path. $file_path;
+			}
 		}
-	}
-	
-	/**
-	 * Look in pluign directory 
-	 * @pluign   	: yourpluign/fieldpress/$file_path
-	 */
-	if ( ! $fp_file && $file_path && file_exists( FIELDPRESS_PATH . "/$file_path" ) ) {
-		$fp_file = FIELDPRESS_PATH . "/$file_path";
+
+		/**
+		 * Look in pluign directory
+		 * @pluign   	: yourpluign/fieldpress/$file_path
+		 */
+		if ( ! $fp_file && $file_path && file_exists( FIELDPRESS_PATH . "/$file_path" ) ) {
+			$fp_file = FIELDPRESS_PATH . "/$file_path";
+		}
+
+		/**
+		 * Allow 3rd party plugins to filter template file from their plugin.
+		 *
+		 */
+		$fp_file = apply_filters( 'fieldpress_load_file', $fp_file, $file_path);
+
+		if ( $fp_file ) {
+			require_once( $fp_file );
+		}
+		return $fp_file;
 	}
 
-	/**
-	 * Allow 3rd party plugins to filter template file from their plugin.
-	 * 
-	*/
-	$fp_file = apply_filters( 'fieldpress_load_file', $fp_file, $file_path);
-	
-	if ( $fp_file ) {
-		require_once( $fp_file );
-	}
-	return $fp_file;
 }
-
-/**
- * The core plugin class that is used to define internationalization and all the functions of plugin.
- */
-fieldpress_load_file( 'includes/class-fieldpress.php' );
 
 /**
  * Begins execution of the plugin.
@@ -88,12 +86,21 @@ fieldpress_load_file( 'includes/class-fieldpress.php' );
  *
  * @since    1.0.0
  */
-function run_fieldpress() {
+if( !function_exists( 'run_fieldpress')){
 
-	$plugin = new FieldPress();
-	$plugin->run();
+	/**
+	 * The core plugin class that is used to define internationalization and all the functions of plugin.
+	 */
+	fieldpress_load_file( 'includes/class-fieldpress.php' );
+
+	function run_fieldpress() {
+
+		$plugin = new FieldPress();
+		$plugin->run();
+	}
+	run_fieldpress();
+
 }
-run_fieldpress();
 
 /**
  * Example file, it gives general idea how the fieldPress actually works.
