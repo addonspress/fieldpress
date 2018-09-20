@@ -3,7 +3,7 @@
 FieldPress is WordPress Back-end builder framework which facilities WordPress user, theme and plugin developer to create advanced back-end section like meta-box, widget and menu options in very short time.  
 
 ## Screenshot
-![FildPress](https://addonspress.com/wp-content/uploads/2018/07/field-press-backend.jpg?'FieldPRess'')
+![FildPress](https://addonspress.com/wp-content/uploads/2018/09/fieldpress-feature.png?'FieldPRess'')
 
 ### Prerequisites
 
