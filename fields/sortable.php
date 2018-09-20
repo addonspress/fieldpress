@@ -31,6 +31,33 @@ function fieldpress_render_sortable( $field_details, $field_value ) {
 	$field_value    = ( ! empty( $field_value ) ) ? $field_value : $choices;
 	$active         = ( ! empty( $field_value['active'] ) ) ? $field_value['active'] : array();
 	$inactive       = ( ! empty( $field_value['inactive'] ) ) ? $field_value['inactive'] : array();
+
+	$all_choices_field_value = array_merge( $active, $inactive );
+
+	$default_active = isset($field_details['choices']['active'])?$field_details['choices']['active']:array();
+	$default_inactive = isset($field_details['choices']['inactive'])?$field_details['choices']['inactive']:array();
+	$default_all_choices = array_merge($default_active, $default_inactive );
+
+	$default_modified_active = array();
+	$default_modified_inactive = array();
+	if( !empty($default_active)){
+		
+		foreach ($default_active as $key => $value) {
+			$default_modified_active[$key] = $key;
+		}
+	}
+	if( !empty($default_inactive)){
+
+		foreach ($default_inactive as $key => $value) {
+			$default_modified_inactive[$key] = $key;
+		}
+	}
+	$all_choices_defaults = array_merge( $default_modified_active, $default_modified_inactive );
+
+
+	$added_choices = array_diff( $all_choices_defaults, $all_choices_field_value );
+	$inactive = array_merge($inactive, $added_choices );
+
 	$active_title   = ( isset( $field_details['active_title'] ) ) ? $field_details['active_title'] : esc_html__( 'Active Fields', 'fieldpress' );
 	$inactive_title = ( isset( $field_details['inactive_title'] ) ) ? $field_details['inactive_title'] : esc_html__( 'Inactive Fields', 'fieldpress' );
 
@@ -44,6 +71,7 @@ function fieldpress_render_sortable( $field_details, $field_value ) {
 	$output    .= '<ul class="active-sortable">';
 	if( ! empty( $active ) ) {
 		foreach ( $active as $active_id => $active_label ) {
+			$active_label = isset($default_all_choices[$active_id])?$default_all_choices[$active_id]:$active_label;
 			if( !empty($fixed_name)){
 				$attributes['name'] = $fixed_name.'[active]'.'['.esc_attr( $active_id ).']';
 			}
@@ -72,6 +100,7 @@ function fieldpress_render_sortable( $field_details, $field_value ) {
 	$output    .= '<ul class="inactive-sortable">';
 	if( ! empty( $inactive ) ) {
 		foreach ( $inactive as $inactive_id => $inactive_label ) {
+			$inactive_label = isset($default_all_choices[$inactive_id])?$default_all_choices[$inactive_id]:$inactive_label;
 			if( !empty( $fixed_name ) ){
 				$attributes['name'] = $fixed_name.'[inactive]'.'['.esc_attr( $inactive_id ).']';
 			}
