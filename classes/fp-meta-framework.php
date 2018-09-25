@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if(!class_exists('FieldPress_Meta_Framework')) {
     /**
-     * Class or almost all types of meta fields.
+     * Class of almost all types of meta fields.
      *
      * @package FieldPress
      * @package FieldPress Meta Framework
@@ -76,15 +76,6 @@ if(!class_exists('FieldPress_Meta_Framework')) {
 	    protected $current_fields = array();
 
         /**
-         * Hold meta fields value
-         *
-         * @var array
-         * @access protected
-         * @since 0.0.1
-         */
-        protected $meta_box_value = array();
-
-        /**
          * Holds only unique fields types
          *
          * @var array
@@ -104,16 +95,21 @@ if(!class_exists('FieldPress_Meta_Framework')) {
          *
          */
         public function __construct( $meta_sections_fields = array() ) {
+
             /*If we are not in admin area exit.*/
-            if ( ! is_admin() || empty( $meta_sections_fields ) ){
+            if ( ! is_admin() ){
                 return;
             }
 
-            /*Hook before any function of class start */
-            do_action( 'fieldpress_meta_framework_before', $meta_sections_fields );
-
             /*Basic variables initialization with filter*/
             $this->meta_sections_fields = apply_filters( 'fieldpress_meta_sections_fields', $meta_sections_fields );
+
+            if( empty( $this->meta_sections_fields ) ){
+                return;
+            }
+
+	        /*Hook before any function of class start */
+	        do_action( 'fieldpress_meta_framework_before', $meta_sections_fields );
 
             $this->meta_boxes = apply_filters( 'fieldpress_meta_boxes', $this->meta_sections_fields['meta_boxes'] );
 
@@ -195,7 +191,7 @@ if(!class_exists('FieldPress_Meta_Framework')) {
 	     * @return void
 	     *
 	     */
-	    public function meta_section_default_values($meta_details_section_id, $meta_details_section) {
+	    public function meta_section_default_values( $meta_details_section_id, $meta_details_section ) {
 		    $meta_details_section_default_values = array(
 			    'title' => '',
 			    'meta_box' => ''
@@ -345,38 +341,21 @@ if(!class_exists('FieldPress_Meta_Framework')) {
 	        fieldpress_enqueue_scripts( $this->unique_field_types, true );
         }
 
-        /**
-         * Hold meta field value
-         *
-         * @access public
-         * @since 0.0.1
-         *
-         * @param int $post_id Id of post
-         * @param string $meta_box_id Id of metabox
-         * @return array
-         *
-         */
-        public function get_meta_by_metabox($post_id, $meta_box_id) {
-            $this->meta_box_value = unserialize( get_post_meta( $post_id, $meta_box_id,true) );
-            return $this->meta_box_value;
-        }
-
-        /**
-         * Get meta value of meta fields
-         *
-         * @access public
-         * @since 0.0.1
-         *
-         * @param int $post_id Id of post
-         * @param string $meta_box_id Id of metabox
-         * @param string $field_id Id of meta field
-         * @return int/string/array etc form data base
-         *
-         */
-        public function get_meta_by_metafield($post_id, $meta_box_id, $field_id){
-            $this->meta_box_value = $this->get_meta_by_metabox($post_id, $meta_box_id);
-            return $this->meta_box_value[$field_id];
-        }
+	    /**
+	     * Get single field value
+	     *
+	     * @access public
+	     * @since 0.0.1
+	     *
+	     * @param int $post_id Id of post
+	     * @param string $field_id Id of field
+	     * @return mixed
+	     *
+	     */
+	    public function get_field_value($post_id, $field_id) {
+		    $field_value = get_post_meta( $post_id, $field_id,true );
+		    return $field_value;
+	    }
 
         /**
          * Add metabox
@@ -389,10 +368,11 @@ if(!class_exists('FieldPress_Meta_Framework')) {
          *
          */
         /*public function add_post_meta_boxes($post_type, $post)*/
-        public function add_post_meta_boxes($post_type) {
+        public function add_post_meta_boxes( $post_type ) {
+
             foreach( $this->meta_boxes as $meta_box_id=>$meta_box_details ){
                 if( in_array( $post_type, $meta_box_details['post_types'] ) ) {
-	                $section_layout = isset( $meta_box_details['section-layout'] ) ? $meta_box_details['section-layout']:'';
+	                $section_layout = isset( $meta_box_details['section-layout'] ) ? $meta_box_details['section-layout'] : '';
                     add_meta_box(
                         $meta_box_id,
                         $meta_box_details['title'],
@@ -401,8 +381,8 @@ if(!class_exists('FieldPress_Meta_Framework')) {
                         $meta_box_details['context'],
                         $meta_box_details['priority'],
                         array(
-                                'fb-section-layout' => $section_layout
-                        )
+                                'fb-section-layout' => $section_layout,
+                            )
                     );
                 }
             }
@@ -423,17 +403,21 @@ if(!class_exists('FieldPress_Meta_Framework')) {
          */
         public function meta_screen( $post, $meta_box_details ){
 
-
 	        do_action( 'meta_screen_before', $post, $meta_box_details );
 
 	        /*$meta_box_id is always in id of callback meta data*/
             $meta_box_id = $meta_box_details['id'];
-            $get_meta_by_metabox = $this->get_meta_by_metabox( $post->ID, $meta_box_id );
+
             echo '<div class="fieldpress-addons fieldpress-meta-framework">';
 
 	        if( empty( $this->current_fields ) ){
 		        $this->set_current_fields();
             }
+	        $from = array(
+		        'type' => 'meta',
+		        'post_id' => $post->ID,
+		        'this_object' => $this,
+	        );
 
 	        /*move fieldpress-default-section field to top*/
 	        if( isset( $this->current_fields[$meta_box_id]['fieldpress-default-section'] ) ){
@@ -444,15 +428,14 @@ if(!class_exists('FieldPress_Meta_Framework')) {
 			        $single_field['attr']['id'] = $single_field['id'];
 			        $single_field['attr']['name'] = $single_field['id'];
 			        
-			        $value = '';
-			        if ( ! isset( $get_meta_by_metabox[ $single_field['id'] ] ) ) {
+			        $value = $this->get_field_value( $post->ID, $single_field['id'] );
+			        if ( ! $value ) {
 				        if ( isset( $single_field['default'] ) ) {
 					        $value = $single_field['default'];
 				        }
-			        } else {
-				        $value = $get_meta_by_metabox[ $single_field['id'] ];
 			        }
-			        fieldpress_render_field( $field_id, $single_field, $value, $get_meta_by_metabox);
+
+			        fieldpress_render_field( $field_id, $single_field, $value, $from );
 		        }
 	        }
 
@@ -517,16 +500,13 @@ if(!class_exists('FieldPress_Meta_Framework')) {
 		                    $single_field['attr']['id'] = $single_field['id'];
 		                    $single_field['attr']['name'] = $single_field['id'];
 
-		                    $value = '';
-		                    if ( ! isset( $get_meta_by_metabox[ $single_field['id'] ] ) ) {
+		                    $value = $this->get_field_value( $post->ID, $single_field['id'] );
+		                    if ( ! $value ) {
 			                    if ( isset( $single_field['default'] ) ) {
 				                    $value = $single_field['default'];
 			                    }
-		                    } else {
-			                    $value = $get_meta_by_metabox[ $single_field['id'] ];
 		                    }
-
-		                    fieldpress_render_field( $field_id, $single_field, $value, $get_meta_by_metabox);
+		                    fieldpress_render_field( $field_id, $single_field, $value, $from );
 	                    }
 	                    echo "</div>";/*.fieldpress-tabs-content-wrapper*/
 	                    $i++;
@@ -584,28 +564,22 @@ if(!class_exists('FieldPress_Meta_Framework')) {
 	        foreach( $this->meta_boxes as $meta_box_id=>$meta_box_details ){
 
                 if(in_array($post->post_type, $meta_box_details['post_types'])){
-                    $field_details_value_new_array = array();
-
-	                $field_details_name = $meta_box_details['id'];
-	                $field_details_value_old_array = $this->get_meta_by_metabox($post_id, $field_details_name);
 
 	                foreach( $this->meta_fields as $field_id=>$single_field ){
 
 	                    if( isset($single_field['section']) && !empty( $this->current_sections_id[$meta_box_id] )){
-		                    if(in_array($single_field['section'], $this->current_sections_id[$meta_box_id] )):
+		                    if( in_array( $single_field['section'], $this->current_sections_id[$meta_box_id] ) ):
 			                    $single_field_name = $single_field['id'];
 
 			                    if( 'tabs' == $single_field['type'] ){
 				                    foreach ( $single_field['fields'] as $tab_field_id => $tab_single_field ){
 					                    $field_details_value_new = ( isset( $_POST[$tab_field_id] ) ) ? $_POST[$tab_field_id]:'' ;
-					                    $field_details_value_new = fieldpress_sanitize_field( $tab_single_field, $field_details_value_new );
-					                    $field_details_value_new_array = array_merge( $field_details_value_new_array, array( $tab_field_id=>$field_details_value_new ) );
+					                    $this->fieldpress_save_field( $tab_single_field, $post_id, $tab_field_id, $field_details_value_new );
 				                    }
 			                    }
 			                    else{
 				                    $field_details_value_new = ( isset( $_POST[$single_field_name] ) ) ? $_POST[$single_field_name]:'' ;
-				                    $field_details_value_new = fieldpress_sanitize_field( $single_field, $field_details_value_new );
-				                    $field_details_value_new_array = array_merge( $field_details_value_new_array, array( $single_field_name=>$field_details_value_new ) );
+				                    $this->fieldpress_save_field( $single_field, $post_id, $single_field_name, $field_details_value_new );
 			                    }
 		                    endif;
 	                    }
@@ -616,21 +590,16 @@ if(!class_exists('FieldPress_Meta_Framework')) {
 			                    if( 'tabs' == $single_field['type'] ){
 				                    foreach ( $single_field['fields'] as $tab_field_id => $tab_single_field ){
 					                    $field_details_value_new = ( isset( $_POST[$tab_field_id] ) ) ? $_POST[$tab_field_id]:'' ;
-					                    $field_details_value_new = fieldpress_sanitize_field( $tab_single_field, $field_details_value_new );
-					                    $field_details_value_new_array = array_merge( $field_details_value_new_array, array( $tab_field_id=>$field_details_value_new ) );
+					                    $this->fieldpress_save_field( $tab_single_field, $post_id, $tab_field_id, $field_details_value_new );
 				                    }
 			                    }
 			                    else{
 				                    $field_details_value_new = ( isset( $_POST[$single_field_name] ) ) ? $_POST[$single_field_name]:'' ;
-				                    $field_details_value_new = fieldpress_sanitize_field( $single_field, $field_details_value_new );
-				                    $field_details_value_new_array = array_merge( $field_details_value_new_array, array( $single_field_name=>$field_details_value_new ) );
+				                    $this->fieldpress_save_field( $single_field, $post_id, $single_field_name, $field_details_value_new );
 			                    }
 		                    }
 	                    }
                     }
-	                $field_details_value_old_array_serialize = serialize($field_details_value_old_array);
-	                $field_details_value_new_array_serialize = serialize($field_details_value_new_array);
-                    $this->fieldpress_save_meta( $post_id, $field_details_name, $field_details_value_old_array_serialize, $field_details_value_new_array_serialize );
                 }
             }
         }
@@ -641,23 +610,29 @@ if(!class_exists('FieldPress_Meta_Framework')) {
          * @access public
          * @since 0.0.1
          *
+         * @param array $single_field details of single field
          * @param int $post_id Id of post
-         * @param string $field_details_name Id of meta to be saved
-         * @param string $meta_field_details_value_old_array_serialize Old meta value
-         * @param string $meta_field_details_value_new_array_serialize New meta value
+         * @param string $field_name name of single field
+         * @param mixed $new_value New meta value
          * @return void
          *
          */
-        public function fieldpress_save_meta( $post_id, $field_details_name, $meta_field_details_value_old_array_serialize, $meta_field_details_value_new_array_serialize ) {
+        public function fieldpress_save_field( $single_field, $post_id, $field_name, $new_value ) {
 
-        	$post_id = apply_filters( 'fieldpress_save_meta_post_id', $post_id);
-            $field_details_name = apply_filters( 'fieldpress_save_meta_sample_meta_field_name', $field_details_name);
-            $meta_field_details_value_new_array_serialize = apply_filters( 'fieldpress_meta_field_value_new_array_serialize', $meta_field_details_value_new_array_serialize);
-            if ( $meta_field_details_value_old_array_serialize == $meta_field_details_value_new_array_serialize || ($meta_field_details_value_new_array_serialize === '') ){
+            /*old value*/
+	        $old_value = $this->get_field_value( $post_id, $field_name );
+
+	        /*sanitize*/
+	        $new_value = fieldpress_sanitize_field( $single_field, $new_value );
+
+	        $post_id = apply_filters( 'fieldpress_save_field_post_id', $post_id, $single_field, $field_name, $old_value , $new_value );
+	        $field_name = apply_filters( 'fieldpress_save_field_field_name', $field_name, $single_field, $post_id, $old_value, $new_value);
+	        $new_value = apply_filters( 'fieldpress_save_field_new_value', $new_value, $single_field, $post_id, $field_name, $old_value);
+            if ( $old_value == $new_value ){
                 return;
             }
-            delete_post_meta( $post_id, $field_details_name );
-            update_post_meta( $post_id, $field_details_name, $meta_field_details_value_new_array_serialize );
+            delete_post_meta( $post_id, $field_name );
+            update_post_meta( $post_id, $field_name, $new_value );
         }
 
     } /*END class FieldPress_Meta_Framework*/

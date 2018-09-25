@@ -982,14 +982,14 @@ if(class_exists('FieldPress_Menu_Framework')) {
 						),
 						"default" => 'yellow',
 					),
-					'fp-option-repeater-select-image'  => array(
+					/*'fp-option-repeater-select-image'  => array(
 						'type'  => 'select-image',
 						'label' => esc_html__( 'Select Image', 'text-domain' ),
 						'choices' => array(
 							'red'   => 'https://addonspress.com/wp-content/uploads/edd/2018/07/documentation-press.jpg',
 							'green' => 'https://addonspress.com/wp-content/uploads/edd/2018/07/field-press.jpg',
 						),
-					),
+					),*/
 					'fp-option-repeater-select'  => array(
 						'type'  => 'select',
 						'label' => esc_html__( 'Select', 'text-domain' ),
@@ -1371,7 +1371,7 @@ if(class_exists('FieldPress_Menu_Framework')) {
 				'section' => 'fp-option-nested-menu-repeater'
 			),
 			//-----------------select-image--------------------------
-			'fp-option-field-select-image'  => array(
+			/*'fp-option-field-select-image'  => array(
 				'type'  => 'select-image',
 				'label' => esc_html__( 'Select Image', 'text-domain' ),
 				'choices' => array(
@@ -1379,9 +1379,9 @@ if(class_exists('FieldPress_Menu_Framework')) {
 					'green' => 'https://addonspress.com/wp-content/uploads/edd/2018/07/field-press.jpg',
 				),
 				'section' => 'fp-option-select-image'
-			),
+			),*/
 			//select image with default
-			'fp-field-select-image-default'  => array(
+			/*'fp-field-select-image-default'  => array(
 				'type'  => 'select-image',
 				'label' => esc_html__( 'Select Image With Default', 'text-domain' ),
 				'default' => array('red'),
@@ -1390,9 +1390,9 @@ if(class_exists('FieldPress_Menu_Framework')) {
 					'green' => 'https://addonspress.com/wp-content/uploads/edd/2018/07/field-press.jpg',
 				),
 				'section' => 'fp-option-select-image'
-			),
+			),*/
 			//select image with multiple select
-			'fp-field-select-image-multiple-select'  => array(
+			/*'fp-field-select-image-multiple-select'  => array(
 				'type'  => 'select-image',
 				'label' => esc_html__( 'Select Image With Multiple Select', 'text-domain' ),
 				'choices' => array(
@@ -1403,9 +1403,9 @@ if(class_exists('FieldPress_Menu_Framework')) {
 					'multiple'  => 'multiple',
 				),
 				'section' => 'fp-option-select-image'
-			),
+			),*/
 			//select image with help
-			'fp-field-select-image-help'  => array(
+			/*'fp-field-select-image-help'  => array(
 				'type'  => 'select-image',
 				'label' => esc_html__( 'Select Image With Help Information', 'text-domain' ),
 				'info' => esc_html__( 'Select Image for Slider', 'text-domain' ),
@@ -1414,9 +1414,9 @@ if(class_exists('FieldPress_Menu_Framework')) {
 					'green' => 'https://addonspress.com/wp-content/uploads/edd/2018/07/field-press.jpg',
 				),
 				'section' => 'fp-option-select-image'
-			),
+			),*/
 			//select image with before field text
-			'fp-field-select-image-before-field-text'  => array(
+			/*'fp-field-select-image-before-field-text'  => array(
 				'type'  => 'select-image',
 				'desc'  => array(
 					'before-field'=> 'Select images for Slider from available images:-'
@@ -1427,9 +1427,9 @@ if(class_exists('FieldPress_Menu_Framework')) {
 					'green' => 'https://addonspress.com/wp-content/uploads/edd/2018/07/field-press.jpg',
 				),
 				'section' => 'fp-option-select-image'
-			),
+			),*/
 			//select image with after field text
-			'fp-field-select-image-after-field-text'  => array(
+			/*'fp-field-select-image-after-field-text'  => array(
 				'type'  => 'select-image',
 				'desc'  => array(
 					'after-field'=> 'Select images for Slider from available images:-'
@@ -1440,7 +1440,7 @@ if(class_exists('FieldPress_Menu_Framework')) {
 					'green' => 'https://addonspress.com/wp-content/uploads/edd/2018/07/field-press.jpg',
 				),
 				'section' => 'fp-option-select-image'
-			),
+			),*/
 			//-----------------select--------------------------------
 			'fp-option-field-select'  => array(
 				'type'  => 'select',

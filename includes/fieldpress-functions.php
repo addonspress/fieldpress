@@ -118,12 +118,14 @@ function fieldpress_enqueue_scripts( $all_fields, $unique = false ) {
  * render field based on field type
  *
  * @since 0.0.1
+ * @param string $field_id
  * @param array $field_details
  * @param mixed $field_value
+ * @param array $tabs_from
  * @return void
  *
  */
-function fieldpress_render_field ( $field_id, $field_details, $field_value, $all_fields_value = array() ){
+function fieldpress_render_field ( $field_id, $field_details, $field_value, $tabs_from = array() ){
 	$field_details = apply_filters( 'fieldpress_render_field', $field_details);
 	$field_value = apply_filters( 'fieldpress_render_value', $field_value);
 	do_action( 'fieldpress_render_field_before', $field_details, $field_value );
@@ -201,11 +203,11 @@ function fieldpress_render_field ( $field_id, $field_details, $field_value, $all
 			break;
 
 		case 'repeater':
-			fieldpress_render_repeater( $field_details, $field_value, $all_fields_value);
+			fieldpress_render_repeater( $field_details, $field_value, $tabs_from );
 			break;
 
 		case 'tabs':
-			fieldpress_render_tabs( $field_details, $all_fields_value );
+			fieldpress_render_tabs( $field_details, $tabs_from );
 			break;
 
 		case 'icon':

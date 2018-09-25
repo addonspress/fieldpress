@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @param mixed $field_value
  * @return void
  */
-function fieldpress_render_tabs( $field_details, $all_fields_value ) {
+function fieldpress_render_tabs( $field_details, $tabs_from = array() ) {
 
 	$tabs = $field_details['tabs'];
 	/*Sort tabs according to priority*/
@@ -89,17 +89,20 @@ function fieldpress_render_tabs( $field_details, $all_fields_value ) {
 				$tab_single_field['attr']['name'] = $field_id;
 			}
 
-			$value = '';
-			if ( ! isset( $all_fields_value[ $field_id ] ) ) {
+			$value = false;
+			if( 'menu' == $tabs_from['type'] ){
+				$value = get_option( $field_id );
+			}
+			elseif ('meta' == $tabs_from['type'] ){
+				$value = get_post_meta( $tabs_from['post_id'], $field_id,true );
+			}
+			if ( ! $value ) {
 				if ( isset( $tab_single_field['default'] ) ) {
 					$value = $tab_single_field['default'];
 				}
 			}
-			else {
-				$value = $all_fields_value[ $field_id ];
-			}
 
-			fieldpress_render_field( $field_id, $tab_single_field, $value );
+			fieldpress_render_field( $field_id, $tab_single_field, $value, $tabs_from );
 		}
 		echo '</div>';
 		$i ++;

@@ -151,11 +151,15 @@ if(!class_exists('FieldPress_Menu_Framework')) {
 				return;
 			}
 
-			/* Hook before any function of class start */
-			do_action( 'fieldpress_menu_framework_before', $menus_sections_fields );
-
 			/*Basic variables initialization with filter*/
 			$this->menus_sections_fields = apply_filters( 'fieldpress_menus_sections_fields', $menus_sections_fields );
+
+			if( empty( $this->menus_sections_fields ) ){
+				return;
+			}
+
+			/* Hook before any function of class start */
+			do_action( 'fieldpress_menu_framework_before', $menus_sections_fields );
 
 			$this->menus = apply_filters( 'fieldpress_menus', $this->menus_sections_fields['menus'] );
 
@@ -407,35 +411,18 @@ if(!class_exists('FieldPress_Menu_Framework')) {
 		}
 
 		/**
-		 * Hold menus field value
+		 * Get single field value
 		 *
 		 * @access public
 		 * @since 0.0.1
 		 *
-		 * @param string $menu_id Id of menu (option name)
-		 * @return array
+		 * @param string $field_id Id of field
+		 * @return mixed
 		 *
 		 */
-		public function get_menu_fields($menu_id) {
-			$this->menu_saved_value = unserialize(get_option($menu_id));
-			return $this->menu_saved_value;
-		}
-
-		/**
-		 * Get menu value of menu fields
-		 *
-		 * @access public
-		 * @since 0.0.1
-		 *
-		 * @param string $menu_id Id of menu (option name)
-		 * @param string $field_id Id of menu field
-		 * @return mixed form data base
-		 *
-		 */
-
-		public function get_menu_field($menu_id, $field_id){
-			$this->menu_saved_value = $this->get_menu_fields($menu_id);
-			return $this->menu_saved_value[$field_id];
+		public function get_field_value( $field_id ) {
+			$field_value = get_option( $field_id );
+			return $field_value;
 		}
 
 		/**
@@ -489,7 +476,6 @@ if(!class_exists('FieldPress_Menu_Framework')) {
 		public function menu_screen(){
 
 			/*check capability again*/
-			$current_menu =  $_GET['page'];
 			if (!current_user_can('manage_options')){
 				wp_die( esc_html__("You don't have access to this page",'fieldpress') );
 			}
@@ -506,7 +492,12 @@ if(!class_exists('FieldPress_Menu_Framework')) {
 
 			$menu_details = $this->current_menu;
 			$menu_id = $menu_details['id'];
-			$get_menu_fields = $this->get_menu_fields($menu_id);
+
+			$tabs_from = array(
+				'type' => 'menu',
+				'this_object' => $this,
+			);
+
 
 			?>
             <div class="fieldpress-addons fieldpress-menu-framework">
@@ -536,15 +527,13 @@ if(!class_exists('FieldPress_Menu_Framework')) {
 							$single_field['attr']['id'] = $single_field['id'];
 							$single_field['attr']['name'] = $single_field['id'];
 
-							$value = '';
-							if ( ! isset( $get_menu_fields[ $single_field['id'] ] ) ) {
+							$value = $this->get_field_value( $single_field['id'] );
+							if ( ! $value ) {
 								if ( isset( $single_field['default'] ) ) {
 									$value = $single_field['default'];
 								}
-							} else {
-								$value = $get_menu_fields[ $single_field['id'] ];
 							}
-							fieldpress_render_field( $field_id, $single_field, $value, $get_menu_fields);
+							fieldpress_render_field( $field_id, $single_field, $value, $tabs_from );
 						}
 					}
 
@@ -615,16 +604,13 @@ if(!class_exists('FieldPress_Menu_Framework')) {
 							$single_field['attr']['id']   = $single_field['id'];
 							$single_field['attr']['name'] = $single_field['id'];
 
-							$value = '';
-							if ( ! isset( $get_menu_fields[ $single_field['id'] ] ) ) {
+							$value = $this->get_field_value( $single_field['id'] );
+							if ( ! $value ) {
 								if ( isset( $single_field['default'] ) ) {
 									$value = $single_field['default'];
 								}
-							} else {
-								$value = $get_menu_fields[ $single_field['id'] ];
 							}
-
-							fieldpress_render_field( $field_id, $single_field, $value, $get_menu_fields );
+							fieldpress_render_field( $field_id, $single_field, $value, $tabs_from );
 						}
 						echo "</div>";/*.fieldpress-tabs-content-wrapper*/
 						$i++;
@@ -685,37 +671,33 @@ if(!class_exists('FieldPress_Menu_Framework')) {
 					if( isset( $single_field['section'] ) && !empty( $this->current_sections_id  )){
 						if(in_array($single_field['section'], $this->current_sections_id )):
 
-							$field_details_name = $single_field['id'];
+							$single_field_name = $single_field['id'];
 
 							if( 'tabs' == $single_field['type'] ){
 								foreach ( $single_field['fields'] as $tab_field_id => $tab_single_field ){
 									$field_details_value_new = ( isset( $tab_single_field['default'] ) ) ? $tab_single_field['default']:'' ;
-									$field_details_value_new = fieldpress_sanitize_field( $tab_single_field, $field_details_value_new );
-									$field_details_value_new_array = array_merge( $field_details_value_new_array, array( $tab_field_id=>$field_details_value_new ) );
+									$this->fieldpress_save_field( $tab_single_field, $tab_field_id, $field_details_value_new );
 								}
 							}
 							else{
 								$field_details_value_new = ( isset( $single_field['default'] ) ) ? $single_field['default']:'' ;
-								$field_details_value_new = fieldpress_sanitize_field( $single_field, $field_details_value_new );
-								$field_details_value_new_array = array_merge( $field_details_value_new_array, array( $field_details_name=>$field_details_value_new ) );
+								$this->fieldpress_save_field( $single_field, $single_field_name, $field_details_value_new );
 							}
 						endif;
 					}
                     elseif (isset($single_field['menu'])){
 						if( $fieldpress_save_menu == $single_field['menu']){
-							$field_details_name = $single_field['id'];
+							$single_field_name = $single_field['id'];
 
 							if( 'tabs' == $single_field['type'] ){
 								foreach ( $single_field['fields'] as $tab_field_id => $tab_single_field ){
 									$field_details_value_new = ( isset( $tab_single_field['default'] ) ) ? $tab_single_field['default']:'' ;
-									$field_details_value_new = fieldpress_sanitize_field( $tab_single_field, $field_details_value_new );
-									$field_details_value_new_array = array_merge( $field_details_value_new_array, array( $tab_field_id=>$field_details_value_new ) );
+									$this->fieldpress_save_field( $tab_single_field, $tab_field_id, $field_details_value_new );
 								}
 							}
 							else{
-								$field_details_value_new = ( isset( $single_field['default'] ) ) ? $single_field['default']:'' ;
-								$field_details_value_new = fieldpress_sanitize_field( $single_field, $field_details_value_new );
-								$field_details_value_new_array = array_merge( $field_details_value_new_array, array( $field_details_name=>$field_details_value_new ) );
+								$field_details_value_new = ( isset( $single_field['default'] ) ) ? $single_field['default'] : '' ;
+								$this->fieldpress_save_field( $single_field, $single_field_name, $field_details_value_new );
 							}
 						}
 					}
@@ -727,48 +709,39 @@ if(!class_exists('FieldPress_Menu_Framework')) {
 					if( isset( $single_field['section'] ) && !empty( $this->current_sections_id  )){
 						if(in_array($single_field['section'], $this->current_sections_id )):
 
-							$field_details_name = $single_field['id'];
+							$single_field_name = $single_field['id'];
 
 							if( 'tabs' == $single_field['type'] ){
 								foreach ( $single_field['fields'] as $tab_field_id => $tab_single_field ){
-									$field_details_value_new = ( isset( $menu_details_post[$tab_field_id] ) ) ? $menu_details_post[$tab_field_id]:'' ;
-									$field_details_value_new = fieldpress_sanitize_field( $tab_single_field, $field_details_value_new );
-									$field_details_value_new_array = array_merge( $field_details_value_new_array, array( $tab_field_id=>$field_details_value_new ) );
+									$field_details_value_new = ( isset( $menu_details_post[$tab_field_id] ) ) ? $menu_details_post[$tab_field_id] : '' ;
+									$this->fieldpress_save_field( $tab_single_field, $tab_field_id, $field_details_value_new );
 								}
 							}
 							else{
-								$field_details_value_new = ( isset( $menu_details_post[$field_details_name] ) ) ? $menu_details_post[$field_details_name]:'' ;
-								$field_details_value_new = fieldpress_sanitize_field( $single_field, $field_details_value_new );
-								$field_details_value_new_array = array_merge( $field_details_value_new_array, array( $field_details_name=>$field_details_value_new ) );
+								$field_details_value_new = ( isset( $menu_details_post[$single_field_name] ) ) ? $menu_details_post[$single_field_name]:'' ;
+								$this->fieldpress_save_field( $single_field, $single_field_name, $field_details_value_new );
 							}
 						endif;
 					}
                     elseif (isset($single_field['menu'])){
 						if( $fieldpress_save_menu == $single_field['menu']){
-							$field_details_name = $single_field['id'];
+							$single_field_name = $single_field['id'];
 
 							if( 'tabs' == $single_field['type'] ){
 								foreach ( $single_field['fields'] as $tab_field_id => $tab_single_field ){
-									$field_details_value_new = ( isset( $menu_details_post[$tab_field_id] ) ) ? $menu_details_post[$tab_field_id]:'' ;
-									$field_details_value_new = fieldpress_sanitize_field( $tab_single_field, $field_details_value_new );
-									$field_details_value_new_array = array_merge( $field_details_value_new_array, array( $tab_field_id=>$field_details_value_new ) );
+									$field_details_value_new = ( isset( $menu_details_post[$tab_field_id] ) ) ? $menu_details_post[$tab_field_id]: '' ;
+									$this->fieldpress_save_field( $tab_single_field, $tab_field_id, $field_details_value_new );
 								}
 							}
 							else{
-								$field_details_value_new = ( isset( $menu_details_post[$field_details_name] ) ) ? $menu_details_post[$field_details_name]:'' ;
-								$field_details_value_new = fieldpress_sanitize_field( $single_field, $field_details_value_new );
-								$field_details_value_new_array = array_merge( $field_details_value_new_array, array( $field_details_name=>$field_details_value_new ) );
-							}
+								$field_details_value_new = ( isset( $menu_details_post[$single_field_name] ) ) ? $menu_details_post[$single_field_name]:'' ;
+								$this->fieldpress_save_field( $single_field, $single_field_name, $field_details_value_new );}
 						}
 					}
 				endforeach;
 			}
 
 			set_transient( 'fieldpress-transient-'.esc_attr( $menu_id ), array( 'section_id' => sanitize_key( $_POST['fieldpress-current-section']) ), 30 );
-
-			$field_details_value_old_array_serialize = serialize($field_details_value_old_array);
-			$field_details_value_new_array_serialize = serialize($field_details_value_new_array);
-			$this->fieldpress_save_field( $fieldpress_save_menu,$field_details_value_old_array_serialize, $field_details_value_new_array_serialize );
 		}
 
 		/**
@@ -777,21 +750,27 @@ if(!class_exists('FieldPress_Menu_Framework')) {
 		 * @access public
 		 * @since 0.0.1
 		 *
-		 * @param string $fieldpress_save_menu
-		 * @param string $field_details_name Id of menu to be saved
-		 * @param string $field_details_value_old_array_serialize Old menu value
-		 * @param string $field_details_value_new_array_serialize New menu value
-		 * @return void/int
+		 * @param array $single_field details of single field
+		 * @param string $field_name name of single field
+		 * @param mixed $new_value New meta value
+		 * @return void
 		 *
 		 */
-		public function fieldpress_save_field( $fieldpress_save_menu, $field_details_value_old_array_serialize, $field_details_value_new_array_serialize ) {
-			$field_details_name = apply_filters( 'fieldpress_save_menu_name', $fieldpress_save_menu);
-			$field_details_value_new_array_serialize = apply_filters( 'fieldpress_menu_field_value_new_array_serialize', $field_details_value_new_array_serialize);
-			if ( ($field_details_value_old_array_serialize == $field_details_value_new_array_serialize) || ($field_details_value_new_array_serialize === '')){
+		public function fieldpress_save_field( $single_field, $field_name, $new_value ) {
+
+			/*old value*/
+			$old_value = $this->get_field_value( $field_name );
+
+			/*sanitize*/
+			$new_value = fieldpress_sanitize_field( $single_field, $new_value );
+			$field_name = apply_filters( 'fieldpress_save_field_field_name', $field_name, $single_field, $old_value, $new_value);
+			$new_value = apply_filters( 'fieldpress_save_field_new_value', $new_value, $single_field, $field_name, $old_value);
+
+			if ( $old_value == $new_value ){
 				return;
 			}
-			delete_option( $field_details_name);
-			update_option( $field_details_name, $field_details_value_new_array_serialize );
+			delete_option( $field_name );
+			update_option( $field_name, $new_value );
 		}
 
 	} /*END class FieldPress_Menu_Framework*/

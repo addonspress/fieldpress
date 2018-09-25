@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @param mixed $field_value
  * @return void
  */
-function fieldpress_render_repeater( $field_details, $field_value, $all_fields_value ) {
+function fieldpress_render_repeater( $field_details, $field_value, $tabs_from = array() ) {
 
 	/*defaults values for fields*/
 	$default_attr = apply_filters( 'fieldpress_radio_field_default_args',array(
@@ -94,7 +94,7 @@ function fieldpress_render_repeater( $field_details, $field_value, $all_fields_v
 					$field_cr['repeater-details'] = $field_details;
 					$field_cr['repeater-depth'] = $total_repeater;
 				}
-				fieldpress_render_field( $field_id, $field_cr, $field_value, $field_saved_value );
+				fieldpress_render_field( $field_id, $field_cr, $field_value, $tabs_from );
 
 			}
 			echo '<div class="fieldpress-repeater-control-actions">
@@ -165,7 +165,7 @@ function fieldpress_render_repeater( $field_details, $field_value, $all_fields_v
 			$field_cr['repeater-depth'] = $field_repeater_depth;
 
 		}
-		fieldpress_render_field( $field_id, $field_cr, $field_value );
+		fieldpress_render_field( $field_id, $field_cr, $field_value, $tabs_from );
 
 	}
 	echo '<div class="fieldpress-repeater-control-actions">
