@@ -539,42 +539,40 @@
                         action: 'fieldpress_select_icons'
                     },
                     success: function( content ) {
-
                         icon_loader.html( content );
                         icon_loaded = true;
-
-                        icon_loader.on('click', '.single-icon', function( e ) {
-                            e.preventDefault();
-                            var single_icon = $(this),
-                                icon_display_value = single_icon.children('i').attr('class'),
-                                icon_split_value = icon_display_value.split(' '),
-                                icon_value = icon_split_value[1];
-
-                            icon_modal.addClass('hidden');
-
-                            input.val( icon_value );
-                            icon_preview.removeClass('hidden');
-                            icon_preview.find('a').html('<i class="' + icon_display_value + '"></i>');
-                        });
-
-                        fieldpress_document.on('keyup', '#fieldpress-icon-search', function() {
-                            var text = $(this),
-                                value = text.val();
-
-                            icon_loader.find('i').each(function () {
-                                var icon = $(this);
-                                if (icon.attr('class').search(value) > -1) {
-                                    icon.parent('.single-icon').show();
-                                }
-                                else {
-                                    icon.parent('.single-icon').hide();
-                                }
-                            });
-                        });
                     }
                 });
 
             }
+            icon_loader.on('click', '.single-icon', function( e ) {
+                e.preventDefault();
+                var single_icon = $(this),
+                    icon_display_value = single_icon.children('i').attr('class'),
+                    icon_split_value = icon_display_value.split(' '),
+                    icon_value = icon_split_value[1];
+
+                icon_modal.addClass('hidden');
+
+                input.val( icon_value );
+                icon_preview.removeClass('hidden');
+                icon_preview.find('a').html('<i class="' + icon_display_value + '"></i>');
+            });
+
+            fieldpress_document.on('keyup', '#fieldpress-icon-search', function() {
+                var text = $(this),
+                    value = text.val();
+
+                icon_loader.find('i').each(function () {
+                    var icon = $(this);
+                    if (icon.attr('class').search(value) > -1) {
+                        icon.parent('.single-icon').show();
+                    }
+                    else {
+                        icon.parent('.single-icon').hide();
+                    }
+                });
+            });
 
         });
 
