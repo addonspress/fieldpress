@@ -1478,47 +1478,101 @@
     var fieldpress_addons = $('.fieldpress-addons');
     // Handle individual checkboxes & radio
     function controller_value(controller) {
-        if ( controller.attr("type") === "checkbox" || controller.attr("type") === "radio" ) {
+        if ( controller.attr("type") === "checkbox" ) {
             return controller.is(":checked");
         }
+        else if ( controller.attr("type") === "radio" ) {
+            return $('input[name='+controller.attr('name')+']:checked').val();
+        }
+
+        $('input[name=name_of_your_radiobutton]:checked').val();
+
         return controller.val();
     }
-    function check_condition(id, value){
-        fieldpress_addons.find('.fieldpress-dependent.'+id).each(function () {
-            var dependent = $(this),
-                condition = dependent.data('condition'),
-                conditional_value = dependent.data('conditional-value'),
-                result;
+    function check_single_condition(condition, value, conditional_value ,controller) {
+        var result;
 
-            if( condition == "==" ) {
-                result = value == conditional_value;
+        if( condition == "==" ) {
+            result = value == conditional_value;
+        }
+        else if( condition == "!=" ) {
+            result = value != conditional_value;
+        }
+        else if( condition == ">=" ) {
+            result = Number( value ) >= Number( conditional_value );
+        }
+        else if( condition == "<=" ) {
+            result = Number( value ) <= Number( conditional_value );
+        }
+        else if( condition == ">" ) {
+            result = Number( value ) > Number( conditional_value );
+        }
+        else if( condition == "<" ) {
+            result = Number( value ) < Number ( conditional_value );
+        }
+        else if( condition == "empty" ) {
+            result = value.length === 0;
+        }
+        else if( condition == "!empty" ) {
+            result = value.length !== 0;
+        }
+        else {
+            result = false;
+            throw new Error("Undefined condition: " + condition);
+        }
+        return result;
+    }
+    function get_condition( dependent ) {
+        var relation = dependent.data('relation'),
+            condition = dependent.data('condition'),
+            controller = dependent.data('controller'),
+            conditional_value = dependent.data('conditional-value'),
+            condition_array = condition.split('&fp&'),
+            controller_array = controller.split('&fp&'),
+            conditional_value_array = conditional_value.split('&fp&');
+
+        var allconditions = {};
+
+        for (let i=0; i<condition_array.length; i++) {
+            allconditions[i] ={};
+        }
+        for (let i=0; i<condition_array.length; i++) {
+            allconditions[i]["condition"] =condition_array[i];
+        }
+        for (let i=0; i<controller_array.length; i++) {
+            allconditions[i]["controller"] = controller_array[i];
+        }
+        for (let i=0; i<conditional_value_array.length; i++) {
+            allconditions[i]["conditional_value"] = conditional_value_array[i];
+        }
+
+        var $result = false;
+        $.each( allconditions, function( key, value ) {
+            var controller_val = controller_value( $('#'+value.controller) );
+            var current_result = check_single_condition( value.condition, controller_val,value.conditional_value, $('#'+value.controller) );
+            if( 'OR' == relation ){
+                if( current_result ){
+                    $result = true;
+                    return false;
+                }
             }
-            else if( condition == "!=" ) {
-                result = value != conditional_value;
+            else{
+                if( !current_result ){
+                    $result = false;
+                    return false;
+                }
+                $result = true;
             }
-            else if( condition == ">=" ) {
-                result = Number( value ) >= Number( conditional_value );
-            }
-            else if( condition == "<=" ) {
-                result = Number( value ) <= Number( conditional_value );
-            }
-            else if( condition == ">" ) {
-                result = Number( value ) > Number( conditional_value );
-            }
-            else if( condition == "<" ) {
-                result = Number( value ) < Number ( conditional_value );
-            }
-            else if( condition == "empty" ) {
-                result = value.length === 0;
-            }
-            else if( condition == "!empty" ) {
-                result = value.length !== 0;
-            }
-            else {
-                result = false;
-                throw new Error("Undefined condition: " + condition);
-            }
-            if( result ){
+        });
+        return $result;
+    }
+    function check_condition(controller){
+
+        var id = controller.attr('id'),
+            dependent;
+        fieldpress_addons.find('.fieldpress-dependent.'+id).each(function () {
+            dependent = $(this);
+            if( get_condition(dependent)){
                 dependent.removeClass('fieldpress-hidden');
             }
             else{
@@ -1527,12 +1581,8 @@
         });
     }
     fieldpress_addons.find('.fieldpress-controller').each(function () {
-
-        var controller = $(this),
-            value = controller_value( controller ),
-            id = controller.attr('id');
-
-        check_condition(id, value )
+        var controller = $(this);
+        check_condition(controller)
     });
     /*Dependencies Fields End*/
 
@@ -1559,11 +1609,8 @@
 
         /*conditional field*/
         fieldpress_document.on('keyup change','.fieldpress-controller',function (e) {
-            var controller = $(this),
-                value = controller_value( controller ),
-                id = controller.attr('id');
-
-            check_condition(id, value )
+            var controller = $(this);
+            check_condition(controller)
         });
 
         /*Reset Notification*/

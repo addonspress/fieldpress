@@ -147,6 +147,10 @@ if(class_exists('FieldPress_Menu_Framework')) {
 				'title' => esc_html__('Box(CSS)','fieldpress'),
 				'menu'  => 'fp-menus-options'
 			),
+			'fp-conditional-field' => array(
+				'title' => esc_html__('Conditional','fieldpress'),
+				'menu'  => 'fp-menus-options'
+			),
 			'fp-option-general-option' => array(
 				'title' => esc_html__('General Options','fieldpress'),
 				'menu'  => 'fp-menus-options'
@@ -3147,6 +3151,100 @@ if(class_exists('FieldPress_Menu_Framework')) {
 					'right'=> true,
 					'bottom'=> true,
 					'left'=> true,
+				),
+			),
+			/*conditional*/
+			'fp-conditional-field-controller-1' => array(
+				'type'  => 'select',
+				'section' => 'fp-conditional-field',
+				'label' => esc_html__( 'Controller 1', 'fieldpress' ),
+				'choices'=> array(
+					'red'   => esc_html__( 'Red', 'fieldpress' ),
+					'green' => esc_html__( 'Green', 'fieldpress' ),
+					'blue'  => esc_html__( 'Blue', 'fieldpress' ),
+					'yellow'=> esc_html__( 'Yellow', 'fieldpress' ),
+				),
+				'conditional' => array(
+					'type' => 'controller',
+				),
+				'accordion'   => 'fb-accordion-title',
+			),
+			'fp-conditional-field-controller-2'  => array(
+				'type'  => 'radio',
+				'section' => 'fp-conditional-field',
+				'label' => esc_html__( 'Controller 2', 'fieldpress' ),
+				'choices' => array(
+					'red' 	=> esc_html__( 'Red', 'fieldpress' ),
+					'green' => esc_html__( 'Green', 'fieldpress' ),
+					'blue' 	=> esc_html__( 'Blue', 'fieldpress' ),
+					'yellow'=> esc_html__( 'Yellow', 'fieldpress' ),
+				),
+				"default" => 'yellow',
+				'order'   => 'fb-order-title',
+				'conditional' => array(
+					'type' => 'controller',
+				),
+			),
+			'fp-conditional-field-controller-3'  => array(
+				'type'  => 'select',
+				'section' => 'fp-conditional-field',
+				'label' => esc_html__( 'Controller 3', 'fieldpress' ),
+				'choices' => array(
+					'red' 	=> esc_html__( 'Red', 'fieldpress' ),
+					'green' => esc_html__( 'Green', 'fieldpress' ),
+					'blue' 	=> esc_html__( 'Blue', 'fieldpress' ),
+					'yellow'=> esc_html__( 'Yellow', 'fieldpress' ),
+				),
+				"default" => 'yellow',
+				'order'   => 'fb-order-title',
+				'conditional' => array(
+					'type' => 'controller',
+				),
+			),
+			'fp-conditional-field-dependent-1'  => array(
+				'type'  => 'radio',
+				'section' => 'fp-conditional-field',
+				'label' => esc_html__( 'Dependent 1', 'fieldpress' ),
+				'choices' => array(
+					'red' 	=> esc_html__( 'Red', 'fieldpress' ),
+					'green' => esc_html__( 'Green', 'fieldpress' ),
+					'blue' 	=> esc_html__( 'Blue', 'fieldpress' ),
+					'yellow'=> esc_html__( 'Yellow', 'fieldpress' ),
+				),
+				"default" => 'yellow',
+				'order'   => 'fb-order-title',
+				'conditional' => array(
+					'type'=>'dependent',
+					'controller'=>'fp-conditional-field-controller-1',
+					'condition'            => '==',
+					'conditional-value'=>'red'
+				),
+			),
+			'fp-conditional-field-dependent-2'  => array(
+				'type'  => 'radio',
+				'section' => 'fp-conditional-field',
+				'label' => esc_html__( 'Dependent 2', 'fieldpress' ),
+				'choices' => array(
+					'red' 	=> esc_html__( 'Red', 'fieldpress' ),
+					'green' => esc_html__( 'Green', 'fieldpress' ),
+					'blue' 	=> esc_html__( 'Blue', 'fieldpress' ),
+					'yellow'=> esc_html__( 'Yellow', 'fieldpress' ),
+				),
+				"default" => 'yellow',
+				'order'   => 'fb-order-title',
+				'conditional' => array(
+					'type'=>'dependent',
+					'relation' => 'AND',
+					array(
+						'controller'=>'fp-conditional-field-controller-2',
+						'condition'            => '==',
+						'conditional-value'=>'red',
+					),
+					array(
+						'controller'=>'fp-conditional-field-controller-3',
+						'condition'            => '==',
+						'conditional-value'=>'yellow',
+					),
 				),
 			),
 

@@ -94,8 +94,10 @@ module.exports=function(grunt){
 	grunt.loadNpmTasks( 'grunt-contrib-watch' );
 	grunt.loadNpmTasks( 'grunt-contrib-sass' );
 	grunt.loadNpmTasks( 'grunt-contrib-uglify' );
+    grunt.loadNpmTasks('grunt-contrib-uglify-es');
 
-	// Register tasks
+
+    // Register tasks
 	grunt.registerTask( 'default', [ 'sass','uglify'] );
 	grunt.registerTask( 'css', [ 'sass' ] );
 	grunt.registerTask( 'js', [ 'uglify' ] );

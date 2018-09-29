@@ -27,7 +27,7 @@ if ( ! defined( 'WPINC' ) ) {
 defined('FIELDPRESS_VERSION') or define('FIELDPRESS_VERSION', '0.0.1');
 defined('FIELDPRESS_PATH') or define('FIELDPRESS_PATH', plugin_dir_path( __FILE__ ));
 defined('FIELDPRESS_URL') or define('FIELDPRESS_URL', plugin_dir_url( __FILE__ ));
-defined('FIELDPRESS_SCRIPT_PREFIX') or define('FIELDPRESS_SCRIPT_PREFIX', ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min' );
+defined('FIELDPRESS_SCRIPT_PREFIX') or define('FIELDPRESS_SCRIPT_PREFIX', ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '' );
 defined('FIELDPRESS_TEMPLATE_PATH') or define('FIELDPRESS_TEMPLATE_PATH', 'fieldpress/');
 
 /**
