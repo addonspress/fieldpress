@@ -135,6 +135,18 @@ if(class_exists('FieldPress_Menu_Framework')) {
 				'title' => esc_html__('Wysiwyg','fieldpress'),
 				'menu'  => 'fp-menus-options'
 			),
+			'fp-option-order' => array(
+				'title' => esc_html__('Order','fieldpress'),
+				'menu'  => 'fp-menus-options'
+			),
+			'fp-option-accordion' => array(
+				'title' => esc_html__('Accordion','fieldpress'),
+				'menu'  => 'fp-menus-options'
+			),
+			'fp-option-box' => array(
+				'title' => esc_html__('Box(CSS)','fieldpress'),
+				'menu'  => 'fp-menus-options'
+			),
 			'fp-option-general-option' => array(
 				'title' => esc_html__('General Options','fieldpress'),
 				'menu'  => 'fp-menus-options'
@@ -2972,6 +2984,170 @@ if(class_exists('FieldPress_Menu_Framework')) {
 
 				),
 				'section' => 'fp-option-wysiwyg'
+			),
+			/*Order*/
+			'fp-field-general-order' => array(
+				'section' => 'fp-option-order',
+				'type' 			=> 'orders',
+				'orders'			=> array(
+					'fb-order-title'=>array(
+						'label' => esc_html__( 'Title', 'fieldpress' ),
+						'checkbox' => true,
+					),
+					'fb-order-image'=>array(
+						'label' => esc_html__( 'Image', 'fieldpress' ),
+						'checkbox' => true,
+					),
+					'fb-order-social'=>array(
+						'label' => esc_html__( 'Social', 'fieldpress' ),
+						'checkbox' => true,
+					),
+				),
+				'fields'=> array(
+					'fp-field-general-order-text'  => array(
+						'type'  => 'text',
+						'label' => esc_html__( 'Text', 'fieldpress' ),
+						'order'   => 'fb-order-title',
+					),
+					'fp-field-general-order-radio'  => array(
+						'type'  => 'radio',
+						'label' => esc_html__( 'Radio', 'fieldpress' ),
+						'choices' => array(
+							'red' 	=> esc_html__( 'Red', 'fieldpress' ),
+							'green' => esc_html__( 'Green', 'fieldpress' ),
+							'blue' 	=> esc_html__( 'Blue', 'fieldpress' ),
+							'yellow'=> esc_html__( 'Yellow', 'fieldpress' ),
+						),
+						"default" => 'yellow',
+						'order'   => 'fb-order-title',
+					),
+					'fp-field-general-order-number'  => array(
+						'type'  => 'number',
+						'label' => esc_html__( 'Number', 'fieldpress' ),
+						'order'   => 'fb-order-title',
+					),
+					'fp-field-general-order-textarea'  => array(
+						'type'  => 'textarea',
+						'label' => esc_html__( 'Textarea', 'fieldpress' ),
+						'order'   => 'fb-order-title',
+					),
+					'fp-field-general-order-url'  => array(
+						'type'  => 'url',
+						'label' => esc_html__( 'Url', 'fieldpress' ),
+						'tab'   => 'fp-overview-general-repeat-tab3',
+						'order'   => 'fb-order-title',
+
+					),
+					'fp-field-general-order-multiple'  => array(
+						'type'  => 'checkbox',
+						'label' => esc_html__( 'Checkbox Multiple', 'fieldpress' ),
+						'choices'=> array(
+							'red'   => esc_html__( 'Red', 'fieldpress' ),
+							'green' => esc_html__( 'Green', 'fieldpress' ),
+							'blue'  => esc_html__( 'Blue', 'fieldpress' ),
+							'yellow'=> esc_html__( 'Yellow', 'fieldpress' ),
+						),
+						'wrap-attr' => array(
+							'class' => 'inline-block',
+						),
+						'order'   => 'fb-order-title',
+					),
+				),
+			),
+
+			/*accordion*/
+			'fp-field-general-accordions' => array(
+				'section' => 'fp-option-accordion',
+				'type' 			=> 'accordions',
+				'accordions'			=> array(
+					'fb-accordion-title'=>array(
+						'label' => esc_html__( 'Title', 'fieldpress' ),
+						'checkbox' => true,
+					),
+					'fb-accordion-image'=>array(
+						'label' => esc_html__( 'Image', 'fieldpress' ),
+						'checkbox' => true,
+					),
+					'fb-accordion-social'=>array(
+						'label' => esc_html__( 'Social', 'fieldpress' ),
+						'checkbox' => true,
+					),
+				),
+				'fields'=> array(
+					'fp-field-general-accordion-text'  => array(
+						'type'  => 'text',
+						'label' => esc_html__( 'Text', 'fieldpress' ),
+						'accordion'   => 'fb-accordion-title',
+					),
+					'fp-field-general-accordion-radio'  => array(
+						'type'  => 'radio',
+						'label' => esc_html__( 'Radio', 'fieldpress' ),
+						'choices' => array(
+							'red' 	=> esc_html__( 'Red', 'fieldpress' ),
+							'green' => esc_html__( 'Green', 'fieldpress' ),
+							'blue' 	=> esc_html__( 'Blue', 'fieldpress' ),
+							'yellow'=> esc_html__( 'Yellow', 'fieldpress' ),
+						),
+						"default" => 'yellow',
+						'accordion'   => 'fb-accordion-title',
+					),
+					'fp-field-general-accordion-number'  => array(
+						'type'  => 'number',
+						'label' => esc_html__( 'Number', 'fieldpress' ),
+						'accordion'   => 'fb-accordion-title',
+					),
+					'fp-field-general-accordion-textarea'  => array(
+						'type'  => 'textarea',
+						'label' => esc_html__( 'Textarea', 'fieldpress' ),
+						'accordion'   => 'fb-accordion-title',
+					),
+					'fp-field-general-accordion-url'  => array(
+						'type'  => 'url',
+						'label' => esc_html__( 'Url', 'fieldpress' ),
+						'tab'   => 'fp-overview-general-repeat-tab3',
+						'accordion'   => 'fb-accordion-title',
+
+					),
+					'fp-field-general-accordion-multiple'  => array(
+						'type'  => 'checkbox',
+						'label' => esc_html__( 'Checkbox Multiple', 'fieldpress' ),
+						'choices'=> array(
+							'red'   => esc_html__( 'Red', 'fieldpress' ),
+							'green' => esc_html__( 'Green', 'fieldpress' ),
+							'blue'  => esc_html__( 'Blue', 'fieldpress' ),
+							'yellow'=> esc_html__( 'Yellow', 'fieldpress' ),
+						),
+						'wrap-attr' => array(
+							'class' => 'inline-block',
+						),
+						'accordion'   => 'fb-accordion-title',
+					),
+				),
+			),
+
+			/*box*/
+			'fp-field-general-box' => array(
+				'section' => 'fp-option-box',
+				'label' => esc_html__( 'Padding', 'fieldpress' ),
+				'type' 			=> 'box',
+				'device'			=> array(
+					'large'=>array(
+						'icon' => 'fas fa-desktop',
+					),
+					'medium'=>array(
+						'icon' => 'fas fa-tablet-alt',
+
+					),
+					'small'=>array(
+						'icon' => 'fas fa-mobile-alt ',
+					),
+				),
+				'boxes'=> array(
+					'top'=> true,
+					'right'=> true,
+					'bottom'=> true,
+					'left'=> true,
+				),
 			),
 
 			/*----------------------------General Option----------------------------*/

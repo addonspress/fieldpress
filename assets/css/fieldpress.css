@@ -175,6 +175,45 @@
 .fieldpress-addons .fieldpress-add-repeater:hover, .fieldpress-addons .fieldpress-add-repeater:focus {
   background: #2dbc4e;
 }
+.fieldpress-addons .fieldpress-orders .fieldpress-order-top {
+  background: #f9f9f9;
+  border: 1px solid #e5e5e5;
+}
+.fieldpress-addons .fieldpress-orders .fieldpress-order-top:hover {
+  border: 1px solid #cbcbcb;
+}
+.fieldpress-addons .fieldpress-orders .fieldpress-order-inside {
+  border-color: transparent #e5e5e5 #e5e5e5;
+}
+.fieldpress-addons .fieldpress-orders .fieldpress-order-inside .fieldpress-repeater-control-actions {
+  background: white;
+}
+.fieldpress-addons .fieldpress-accordions .fieldpress-accordion-top {
+  background: #f9f9f9;
+  border: 1px solid #e5e5e5;
+}
+.fieldpress-addons .fieldpress-accordions .fieldpress-accordion-top:hover {
+  border: 1px solid #cbcbcb;
+}
+.fieldpress-addons .fieldpress-accordions .fieldpress-accordion-inside {
+  border-color: transparent #e5e5e5 #e5e5e5;
+}
+.fieldpress-addons .fieldpress-accordions .fieldpress-accordion-inside .fieldpress-repeater-control-actions {
+  background: white;
+}
+.fieldpress-addons .fieldpress-box .fieldpress-inner-devices-menu .fields-devices li a {
+  border: 1px solid #e5e5e5;
+  color: #e5e5e5;
+}
+.fieldpress-addons .fieldpress-box .fieldpress-inner-devices-menu .fields-devices li.active a {
+  border: 1px solid #464646;
+  color: #464646;
+}
+.fieldpress-addons .fieldpress-box .fieldpress-inner-devices-content .fields-box-content .fieldpress-box-input:not([type=checkbox]):not([type=radio]):not(.button):not([type=submit]) {
+  display: inline-block;
+  margin: 5px;
+  width: calc(100% / 4 - 15px);
+}
 
 /*----------------------
 	Vertical Tab Menu
@@ -1112,6 +1151,104 @@
   font-size: 14px;
   line-height: 25px;
   margin-right: 5px;
+}
+.fieldpress-addons .fieldpress-orders .order-table:not(:first-child) {
+  margin-top: 15px;
+}
+.fieldpress-addons .fieldpress-orders .order-table .fieldpress-order-top {
+  padding: 15px 20px;
+  -webkit-transition: all 0.2s ease-in-out 0s;
+  -moz-transition: all 0.2s ease-in-out 0s;
+  -ms-transition: all 0.2s ease-in-out 0s;
+  -o-transition: all 0.2s ease-in-out 0s;
+  transition: all 0.2s ease-in-out 0s;
+}
+.fieldpress-addons .fieldpress-orders .order-table .fieldpress-order-top:hover {
+  cursor: move;
+}
+.fieldpress-addons .fieldpress-orders .order-table .fieldpress-order-top .fieldpress-order-title label {
+  font-weight: 600;
+  font-size: 16px;
+}
+.fieldpress-addons .fieldpress-orders .order-table .fieldpress-order-top .fieldpress-order-title label input[type=checkbox] {
+  margin-right: 10px;
+}
+.fieldpress-addons .fieldpress-orders .order-table .fieldpress-order-top .fieldpress-order-action {
+  float: right;
+  background-color: transparent;
+  border: medium none;
+  padding: 0;
+  cursor: pointer;
+}
+.fieldpress-addons .fieldpress-orders .order-table .fieldpress-order-top .fieldpress-order-action .toggle-indicator:before {
+  display: block;
+  font: 400 20px/1 dashicons;
+  content: "";
+  text-decoration: none;
+}
+.fieldpress-addons .fieldpress-orders .order-table .fieldpress-order-inside {
+  border-width: 0 1px 1px;
+  border-style: solid;
+  margin-bottom: 20px;
+}
+.fieldpress-addons .fieldpress-accordions .accordion-table:not(:first-child) {
+  margin-top: 15px;
+}
+.fieldpress-addons .fieldpress-accordions .accordion-table .fieldpress-accordion-top {
+  padding: 15px 20px;
+  -webkit-transition: all 0.2s ease-in-out 0s;
+  -moz-transition: all 0.2s ease-in-out 0s;
+  -ms-transition: all 0.2s ease-in-out 0s;
+  -o-transition: all 0.2s ease-in-out 0s;
+  transition: all 0.2s ease-in-out 0s;
+}
+.fieldpress-addons .fieldpress-accordions .accordion-table .fieldpress-accordion-top:hover {
+  cursor: move;
+}
+.fieldpress-addons .fieldpress-accordions .accordion-table .fieldpress-accordion-top .fieldpress-accordion-title label {
+  font-weight: 600;
+  font-size: 16px;
+}
+.fieldpress-addons .fieldpress-accordions .accordion-table .fieldpress-accordion-top .fieldpress-accordion-title label input[type=checkbox] {
+  margin-right: 10px;
+}
+.fieldpress-addons .fieldpress-accordions .accordion-table .fieldpress-accordion-top .fieldpress-accordion-action {
+  float: right;
+  background-color: transparent;
+  border: medium none;
+  padding: 0;
+  cursor: pointer;
+}
+.fieldpress-addons .fieldpress-accordions .accordion-table .fieldpress-accordion-top .fieldpress-accordion-action .toggle-indicator:before {
+  display: block;
+  font: 400 20px/1 dashicons;
+  content: "";
+  text-decoration: none;
+}
+.fieldpress-addons .fieldpress-accordions .accordion-table .fieldpress-accordion-inside {
+  border-width: 0 1px 1px;
+  border-style: solid;
+  margin-bottom: 20px;
+}
+.fieldpress-addons .fieldpress-box .fieldpress-inner-devices-menu .fields-devices li {
+  display: inline-block;
+}
+.fieldpress-addons .fieldpress-box .fieldpress-inner-devices-menu .fields-devices li:not(:last-child) {
+  margin-right: 10px;
+}
+.fieldpress-addons .fieldpress-box .fieldpress-inner-devices-menu .fields-devices li a {
+  font-size: 15px;
+  display: block;
+  height: 30px;
+  width: 30px;
+  line-height: 30px;
+  text-align: center;
+  border-radius: 2px;
+}
+.fieldpress-addons .fieldpress-box .fieldpress-inner-devices-content .fields-box-content .fieldpress-box-input:not([type=checkbox]):not([type=radio]):not(.button):not([type=submit]) {
+  display: inline-block;
+  margin: 5px;
+  width: calc(100% / 4 - 15px);
 }
 
 /*----------------------

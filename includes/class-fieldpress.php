@@ -135,6 +135,8 @@ class FieldPress {
 	function init() {
 
 		/*Fields File*/
+		fieldpress_load_file('fields/accordions.php');
+		fieldpress_load_file('fields/box.php');
 		fieldpress_load_file('fields/checkbox.php');
 		fieldpress_load_file('fields/color.php');
 		fieldpress_load_file('fields/date.php');
@@ -144,6 +146,7 @@ class FieldPress {
 		fieldpress_load_file('fields/image.php');
 		fieldpress_load_file('fields/map.php');
 		fieldpress_load_file('fields/message.php');
+		fieldpress_load_file('fields/orders.php');
 		fieldpress_load_file('fields/radio.php');
 		fieldpress_load_file('fields/repeater.php');
 		fieldpress_load_file('fields/select.php');

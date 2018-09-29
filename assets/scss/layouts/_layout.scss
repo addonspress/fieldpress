@@ -754,6 +754,142 @@
 			}
 		}
 
+		//order
+		.fieldpress-orders{
+			.order-table{
+				&:not(:first-child){
+					margin-top: 15px;
+				}
+				.fieldpress-order-top{
+					padding: 15px 20px;
+					@include transition(all, 0.2s, ease-in-out, 0s);
+					&:hover{
+						cursor:move;
+					}
+					.fieldpress-order-title{
+						label{
+							font-weight: 600;
+							font-size: 16px;
+							input[type="checkbox"]{
+								margin-right: 10px;
+							}
+						}
+					}
+					.fieldpress-order-action{
+						float: right;
+						background-color: transparent;
+						border:medium none;
+						padding: 0;
+						cursor:pointer;
+
+						.toggle-indicator{
+							&:before{
+
+								display: block;
+								font: 400 20px/1 dashicons;
+								content: "\f140";
+								text-decoration: none;
+							}
+						}
+
+					}
+				}
+				.fieldpress-order-inside{
+					border-width: 0 1px 1px;
+					border-style: solid;
+					margin-bottom: 20px;
+				}
+
+			}
+
+		}
+
+		//Accordions
+		.fieldpress-accordions{
+			.accordion-table{
+				&:not(:first-child){
+					margin-top: 15px;
+				}
+				.fieldpress-accordion-top{
+					padding: 15px 20px;
+					@include transition(all, 0.2s, ease-in-out, 0s);
+					&:hover{
+						cursor:move;
+					}
+					.fieldpress-accordion-title{
+						label{
+							font-weight: 600;
+							font-size: 16px;
+							input[type="checkbox"]{
+								margin-right: 10px;
+							}
+						}
+					}
+					.fieldpress-accordion-action{
+						float: right;
+						background-color: transparent;
+						border:medium none;
+						padding: 0;
+						cursor:pointer;
+
+						.toggle-indicator{
+							&:before{
+
+								display: block;
+								font: 400 20px/1 dashicons;
+								content: "\f140";
+								text-decoration: none;
+							}
+						}
+
+					}
+				}
+				.fieldpress-accordion-inside{
+					border-width: 0 1px 1px;
+					border-style: solid;
+					margin-bottom: 20px;
+				}
+
+			}
+
+		}
+
+		//Box(css)
+		.fieldpress-box{
+		.fieldpress-inner-devices-menu{
+			.fields-devices{
+				li{
+					display: inline-block;
+
+					&:not(:last-child){
+						margin-right: 10px;
+					}
+					a{
+						font-size: 15px;
+						display: block;
+						height: 30px;
+						width: 30px;
+						line-height: 30px;
+						text-align: center;
+						border-radius: 2px;
+					}
+				}
+			}
+		}
+		.fieldpress-inner-devices-content{
+			.fields-box-content{
+				.fieldpress-box-input{
+					&:not([type=checkbox]):not([type=radio]):not(.button):not([type=submit]){
+
+						display: inline-block;
+						margin: 5px;
+						width:calc(100% / 4 - 15px);
+					}
+				}
+			}
+		}
+	}
+
 
 	}
 

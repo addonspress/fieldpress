@@ -515,16 +515,23 @@
     /*Icon Selector*/
     var FPICONSSELECTOR = function() {
 
-        var icon_loaded = false;
+        var icon_loaded = false,
+            icon_selector,
+            icon_wrapper,
+            icon_preview,
+            input,
+            icon_loader,
+            icon_modal;
+
         fieldpress_document.on('click', '.fieldpress-icon-selector-open', function( e ) {
             e.preventDefault();
 
-            var icon_selector   = $(this),
-                icon_wrapper = icon_selector.closest('.fieldpress-field.fieldpress-icon'),
-                icon_preview = icon_wrapper.find('.fieldpress-icon-preview'),
-                input   = icon_selector.next('input'),
-                icon_modal = $('#fieldpress-icon-modal'),
-                icon_loader = $('#fieldpress-select-icons-load');
+             icon_selector   = $(this);
+             icon_wrapper = icon_selector.closest('.fieldpress-field.fieldpress-icon');
+             icon_preview = icon_wrapper.find('.fieldpress-icon-preview');
+             input   = icon_selector.next('input');
+             icon_modal = $('#fieldpress-icon-modal');
+             icon_loader = $('#fieldpress-select-icons-load');
 
             /* open modal */
             icon_modal.removeClass('hidden');
@@ -544,35 +551,34 @@
                     }
                 });
 
+                fieldpress_document.on('keyup', '#fieldpress-icon-search', function() {
+                    var text = $(this),
+                        value = text.val();
+
+                    icon_loader.find('i').each(function () {
+                        var icon = $(this);
+                        if (icon.attr('class').search(value) > -1) {
+                            icon.parent('.single-icon').show();
+                        }
+                        else {
+                            icon.parent('.single-icon').hide();
+                        }
+                    });
+                });
+
             }
             icon_loader.on('click', '.single-icon', function( e ) {
                 e.preventDefault();
                 var single_icon = $(this),
-                    icon_display_value = single_icon.children('i').attr('class'),
-                    icon_split_value = icon_display_value.split(' '),
-                    icon_value = icon_split_value[1];
+                    icon_value = single_icon.children('i').attr('class');
 
                 icon_modal.addClass('hidden');
 
                 input.val( icon_value );
                 icon_preview.removeClass('hidden');
-                icon_preview.find('a').html('<i class="' + icon_display_value + '"></i>');
+                icon_preview.find('a').html('<i class="' + icon_value + '"></i>');
             });
 
-            fieldpress_document.on('keyup', '#fieldpress-icon-search', function() {
-                var text = $(this),
-                    value = text.val();
-
-                icon_loader.find('i').each(function () {
-                    var icon = $(this);
-                    if (icon.attr('class').search(value) > -1) {
-                        icon.parent('.single-icon').show();
-                    }
-                    else {
-                        icon.parent('.single-icon').hide();
-                    }
-                });
-            });
 
         });
 
@@ -1284,6 +1290,79 @@
         });
     };
 
+    /**order**/
+    var FPORDERSORTABLE = function () {
+        var orders = $('.fieldpress-order');
+        orders.sortable({
+            placeholder: 'ui-sortable-placeholder',
+        });
+    };
+
+    var FPORDER =  function (){
+        fieldpress_document.on('click', '.fieldpress-order-action, .fieldpress-order-close', function (e) {
+            e.preventDefault();
+            var accordion_toggle = $(this),
+                order_field = accordion_toggle.closest('.order-table'),
+                order_inside = order_field.find('.fieldpress-order-inside:first');
+
+            if ( order_inside.is( ':hidden' ) ) {
+                order_inside.slideDown( 'fast',function () {
+                    order_field.addClass( 'open' );
+                } );
+            }
+            else {
+                order_inside.slideUp( 'fast', function() {
+                    order_field.removeClass( 'open' );
+                });
+            }
+        });
+    };
+
+    /**accordion**/
+    var FPACCORDION =  function (){
+        fieldpress_document.on('click', '.fieldpress-accordion-top, .fieldpress-accordion-close', function (e) {
+            e.preventDefault();
+            var accordion_toggle = $(this),
+                accordion_field = accordion_toggle.closest('.accordion-table'),
+                accordion_inside = accordion_field.find('.fieldpress-accordion-inside:first');
+
+            if ( accordion_inside.is( ':hidden' ) ) {
+                accordion_inside.slideDown( 'fast',function () {
+                    accordion_field.addClass( 'open' );
+                } );
+            }
+            else {
+                accordion_inside.slideUp( 'fast', function() {
+                    accordion_field.removeClass( 'open' );
+                });
+            }
+        });
+    };
+    /**box ATTR**/
+    var FPBOXATTR=  function (){
+        fieldpress_document.on('click', '.fields-devices > li > a', function (event) {
+
+            event.preventDefault();
+            var this_device = $(this),
+                device_href = this_device.attr('href'),
+                tab_id = device_href.replace("#", ""),
+                tab_wrap = this_device.closest('.fieldpress-box');
+
+            this_device.parent('li').siblings('li').removeClass('active');
+            this_device.parent('li').addClass('active');
+
+            tab_wrap.find('.fields-box-content').each(function (index, el) {
+                var this_body = $(this),
+                    this_id = this_body.attr('id');
+                if ( this_id === tab_id ) {
+                    this_body.removeClass('hidden');
+                }
+                else {
+                    this_body.addClass('hidden');
+                }
+            });
+        });
+    };
 
     /*load methods*/
     var FIELDPRESS_MAIN_LOAD_METHODS = function() {
@@ -1309,6 +1388,15 @@
 
         /*for repeater*/
         FPREPEATER();
+
+        /*for order*/
+        FPORDER();
+
+        /*for accordions*/
+        FPACCORDION();
+
+        /*for boxattr*/
+        FPBOXATTR();
 
         /*no need to call below functions on widget page*/
         if ( 'widgets' === window.pagenow ) {
@@ -1352,6 +1440,9 @@
         }
         if ($('.fieldpress-sortable').length > 0) {
             FPSORTABLE();
+        }
+        if ($('.fieldpress-order').length > 0) {
+            FPORDERSORTABLE();
         }
     };
 

@@ -241,6 +241,73 @@
 			background:lighten($success-color,5%);
 		}
 	}
+
+	//order
+	.fieldpress-orders{
+		.fieldpress-order-top {
+			background:$base-light-background-color;
+			border: 1px solid $base-lighten-color;
+
+			&:hover{
+				border: 1px solid darken($base-lighten-color,10%);
+			}
+		}
+		.fieldpress-order-inside{
+			border-color:transparent $base-lighten-color $base-lighten-color;
+			.fieldpress-repeater-control-actions{
+				background:lighten($base-color, 95%);
+			}
+		}
+	}
+	//Accordion
+	.fieldpress-accordions{
+		.fieldpress-accordion-top {
+			background:$base-light-background-color;
+			border: 1px solid $base-lighten-color;
+
+			&:hover{
+				border: 1px solid darken($base-lighten-color,10%);
+			}
+		}
+		.fieldpress-accordion-inside{
+			border-color:transparent $base-lighten-color $base-lighten-color;
+			.fieldpress-repeater-control-actions{
+				background:lighten($base-color, 95%);
+			}
+		}
+	}
+	//Box(css)
+	.fieldpress-box{
+		.fieldpress-inner-devices-menu{
+			.fields-devices{
+				li{
+					a{
+						border: 1px solid $base-lighten-color;
+						color:$base-lighten-color;
+
+					}
+					&.active{
+						a{
+							border: 1px solid $base-color;
+							color:$base-color;
+						}
+					}
+				}
+			}
+		}
+		.fieldpress-inner-devices-content{
+			.fields-box-content{
+				.fieldpress-box-input{
+					&:not([type=checkbox]):not([type=radio]):not(.button):not([type=submit]){
+
+						display: inline-block;
+						margin: 5px;
+						width:calc(100% / 4 - 15px);
+					}
+				}
+			}
+		}
+	}
 }
 /*----------------------
 	Vertical Tab Menu

@@ -222,6 +222,18 @@ function fieldpress_render_field ( $field_id, $field_details, $field_value, $tab
 			fieldpress_render_sortable( $field_details, $field_value );
 			break;
 
+		case 'orders':
+			fieldpress_render_orders( $field_details, $field_value, $tabs_from );
+			break;
+
+		case 'accordions':
+			fieldpress_render_accordions( $field_details, $tabs_from );
+			break;
+
+		case 'box':
+			fieldpress_render_box( $field_details, $field_value );
+			break;
+
 		case 'default':
 			/*todo*/
 			break;
@@ -317,7 +329,61 @@ function fieldpress_sanitize_field ( $field_details, $field_value){
 						$output[$key_active_inactive][$active_inactive_id] = $active_inactive_label;
 					}
 				}
+			}
+			break;
 
+		case 'box':
+			$output = array();
+			if( is_array( $field_value ) ){
+				$box_field_id = $field_details['id'];
+				foreach ( $field_value as $device_id=> $device_details ){
+					foreach( $device_details as $field_id => $field_val ){
+						$order_check_field = array(
+							'id'  	=> $box_field_id,
+							'type'  	=> 'text',
+						);
+						$inner_output = fieldpress_sanitize_field ( $order_check_field, $field_val );
+						$output[$device_id][$field_id] = $inner_output;
+                    }
+
+				}
+			}
+			break;
+
+		case 'orders':
+			$output = array();
+			$orders = $field_details['orders'];
+			$fields =  isset($field_details['fields'])? $field_details['fields'] : array();
+
+
+			if( is_array( $field_value ) ){
+			    $i = 0;
+				foreach ( $field_value as $index_key=> $field_val ){
+					foreach( $orders as $order_id => $order_details ){
+						$fields[$order_id] = array(
+							'type'  => 'checkbox'
+						);
+						$fields[$order_id.'-fieldpress-hidden-order'] = array(
+							'type'  => 'hidden'
+						);
+
+						foreach ( $field_val as $key=> $val ){
+
+							if( $order_id == $key){
+								foreach ( $val as $field_id=> $inner_fields ){
+									$actual_value = $field_value[$index_key][$key][$field_id];
+									$single_field = $fields[$field_id];
+									$inner_output = fieldpress_sanitize_field ( $single_field, $actual_value );
+									$output[$i][$field_id] = $inner_output;
+
+								}
+							}
+
+
+						}
+					}
+					$i++;
+				}
 			}
 			break;
 
@@ -1817,6 +1883,11 @@ function fieldpress_get_field_box_class( $field_details, $field_value, $class = 
 	return $classes;
 }
 /*=====================Field Class End=====================*/
+
+/*=====================tabs style fields=====================*/
+function fieldpress_nested_style_fields(){
+    return apply_filters('fieldpress_nested_style_fields',array('tabs','accordions'));
+}
 
 /*=====================Sort according to priority=====================*/
 function fieldpress_stable_uasort(&$array, $cmp_function) {
