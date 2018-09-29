@@ -86,19 +86,18 @@ if( !function_exists( 'fieldpress_load_file' )){
  *
  * @since    1.0.0
  */
-if( !function_exists( 'run_fieldpress')){
+if( !function_exists( 'fieldpress')){
 
 	/**
 	 * The core plugin class that is used to define internationalization and all the functions of plugin.
 	 */
 	fieldpress_load_file( 'includes/class-fieldpress.php' );
 
-	function run_fieldpress() {
+	function fieldpress() {
 
-		$plugin = new FieldPress();
-		$plugin->run();
+		return FieldPress::instance();
 	}
-	run_fieldpress();
+	fieldpress();
 
 }
 

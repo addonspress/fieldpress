@@ -47,27 +47,56 @@ class FieldPress {
 	 */
 	protected $version;
 
-	/**
-	 * Define the core functionality of the plugin.
-	 *
-	 * Set the plugin name and the plugin version that can be used throughout the plugin.
-	 * Load the dependencies, define the locale, and set the hooks for the admin area and
-	 * the public-facing side of the site.
-	 *
-	 * @since    0.0.1
-	 */
-	public function __construct() {
-		if ( defined( 'FIELDPRESS_VERSION' ) ) {
-			$this->version = FIELDPRESS_VERSION;
-		} else {
-			$this->version = '0.0.1';
-		}
-		$this->plugin_name = 'fieldpress';
 
-		$this->load_dependencies();
-		$this->set_locale();
-		$this->init();
+	/**
+	 * Main FieldPress Instance
+	 *
+	 * Insures that only one instance of FieldPress exists in memory at any one
+	 * time. Also prevents needing to define globals all over the place.
+	 *
+	 * @since    1.0.0
+	 * @access   public
+	 *
+	 * @uses FieldPress::setup_globals() Setup the globals needed
+	 * @uses FieldPress::load_dependencies() Include the required files
+	 * @uses FieldPress::set_locale() Setup language
+	 * @uses FieldPress::run() run
+	 * @see bbpress()
+	 * @return object
+	 */
+	public static function instance() {
+
+		// Store the instance locally to avoid private static replication
+		static $instance = null;
+
+		// Only run these methods if they haven't been ran previously
+		if ( null === $instance ) {
+			$instance = new FieldPress;
+
+			if ( defined( 'FIELDPRESS_VERSION' ) ) {
+				$instance->version = FIELDPRESS_VERSION;
+			} else {
+				$instance->version = '0.0.1';
+			}
+			$instance->plugin_name = 'fieldpress';
+
+			$instance->load_dependencies();
+			$instance->set_locale();
+			$instance->init();
+			$instance->run();
+
+		}
+
+		// Always return the instance
+		return $instance;
 	}
+
+	/**
+	 * A dummy constructor to prevent FieldPress from being loaded more than once.
+	 *
+	 * @since    1.0.0
+	 */
+	private function __construct() { /* Do nothing here */ }
 
 	/**
 	 * Load the required dependencies for this plugin.
