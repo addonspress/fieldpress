@@ -645,6 +645,7 @@ if(!class_exists('FieldPress_Menu_Framework')) {
 		 */
 		public function fieldpress_save_menu( $menu_details_post ) {
 
+			/*security check*/
 			if ( ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE )                       /*Check Autosave*/
 			     || ( ! check_admin_referer( basename( __FILE__ ), 'fieldpress_menu_nonce') ) /*Check nonce - Security*/
 			     || ( ! current_user_can( 'manage_options') ) )  /*Check permission*/

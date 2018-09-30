@@ -569,40 +569,45 @@ if(!class_exists('FieldPress_Meta_Framework')) {
 
 	                    if( isset($single_field['section']) && !empty( $this->current_sections_id[$meta_box_id] )){
 		                    if( in_array( $single_field['section'], $this->current_sections_id[$meta_box_id] ) ):
-			                    $single_field_name = $single_field['id'];
-
-			                    if( 'tabs' == $single_field['type'] ){
-				                    foreach ( $single_field['fields'] as $tab_field_id => $tab_single_field ){
-					                    $field_details_value_new = ( isset( $_POST[$tab_field_id] ) ) ? $_POST[$tab_field_id]:'' ;
-					                    $this->fieldpress_save_field( $tab_single_field, $post_id, $tab_field_id, $field_details_value_new );
-				                    }
-			                    }
-			                    else{
-				                    $field_details_value_new = ( isset( $_POST[$single_field_name] ) ) ? $_POST[$single_field_name]:'' ;
-				                    $this->fieldpress_save_field( $single_field, $post_id, $single_field_name, $field_details_value_new );
-			                    }
+			                    $this->fieldpress_prepare_before_save( $single_field, $_POST , $post_id);
 		                    endif;
 	                    }
                         elseif (isset($single_field['meta_box'])){
 		                    if( $meta_box_id == $single_field['meta_box']){
-			                    $single_field_name = $single_field['id'];
-
-			                    if( 'tabs' == $single_field['type'] ){
-				                    foreach ( $single_field['fields'] as $tab_field_id => $tab_single_field ){
-					                    $field_details_value_new = ( isset( $_POST[$tab_field_id] ) ) ? $_POST[$tab_field_id]:'' ;
-					                    $this->fieldpress_save_field( $tab_single_field, $post_id, $tab_field_id, $field_details_value_new );
-				                    }
-			                    }
-			                    else{
-				                    $field_details_value_new = ( isset( $_POST[$single_field_name] ) ) ? $_POST[$single_field_name]:'' ;
-				                    $this->fieldpress_save_field( $single_field, $post_id, $single_field_name, $field_details_value_new );
-			                    }
+			                    $this->fieldpress_prepare_before_save( $single_field, $_POST , $post_id);
 		                    }
 	                    }
                     }
                 }
             }
         }
+
+	    /**
+	     * Prepare fields before save since you have sub filelds on different fields
+	     *
+	     * @access public
+	     * @since 0.0.1
+	     *
+	     * @param array $single_field details of single field
+	     * @param array $meta_details_post $_Post value
+         * @param int $post_id Id of post
+	     * @return void
+	     *
+	     */
+	    public function fieldpress_prepare_before_save( $single_field, $meta_details_post, $post_id) {
+
+		    $single_field_name = $single_field['id'];
+		    if( in_array( $single_field['type'], fieldpress_nested_style_fields() ) ){
+			    foreach ( $single_field['fields'] as $tab_field_id => $tab_single_field ){
+				    $field_details_value_new = ( isset( $meta_details_post[$tab_field_id] ) ) ? $meta_details_post[$tab_field_id] : '' ;
+				    $this->fieldpress_save_field( $tab_single_field, $tab_field_id, $field_details_value_new,$post_id );
+			    }
+		    }
+		    else{
+			    $field_details_value_new = ( isset( $meta_details_post[$single_field_name] ) ) ? $meta_details_post[$single_field_name]:'' ;
+			    $this->fieldpress_save_field( $single_field, $single_field_name, $field_details_value_new,$post_id );
+		    }
+	    }
 
         /**
          * Saving meta - callback function of save_post
@@ -617,7 +622,7 @@ if(!class_exists('FieldPress_Meta_Framework')) {
          * @return void
          *
          */
-        public function fieldpress_save_field( $single_field, $post_id, $field_name, $new_value ) {
+        public function fieldpress_save_field( $single_field, $field_name, $new_value, $post_id ) {
 
             /*old value*/
 	        $old_value = $this->get_field_value( $post_id, $field_name );
