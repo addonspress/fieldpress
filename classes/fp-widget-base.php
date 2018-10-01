@@ -173,7 +173,7 @@ if(!class_exists('FieldPress_Widget')) {
 			}
 		}
 
-		$this->widget_fields = apply_filters( 'filed_press_widget_fields', $this->widget_sections_fields['fields'] );
+		$this->widget_fields = apply_filters( 'filedpress_widget_fields', $this->widget_sections_fields['fields'] );
 		/*Set default values for widget fields*/
 		foreach( $this->widget_fields as $field_id=>$single_field ){
 			$this->widget_field_default_values($field_id, $single_field);
@@ -208,7 +208,7 @@ if(!class_exists('FieldPress_Widget')) {
 			'title' => ''
 		);
 
-		$widget_details_section_default_values = apply_filters( '$widget_details_section_default_values', $widget_details_section_default_values);
+		$widget_details_section_default_values = apply_filters( 'fieldpress_widget_details_section_default_values', $widget_details_section_default_values);
 
 		$this->widget_sections[$section_id] =
 		array_merge(
@@ -237,7 +237,7 @@ if(!class_exists('FieldPress_Widget')) {
 			'type' => 'text',
 			'section' => ''
 		);
-		$field_details_default_values = apply_filters( 'widget_field_default_values', $field_details_default_values);
+		$field_details_default_values = apply_filters( 'fieldpress_widget_field_default_values', $field_details_default_values);
 
 		$this->widget_fields[$field_id] =
 		array_merge(

@@ -131,7 +131,7 @@ if(!class_exists('FieldPress_Meta_Framework')) {
 		        }
             }
 
-	        $this->meta_fields = apply_filters( 'meta_fields', $this->meta_sections_fields['fields'] );
+	        $this->meta_fields = apply_filters( 'fieldpress_meta_fields', $this->meta_sections_fields['fields'] );
             /*Set default values for meta fields*/
             foreach( $this->meta_fields as $field_id=>$single_field ){
                 $this->meta_fields_default_values( $field_id, $single_field );
@@ -171,7 +171,7 @@ if(!class_exists('FieldPress_Meta_Framework')) {
                     'priority' => 'high',
                     'post_types' => array('post')
                 );
-            $meta_box_default_values = apply_filters( 'meta_box_default_values', $meta_box_default_values);
+            $meta_box_default_values = apply_filters( 'fieldpress_meta_box_default_values', $meta_box_default_values);
 
             $this->meta_boxes[$meta_box_id] =
                 array_merge(
@@ -197,7 +197,7 @@ if(!class_exists('FieldPress_Meta_Framework')) {
 			    'meta_box' => ''
 		    );
 
-		    $meta_details_section_default_values = apply_filters( 'meta_details_section_default_values', $meta_details_section_default_values);
+		    $meta_details_section_default_values = apply_filters( 'fieldpress_meta_details_section_default_values', $meta_details_section_default_values);
 
 		    $this->meta_sections[$meta_details_section_id] =
 			    array_merge(
@@ -225,7 +225,7 @@ if(!class_exists('FieldPress_Meta_Framework')) {
                 'type'      => 'text',
                 'meta_box'  => ''
             );
-            $meta_fields_default_values = apply_filters( 'meta_fields_default_values', $meta_fields_default_values);
+            $meta_fields_default_values = apply_filters( 'fieldpress_meta_fields_default_values', $meta_fields_default_values);
 
             $this->meta_fields[$field_id] =  array_merge(
                 $meta_fields_default_values,
@@ -403,7 +403,7 @@ if(!class_exists('FieldPress_Meta_Framework')) {
          */
         public function meta_screen( $post, $meta_box_details ){
 
-	        do_action( 'meta_screen_before', $post, $meta_box_details );
+	        do_action( 'fieldpress_meta_screen_before', $post, $meta_box_details );
 
 	        /*$meta_box_id is always in id of callback meta data*/
             $meta_box_id = $meta_box_details['id'];
@@ -520,7 +520,7 @@ if(!class_exists('FieldPress_Meta_Framework')) {
             echo '</div>';/*.fieldpress-wrap*/
             echo '</div>';/*.fieldpress-addons*/
 
-            do_action( 'meta_screen_after', $post, $meta_box_details );
+            do_action( 'fieldpress_meta_screen_after', $post, $meta_box_details );
 
         }
 
@@ -630,14 +630,21 @@ if(!class_exists('FieldPress_Meta_Framework')) {
 	        /*sanitize*/
 	        $new_value = fieldpress_sanitize_field( $single_field, $new_value );
 
-	        $post_id = apply_filters( 'fieldpress_save_field_post_id', $post_id, $single_field, $field_name, $old_value , $new_value );
-	        $field_name = apply_filters( 'fieldpress_save_field_field_name', $field_name, $single_field, $post_id, $old_value, $new_value);
-	        $new_value = apply_filters( 'fieldpress_save_field_new_value', $new_value, $single_field, $post_id, $field_name, $old_value);
-            if ( $old_value == $new_value ){
+	        $post_id = apply_filters( 'fieldpress_meta_save_field_post_id', $post_id, $single_field, $field_name, $old_value , $new_value );
+	        $field_name = apply_filters( 'fieldpress_meta_save_field_name', $field_name, $single_field, $post_id, $old_value, $new_value);
+	        $new_value = apply_filters( 'fieldpress_meta_save_field_new_value', $new_value, $single_field, $post_id, $field_name, $old_value);
+	        $old_value = apply_filters( 'fieldpress_meta_save_field_old_value', $old_value, $single_field, $post_id, $field_name, $new_value);
+
+	        do_action( 'fieldpress_meta_save_field_before',$post_id, $single_field, $field_name, $old_value , $new_value );
+
+	        if ( $old_value == $new_value ){
                 return;
             }
             delete_post_meta( $post_id, $field_name );
             update_post_meta( $post_id, $field_name, $new_value );
+
+	        do_action( 'fieldpress_meta_save_field_after',$post_id, $single_field, $field_name, $old_value , $new_value );
+
         }
 
     } /*END class FieldPress_Meta_Framework*/

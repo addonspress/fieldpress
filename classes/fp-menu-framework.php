@@ -182,7 +182,7 @@ if(!class_exists('FieldPress_Menu_Framework')) {
 
 			}
 
-			$this->menus_fields = apply_filters( 'filed_press_menus_fields', $this->menus_sections_fields['fields'] );
+			$this->menus_fields = apply_filters( 'filedpress_menus_fields', $this->menus_sections_fields['fields'] );
 			/*Set default values for menu fields*/
 			foreach( $this->menus_fields as $field_id=>$single_field ){
 				$this->menu_field_default_values($field_id, $single_field);
@@ -237,7 +237,7 @@ if(!class_exists('FieldPress_Menu_Framework')) {
 			}
 			$this->menu_default_unique_position += 1;
 
-			$menu_details_default_values = apply_filters( 'menu_default_values', $menu_details_default_values);
+			$menu_details_default_values = apply_filters( 'fieldpress_menu_default_values', $menu_details_default_values);
 
 			$this->menus[$menu_id] = array_merge(
 				$menu_details_default_values,
@@ -263,7 +263,7 @@ if(!class_exists('FieldPress_Menu_Framework')) {
 				'priority' => 10,
 			);
 
-			$menu_details_section_default_values = apply_filters( '$menu_details_section_default_values', $menu_details_section_default_values);
+			$menu_details_section_default_values = apply_filters( 'fieldpress_menu_details_section_default_values', $menu_details_section_default_values);
 
 			$this->menus_sections[$section_id] = array_merge(
 				$menu_details_section_default_values,
@@ -291,7 +291,7 @@ if(!class_exists('FieldPress_Menu_Framework')) {
 				'section' => '',
 				'priority' => 10,
 			);
-			$field_details_default_values = apply_filters( 'menu_field_default_values', $field_details_default_values);
+			$field_details_default_values = apply_filters( 'fieldpress_menu_field_default_values', $field_details_default_values);
 
 			$this->menus_fields[$field_id] =  array_merge(
 				$field_details_default_values,
@@ -744,14 +744,20 @@ if(!class_exists('FieldPress_Menu_Framework')) {
 
 			/*sanitize*/
 			$new_value = fieldpress_sanitize_field( $single_field, $new_value );
-			$field_name = apply_filters( 'fieldpress_save_field_field_name', $field_name, $single_field, $old_value, $new_value);
-			$new_value = apply_filters( 'fieldpress_save_field_new_value', $new_value, $single_field, $field_name, $old_value);
+			$field_name = apply_filters( 'fieldpress_menu_save_field_name', $field_name, $single_field, $old_value, $new_value);
+			$new_value = apply_filters( 'fieldpress_menu_save_field_new_value', $new_value, $single_field, $field_name, $old_value);
+			$old_value = apply_filters( 'fieldpress_menu_save_field_old_value', $old_value, $single_field, $field_name, $new_value);
+
+			do_action( 'fieldpress_menu_save_field_before',$field_name, $single_field, $old_value, $new_value );
 
 			if ( $old_value == $new_value ){
 				return;
 			}
 			delete_option( $field_name );
 			update_option( $field_name, $new_value );
+
+			do_action( 'fieldpress_menu_save_field_after',$field_name, $single_field, $old_value, $new_value );
+
 		}
 
 	} /*END class FieldPress_Menu_Framework*/
