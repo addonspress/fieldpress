@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  */
 function fieldpress_single_field_add_controller( $classes, $class, $field_details, $field_value ) {
-	if ( isset( $field_details['conditional'] ) && isset( $field_details['conditional']['type'] ) && 'controller' == $field_details['conditional']['type'] ){
+	if ( isset( $field_details['controller'] ) && true == $field_details['controller'] ){
 		$classes[] = 'fieldpress-controller';
 	}
 	return $classes;
@@ -34,19 +34,20 @@ add_filter('fieldpress_get_single_field_class', 'fieldpress_single_field_add_con
  *
  */
 function fieldpress_field_wrap_add_controller( $classes, $class, $field_details, $field_value ) {
-	if ( isset( $field_details['conditional'] ) && isset( $field_details['conditional']['type'] ) && 'dependent' == $field_details['conditional']['type'] ){
-		$conditional = $field_details['conditional'];
+	if ( isset( $field_details['dependent'] ) ){
+		$dependent_details = $field_details['dependent'];
+
 		$classes[] = 'fieldpress-dependent';
 		$classes[] = 'fieldpress-hidden';
 
-		if ( isset( $conditional['controller'] ) ){
-			$classes[] = $conditional['controller'];
+		if ( isset( $dependent_details['controller'] ) ){
+			$classes[] = $dependent_details['controller'];
 		}
 		else{
-			foreach ( $field_details['conditional'] as $single_condition ){
+			foreach ( $dependent_details as $single_dependent ){
 
-				if( is_array( $single_condition )){
-					$classes[] = $single_condition['controller'];
+				if( is_array( $single_dependent )){
+					$classes[] = $single_dependent['controller'];
 				}
 			}
 		}
@@ -56,18 +57,19 @@ function fieldpress_field_wrap_add_controller( $classes, $class, $field_details,
 add_filter('fieldpress_get_field_wrap_class', 'fieldpress_field_wrap_add_controller',10, 4 );
 
 function fieldpress_set_wrap_condition( $attributes, $field_details, $field_value ){
-	if ( isset( $field_details['conditional'] ) && isset( $field_details['conditional']['type'] ) && 'dependent' == $field_details['conditional']['type'] ){
-		if( isset( $field_details['conditional']['relation'])){
-			$relation = $field_details['conditional']['relation'] == 'AND'?'AND':'OR';/*JUST AND || OR*/
+	if ( isset( $field_details['dependent'] ) ){
+		$dependent_details = $field_details['dependent'];
+		if( isset( $dependent_details['relation'])){
+			$relation = $dependent_details['relation'] == 'AND'?'AND':'OR';/*JUST AND || OR*/
 			$attributes['data-relation'] = $relation;
 			$attributes['data-condition'] = '';
 			$condition = $controller = $conditional_value = '';
-			foreach ( $field_details['conditional'] as $single_condition ){
-				if( is_array( $single_condition )){
+			foreach ( $dependent_details as $single_dependent ){
+				if( is_array( $single_dependent )){
 					/*&fp& is uniquer do not use it as any value*/
-					$condition .= $single_condition['condition'].'&fp&';
-					$controller .= $single_condition['controller'].'&fp&';
-					$conditional_value .= $single_condition['conditional-value'].'&fp&';
+					$condition .= $single_dependent['condition'].'&fp&';
+					$controller .= $single_dependent['controller'].'&fp&';
+					$conditional_value .= $single_dependent['conditional-value'].'&fp&';
 				}
 				$attributes['data-condition'] = substr($condition, 0, -4);
 				$attributes['data-controller'] = substr($controller, 0, -4);
@@ -76,13 +78,12 @@ function fieldpress_set_wrap_condition( $attributes, $field_details, $field_valu
 
 		}
 		else{
-			$conditional = $field_details['conditional'];
-			$condition = $conditional['condition'];
-			$conditional_value = $conditional['conditional-value'];
+			$condition = $dependent_details['condition'];
+			$conditional_value = $dependent_details['conditional-value'];
 
 			$attributes['data-condition'] = $condition;
 			$attributes['data-conditional-value'] = $conditional_value;
-			$attributes['data-controller'] = $conditional['controller'];
+			$attributes['data-controller'] = $dependent_details['controller'];
 		}
 	}
 	return $attributes;

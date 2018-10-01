@@ -3164,9 +3164,7 @@ if(class_exists('FieldPress_Menu_Framework')) {
 					'blue'  => esc_html__( 'Blue', 'fieldpress' ),
 					'yellow'=> esc_html__( 'Yellow', 'fieldpress' ),
 				),
-				'conditional' => array(
-					'type' => 'controller',
-				),
+				'controller' => true,
 				'accordion'   => 'fb-accordion-title',
 			),
 			'fp-conditional-field-controller-2'  => array(
@@ -3181,9 +3179,7 @@ if(class_exists('FieldPress_Menu_Framework')) {
 				),
 				"default" => 'yellow',
 				'order'   => 'fb-order-title',
-				'conditional' => array(
-					'type' => 'controller',
-				),
+				'controller' => true,
 			),
 			'fp-conditional-field-controller-3'  => array(
 				'type'  => 'select',
@@ -3197,9 +3193,7 @@ if(class_exists('FieldPress_Menu_Framework')) {
 				),
 				"default" => 'yellow',
 				'order'   => 'fb-order-title',
-				'conditional' => array(
-					'type' => 'controller',
-				),
+				'controller' => true
 			),
 			'fp-conditional-field-dependent-1'  => array(
 				'type'  => 'radio',
@@ -3213,8 +3207,7 @@ if(class_exists('FieldPress_Menu_Framework')) {
 				),
 				"default" => 'yellow',
 				'order'   => 'fb-order-title',
-				'conditional' => array(
-					'type'=>'dependent',
+				'dependent' => array(
 					'controller'=>'fp-conditional-field-controller-1',
 					'condition'            => '==',
 					'conditional-value'=>'red'
@@ -3232,7 +3225,8 @@ if(class_exists('FieldPress_Menu_Framework')) {
 				),
 				"default" => 'yellow',
 				'order'   => 'fb-order-title',
-				'conditional' => array(
+				'controller' => true,
+				'dependent' => array(
 					'type'=>'dependent',
 					'relation' => 'AND',
 					array(
@@ -3242,6 +3236,33 @@ if(class_exists('FieldPress_Menu_Framework')) {
 					),
 					array(
 						'controller'=>'fp-conditional-field-controller-3',
+						'condition'            => '==',
+						'conditional-value'=>'yellow',
+					),
+				),
+			),
+			'fp-conditional-field-nested-dependent-1'  => array(
+				'type'  => 'radio',
+				'section' => 'fp-conditional-field',
+				'label' => esc_html__( 'Nested Dependent 1', 'fieldpress' ),
+				'choices' => array(
+					'red' 	=> esc_html__( 'Red', 'fieldpress' ),
+					'green' => esc_html__( 'Green', 'fieldpress' ),
+					'blue' 	=> esc_html__( 'Blue', 'fieldpress' ),
+					'yellow'=> esc_html__( 'Yellow', 'fieldpress' ),
+				),
+				"default" => 'yellow',
+				'order'   => 'fb-order-title',
+				'dependent' => array(
+					'type'=>'dependent',
+					'relation' => 'AND',
+					array(
+						'controller'=>'fp-conditional-field-controller-2',
+						'condition'            => '==',
+						'conditional-value'=>'red',
+					),
+					array(
+						'controller'=>'fp-conditional-field-dependent-2',
 						'condition'            => '==',
 						'conditional-value'=>'yellow',
 					),

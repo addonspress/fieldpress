@@ -1566,6 +1566,20 @@
         });
         return $result;
     }
+    
+    function nested_dependent(dependent) {
+        if( dependent.find('.fieldpress-controller').length && dependent.hasClass('fieldpress-hidden')){
+            var nested_controller = dependent.find('.fieldpress-controller').eq(0);
+            var id = nested_controller.attr('id'),
+                nested_dependent;
+            fieldpress_addons.find('.fieldpress-dependent.'+id).each(function () {
+                nested_dependent = $(this);
+                nested_dependent.addClass('fieldpress-hidden');
+                nested_dependent(nested_dependent);
+            });
+        }
+
+    }
     function check_condition(controller){
 
         var id = controller.attr('id'),
@@ -1578,6 +1592,8 @@
             else{
                 dependent.addClass('fieldpress-hidden');
             }
+            nested_dependent( dependent );
+
         });
     }
     fieldpress_addons.find('.fieldpress-controller').each(function () {
