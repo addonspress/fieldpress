@@ -332,7 +332,7 @@ if(!class_exists('FieldPress_Menu_Framework')) {
 						}
 
 						$this->unique_field_types[] = $single_field['type'];
-						if( in_array($single_field['type'], fieldpress_nested_style_fields()) || $single_field['type'] == 'repeater'){
+						if( in_array($single_field['type'], fieldpress_nested_style_fields()) || $single_field['type'] == 'repeater' || $single_field['type'] == 'orders' ){
 							$this->current_menu_fields( $menu_id, $single_field['fields'], 1, $single_field['section'] );
 						}
 					endif;
@@ -345,7 +345,7 @@ if(!class_exists('FieldPress_Menu_Framework')) {
 						}
 
 						$this->unique_field_types[] = $single_field['type'];
-						if( in_array($single_field['type'], fieldpress_nested_style_fields()) || $single_field['type'] == 'repeater'){
+						if( in_array($single_field['type'], fieldpress_nested_style_fields()) || $single_field['type'] == 'repeater' || $single_field['type'] == 'orders' ){
 							$this->current_menu_fields( $menu_id,$single_field['fields'], 1 );
 						}
 					}

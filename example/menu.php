@@ -3056,6 +3056,157 @@ if(class_exists('FieldPress_Menu_Framework')) {
 						),
 						'order'   => 'fb-order-title',
 					),
+					'fp-overview-general-order' => array(
+						'order'   => 'fb-order-image',
+						'type' => 'repeater',
+						'info' => esc_html__( 'Some Description goes here', 'fieldpress' ),
+						'fields'=> array(
+							'fp-overview-general-order-checkbox' => array(
+								'type'  		=> 'checkbox',
+								'label' 		=> esc_html__( 'Checkbox something', 'fieldpress' ),
+								'checkbox-label'=> esc_html__( 'check for something', 'fieldpress' ),
+							),
+							'fp-overview-general-order-gallery'  => array(
+								'type'  	=> 'gallery',
+								'label' 	=> esc_html__( 'Gallery', 'fieldpress' ),
+								'multiple' 	=> true,
+							),
+							'fp-overview-general-order-wysiwyg'  => array(
+								'type'  => 'wysiwyg',
+								'label' => esc_html__( 'Wysiwyg', 'fieldpress' ),
+							),
+							'fp-overview-general-order-tabs' => array(
+								'type' 			=> 'tabs',
+								'tabs'			=> array(
+									'fp-overview-general-repeat-tab1'=>array(
+										'label' => esc_html__( 'Repeater Tab1', 'fieldpress' ),
+									),
+									'fp-overview-general-repeat-tab2'=>array(
+										'label' => esc_html__( 'Repeater Tab2', 'fieldpress' ),
+									),
+									'fp-overview-general-repeat-tab3'=>array(
+										'label' => esc_html__( 'Repeater Tab3', 'fieldpress' ),
+									),
+								),
+								'fields'=> array(
+									'overview-order-tab-text'  => array(
+										'type'  => 'text',
+										'label' => esc_html__( 'Text', 'fieldpress' ),
+										'tab'   => 'fp-overview-general-repeat-tab1',
+									),
+									'overview-order-tab-radio'  => array(
+										'type'  => 'radio',
+										'label' => esc_html__( 'Radio', 'fieldpress' ),
+										'choices' => array(
+											'red' 	=> esc_html__( 'Red', 'fieldpress' ),
+											'green' => esc_html__( 'Green', 'fieldpress' ),
+											'blue' 	=> esc_html__( 'Blue', 'fieldpress' ),
+											'yellow'=> esc_html__( 'Yellow', 'fieldpress' ),
+										),
+										"default" => 'yellow',
+										'tab'  => 'fp-overview-general-repeat-tab1',
+									),
+									'overview-order-tab-number'  => array(
+										'type'  => 'number',
+										'label' => esc_html__( 'Number', 'fieldpress' ),
+										'tab'   => 'fp-overview-general-repeat-tab2',
+									),
+									'overview-order-tab-textarea'  => array(
+										'type'  => 'textarea',
+										'label' => esc_html__( 'Textarea', 'fieldpress' ),
+										'tab'   => 'fp-overview-general-repeat-tab2',
+									),
+									'overview-order-tab-url'  => array(
+										'type'  => 'url',
+										'label' => esc_html__( 'Url', 'fieldpress' ),
+										'tab'   => 'fp-overview-general-repeat-tab3',
+									),
+									'overview-order-tab-checkbox-multiple'  => array(
+										'type'  => 'checkbox',
+										'label' => esc_html__( 'Checkbox Multiple', 'fieldpress' ),
+										'choices'=> array(
+											'red'   => esc_html__( 'Red', 'fieldpress' ),
+											'green' => esc_html__( 'Green', 'fieldpress' ),
+											'blue'  => esc_html__( 'Blue', 'fieldpress' ),
+											'yellow'=> esc_html__( 'Yellow', 'fieldpress' ),
+										),
+										'wrap-attr' => array(
+											'class' => 'inline-block',
+										),
+										'tab'   => 'fp-overview-general-repeat-tab3',
+									),
+								),
+							),
+						),
+					),
+					'fp-order-general-repeater-tabs' => array(
+						'order'   => 'fb-order-social',
+						'type' 			=> 'tabs',
+						'tabs'			=> array(
+							'fp-order-general-repeat-tab1'=>array(
+								'label' => esc_html__( 'Repeater Tab1', 'fieldpress' ),
+							),
+							'fp-order-general-repeat-tab2'=>array(
+								'label' => esc_html__( 'Repeater Tab2', 'fieldpress' ),
+							),
+							'fp-order-general-repeat-tab3'=>array(
+								'label' => esc_html__( 'Repeater Tab3', 'fieldpress' ),
+							),
+						),
+						'fields'=> array(
+							'order-repeater-tab-icon'  => array(
+								'type'  => 'icon',
+								'label' => esc_html__( 'Icon', 'fieldpress' ),
+								'tab'   => 'fp-order-general-repeat-tab1',
+							),
+							'order-repeater-tab-text'  => array(
+								'type'  => 'text',
+								'label' => esc_html__( 'Text', 'fieldpress' ),
+								'tab'   => 'fp-order-general-repeat-tab1',
+							),
+							'order-repeater-tab-radio'  => array(
+								'type'  => 'radio',
+								'label' => esc_html__( 'Radio', 'fieldpress' ),
+								'choices' => array(
+									'red' 	=> esc_html__( 'Red', 'fieldpress' ),
+									'green' => esc_html__( 'Green', 'fieldpress' ),
+									'blue' 	=> esc_html__( 'Blue', 'fieldpress' ),
+									'yellow'=> esc_html__( 'Yellow', 'fieldpress' ),
+								),
+								"default" => 'yellow',
+								'tab'  => 'fp-order-general-repeat-tab1',
+							),
+							'order-repeater-tab-number'  => array(
+								'type'  => 'number',
+								'label' => esc_html__( 'Number', 'fieldpress' ),
+								'tab'   => 'fp-order-general-repeat-tab2',
+							),
+							'order-repeater-tab-textarea'  => array(
+								'type'  => 'textarea',
+								'label' => esc_html__( 'Textarea', 'fieldpress' ),
+								'tab'   => 'fp-order-general-repeat-tab2',
+							),
+							'order-repeater-tab-url'  => array(
+								'type'  => 'url',
+								'label' => esc_html__( 'Url', 'fieldpress' ),
+								'tab'   => 'fp-order-general-repeat-tab3',
+							),
+							'order-repeater-tab-checkbox-multiple'  => array(
+								'type'  => 'checkbox',
+								'label' => esc_html__( 'Checkbox Multiple', 'fieldpress' ),
+								'choices'=> array(
+									'red'   => esc_html__( 'Red', 'fieldpress' ),
+									'green' => esc_html__( 'Green', 'fieldpress' ),
+									'blue'  => esc_html__( 'Blue', 'fieldpress' ),
+									'yellow'=> esc_html__( 'Yellow', 'fieldpress' ),
+								),
+								'wrap-attr' => array(
+									'class' => 'inline-block',
+								),
+								'tab'   => 'fp-order-general-repeat-tab3',
+							),
+						),
+					),
 				),
 			),
 

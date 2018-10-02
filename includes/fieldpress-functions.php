@@ -98,6 +98,7 @@ function fieldpress_enqueue_scripts( $all_fields, $unique = false ) {
 	}
 
 	if( in_array('icon', $unique_fields ) ){
+		wp_enqueue_media();/*icon is using default media light-box*/
 		wp_enqueue_script( 'jquery-ui-dialog' );
 		wp_enqueue_style( 'wp-jquery-ui-dialog' );
 		wp_enqueue_style( 'font-awesome', FIELDPRESS_URL . 'assets/frameworks/font-awesome-5/css/fontawesome-all'.FIELDPRESS_SCRIPT_PREFIX.'.css');

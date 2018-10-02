@@ -266,7 +266,7 @@ if(!class_exists('FieldPress_Meta_Framework')) {
                         }
 
 			            $this->unique_field_types[] = $single_field['type'];
-			            if( $single_field['type'] == 'tabs' || $single_field['type'] == 'repeater'){
+			            if( $single_field['type'] == 'tabs' || $single_field['type'] == 'repeater' || $single_field['type'] == 'repeater'){
 				            $this->current_meta_fields( $meta_box_id, $single_field['fields'], 1, $single_field['section'] );
 			            }
 		            endif;
@@ -279,7 +279,7 @@ if(!class_exists('FieldPress_Meta_Framework')) {
                         }
 
 			            $this->unique_field_types[] = $single_field['type'];
-			            if( $single_field['type'] == 'tabs' || $single_field['type'] == 'repeater'){
+			            if( $single_field['type'] == 'tabs' || $single_field['type'] == 'repeater' || $single_field['type'] == 'repeater'){
 				            $this->current_meta_fields( $meta_box_id, $single_field['fields'], 1 );
 			            }
 		            }
