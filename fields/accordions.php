@@ -9,7 +9,10 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @param mixed $field_value
  * @return void
  */
-function fieldpress_render_accordions( $field_details, $accordions_from = array() ) {
+function fieldpress_render_accordions( $field_details, $field_value ) {
+
+	/*use for name*/
+	$accordion_main_id = $field_details['id'];
 
 	$accordions = $field_details['accordions'];
 	/*Sort accordions according to priority*/
@@ -19,6 +22,15 @@ function fieldpress_render_accordions( $field_details, $accordions_from = array(
 	/*Sort fields according to priority*/
 	fieldpress_stable_uasort ($fields,'fieldpress_uasort');
 
+	/*override attr*/
+	$override = false;
+	if( isset( $field_details['fieldpress-override-attr']) && is_array( $field_details['fieldpress-override-attr'] ) ){
+		$override_attr = $field_details['fieldpress-override-attr'];
+		$override_name = $override_attr['name'];
+		$override_id = $override_attr['id'];
+		$override = true;
+	}
+	/*initialize accordion and fields*/
 	$accordions_and_fields = array();
 
 	foreach( $accordions as $accordion_id => $accordion_details ){
@@ -50,43 +62,29 @@ function fieldpress_render_accordions( $field_details, $accordions_from = array(
 
 			foreach( $accordion_fields as $field_id => $accordion_single_field ){
 
-
-				if( isset( $field_details['is_in_repeater'])){
-
-					$repeater_details = $field_details['repeater-details'];
-					$field_repeater_depth = $field_details['repeater-depth'];
-
-					$repeater_id  = $repeater_details['attr']['id'].$field_repeater_depth.$field_id;
-					$repeater_name  = $repeater_details['attr']['name'].'['.$field_repeater_depth.']['.$field_id.']';
-					$accordion_single_field['repeater_depth'] = $field_repeater_depth;
-
-					/*set new id for field in array format*/
-					$accordion_single_field['attr']['id'] = $repeater_id;
-					$accordion_single_field['attr']['fieldpress-filed-name'] = $repeater_name;
-					$accordion_single_field['fieldpress-unique'] = $repeater_id;
-
-					$accordion_single_field['is_in_repeater'] = 1;
-
+				if( $override ){
+					$accordion_single_field_name = $override_name.'['.$field_id.']';
+					$accordion_single_field_id = $override_id;
 				}
 				else{
-					$accordion_single_field['attr']['id'] = $field_id;
-					$accordion_single_field['attr']['name'] = $field_id;
+					$accordion_single_field_name = $accordion_main_id.'['.$field_id.']';
+					$accordion_single_field_id = $accordion_main_id.$field_id;
 				}
+				$accordion_single_field['fieldpress-override-attr']['name'] = $accordion_single_field_name;
+				$accordion_single_field['fieldpress-override-attr']['id'] = $accordion_single_field_id;
 
-				$value = false;
-				if( 'menu' == $accordions_from['type'] ){
-					$value = get_option( $field_id );
-				}
-				elseif ('meta' == $accordions_from['type'] ){
-					$value = get_post_meta( $accordions_from['post_id'], $field_id,true );
-				}
+				$accordion_single_field['attr']['name'] = $accordion_single_field_name;
+				$accordion_single_field['attr']['id'] = $accordion_single_field_id;
+
+
+				$value = isset($field_value[$field_id])?$field_value[$field_id]:false;
 				if ( ! $value ) {
 					if ( isset( $accordion_single_field['default'] ) ) {
 						$value = $accordion_single_field['default'];
 					}
 				}
 
-				fieldpress_render_field( $field_id, $accordion_single_field, $value, $accordions_from );
+				fieldpress_render_field( $field_id, $accordion_single_field, $value );
 			}
 			echo'</div>'/*.fieldpress-accordion-inside*/;
 		}

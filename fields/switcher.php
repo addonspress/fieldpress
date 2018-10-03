@@ -34,6 +34,9 @@ function fieldpress_render_switcher( $field_details, $field_value ) {
 		if( isset( $attributes['name'])){
 			$attributes['name'] = $attributes['name'].'[]';
 		}
+		if( isset( $attributes['fieldpress-filed-name'])){
+			$attributes['fieldpress-filed-name'] = $attributes['fieldpress-filed-name'].'[]';
+		}
 		foreach ( $choices as $choice_value => $choice ) {
 			$attributes['value'] = $choice_value;
 			$output .= '<li>';

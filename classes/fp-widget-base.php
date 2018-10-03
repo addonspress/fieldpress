@@ -273,7 +273,7 @@ if(!class_exists('FieldPress_Widget')) {
 				}
 
 				$this->unique_field_types[] = $single_field['type'];
-				if( $single_field['type'] == 'tabs' || $single_field['type'] == 'repeater'){
+				if( in_array($single_field['type'], fieldpress_nested_style_fields()) || $single_field['type'] == 'repeater' || $single_field['type'] == 'orders' ){
 					$this->current_widget_fields( $single_field['fields'], 1, $single_field['section'] );
 				}
 			}
@@ -283,7 +283,7 @@ if(!class_exists('FieldPress_Widget')) {
 					$this->current_fields['fieldpress-default-section'][$field_id]= $single_field;
 				}
 				$this->unique_field_types[] = $single_field['type'];
-				if( $single_field['type'] == 'tabs' || $single_field['type'] == 'repeater'){
+				if( in_array($single_field['type'], fieldpress_nested_style_fields()) || $single_field['type'] == 'repeater' || $single_field['type'] == 'orders' ){
 					$this->current_widget_fields( $single_field['fields'], 1, $single_field['section'] );
 				}
 			}
@@ -327,9 +327,8 @@ if(!class_exists('FieldPress_Widget')) {
 			foreach ( $fieldpress_default_section as $field_id => $single_field ) {
 				$single_field['attr']['id'] = $this->get_field_id( $field_id );
 				$single_field['attr']['name'] = $this->get_field_name( $field_id );
-				$single_field['fieldpress-unique'] = $this->id;
 				$value = isset( $instance[ $field_id ] ) ? $instance[ $field_id ] : '';
-				fieldpress_render_field( $field_id, $single_field, $value, $instance );
+				fieldpress_render_field( $field_id, $single_field, $value );
 			}
 		}
 
@@ -397,9 +396,8 @@ if(!class_exists('FieldPress_Widget')) {
 			foreach ( $section_details as $field_id => $single_field ) {
 				$single_field['attr']['id'] = $this->get_field_id( $field_id );
 				$single_field['attr']['name'] = $this->get_field_name( $field_id );
-				$single_field['fieldpress-unique'] = $this->id;
 				$value = isset( $instance[ $field_id ] ) ? $instance[ $field_id ] : '';
-				fieldpress_render_field( $field_id, $single_field, $value, $instance );
+				fieldpress_render_field( $field_id, $single_field, $value );
 			}
 			echo "</div>";/*.fieldpress-tabs-content-wrapper*/
 			$i++;
@@ -425,16 +423,8 @@ if(!class_exists('FieldPress_Widget')) {
 	public function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
 		foreach ( $this->widget_fields as $field_id => $single_field ) {
-			if( 'tabs' == $single_field['type'] ){
-				foreach ( $single_field['fields'] as $tab_field_id => $tab_single_field ){
-					$field_details_value_new = ( isset( $new_instance[$tab_field_id] ) ) ? $new_instance[$tab_field_id]:'' ;
-					$instance[ $field_id ] = fieldpress_sanitize_field( $tab_single_field, $field_details_value_new );
-				}
-			}
-			else{
-				$field_details_value_new = ( isset( $new_instance[$field_id] ) ) ? $new_instance[$field_id]:'' ;
-				$instance[ $field_id ] = fieldpress_sanitize_field( $single_field, $field_details_value_new );
-			}
+			$field_details_value_new = ( isset( $new_instance[$field_id] ) ) ? $new_instance[$field_id]:'' ;
+			$instance[ $field_id ] = fieldpress_sanitize_field( $single_field, $field_details_value_new );
 		}
 		$fieldpress_current_section = ( isset( $new_instance['fieldpress-current-section'] ) ) ? $new_instance['fieldpress-current-section']: '';
 		set_transient( 'fieldpress-transient-'.esc_attr( $this->id ), array( 'section_id' => sanitize_key( $fieldpress_current_section ) ), 30 );

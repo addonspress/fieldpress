@@ -597,16 +597,8 @@ if(!class_exists('FieldPress_Meta_Framework')) {
 	    public function fieldpress_prepare_before_save( $single_field, $meta_details_post, $post_id) {
 
 		    $single_field_name = $single_field['id'];
-		    if( in_array( $single_field['type'], fieldpress_nested_style_fields() ) ){
-			    foreach ( $single_field['fields'] as $tab_field_id => $tab_single_field ){
-				    $field_details_value_new = ( isset( $meta_details_post[$tab_field_id] ) ) ? $meta_details_post[$tab_field_id] : '' ;
-				    $this->fieldpress_save_field( $tab_single_field, $tab_field_id, $field_details_value_new,$post_id );
-			    }
-		    }
-		    else{
-			    $field_details_value_new = ( isset( $meta_details_post[$single_field_name] ) ) ? $meta_details_post[$single_field_name]:'' ;
-			    $this->fieldpress_save_field( $single_field, $single_field_name, $field_details_value_new,$post_id );
-		    }
+		    $field_details_value_new = ( isset( $meta_details_post[$single_field_name] ) ) ? $meta_details_post[$single_field_name]:'' ;
+		    $this->fieldpress_save_field( $single_field, $single_field_name, $field_details_value_new,$post_id );
 	    }
 
         /**

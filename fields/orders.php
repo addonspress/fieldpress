@@ -8,10 +8,10 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @since 0.0.1
  * @param array $field_details
  * @param mixed $field_value
- * @param array $orders_from
  * @return void
  */
-function fieldpress_render_orders( $field_details, $field_value ,$orders_from) {
+function fieldpress_render_orders( $field_details, $field_value ) {
+
 
 	$orders = $field_details['orders'];
 	$field_order_id = $field_details['id'];
@@ -54,7 +54,7 @@ function fieldpress_render_orders( $field_details, $field_value ,$orders_from) {
 			'type'  => 'hidden',
 		);
 		foreach( $fields as $field_id => $order_single_field ){
-			if($order_single_field['order'] == $order_id ){
+			if( $order_single_field['order'] == $order_id ){
 				/*array is awesome*/
 				$orders_and_fields[$order_id][$field_id] = $order_single_field;
 			}
@@ -62,6 +62,16 @@ function fieldpress_render_orders( $field_details, $field_value ,$orders_from) {
 		$i++;
 	}
 
+	/*override attr*/
+	$override = false;
+	if( isset( $field_details['fieldpress-override-attr']) && is_array( $field_details['fieldpress-override-attr'] ) ){
+		$override_attr = $field_details['fieldpress-override-attr'];
+		$override_name = $override_attr['name'];
+		$override_id = $override_attr['id'];
+		$override = true;
+	}
+
+	/*order index imp for ordering*/
 	$order_index = 0;
 
 	if ( !empty( $field_value ) && is_array($field_value) && count($field_value) > 0 ){
@@ -87,7 +97,7 @@ function fieldpress_render_orders( $field_details, $field_value ,$orders_from) {
 					}
 					echo '<div class="fieldpress-order-title">';
 					$checkbox_value = isset($field_saved_value[$order_id])?$field_saved_value[$order_id]:false;
-					$checkbox_name = $field_order_id.'['.$order_index.']['.$order_id.']['.$order_id.']';;
+					$checkbox_name = $field_order_id.'['.$order_index.']['.$order_id.']['.$order_id.']';
 					$checkbox_label = $orders[$order_id]['label'];
 					echo '<label><input type="checkbox" id="'.$order_id.'" name="'.$checkbox_name.'" '.checked( $checkbox_value, true, false).'>'.$checkbox_label.'</label>';
 					echo '</div></div>';
@@ -97,27 +107,19 @@ function fieldpress_render_orders( $field_details, $field_value ,$orders_from) {
 
 						foreach( $order_fields as $field_id => $order_single_field ){
 
-
-							if( isset( $field_details['is_in_repeater'])){
-
-								$repeater_details = $field_details['order-details'];
-								$field_repeater_depth = $field_details['order-depth'];
-
-								$repeater_id  = $repeater_details['attr']['id'].$field_repeater_depth.$field_id;
-								$repeater_name  = $repeater_details['attr']['name'].'['.$field_repeater_depth.']['.$field_order_id.']['.$order_index.']['.$order_id.']['.$field_id.']';
-								$order_single_field['repeater_depth'] = $field_repeater_depth;
-								/*set new id for field in array format*/
-								$order_single_field['attr']['id'] = $repeater_id;
-								$order_single_field['attr']['fieldpress-filed-name'] = $repeater_name;
-								$order_single_field['fieldpress-unique'] = $repeater_id;
-
-								$order_single_field['is_in_repeater'] = 1;
-
+							if( $override ){
+								$order_single_field_name = $override_name.'['.$order_index.']['.$order_id.']['.$field_id.']';
+								$order_single_field_id = $override_id;
 							}
 							else{
-								$order_single_field['attr']['id'] = $field_id;
-								$order_single_field['attr']['name'] = $field_order_id.'['.$order_index.']['.$order_id.']['.$field_id.']';;
+								$order_single_field_name = $field_order_id.'['.$order_index.']['.$order_id.']['.$field_id.']';
+								$order_single_field_id = $field_id;
 							}
+							$order_single_field['fieldpress-override-attr']['name'] = $order_single_field_name;
+							$order_single_field['fieldpress-override-attr']['id'] = $order_single_field_id;
+
+							$order_single_field['attr']['name'] = $order_single_field_name;
+							$order_single_field['attr']['id'] = $order_single_field_id;
 
 							$value = isset($field_saved_value[$field_id])?$field_saved_value[$field_id]:'';
 
@@ -127,7 +129,7 @@ function fieldpress_render_orders( $field_details, $field_value ,$orders_from) {
 								}
 							}
 
-							fieldpress_render_field( $field_id, $order_single_field, $value, $orders_from );
+							fieldpress_render_field( $field_id, $order_single_field, $value );
 						}
 						echo'</div>'/*.fieldpress-order-inside*/;
 					}
@@ -155,7 +157,7 @@ function fieldpress_render_orders( $field_details, $field_value ,$orders_from) {
 		}
 		echo '<div class="fieldpress-order-title">';
 		$checkbox_value = false;
-		$checkbox_name = $field_order_id.'['.$order_index.']['.$order_id.']['.$order_id.']';;
+		$checkbox_name = $field_order_id.'['.$order_index.']['.$order_id.']['.$order_id.']';
 		$checkbox_label = $orders[$order_id]['label'];
 		echo '<label><input type="checkbox" id="'.$order_id.'" name="'.$checkbox_name.'" '.checked( $checkbox_value, true, false).'>'.$checkbox_label.'</label>';
 		echo '</div></div>';
@@ -165,34 +167,26 @@ function fieldpress_render_orders( $field_details, $field_value ,$orders_from) {
 
 			foreach( $order_fields as $field_id => $order_single_field ){
 
-				if( isset( $field_details['is_in_repeater'])){
-
-					$repeater_details = $field_details['order-details'];
-					$field_repeater_depth = $field_details['order-depth'];
-
-					$repeater_id  = $repeater_details['attr']['id'].$field_repeater_depth.$field_id;
-					$repeater_name  = $repeater_details['attr']['name'].'['.$field_repeater_depth.']['.$field_order_id.']['.$order_index.']['.$order_id.']['.$field_id.']';
-					$order_single_field['repeater_depth'] = $field_repeater_depth;
-					/*set new id for field in array format*/
-					$order_single_field['attr']['id'] = $repeater_id;
-					$order_single_field['attr']['fieldpress-filed-name'] = $repeater_name;
-					$order_single_field['fieldpress-unique'] = $repeater_id;
-
-					$order_single_field['is_in_repeater'] = 1;
-
+				if( $override ){
+					$order_single_field_name = $override_name.'['.$order_index.']['.$order_id.']['.$field_id.']';
+					$order_single_field_id = $override_id;
 				}
 				else{
-					$order_single_field['attr']['id'] = $field_id;
-					$order_single_field['attr']['name'] = $field_order_id.'['.$order_index.']['.$order_id.']['.$field_id.']';;
+					$order_single_field_name = $field_order_id.'['.$order_index.']['.$order_id.']['.$field_id.']';
+					$order_single_field_id = $field_id;
 				}
+				$order_single_field['fieldpress-override-attr']['name'] = $order_single_field_name;
+				$order_single_field['fieldpress-override-attr']['id'] = $order_single_field_id;
 
+				$order_single_field['attr']['name'] = $order_single_field_name;
+				$order_single_field['attr']['id'] = $order_single_field_id;
 				$value = '';
 
 				if ( isset( $order_single_field['default'] ) ) {
 					$value = $order_single_field['default'];
 				}
 
-				fieldpress_render_field( $field_id, $order_single_field, $value, $orders_from );
+				fieldpress_render_field( $field_id, $order_single_field, $value );
 			}
 			echo'</div>'/*.fieldpress-order-inside*/;
 		}

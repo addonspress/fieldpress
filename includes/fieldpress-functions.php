@@ -122,11 +122,10 @@ function fieldpress_enqueue_scripts( $all_fields, $unique = false ) {
  * @param string $field_id
  * @param array $field_details
  * @param mixed $field_value
- * @param array $tabs_from
  * @return void
  *
  */
-function fieldpress_render_field ( $field_id, $field_details, $field_value, $tabs_from = array() ){
+function fieldpress_render_field ( $field_id, $field_details, $field_value ){
 	$field_details = apply_filters( 'fieldpress_render_field', $field_details);
 	$field_value = apply_filters( 'fieldpress_render_value', $field_value);
 	do_action( 'fieldpress_render_field_before', $field_details, $field_value );
@@ -204,11 +203,11 @@ function fieldpress_render_field ( $field_id, $field_details, $field_value, $tab
 			break;
 
 		case 'repeater':
-			fieldpress_render_repeater( $field_details, $field_value, $tabs_from );
+			fieldpress_render_repeater( $field_details, $field_value );
 			break;
 
 		case 'tabs':
-			fieldpress_render_tabs( $field_details, $tabs_from );
+			fieldpress_render_tabs( $field_details, $field_value );
 			break;
 
 		case 'icon':
@@ -224,11 +223,11 @@ function fieldpress_render_field ( $field_id, $field_details, $field_value, $tab
 			break;
 
 		case 'orders':
-			fieldpress_render_orders( $field_details, $field_value, $tabs_from );
+			fieldpress_render_orders( $field_details, $field_value );
 			break;
 
 		case 'accordions':
-			fieldpress_render_accordions( $field_details, $tabs_from );
+			fieldpress_render_accordions( $field_details, $field_value );
 			break;
 
 		case 'box':
@@ -334,6 +333,7 @@ function fieldpress_sanitize_field ( $field_details, $field_value){
 			break;
 
 		case 'box':
+
 			$output = array();
 			if( is_array( $field_value ) ){
 				$box_field_id = $field_details['id'];
@@ -421,6 +421,25 @@ function fieldpress_sanitize_field ( $field_details, $field_value){
 				}
 			}
 			break;
+
+		case 'tabs':
+		case 'accordion':
+		    $fields =  isset($field_details['fields'])? $field_details['fields'] : array();
+		    $output = array();
+            if( is_array( $field_value ) ){
+	            $output = $field_value;
+	            foreach ( $field_value as $field_name=> $field_val ){
+		            foreach( $fields as $field_id => $field_details ){
+			            if( $field_name == $field_id){
+				            $actual_value = $field_val;
+				            $single_field = $field_details;
+				            $inner_output = fieldpress_sanitize_field ( $single_field, $actual_value );
+				            $output[$field_id] = $inner_output;
+			            }
+		            }
+	            }
+            }
+            break;
 
 		default:
 			$output = wp_kses_post( $field_value );

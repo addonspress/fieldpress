@@ -9,15 +9,27 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @param mixed $field_value
  * @return void
  */
-function fieldpress_render_tabs( $field_details, $tabs_from = array() ) {
+function fieldpress_render_tabs( $field_details, $field_value ) {
+
+	/*use for name*/
+	$tab_main_id = $field_details['id'];
 
 	$tabs = $field_details['tabs'];
 	/*Sort tabs according to priority*/
 	fieldpress_stable_uasort ($tabs,'fieldpress_uasort');
 
-	$fields = $field_details['fields'];
+	$fields =  isset($field_details['fields'])? $field_details['fields'] : array();
 	/*Sort fields according to priority*/
 	fieldpress_stable_uasort ($fields,'fieldpress_uasort');
+
+	/*override attr*/
+	$override = false;
+	if( isset( $field_details['fieldpress-override-attr']) && is_array( $field_details['fieldpress-override-attr'] ) ){
+		$override_attr = $field_details['fieldpress-override-attr'];
+		$override_name = $override_attr['name'];
+		$override_id = $override_attr['id'];
+		$override = true;
+	}
 
 	$tabs_and_fields = array();
 	if( isset( $field_details['tabs-layout']) && 'vertical' == $field_details['tabs-layout'] ){
@@ -67,42 +79,29 @@ function fieldpress_render_tabs( $field_details, $tabs_from = array() ) {
 		echo '<div id="'.esc_attr( $tab_id ).'fieldpress-tab-id" class="fields-tabs-content'.$active.'">';
 		foreach( $tab_fields as $field_id => $tab_single_field ){
 
-			if( isset( $field_details['is_in_repeater'])){
-
-				$repeater_details = $field_details['repeater-details'];
-				$field_repeater_depth = $field_details['repeater-depth'];
-
-				$repeater_id  = $repeater_details['attr']['id'].$field_repeater_depth.$field_id;
-				$repeater_name  = $repeater_details['attr']['name'].'['.$field_repeater_depth.']['.$field_id.']';
-				$tab_single_field['repeater_depth'] = $field_repeater_depth;
-
-				/*set new id for field in array format*/
-				$tab_single_field['attr']['id'] = $repeater_id;
-				$tab_single_field['attr']['fieldpress-filed-name'] = $repeater_name;
-				$tab_single_field['fieldpress-unique'] = $repeater_id;
-
-				$tab_single_field['is_in_repeater'] = 1;
-
+			if( $override ){
+				$tab_single_field_name = $override_name.'['.$field_id.']';
+				$tab_single_field_id = $override_id;
 			}
 			else{
-				$tab_single_field['attr']['id'] = $field_id;
-				$tab_single_field['attr']['name'] = $field_id;
+				$tab_single_field_name = $tab_main_id.'['.$field_id.']';
+				$tab_single_field_id = $tab_main_id.$field_id;
 			}
+			$tab_single_field['fieldpress-override-attr']['name'] = $tab_single_field_name;
+			$tab_single_field['fieldpress-override-attr']['id'] = $tab_single_field_id;
 
-			$value = false;
-			if( 'menu' == $tabs_from['type'] ){
-				$value = get_option( $field_id );
-			}
-			elseif ('meta' == $tabs_from['type'] ){
-				$value = get_post_meta( $tabs_from['post_id'], $field_id,true );
-			}
+			$tab_single_field['attr']['name'] = $tab_single_field_name;
+			$tab_single_field['attr']['id'] = $tab_single_field_id;
+
+
+			$value = isset($field_value[$field_id])?$field_value[$field_id]:false;
 			if ( ! $value ) {
 				if ( isset( $tab_single_field['default'] ) ) {
 					$value = $tab_single_field['default'];
 				}
 			}
 
-			fieldpress_render_field( $field_id, $tab_single_field, $value, $tabs_from );
+			fieldpress_render_field( $field_id, $tab_single_field, $value );
 		}
 		echo '</div>';
 		$i ++;

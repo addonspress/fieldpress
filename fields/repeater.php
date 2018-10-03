@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @param mixed $field_value
  * @return void
  */
-function fieldpress_render_repeater( $field_details, $field_value, $tabs_from = array() ) {
+function fieldpress_render_repeater( $field_details, $field_value ) {
 
 	/*defaults values for fields*/
 	$default_attr = apply_filters( 'fieldpress_radio_field_default_args',array(
@@ -79,22 +79,21 @@ function fieldpress_render_repeater( $field_details, $field_value, $tabs_from = 
 			foreach ( $fields as $field_id => $field_cr ){
 
 				/*reset var $repeater_id for repeater*/
-				$repeater_id  = $field_attr['id'].$total_repeater.$field_id;
-				$repeater_name  = $field_attr['name'].'['.$total_repeater.']['.$field_id.']';
+				$repeater_name = $field_attr['name'].'['.$total_repeater.']['.$field_id.']';
+				$repeater_id = $field_attr['id'].$total_repeater.$field_id;
 
-				$field_value = isset($field_saved_value[$field_id]) ? $field_saved_value[$field_id]: '';
+				$field_cr['fieldpress-override-attr']['name'] = $repeater_name;
+				$field_cr['fieldpress-override-attr']['id'] = $repeater_id;
 
 				/*set new id for field in array format*/
 				$field_cr['attr']['id'] = $repeater_id;
-				$field_cr['fieldpress-unique'] = $repeater_id;
 				$field_cr['attr']['name'] = $repeater_name;
-				$field_cr['is_in_repeater'] = 1;
 
-				if( 'tabs' == $field_cr['type'] ){
-					$field_cr['repeater-details'] = $field_details;
-					$field_cr['repeater-depth'] = $total_repeater;
-				}
-				fieldpress_render_field( $field_id, $field_cr, $field_value, $tabs_from );
+				/*get value*/
+				$field_value = isset($field_saved_value[$field_id]) ? $field_saved_value[$field_id]: '';
+
+
+				fieldpress_render_field( $field_id, $field_cr, $field_value );
 
 			}
 			echo '<div class="fieldpress-repeater-control-actions">
@@ -146,26 +145,18 @@ function fieldpress_render_repeater( $field_details, $field_value, $tabs_from = 
 		if ( isset( $field_cr['default'] ) ) {
 			$field_value = $field_cr['default'];
 		}
-		/*reset var $repeater_id for repeater*/
 
+		/*reset var $repeater_id for repeater*/
 		$repeater_id  = $field_attr['id'].$field_repeater_depth.$field_id;
 		$repeater_name  = $field_attr['name'].'['.$field_repeater_depth.']['.$field_id.']';
+
 		$field_cr['repeater_depth'] = $field_repeater_depth;
 
 		/*set new id for field in array format*/
 		$field_cr['attr']['id'] = $repeater_id;
 		$field_cr['attr']['fieldpress-filed-name'] = $repeater_name;
-		$field_cr['fieldpress-unique'] = $repeater_id;
 
-		$field_cr['is_in_repeater'] = 1;
-
-		if( 'tabs' == $field_cr['type'] ){
-
-			$field_cr['repeater-details'] = $field_details;
-			$field_cr['repeater-depth'] = $field_repeater_depth;
-
-		}
-		fieldpress_render_field( $field_id, $field_cr, $field_value, $tabs_from );
+		fieldpress_render_field( $field_id, $field_cr, $field_value );
 
 	}
 	echo '<div class="fieldpress-repeater-control-actions">

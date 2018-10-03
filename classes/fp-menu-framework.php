@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 if(!class_exists('FieldPress_Menu_Framework')) {
 	/**
-	 * Class or almost all types of Menu fields.
+	 * Class of almost all types of Menu fields.
 	 *
 	 * @package FieldPress
 	 * @package FieldPress Menu Framework
@@ -183,10 +183,12 @@ if(!class_exists('FieldPress_Menu_Framework')) {
 			}
 
 			$this->menus_fields = apply_filters( 'filedpress_menus_fields', $this->menus_sections_fields['fields'] );
+
 			/*Set default values for menu fields*/
 			foreach( $this->menus_fields as $field_id=>$single_field ){
 				$this->menu_field_default_values($field_id, $single_field);
 			}
+
 			/*Sort fields according to priority*/
 			fieldpress_stable_uasort ($this->menus_fields,'fieldpress_uasort');
 
@@ -493,12 +495,6 @@ if(!class_exists('FieldPress_Menu_Framework')) {
 			$menu_details = $this->current_menu;
 			$menu_id = $menu_details['id'];
 
-			$tabs_from = array(
-				'type' => 'menu',
-				'this_object' => $this,
-			);
-
-
 			?>
             <div class="fieldpress-addons fieldpress-menu-framework">
 
@@ -533,7 +529,7 @@ if(!class_exists('FieldPress_Menu_Framework')) {
 									$value = $single_field['default'];
 								}
 							}
-							fieldpress_render_field( $field_id, $single_field, $value, $tabs_from );
+							fieldpress_render_field( $field_id, $single_field, $value );
 						}
 					}
 
@@ -610,7 +606,7 @@ if(!class_exists('FieldPress_Menu_Framework')) {
 									$value = $single_field['default'];
 								}
 							}
-							fieldpress_render_field( $field_id, $single_field, $value, $tabs_from );
+							fieldpress_render_field( $field_id, $single_field, $value );
 						}
 						echo "</div>";/*.fieldpress-tabs-content-wrapper*/
 						$i++;
@@ -714,27 +710,14 @@ if(!class_exists('FieldPress_Menu_Framework')) {
 		public function fieldpress_prepare_before_save( $single_field, $menu_details_post , $reset = false ) {
 
 			$single_field_name = $single_field['id'];
-			if( in_array( $single_field['type'], fieldpress_nested_style_fields() ) ){
-				foreach ( $single_field['fields'] as $tab_field_id => $tab_single_field ){
-					if( $reset){
-						$field_details_value_new = ( isset( $tab_single_field['default'] ) ) ? $tab_single_field['default']:'' ;
-					}
-					else{
-						$field_details_value_new = ( isset( $menu_details_post[$tab_field_id] ) ) ? $menu_details_post[$tab_field_id] : '' ;
-					}
-
-					$this->fieldpress_save_field( $tab_single_field, $tab_field_id, $field_details_value_new );
-				}
+			if( $reset){
+				$field_details_value_new = ( isset( $single_field_name['default'] ) ) ? $single_field_name['default']:'' ;
 			}
 			else{
-			    if( $reset){
-			        $field_details_value_new = ( isset( $single_field_name['default'] ) ) ? $single_field_name['default']:'' ;
-			    }
-			    else{
-			        $field_details_value_new = ( isset( $menu_details_post[$single_field_name] ) ) ? $menu_details_post[$single_field_name]:'' ;
-			    }
-			    $this->fieldpress_save_field( $single_field, $single_field_name, $field_details_value_new );
+				$field_details_value_new = ( isset( $menu_details_post[$single_field_name] ) ) ? $menu_details_post[$single_field_name]:'' ;
 			}
+
+			$this->fieldpress_save_field( $single_field, $single_field_name, $field_details_value_new );
 		}
 
 		/**

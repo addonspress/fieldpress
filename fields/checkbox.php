@@ -12,7 +12,6 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 
 function fieldpress_render_checkbox( $field_details, $field_value ) {
-	
 	/*defaults attributes */
 	$default_attr = apply_filters( 'fieldpress_checkbox_field_default_args',array(
 		'type'          => 'checkbox',
@@ -32,11 +31,15 @@ function fieldpress_render_checkbox( $field_details, $field_value ) {
 	$choices = ( isset( $field_details['choices'] ) ? $field_details['choices'] : '' );
 	$query_args = ( isset( $field_details['query_args'] ) ? $field_details['query_args'] : array() );
 
+
 	$output = '<ul>';
 	if ( !empty( $choices ) ){
 		$choices  = ( is_array( $choices ) ) ? $choices : fieldpress_get_choices( $choices, $query_args );
 		if( isset( $attributes['name'])){
 			$attributes['name'] = $attributes['name'].'[]';
+		}
+		if( isset( $attributes['fieldpress-filed-name'])){
+			$attributes['fieldpress-filed-name'] = $attributes['fieldpress-filed-name'].'[]';
 		}
 		foreach ( $choices as $choice_value => $choice ) {
 			$attributes['value'] = $choice_value;

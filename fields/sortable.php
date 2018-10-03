@@ -54,7 +54,6 @@ function fieldpress_render_sortable( $field_details, $field_value ) {
 	}
 	$all_choices_defaults = array_merge( $default_modified_active, $default_modified_inactive );
 
-
 	$added_choices = array_diff( $all_choices_defaults, $all_choices_field_value );
 	$inactive = array_merge($inactive, $added_choices );
 

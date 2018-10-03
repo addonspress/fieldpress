@@ -32,6 +32,27 @@ function fieldpress_render_box( $field_details, $field_value ) {
 	$box_field_id = $field_details['id'];
 	$devices = isset( $field_details['device'] )?$field_details['device']: $default_devices;
 
+	/*defaults values for fields*/
+	$default_attr = apply_filters( 'fieldpress_order_field_default_args',array(
+		'type'          => 'box',
+		'id'            => '',
+		'class'         => '',
+		'style'         => '',
+	), $field_details, $field_value );
+
+	$field_attr = $field_details['attr'];
+	$attributes = apply_filters('fieldpress_field_attributes', wp_parse_args( $field_attr, $default_attr ), $field_details, $field_value );
+	$class = isset($attributes['class'])?$attributes['class'].' '.'fieldpress-box':'fieldpress-box';
+	$attributes['class'] = fieldpress_get_single_field_class( $field_details, $field_value, $class );
+
+	$output = '<div ';
+
+	foreach ($attributes as $name => $value) {
+		$output .= sprintf('%1$s="%2$s"', esc_attr( $name ), esc_attr( $value ));
+	}
+	$output .= '>';
+	echo $output;
+
 	/*Sort devices according to priority*/
 	fieldpress_stable_uasort ($devices,'fieldpress_uasort');
 
@@ -57,6 +78,14 @@ function fieldpress_render_box( $field_details, $field_value ) {
 	echo '<div class="fieldpress-inner-devices-content">';
 	$i = 1;
 
+	/*override attr*/
+	$override = false;
+	if( isset( $field_details['fieldpress-override-attr']) && is_array( $field_details['fieldpress-override-attr'] ) ){
+		$override_attr = $field_details['fieldpress-override-attr'];
+		$override_name = $override_attr['name'];
+		$override_id = $override_attr['id'];
+		$override = true;
+	}
 	foreach( $devices as $device_id => $device_details ){
 		if( $i == 1){
 			$active = ' active';
@@ -68,14 +97,9 @@ function fieldpress_render_box( $field_details, $field_value ) {
 
 		foreach( $box_fields_attr as $field_id => $box_single_field ){
 
-			if( isset( $field_details['is_in_repeater'])){
-
-				$repeater_details = $field_details['repeater-details'];
-				$field_repeater_depth = $field_details['repeater-depth'];
-
-				$box_single_field_id  = $repeater_details['attr']['id'].$field_repeater_depth.$box_field_id.$device_id.$field_id;
-				$box_single_field_name  = $repeater_details['attr']['name'].'['.$field_repeater_depth.']['.$box_field_id.']['.$device_id.']['.$field_id.']';
-
+			if( $override ){
+				$box_single_field_id = $override_id.$device_id.$field_id;
+				$box_single_field_name = $override_name.'['.$device_id.']['.$field_id.']';
 			}
 			else{
 				$box_single_field_id = $box_field_id.$device_id.$field_id;
@@ -95,10 +119,7 @@ function fieldpress_render_box( $field_details, $field_value ) {
 
 		echo '</div>';
 		$i ++;
-
 	}
-
 	echo '</div>';
-
-	
+	echo'</div>';/*output*/
 }
