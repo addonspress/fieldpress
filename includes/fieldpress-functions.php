@@ -356,7 +356,6 @@ function fieldpress_sanitize_field ( $field_details, $field_value){
 			$orders = $field_details['orders'];
 			$fields =  isset($field_details['fields'])? $field_details['fields'] : array();
 
-
 			if( is_array( $field_value ) ){
 			    $i = 0;
 				foreach ( $field_value as $index_key=> $field_val ){
@@ -374,6 +373,7 @@ function fieldpress_sanitize_field ( $field_details, $field_value){
 								foreach ( $val as $field_id=> $inner_fields ){
 									$actual_value = $field_value[$index_key][$key][$field_id];
 									$single_field = $fields[$field_id];
+									$single_field['id'] = $field_id;
 									$inner_output = fieldpress_sanitize_field ( $single_field, $actual_value );
 									$output[$i][$field_id] = $inner_output;
 
@@ -413,6 +413,7 @@ function fieldpress_sanitize_field ( $field_details, $field_value){
 						foreach ( $field_value as $key=> $field_val ){
 						    if( isset( $field_val[$field_id] ) ){
 							    $actual_value = $field_val[$field_id];
+							    $single_field['id'] = $field_id;
 							    $inner_output = fieldpress_sanitize_field ( $single_field, $actual_value );
 							    $output[$key][$field_id] = $inner_output;
                             }
@@ -423,8 +424,17 @@ function fieldpress_sanitize_field ( $field_details, $field_value){
 			break;
 
 		case 'tabs':
-		case 'accordion':
+		case 'accordions':
 		    $fields =  isset($field_details['fields'])? $field_details['fields'] : array();
+		    if( $field_details['type'] == 'accordions' && isset( $field_details['checkbox']) && $field_details['checkbox'] ){
+			    $accordions = $field_details['accordions'];
+			    foreach( $accordions as $accordion_id => $accordion_details ){
+				    $fields[$accordion_id] =  array(
+					    'type'  => 'checkbox'
+				    );
+			    }
+		    }
+
 		    $output = array();
             if( is_array( $field_value ) ){
 	            $output = $field_value;
@@ -433,6 +443,7 @@ function fieldpress_sanitize_field ( $field_details, $field_value){
 			            if( $field_name == $field_id){
 				            $actual_value = $field_val;
 				            $single_field = $field_details;
+				            $single_field['id'] = $field_id;
 				            $inner_output = fieldpress_sanitize_field ( $single_field, $actual_value );
 				            $output[$field_id] = $inner_output;
 			            }
@@ -440,6 +451,7 @@ function fieldpress_sanitize_field ( $field_details, $field_value){
 	            }
             }
             break;
+
 
 		default:
 			$output = wp_kses_post( $field_value );

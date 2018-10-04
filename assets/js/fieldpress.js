@@ -1299,42 +1299,47 @@
     };
 
     var FPORDER =  function (){
-        fieldpress_document.on('click', '.fieldpress-order-action, .fieldpress-order-close', function (e) {
-            e.preventDefault();
-            var accordion_toggle = $(this),
-                order_field = accordion_toggle.closest('.order-table'),
-                order_inside = order_field.find('.fieldpress-order-inside:first');
+        fieldpress_document.on('click', '.fieldpress-order-top, .fieldpress-order-close', function (e) {
+            if(e.target.type !== 'checkbox') {
+                e.preventDefault();
+                var accordion_toggle = $(this),
+                    order_field = accordion_toggle.closest('.order-table'),
+                    order_inside = order_field.find('.fieldpress-order-inside:first');
 
-            if ( order_inside.is( ':hidden' ) ) {
-                order_inside.slideDown( 'fast',function () {
-                    order_field.addClass( 'open' );
-                } );
+                if ( order_inside.is( ':hidden' ) ) {
+                    order_inside.slideDown( 'fast',function () {
+                        order_field.addClass( 'open' );
+                    } );
+                }
+                else {
+                    order_inside.slideUp( 'fast', function() {
+                        order_field.removeClass( 'open' );
+                    });
+                }
             }
-            else {
-                order_inside.slideUp( 'fast', function() {
-                    order_field.removeClass( 'open' );
-                });
-            }
+
         });
     };
 
     /**accordion**/
     var FPACCORDION =  function (){
         fieldpress_document.on('click', '.fieldpress-accordion-top, .fieldpress-accordion-close', function (e) {
-            e.preventDefault();
-            var accordion_toggle = $(this),
-                accordion_field = accordion_toggle.closest('.accordion-table'),
-                accordion_inside = accordion_field.find('.fieldpress-accordion-inside:first');
+            if(e.target.type !== 'checkbox') {
+                e.preventDefault();
+                var accordion_toggle = $(this),
+                    accordion_field = accordion_toggle.closest('.accordion-table'),
+                    accordion_inside = accordion_field.find('.fieldpress-accordion-inside:first');
 
-            if ( accordion_inside.is( ':hidden' ) ) {
-                accordion_inside.slideDown( 'fast',function () {
-                    accordion_field.addClass( 'open' );
-                } );
-            }
-            else {
-                accordion_inside.slideUp( 'fast', function() {
-                    accordion_field.removeClass( 'open' );
-                });
+                if ( accordion_inside.is( ':hidden' ) ) {
+                    accordion_inside.slideDown( 'fast',function () {
+                        accordion_field.addClass( 'open' );
+                    } );
+                }
+                else {
+                    accordion_inside.slideUp( 'fast', function() {
+                        accordion_field.removeClass( 'open' );
+                    });
+                }
             }
         });
     };

@@ -45,7 +45,25 @@ function fieldpress_render_accordions( $field_details, $field_value ) {
 
 	foreach( $accordions_and_fields as $accordion_id => $accordion_fields ){
 
-		$label = isset($accordions[$accordion_id]['label'])?$accordions[$accordion_id]['label']:'';
+
+		if( isset( $field_details['checkbox']) && $field_details['checkbox'] ){
+			$checkbox_value = isset($field_value[$accordion_id])?$field_value[$accordion_id]:false;
+			$checkbox_label = $label = isset($accordions[$accordion_id]['label'])?$accordions[$accordion_id]['label']:'';
+
+			if( $override ){
+				$accordion_checkbox_field_name = $override_name.'['.$accordion_id.']';
+				$accordion_checkbox_field_id = $override_id;
+			}
+			else{
+				$accordion_checkbox_field_name = $accordion_main_id.'['.$accordion_id.']';
+				$accordion_checkbox_field_id = $accordion_main_id.$accordion_id;
+			}
+			$checkbox_label = '<input type="checkbox" id="'.$accordion_checkbox_field_id.'" name="'.$accordion_checkbox_field_name.'" '.checked( $checkbox_value, true, false).'>'.$checkbox_label;
+
+		}
+		else{
+			$checkbox_label = $label = isset($accordions[$accordion_id]['label'])?$accordions[$accordion_id]['label']:'';
+		}
 
 		echo  '<div class="accordion-table">';
 		echo '<div class="fieldpress-accordion-top">
@@ -54,7 +72,7 @@ function fieldpress_render_accordions( $field_details, $field_value ) {
 								<span class="toggle-indicator" aria-hidden="true"></span>
 							</button>
 						</div>
-						<div class="fieldpress-accordion-title"><label>'.$label.'</label></div>
+						<div class="fieldpress-accordion-title"><label>'.$checkbox_label.'</label></div>
 					</div>';
 
 		if( !empty( $accordion_fields) ){

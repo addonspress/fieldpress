@@ -3209,11 +3209,532 @@ if(class_exists('FieldPress_Menu_Framework')) {
 					),
 				),
 			),
+			/*Team PRess*/
+			'fp-element-manager' => array(
+				'section' => 'fp-option-order',
+				'type' 			=> 'orders',
+				'priority'                  => 72,
+
+				'orders'			=> array(
+					'fp-order-title-position'=>array(
+						'label' => esc_html__( 'Title & Position', 'fieldpress' ),
+						'checkbox' => true,
+					),
+					'fp-order-thumbnail'=>array(
+						'label' => esc_html__( 'Thumbnail', 'fieldpress' ),
+						'checkbox' => true,
+					),
+					'fp-order-social'=>array(
+						'label' => esc_html__( 'Social', 'fieldpress' ),
+						'checkbox' => true,
+					),
+					'fp-order-description'=>array(
+						'label' => esc_html__( 'Description', 'fieldpress' ),
+						'checkbox' => true,
+					),
+					'fp-order-contact'=>array(
+						'label' => esc_html__( 'Contact Address', 'fieldpress' ),
+						'checkbox' => true,
+					),
+				),
+				'fields'=> array(
+
+
+					/*
+					--------------------------------------------------------------------
+					 fields listed in "Title and Position"
+					---------------------------------------------------------------------
+					*/
+					'fp-title-font-size' => array(
+						'order' => 'fp-order-title-position',
+						'label' => esc_html__( 'Title Font Size:', 'fieldpress' ),
+						'desc' => esc_html__( 'Insert value with unit. E.g 10px ,10em, 10%.', 'fieldpress' ),
+						'type' 			=> 'box',
+						'device'		=> array(
+							'large'=>array(
+								'icon' => 'fas fa-desktop',
+							),
+							'medium'=>array(
+								'icon' => 'fas fa-tablet-alt',
+							),
+							'small'=>array(
+								'icon' => 'fas fa-mobile-alt ',
+							),
+						),
+						'boxes'=> array(
+							'title-font-size'=> true,
+						),
+					),
+					'fp-title-line-height' => array(
+						'order' => 'fp-order-title-position',
+						'label' => esc_html__( 'Title Line Height:', 'fieldpress' ),
+						'desc' => esc_html__( 'Insert value with unit. E.g 10em,10, 10em,10px .', 'fieldpress' ),
+						'type' 			=> 'box',
+						'device'		=> array(
+							'large'=>array(
+								'icon' => 'fas fa-desktop',
+							),
+							'medium'=>array(
+								'icon' => 'fas fa-tablet-alt',
+							),
+							'small'=>array(
+								'icon' => 'fas fa-mobile-alt ',
+							),
+						),
+						'boxes'=> array(
+							'title-line-height'=> true,
+						),
+					),
+					'fp-title-font-color'  => array(
+						'type'  => 'color',
+						'label' => esc_html__( 'Title Font Color', 'fieldpress' ),
+						'order'   => 'fp-order-title-position',
+					),
+					/*member position size*/
+					'fp-position-font-size' => array(
+						'order' => 'fp-order-title-position',
+						'label' => esc_html__( 'Member Position Font Size:', 'fieldpress' ),
+						'desc' => esc_html__( 'Insert value with unit. E.g 10px ,10em, 10%.', 'fieldpress' ),
+						'type' 			=> 'box',
+						'device'		=> array(
+							'large'=>array(
+								'icon' => 'fas fa-desktop',
+							),
+							'medium'=>array(
+								'icon' => 'fas fa-tablet-alt',
+							),
+							'small'=>array(
+								'icon' => 'fas fa-mobile-alt ',
+							),
+						),
+						'boxes'=> array(
+							'member-font-size'=> true,
+						),
+					),
+					/*member line height*/
+					'fp-member-position-line-height' => array(
+						'order' => 'fp-order-title-position',
+						'label' => esc_html__( 'Member Positon Line Height:', 'fieldpress' ),
+						'desc' => esc_html__( 'Insert value with unit. E.g 10em,10, 10em,10px .', 'fieldpress' ),
+						'type' 			=> 'box',
+						'device'		=> array(
+							'large'=>array(
+								'icon' => 'fas fa-desktop',
+							),
+							'medium'=>array(
+								'icon' => 'fas fa-tablet-alt',
+							),
+							'small'=>array(
+								'icon' => 'fas fa-mobile-alt ',
+							),
+						),
+						'boxes'=> array(
+							'member-line-height'=> true,
+						),
+					),
+					'fp-member-position-font-color'  => array(
+						'type'  => 'color',
+						'label' => esc_html__( 'Member Position Font Color', 'fieldpress' ),
+						'order'   => 'fp-order-title-position',
+					),
+					/*title padding*/
+					'fp-title-position-padding' => array(
+						'order' => 'fp-order-title-position',
+						'label' => esc_html__( 'Padding:', 'fieldpress' ),
+						'desc' => esc_html__( 'Insert value with unit. E.g 10px ,10em, 10%.', 'fieldpress' ),
+						'type' 			=> 'box',
+						'device'		=> array(
+							'large'=>array(
+								'icon' => 'fas fa-desktop',
+							),
+							'medium'=>array(
+								'icon' => 'fas fa-tablet-alt',
+							),
+							'small'=>array(
+								'icon' => 'fas fa-mobile-alt ',
+							),
+						),
+						'boxes'=> array(
+							'top'=> true,
+							'right'=> true,
+							'bottom'=> true,
+							'left'=> true,
+						),
+					),
+					/*title marign*/
+					'fp-title-position-margin' => array(
+						'order' => 'fp-order-title-position',
+						'label' => esc_html__( 'Margin:', 'fieldpress' ),
+						'desc' => esc_html__( 'Insert value with unit. E.g 10px ,10em, 10%.', 'fieldpress' ),
+						'type' 			=> 'box',
+						'device'		=> array(
+							'large'=>array(
+								'icon' => 'fas fa-desktop',
+							),
+							'medium'=>array(
+								'icon' => 'fas fa-tablet-alt',
+							),
+							'small'=>array(
+								'icon' => 'fas fa-mobile-alt ',
+							),
+						),
+						'boxes'=> array(
+							'top'=> true,
+							'right'=> true,
+							'bottom'=> true,
+							'left'=> true,
+						),
+					),
+
+					/*
+					--------------------------------------------------------------------
+					 fields listed in "social ICOn"
+					---------------------------------------------------------------------
+					*/
+					'fp-social-icon-properties'     => array(
+						'type'                      => 'repeater',
+						'label'                     => esc_html__( 'Social Icon Properties', 'team-press' ),
+						'label-repeater'            => esc_html__( 'Icon Properties ', 'team-press' ),
+						'fields'                    => array(
+							'fp-social-icon'=> array(
+								'type'              => 'icon',
+								'label'             => esc_html__( 'Icon', 'team-press' ),
+							),
+							'fp-social-icon-color' => array(
+								'type'              => 'color',
+								'label'             => esc_html__( 'Icon Color:', 'team-press' ),
+							),
+							'fp-social-border-color' => array(
+								'type'              => 'color',
+								'label'             => esc_html__( 'Border Color:', 'team-press' ),
+							),
+							'fp-social-bg-color' => array(
+								'type'              => 'color',
+								'label'             => esc_html__( 'Background Color:', 'team-press' ),
+							),
+							'fp-social-hover-color' => array(
+								'type'              => 'color',
+								'label'             => esc_html__( 'Hover Color:', 'team-press' ),
+							),
+						),
+						'order'                   =>  'fp-order-social',
+					),
+					/*Icon padding*/
+					'fp-social-icon-padding' => array(
+						'order' => 'fp-order-social',
+						'label' => esc_html__( 'Padding:', 'fieldpress' ),
+						'desc' => esc_html__( 'Insert value with unit. E.g 10px ,10em, 10%.', 'fieldpress' ),
+						'type' 			=> 'box',
+						'device'		=> array(
+							'large'=>array(
+								'icon' => 'fas fa-desktop',
+							),
+							'medium'=>array(
+								'icon' => 'fas fa-tablet-alt',
+							),
+							'small'=>array(
+								'icon' => 'fas fa-mobile-alt ',
+							),
+						),
+						'boxes'=> array(
+							'top'=> true,
+							'right'=> true,
+							'bottom'=> true,
+							'left'=> true,
+						),
+					),
+					/*Icon marign*/
+					'fp-social-icon-margin' => array(
+						'order' => 'fp-order-social',
+						'label' => esc_html__( 'Margin:', 'fieldpress' ),
+						'desc' => esc_html__( 'Insert value with unit. E.g 10px ,10em, 10%.', 'fieldpress' ),
+						'type' 			=> 'box',
+						'device'		=> array(
+							'large'=>array(
+								'icon' => 'fas fa-desktop',
+							),
+							'medium'=>array(
+								'icon' => 'fas fa-tablet-alt',
+							),
+							'small'=>array(
+								'icon' => 'fas fa-mobile-alt ',
+							),
+						),
+						'boxes'=> array(
+							'top'=> true,
+							'right'=> true,
+							'bottom'=> true,
+							'left'=> true,
+						),
+					),
+					/*
+					--------------------------------------------------------------------
+					 fields listed in "Thumbnail"
+					---------------------------------------------------------------------
+					*/
+					/*thumbnail padding*/
+					'fp-order-thmubnail-radius'      => array(
+						'type'                      => 'text',
+						'label'                     => esc_html__( 'Radius', 'team-press' ),
+						'desc'                     	=> esc_html__( 'Enter value with unit(px).', 'team-press' ),
+						'order' 					=> 'fp-order-thumbnail',
+					),
+					'fp-thumbnail-padding-11' => array(
+						'order' => 'fp-order-thumbnail',
+						'label' => esc_html__( 'Padding:', 'fieldpress' ),
+						'desc' => esc_html__( 'Insert value with unit. E.g 10px ,10em, 10%.', 'fieldpress' ),
+						'type' 			=> 'box',
+						'device'		=> array(
+							'large'=>array(
+								'icon' => 'fas fa-desktop',
+							),
+							'medium'=>array(
+								'icon' => 'fas fa-tablet-alt',
+							),
+							'small'=>array(
+								'icon' => 'fas fa-mobile-alt ',
+							),
+						),
+						'boxes'=> array(
+							'topw'=> true,
+							'rightw'=> true,
+							'bottomw'=> true,
+							'leftw'=> true,
+						),
+					),
+					/*thumbnail marign*/
+					'fp-thumbnail-margin-11' => array(
+						'order' => 'fp-order-thumbnail',
+						'label' => esc_html__( 'Margin:', 'fieldpress' ),
+						'desc' => esc_html__( 'Insert value with unit. E.g 10px ,10em, 10%.', 'fieldpress' ),
+						'type' 			=> 'box',
+						'device'		=> array(
+							'large'=>array(
+								'icon' => 'fas fa-desktop',
+							),
+							'medium'=>array(
+								'icon' => 'fas fa-tablet-alt',
+							),
+							'small'=>array(
+								'icon' => 'fas fa-mobile-alt ',
+							),
+						),
+						'boxes'=> array(
+							'topx'=> true,
+							'rightx'=> true,
+							'bottomx'=> true,
+							'leftx'=> true,
+						),
+					),
+
+					/*
+					--------------------------------------------------------------------
+					 fields listed in "desc (content)"
+					---------------------------------------------------------------------
+					*/
+					/*dec size*/
+					'fp-desc-font-size' => array(
+						'order' => 'fp-order-description',
+						'label' => esc_html__( 'Description Font Size:', 'fieldpress' ),
+						'desc' => esc_html__( 'Insert value with unit. E.g 10px ,10em, 10%.', 'fieldpress' ),
+						'type' 			=> 'box',
+						'device'		=> array(
+							'large'=>array(
+								'icon' => 'fas fa-desktop',
+							),
+							'medium'=>array(
+								'icon' => 'fas fa-tablet-alt',
+							),
+							'small'=>array(
+								'icon' => 'fas fa-mobile-alt ',
+							),
+						),
+						'boxes'=> array(
+							'desc-font-size'=> true,
+						),
+					),
+					/*member line height*/
+					'fp-desc-line-height' => array(
+						'order' => 'fp-order-description',
+						'label' => esc_html__( 'Description Line Height:', 'fieldpress' ),
+						'desc' => esc_html__( 'Insert value with unit. E.g 10em,10, 10em,10px .', 'fieldpress' ),
+						'type' 			=> 'box',
+						'device'		=> array(
+							'large'=>array(
+								'icon' => 'fas fa-desktop',
+							),
+							'medium'=>array(
+								'icon' => 'fas fa-tablet-alt',
+							),
+							'small'=>array(
+								'icon' => 'fas fa-mobile-alt ',
+							),
+						),
+						'boxes'=> array(
+							'member-line-height'=> true,
+						),
+					),
+					'fp-desc-font-color'  => array(
+						'type'  => 'color',
+						'label' => esc_html__( 'Description Font Color', 'fieldpress' ),
+						'order'   => 'fp-order-description',
+					),
+					/*title padding*/
+					'fp-desc-padding' => array(
+						'order' => 'fp-order-description',
+						'label' => esc_html__( 'Padding:', 'fieldpress' ),
+						'desc' => esc_html__( 'Insert value with unit. E.g 10px ,10em, 10%.', 'fieldpress' ),
+						'type' 			=> 'box',
+						'device'		=> array(
+							'large'=>array(
+								'icon' => 'fas fa-desktop',
+							),
+							'medium'=>array(
+								'icon' => 'fas fa-tablet-alt',
+							),
+							'small'=>array(
+								'icon' => 'fas fa-mobile-alt ',
+							),
+						),
+						'boxes'=> array(
+							'top'=> true,
+							'right'=> true,
+							'bottom'=> true,
+							'left'=> true,
+						),
+					),
+					/*title marign*/
+					'fp-desc-margin' => array(
+						'order' => 'fp-order-description',
+						'label' => esc_html__( 'Margin:', 'fieldpress' ),
+						'desc' => esc_html__( 'Insert value with unit. E.g 10px ,10em, 10%.', 'fieldpress' ),
+						'type' 			=> 'box',
+						'device'		=> array(
+							'large'=>array(
+								'icon' => 'fas fa-desktop',
+							),
+							'medium'=>array(
+								'icon' => 'fas fa-tablet-alt',
+							),
+							'small'=>array(
+								'icon' => 'fas fa-mobile-alt ',
+							),
+						),
+						'boxes'=> array(
+							'top'=> true,
+							'right'=> true,
+							'bottom'=> true,
+							'left'=> true,
+						),
+					),
+					/*
+					--------------------------------------------------------------------
+					 fields listed in "contact address"
+					---------------------------------------------------------------------
+					*/
+					'fp-contact-font-size' => array(
+						'order' => 'fp-order-contact',
+						'label' => esc_html__( 'Contact Font Size:', 'fieldpress' ),
+						'desc' => esc_html__( 'Insert value with unit. E.g 10px ,10em, 10%.', 'fieldpress' ),
+						'type' 			=> 'box',
+						'device'		=> array(
+							'large'=>array(
+								'icon' => 'fas fa-desktop',
+							),
+							'medium'=>array(
+								'icon' => 'fas fa-tablet-alt',
+							),
+							'small'=>array(
+								'icon' => 'fas fa-mobile-alt ',
+							),
+						),
+						'boxes'=> array(
+							'desc-font-size'=> true,
+						),
+					),
+					/*member line height*/
+					'fp-contact-line-height' => array(
+						'order' => 'fp-order-contact',
+						'label' => esc_html__( 'Contact Line Height:', 'fieldpress' ),
+						'desc' => esc_html__( 'Insert value with unit. E.g 10em,10, 10em,10px .', 'fieldpress' ),
+						'type' 			=> 'box',
+						'device'		=> array(
+							'large'=>array(
+								'icon' => 'fas fa-desktop',
+							),
+							'medium'=>array(
+								'icon' => 'fas fa-tablet-alt',
+							),
+							'small'=>array(
+								'icon' => 'fas fa-mobile-alt ',
+							),
+						),
+						'boxes'=> array(
+							'member-line-height'=> true,
+						),
+					),
+					'fp-contact-font-color'  => array(
+						'type'  => 'color',
+						'label' => esc_html__( 'Contact Font Color', 'fieldpress' ),
+						'order'   => 'fp-order-contact',
+					),
+					/*title padding*/
+					'fp-contact-padding' => array(
+						'order' => 'fp-order-contact',
+						'label' => esc_html__( 'Padding:', 'fieldpress' ),
+						'desc' => esc_html__( 'Insert value with unit. E.g 10px ,10em, 10%.', 'fieldpress' ),
+						'type' 			=> 'box',
+						'device'		=> array(
+							'large'=>array(
+								'icon' => 'fas fa-desktop',
+							),
+							'medium'=>array(
+								'icon' => 'fas fa-tablet-alt',
+							),
+							'small'=>array(
+								'icon' => 'fas fa-mobile-alt ',
+							),
+						),
+						'boxes'=> array(
+							'top'=> true,
+							'right'=> true,
+							'bottom'=> true,
+							'left'=> true,
+						),
+					),
+					/*title marign*/
+					'fp-contact-margin' => array(
+						'order' => 'fp-order-contact',
+						'label' => esc_html__( 'Margin:', 'fieldpress' ),
+						'desc' => esc_html__( 'Insert value with unit. E.g 10px ,10em, 10%.', 'fieldpress' ),
+						'type' 			=> 'box',
+						'device'		=> array(
+							'large'=>array(
+								'icon' => 'fas fa-desktop',
+							),
+							'medium'=>array(
+								'icon' => 'fas fa-tablet-alt',
+							),
+							'small'=>array(
+								'icon' => 'fas fa-mobile-alt ',
+							),
+						),
+						'boxes'=> array(
+							'top'=> true,
+							'right'=> true,
+							'bottom'=> true,
+							'left'=> true,
+						),
+					),
+				),
+			),
+			/*Team PRess*/
 
 			/*accordion*/
 			'fp-field-general-accordions' => array(
 				'section' => 'fp-option-accordion',
 				'type' 			=> 'accordions',
+				'checkbox' 			=> 'true',
 				'accordions'			=> array(
 					'fb-accordion-title'=>array(
 						'label' => esc_html__( 'Title', 'fieldpress' ),
