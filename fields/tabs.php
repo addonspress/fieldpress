@@ -80,12 +80,12 @@ function fieldpress_render_tabs( $field_details, $field_value ) {
 		foreach( $tab_fields as $field_id => $tab_single_field ){
 
 			if( $override ){
-				$tab_single_field_name = $override_name.'['.$field_id.']';
+				$tab_single_field_name = $override_name.'['.$tab_id.']['.$field_id.']';
 				$tab_single_field_id = $override_id;
 			}
 			else{
-				$tab_single_field_name = $tab_main_id.'['.$field_id.']';
-				$tab_single_field_id = $tab_main_id.$field_id;
+				$tab_single_field_name = $tab_main_id.'['.$tab_id.']['.$field_id.']';
+				$tab_single_field_id = $tab_main_id.$tab_id.$field_id;
 			}
 			$tab_single_field['fieldpress-override-attr']['name'] = $tab_single_field_name;
 			$tab_single_field['fieldpress-override-attr']['id'] = $tab_single_field_id;
@@ -94,7 +94,7 @@ function fieldpress_render_tabs( $field_details, $field_value ) {
 			$tab_single_field['attr']['id'] = $tab_single_field_id;
 
 
-			$value = isset($field_value[$field_id])?$field_value[$field_id]:false;
+			$value = isset($field_value[$tab_id][$field_id])?$field_value[$tab_id][$field_id]:false;
 			if ( ! $value ) {
 				if ( isset( $tab_single_field['default'] ) ) {
 					$value = $tab_single_field['default'];

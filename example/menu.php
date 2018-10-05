@@ -3734,7 +3734,6 @@ if(class_exists('FieldPress_Menu_Framework')) {
 			'fp-field-general-accordions' => array(
 				'section' => 'fp-option-accordion',
 				'type' 			=> 'accordions',
-				'checkbox' 			=> 'true',
 				'accordions'			=> array(
 					'fb-accordion-title'=>array(
 						'label' => esc_html__( 'Title', 'fieldpress' ),
@@ -3742,7 +3741,7 @@ if(class_exists('FieldPress_Menu_Framework')) {
 					),
 					'fb-accordion-image'=>array(
 						'label' => esc_html__( 'Image', 'fieldpress' ),
-						'checkbox' => true,
+						'checkbox' => false,
 					),
 					'fb-accordion-social'=>array(
 						'label' => esc_html__( 'Social', 'fieldpress' ),

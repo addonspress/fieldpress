@@ -425,29 +425,35 @@ function fieldpress_sanitize_field ( $field_details, $field_value){
 
 		case 'tabs':
 		case 'accordions':
+
 		    $fields =  isset($field_details['fields'])? $field_details['fields'] : array();
-		    if( $field_details['type'] == 'accordions' && isset( $field_details['checkbox']) && $field_details['checkbox'] ){
+		    if( $field_details['type'] == 'accordions'  ){
 			    $accordions = $field_details['accordions'];
 			    foreach( $accordions as $accordion_id => $accordion_details ){
-				    $fields[$accordion_id] =  array(
-					    'type'  => 'checkbox'
-				    );
+				    if( isset( $accordion_details['checkbox']) && $accordion_details['checkbox'] ){
+					    $fields['fp-checkbox'] =  array(
+						    'type'  => 'checkbox'
+					    );
+					    break;
+                    }
 			    }
 		    }
 
 		    $output = array();
             if( is_array( $field_value ) ){
 	            $output = $field_value;
-	            foreach ( $field_value as $field_name=> $field_val ){
-		            foreach( $fields as $field_id => $field_details ){
-			            if( $field_name == $field_id){
-				            $actual_value = $field_val;
-				            $single_field = $field_details;
-				            $single_field['id'] = $field_id;
-				            $inner_output = fieldpress_sanitize_field ( $single_field, $actual_value );
-				            $output[$field_id] = $inner_output;
-			            }
-		            }
+	            foreach ( $field_value as $accordion_id => $accordion_fields ){
+	                foreach ( $accordion_fields as $field_name => $field_val ){
+		                foreach( $fields as $field_id => $field_details ){
+			                if( $field_name == $field_id){
+				                $actual_value = $field_val;
+				                $single_field = $field_details;
+				                $single_field['id'] = $field_id;
+				                $inner_output = fieldpress_sanitize_field ( $single_field, $actual_value );
+				                $output[$accordion_id][$field_id] = $inner_output;
+			                }
+		                }
+                    }
 	            }
             }
             break;

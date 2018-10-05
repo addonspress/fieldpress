@@ -15,6 +15,7 @@ function fieldpress_render_accordions( $field_details, $field_value ) {
 	$accordion_main_id = $field_details['id'];
 
 	$accordions = $field_details['accordions'];
+
 	/*Sort accordions according to priority*/
 	fieldpress_stable_uasort ($accordions,'fieldpress_uasort');
 
@@ -45,17 +46,16 @@ function fieldpress_render_accordions( $field_details, $field_value ) {
 
 	foreach( $accordions_and_fields as $accordion_id => $accordion_fields ){
 
-
-		if( isset( $field_details['checkbox']) && $field_details['checkbox'] ){
-			$checkbox_value = isset($field_value[$accordion_id])?$field_value[$accordion_id]:false;
+		if( isset( $accordions[$accordion_id]['checkbox']) && $accordions[$accordion_id]['checkbox'] ){
+			$checkbox_value = isset($field_value[$accordion_id]['fp-checkbox'])?$field_value[$accordion_id]['fp-checkbox']:false;
 			$checkbox_label = $label = isset($accordions[$accordion_id]['label'])?$accordions[$accordion_id]['label']:'';
 
 			if( $override ){
-				$accordion_checkbox_field_name = $override_name.'['.$accordion_id.']';
+				$accordion_checkbox_field_name = $override_name.'['.$accordion_id.'][fp-checkbox]';
 				$accordion_checkbox_field_id = $override_id;
 			}
 			else{
-				$accordion_checkbox_field_name = $accordion_main_id.'['.$accordion_id.']';
+				$accordion_checkbox_field_name = $accordion_main_id.'['.$accordion_id.'][fp-checkbox]';
 				$accordion_checkbox_field_id = $accordion_main_id.$accordion_id;
 			}
 			$checkbox_label = '<input type="checkbox" id="'.$accordion_checkbox_field_id.'" name="'.$accordion_checkbox_field_name.'" '.checked( $checkbox_value, true, false).'>'.$checkbox_label;
@@ -81,12 +81,12 @@ function fieldpress_render_accordions( $field_details, $field_value ) {
 			foreach( $accordion_fields as $field_id => $accordion_single_field ){
 
 				if( $override ){
-					$accordion_single_field_name = $override_name.'['.$field_id.']';
+					$accordion_single_field_name = $override_name.'['.$accordion_id.']['.$field_id.']';
 					$accordion_single_field_id = $override_id;
 				}
 				else{
-					$accordion_single_field_name = $accordion_main_id.'['.$field_id.']';
-					$accordion_single_field_id = $accordion_main_id.$field_id;
+					$accordion_single_field_name = $accordion_main_id.'['.$accordion_id.']['.$field_id.']';
+					$accordion_single_field_id = $accordion_main_id.$accordion_id.$field_id;
 				}
 				$accordion_single_field['fieldpress-override-attr']['name'] = $accordion_single_field_name;
 				$accordion_single_field['fieldpress-override-attr']['id'] = $accordion_single_field_id;
@@ -95,13 +95,12 @@ function fieldpress_render_accordions( $field_details, $field_value ) {
 				$accordion_single_field['attr']['id'] = $accordion_single_field_id;
 
 
-				$value = isset($field_value[$field_id])?$field_value[$field_id]:false;
+				$value = isset($field_value[$accordion_id][$field_id])?$field_value[$accordion_id][$field_id]:false;
 				if ( ! $value ) {
 					if ( isset( $accordion_single_field['default'] ) ) {
 						$value = $accordion_single_field['default'];
 					}
 				}
-
 				fieldpress_render_field( $field_id, $accordion_single_field, $value );
 			}
 			echo'</div>'/*.fieldpress-accordion-inside*/;
