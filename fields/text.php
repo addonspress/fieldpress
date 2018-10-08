@@ -2,6 +2,7 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
+
 /**
  * render the text output 
  * @since 0.0.1

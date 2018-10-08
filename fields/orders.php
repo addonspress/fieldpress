@@ -12,7 +12,6 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function fieldpress_render_orders( $field_details, $field_value ) {
 
-
 	$orders = $field_details['orders'];
 	$field_order_id = $field_details['id'];
 

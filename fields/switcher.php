@@ -10,6 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @return void
  */
 function fieldpress_render_switcher( $field_details, $field_value ) {
+
 	/*defaults attributes*/
 	$default_attr = apply_filters( 'fieldpress_switcher_field_default_args',array(
 		'type'          => 'checkbox',

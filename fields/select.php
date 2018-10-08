@@ -10,6 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @return void
  */
 function fieldpress_render_select( $field_details, $field_value ) {
+
 	/*defaults values for fields*/
 	$default_attr = apply_filters( 'fieldpress_select_field_default_args',array(
 		'id'            => '',

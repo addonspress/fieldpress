@@ -51,4 +51,4 @@ add_action('fieldpress_render_field_after', 'fieldpress_box_wrap_end',20 );
 function fieldpress_field_wrap_end(){
 	echo "</div>";	
 }
-add_action('fieldpress_render_field_after', 'fieldpress_field_wrap_end',30 );
+add_action('fieldpress_render_field_after', 'fieldpress_field_wrap_end', 30 );

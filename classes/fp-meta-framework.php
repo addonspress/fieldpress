@@ -413,11 +413,6 @@ if(!class_exists('FieldPress_Meta_Framework')) {
 	        if( empty( $this->current_fields ) ){
 		        $this->set_current_fields();
             }
-	        $from = array(
-		        'type' => 'meta',
-		        'post_id' => $post->ID,
-		        'this_object' => $this,
-	        );
 
 	        /*move fieldpress-default-section field to top*/
 	        if( isset( $this->current_fields[$meta_box_id]['fieldpress-default-section'] ) ){
@@ -435,7 +430,7 @@ if(!class_exists('FieldPress_Meta_Framework')) {
 				        }
 			        }
 
-			        fieldpress_render_field( $field_id, $single_field, $value, $from );
+			        fieldpress_render_field( $field_id, $single_field, $value );
 		        }
 	        }
 
@@ -506,7 +501,7 @@ if(!class_exists('FieldPress_Meta_Framework')) {
 				                    $value = $single_field['default'];
 			                    }
 		                    }
-		                    fieldpress_render_field( $field_id, $single_field, $value, $from );
+		                    fieldpress_render_field( $field_id, $single_field, $value );
 	                    }
 	                    echo "</div>";/*.fieldpress-tabs-content-wrapper*/
 	                    $i++;
@@ -532,7 +527,7 @@ if(!class_exists('FieldPress_Meta_Framework')) {
          *
          * @param int $post_id id of saving post
          * @param object $post Current post object
-         * @return void||int depending on condition
+         * @return mixed depending on condition
          *
          * function save_post_metas( $post_id, $post, $update )
          */

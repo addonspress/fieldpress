@@ -636,7 +636,7 @@ if(!class_exists('FieldPress_Menu_Framework')) {
 		 * @since 0.0.1
 		 *
 		 * @param array $menu_details_post $_POST
-		 * @return void|array
+		 * @return mixed
 		 *
 		 */
 		public function fieldpress_save_menu( $menu_details_post ) {
