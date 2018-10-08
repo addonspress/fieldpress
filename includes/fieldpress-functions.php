@@ -437,7 +437,7 @@ function fieldpress_sanitize_field ( $field_details, $field_value){
 			    $accordions = $field_details['accordions'];
 			    foreach( $accordions as $accordion_id => $accordion_details ){
 				    if( isset( $accordion_details['checkbox']) && $accordion_details['checkbox'] ){
-					    $fields['fp-checkbox'] =  array(
+					    $fields[$accordion_id] =  array(
 						    'type'  => 'checkbox'
 					    );
 					    break;

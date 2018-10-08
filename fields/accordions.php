@@ -47,15 +47,15 @@ function fieldpress_render_accordions( $field_details, $field_value ) {
 	foreach( $accordions_and_fields as $accordion_id => $accordion_fields ){
 
 		if( isset( $accordions[$accordion_id]['checkbox']) && $accordions[$accordion_id]['checkbox'] ){
-			$checkbox_value = isset($field_value[$accordion_id]['fp-checkbox'])?$field_value[$accordion_id]['fp-checkbox']:false;
+			$checkbox_value = isset($field_value[$accordion_id][$accordion_id])?$field_value[$accordion_id][$accordion_id]:false;
 			$checkbox_label = $label = isset($accordions[$accordion_id]['label'])?$accordions[$accordion_id]['label']:'';
 
 			if( $override ){
-				$accordion_checkbox_field_name = $override_name.'['.$accordion_id.'][fp-checkbox]';
+				$accordion_checkbox_field_name = $override_name.'['.$accordion_id.']['.$accordion_id.']';
 				$accordion_checkbox_field_id = $override_id;
 			}
 			else{
-				$accordion_checkbox_field_name = $accordion_main_id.'['.$accordion_id.'][fp-checkbox]';
+				$accordion_checkbox_field_name = $accordion_main_id.'['.$accordion_id.']['.$accordion_id.']';
 				$accordion_checkbox_field_id = $accordion_main_id.$accordion_id;
 			}
 			$checkbox_label = '<input type="checkbox" id="'.$accordion_checkbox_field_id.'" name="'.$accordion_checkbox_field_name.'" '.checked( $checkbox_value, true, false).'>'.$checkbox_label;
