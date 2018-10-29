@@ -105,6 +105,7 @@ if( !function_exists( 'fieldpress')){
  * Example file, it gives general idea how the fieldPress actually works.
  * @delete this example files on production process.
  */
-fieldpress_load_file('example/widget.php');
-fieldpress_load_file('example/menu.php');
-fieldpress_load_file('example/meta.php');
+//fieldpress_load_file('example/widget.php');
+//fieldpress_load_file('example/menu.php');
+//fieldpress_load_file('example/meta.php');
+fieldpress_load_file('example/repeater-order.php');

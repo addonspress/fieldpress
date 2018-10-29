@@ -150,11 +150,14 @@ function fieldpress_render_repeater( $field_details, $field_value ) {
 		$repeater_id  = $field_attr['id'].$field_repeater_depth.$field_id;
 		$repeater_name  = $field_attr['name'].'['.$field_repeater_depth.']['.$field_id.']';
 
+		$field_cr['fieldpress-override-attr']['name'] = $repeater_name;
+		$field_cr['fieldpress-override-attr']['id'] = $repeater_id;
+
 		$field_cr['repeater_depth'] = $field_repeater_depth;
 
 		/*set new id for field in array format*/
 		$field_cr['attr']['id'] = $repeater_id;
-		$field_cr['attr']['fieldpress-filed-name'] = $repeater_name;
+		$field_cr['attr']['fieldpress-field-name'] = $repeater_name;
 
 		fieldpress_render_field( $field_id, $field_cr, $field_value );
 
@@ -164,9 +167,9 @@ function fieldpress_render_repeater( $field_details, $field_value ) {
 				<button type="button" class="button-link fieldpress-repeater-close">'.esc_html__('Close','fieldpress').'</button>
 			</div>';
 
-	echo'<input class="fp-parent" type="hidden" fieldpress-filed-name="'.$field_attr['name'].'['.$field_repeater_depth.'][fp-parent]'.'">';/*.parent*/
-	echo'<input class="fp-depth" type="hidden" fieldpress-filed-name="'.$field_attr['name'].'['.$field_repeater_depth.'][fp-depth]'.'">';/*.depth*/
-	echo'<input class="fp-index" type="hidden" fieldpress-filed-name="'.$field_attr['name'].'['.$field_repeater_depth.'][fp-index]'.'">';/*.depth*/
+	echo'<input class="fp-parent" type="hidden" fieldpress-field-name="'.$field_attr['name'].'['.$field_repeater_depth.'][fp-parent]'.'">';/*.parent*/
+	echo'<input class="fp-depth" type="hidden" fieldpress-field-name="'.$field_attr['name'].'['.$field_repeater_depth.'][fp-depth]'.'">';/*.depth*/
+	echo'<input class="fp-index" type="hidden" fieldpress-field-name="'.$field_attr['name'].'['.$field_repeater_depth.'][fp-index]'.'">';/*.depth*/
 
 	echo '</div>';/*.fieldpress-repeater-inside*/
 	echo '<div class="fs-repeater-transport"></div>';/*for sub items*/

@@ -33,8 +33,8 @@ function fieldpress_render_select_image( $field_details, $field_value ) {
 			if( isset( $attributes['name'])){
 				$attributes['name'] = $attributes['name'].'[]';
 			}
-			if( isset( $attributes['fieldpress-filed-name'])){
-				$attributes['fieldpress-filed-name'] = $attributes['fieldpress-filed-name'].'[]';
+			if( isset( $attributes['fieldpress-field-name'])){
+				$attributes['fieldpress-field-name'] = $attributes['fieldpress-field-name'].'[]';
 			}
 			$attributes['type'] = 'checkbox'; /*force any type to checkbox*/
 		}

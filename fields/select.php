@@ -37,8 +37,8 @@ function fieldpress_render_select( $field_details, $field_value ) {
 		if( isset( $attributes['name'])){
 			$attributes['name'] = $attributes['name'].'[]';
 		}
-		if( isset( $attributes['fieldpress-filed-name'])){
-			$attributes['fieldpress-filed-name'] = $attributes['fieldpress-filed-name'].'[]';
+		if( isset( $attributes['fieldpress-field-name'])){
+			$attributes['fieldpress-field-name'] = $attributes['fieldpress-field-name'].'[]';
 		}
 	}
 	foreach ($attributes as $name => $value) {
@@ -50,8 +50,8 @@ function fieldpress_render_select( $field_details, $field_value ) {
 		if( isset( $attributes['name'])){
 			$attributes['name'] = $attributes['name'].'[]';
 		}
-		if( isset( $attributes['fieldpress-filed-name'])){
-			$attributes['fieldpress-filed-name'] = $attributes['fieldpress-filed-name'].'[]';
+		if( isset( $attributes['fieldpress-field-name'])){
+			$attributes['fieldpress-field-name'] = $attributes['fieldpress-field-name'].'[]';
 		}
 		foreach ( $choices as $choice_value => $choice ) {
 			if( isset($attributes['multiple']) &&  'multiple' == $attributes['multiple'] ){

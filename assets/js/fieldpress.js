@@ -1258,7 +1258,7 @@
             total_repeater.val( total_repeater_value +1 );
             var final_repeater_html = FPREPLACE( repeater_html, add_repeater.attr('id'),total_repeater_value );
             final_repeater_html = FPREPLACE( final_repeater_html, 'fieldpress-tab-id','tab-'+total_repeater_value );
-            final_repeater_html = FPREPLACE( final_repeater_html, 'fieldpress-filed-name','name' );
+            final_repeater_html = FPREPLACE( final_repeater_html, 'fieldpress-field-name','name' );
             add_repeater.before($('<div class="repeater-table open" data-depth="0"></div>').append( final_repeater_html ));
             var new_html_object = add_repeater.prev('.repeater-table');
             FIELDPRESS_RELOAD_METHODS( new_html_object );

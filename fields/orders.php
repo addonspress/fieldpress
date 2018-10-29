@@ -64,10 +64,18 @@ function fieldpress_render_orders( $field_details, $field_value ) {
 	/*override attr*/
 	$override = false;
 	if( isset( $field_details['fieldpress-override-attr']) && is_array( $field_details['fieldpress-override-attr'] ) ){
+
 		$override_attr = $field_details['fieldpress-override-attr'];
 		$override_name = $override_attr['name'];
 		$override_id = $override_attr['id'];
 		$override = true;
+	}
+
+	if( isset( $field_details['repeater_depth'] )){
+		$checkbox_name = 'fieldpress-field-name';
+	}
+	else{
+		$checkbox_name = 'name';
 	}
 
 	/*order index imp for ordering*/
@@ -108,7 +116,7 @@ function fieldpress_render_orders( $field_details, $field_value ) {
 
 //					$order_checkbox_field_name = $field_order_main_id.'['.$order_index.']['.$order_id.']['.$order_id.']';
 					$checkbox_label = $orders[$order_id]['label'];
-					echo '<label><input type="checkbox" id="'.$order_checkbox_field_id.'" name="'.$order_checkbox_field_name.'" '.checked( $checkbox_value, true, false).'>'.$checkbox_label.'</label>';
+					echo '<label><input type="checkbox" id="'.$order_checkbox_field_id.'" '.$checkbox_name.'="'.$order_checkbox_field_name.'" '.checked( $checkbox_value, true, false).'>'.$checkbox_label.'</label>';
 					echo '</div></div>';
 					if( !empty( $order_fields) ){
 
@@ -124,10 +132,10 @@ function fieldpress_render_orders( $field_details, $field_value ) {
 								$order_single_field_name = $field_order_main_id.'['.$order_index.']['.$order_id.']['.$field_id.']';
 								$order_single_field_id = $field_id;
 							}
-							$order_single_field['fieldpress-override-attr']['name'] = $order_single_field_name;
+							$order_single_field['fieldpress-override-attr'][$checkbox_name] = $order_single_field_name;
 							$order_single_field['fieldpress-override-attr']['id'] = $order_single_field_id;
 
-							$order_single_field['attr']['name'] = $order_single_field_name;
+							$order_single_field['attr'][$checkbox_name] = $order_single_field_name;
 							$order_single_field['attr']['id'] = $order_single_field_id;
 
 							$value = isset($field_saved_value[$field_id])?$field_saved_value[$field_id]:'';
@@ -168,7 +176,7 @@ function fieldpress_render_orders( $field_details, $field_value ) {
 		$checkbox_value = false;
 		$order_checkbox_field_name = $field_order_main_id.'['.$order_index.']['.$order_id.']['.$order_id.']';
 		$checkbox_label = $orders[$order_id]['label'];
-		echo '<label><input type="checkbox" id="'.$order_id.'" name="'.$order_checkbox_field_name.'" '.checked( $checkbox_value, true, false).'>'.$checkbox_label.'</label>';
+		echo '<label><input type="checkbox" id="'.$order_id.'" '.$checkbox_name.'="'.$order_checkbox_field_name.'" '.checked( $checkbox_value, true, false).'>'.$checkbox_label.'</label>';
 		echo '</div></div>';
 
 		if( !empty( $order_fields) ){
@@ -184,10 +192,10 @@ function fieldpress_render_orders( $field_details, $field_value ) {
 					$order_single_field_name = $field_order_main_id.'['.$order_index.']['.$order_id.']['.$field_id.']';
 					$order_single_field_id = $field_id;
 				}
-				$order_single_field['fieldpress-override-attr']['name'] = $order_single_field_name;
+				$order_single_field['fieldpress-override-attr'][$checkbox_name] = $order_single_field_name;
 				$order_single_field['fieldpress-override-attr']['id'] = $order_single_field_id;
 
-				$order_single_field['attr']['name'] = $order_single_field_name;
+				$order_single_field['attr'][$checkbox_name] = $order_single_field_name;
 				$order_single_field['attr']['id'] = $order_single_field_id;
 				$value = '';
 
