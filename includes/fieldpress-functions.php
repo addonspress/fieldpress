@@ -362,16 +362,23 @@ function fieldpress_sanitize_field ( $field_details, $field_value){
 			$orders = $field_details['orders'];
 			$fields =  isset($field_details['fields'])? $field_details['fields'] : array();
 
+			foreach( $orders as $order_id => $accordion_details ){
+				$fields[$order_id] =  array(
+					'type'  => 'checkbox',
+					'order'  => $order_id,
+
+				);
+				$fields[$order_id.'-fieldpress-hidden-order'] = array(
+					'type'  => 'hidden',
+					'order'  => $order_id,
+				);
+			}
+
+
 			if( is_array( $field_value ) ){
 			    $i = 0;
 				foreach ( $field_value as $index_key=> $field_val ){
 					foreach( $orders as $order_id => $order_details ){
-						$fields[$order_id] = array(
-							'type'  => 'checkbox'
-						);
-						$fields[$order_id.'-fieldpress-hidden-order'] = array(
-							'type'  => 'hidden'
-						);
 
 						foreach ( $field_val as $key=> $val ){
 
@@ -437,7 +444,7 @@ function fieldpress_sanitize_field ( $field_details, $field_value){
 			    $accordions = $field_details['accordions'];
 			    foreach( $accordions as $accordion_id => $accordion_details ){
 				    if( isset( $accordion_details['checkbox']) && $accordion_details['checkbox'] ){
-					    $fields[$accordion_id] =  array(
+					    $fields['fp-checkbox'] =  array(
 						    'type'  => 'checkbox'
 					    );
 					    break;

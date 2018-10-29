@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 function fieldpress_render_orders( $field_details, $field_value ) {
 
 	$orders = $field_details['orders'];
-	$field_order_id = $field_details['id'];
+	$field_order_main_id = $field_details['id'];
 
 	/*Sort orders according to priority*/
 	fieldpress_stable_uasort ($orders,'fieldpress_uasort');
@@ -96,9 +96,19 @@ function fieldpress_render_orders( $field_details, $field_value ) {
 					}
 					echo '<div class="fieldpress-order-title">';
 					$checkbox_value = isset($field_saved_value[$order_id])?$field_saved_value[$order_id]:false;
-					$checkbox_name = $field_order_id.'['.$order_index.']['.$order_id.']['.$order_id.']';
+
+					if( $override ){
+						$order_checkbox_field_name = $override_name.'['.$order_index.']['.$order_id.']['.$order_id.']';
+						$order_checkbox_field_id = $override_id;
+					}
+					else{
+						$order_checkbox_field_name = $field_order_main_id.'['.$order_index.']['.$order_id.']['.$order_id.']';
+						$order_checkbox_field_id = $field_order_main_id.$order_id;
+					}
+
+//					$order_checkbox_field_name = $field_order_main_id.'['.$order_index.']['.$order_id.']['.$order_id.']';
 					$checkbox_label = $orders[$order_id]['label'];
-					echo '<label><input type="checkbox" id="'.$order_id.'" name="'.$checkbox_name.'" '.checked( $checkbox_value, true, false).'>'.$checkbox_label.'</label>';
+					echo '<label><input type="checkbox" id="'.$order_checkbox_field_id.'" name="'.$order_checkbox_field_name.'" '.checked( $checkbox_value, true, false).'>'.$checkbox_label.'</label>';
 					echo '</div></div>';
 					if( !empty( $order_fields) ){
 
@@ -111,7 +121,7 @@ function fieldpress_render_orders( $field_details, $field_value ) {
 								$order_single_field_id = $override_id;
 							}
 							else{
-								$order_single_field_name = $field_order_id.'['.$order_index.']['.$order_id.']['.$field_id.']';
+								$order_single_field_name = $field_order_main_id.'['.$order_index.']['.$order_id.']['.$field_id.']';
 								$order_single_field_id = $field_id;
 							}
 							$order_single_field['fieldpress-override-attr']['name'] = $order_single_field_name;
@@ -156,9 +166,9 @@ function fieldpress_render_orders( $field_details, $field_value ) {
 		}
 		echo '<div class="fieldpress-order-title">';
 		$checkbox_value = false;
-		$checkbox_name = $field_order_id.'['.$order_index.']['.$order_id.']['.$order_id.']';
+		$order_checkbox_field_name = $field_order_main_id.'['.$order_index.']['.$order_id.']['.$order_id.']';
 		$checkbox_label = $orders[$order_id]['label'];
-		echo '<label><input type="checkbox" id="'.$order_id.'" name="'.$checkbox_name.'" '.checked( $checkbox_value, true, false).'>'.$checkbox_label.'</label>';
+		echo '<label><input type="checkbox" id="'.$order_id.'" name="'.$order_checkbox_field_name.'" '.checked( $checkbox_value, true, false).'>'.$checkbox_label.'</label>';
 		echo '</div></div>';
 
 		if( !empty( $order_fields) ){
@@ -171,7 +181,7 @@ function fieldpress_render_orders( $field_details, $field_value ) {
 					$order_single_field_id = $override_id;
 				}
 				else{
-					$order_single_field_name = $field_order_id.'['.$order_index.']['.$order_id.']['.$field_id.']';
+					$order_single_field_name = $field_order_main_id.'['.$order_index.']['.$order_id.']['.$field_id.']';
 					$order_single_field_id = $field_id;
 				}
 				$order_single_field['fieldpress-override-attr']['name'] = $order_single_field_name;
