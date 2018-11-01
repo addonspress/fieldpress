@@ -80,9 +80,17 @@ function fieldpress_render_box( $field_details, $field_value ) {
 
 	/*override attr*/
 	$override = false;
+	$box_attr_name = 'name';
+
 	if( isset( $field_details['fieldpress-override-attr']) && is_array( $field_details['fieldpress-override-attr'] ) ){
 		$override_attr = $field_details['fieldpress-override-attr'];
-		$override_name = $override_attr['name'];
+		if( isset( $override_attr['fieldpress-field-name'] )){
+			$box_attr_name = 'fieldpress-field-name';
+			$override_name = $override_attr['fieldpress-field-name'];
+		}
+		else{
+			$override_name = $override_attr['name'];
+		}
 		$override_id = $override_attr['id'];
 		$override = true;
 	}
@@ -113,7 +121,7 @@ function fieldpress_render_box( $field_details, $field_value ) {
 				}
 			}
 			?>
-            <input class="fieldpress-box-input" type="text" value="<?php echo esc_attr( $value )?>" id="<?php echo esc_attr( $box_single_field_id );?>" size="40" style="" name="<?php echo esc_attr($box_single_field_name);?>">
+            <input class="fieldpress-box-input" type="text" value="<?php echo esc_attr( $value )?>" id="<?php echo esc_attr( $box_single_field_id );?>" size="40" style="" <?php echo $box_attr_name.'="'.esc_attr($box_single_field_name);?>">
 			<?php
 		}
 

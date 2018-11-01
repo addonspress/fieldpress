@@ -62,7 +62,7 @@ function fieldpress_enqueue_scripts( $all_fields, $unique = false ) {
     else{
 	    $fa_src = FIELDPRESS_URL . 'assets/frameworks/font-awesome-5/css/fontawesome-all'.FIELDPRESS_SCRIPT_PREFIX.'.css';
     }
-	wp_register_script( 'font-awesome', $fa_src );
+	wp_register_style( 'font-awesome', $fa_src );
 
 	wp_enqueue_script( 'underscore' );
 
@@ -108,6 +108,10 @@ function fieldpress_enqueue_scripts( $all_fields, $unique = false ) {
 		wp_enqueue_style( 'wp-jquery-ui-dialog' );
 		wp_enqueue_style( 'font-awesome' );
 	}
+	if( in_array('box', $unique_fields ) ){
+		wp_enqueue_style( 'font-awesome' );
+	}
+
 	/*fieldpress style*/
 	wp_enqueue_style( 'fieldpress', FIELDPRESS_URL . 'assets/css/fieldpress'.FIELDPRESS_SCRIPT_PREFIX.'.css' );
 
