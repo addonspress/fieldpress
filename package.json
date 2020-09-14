@@ -15,7 +15,7 @@
   "dependencies": {
     "grunt": "^1.0.3",
     "grunt-contrib-cssmin": "^2.2.1",
-    "npm": "^6.1.0"
+    "npm": "^6.14.6"
   },
   "devDependencies": {
     "grunt-contrib-concat": "^1.0.1",
