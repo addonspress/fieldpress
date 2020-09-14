@@ -1531,7 +1531,7 @@
         var relation = dependent.data('relation'),
             condition = dependent.data('condition'),
             controller = dependent.data('controller'),
-            conditional_value = dependent.data('conditional-value'),
+            conditional_value = dependent.data('conditional-value').toString(),
             condition_array = condition.split('&fp&'),
             controller_array = controller.split('&fp&'),
             conditional_value_array = conditional_value.split('&fp&');

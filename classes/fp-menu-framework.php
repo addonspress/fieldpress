@@ -419,11 +419,12 @@ if(!class_exists('FieldPress_Menu_Framework')) {
 		 * @since 0.0.1
 		 *
 		 * @param string $field_id Id of field
+		 * @param mixed $default default value
 		 * @return mixed
 		 *
 		 */
-		public function get_field_value( $field_id ) {
-			$field_value = get_option( $field_id );
+		public function get_field_value( $field_id, $default = false ) {
+			$field_value = get_option( $field_id, $default );
 			return $field_value;
 		}
 
@@ -523,12 +524,8 @@ if(!class_exists('FieldPress_Menu_Framework')) {
 							$single_field['attr']['id'] = $single_field['id'];
 							$single_field['attr']['name'] = $single_field['id'];
 
-							$value = $this->get_field_value( $single_field['id'] );
-							if ( ! $value ) {
-								if ( isset( $single_field['default'] ) ) {
-									$value = $single_field['default'];
-								}
-							}
+							$value = $this->get_field_value( $single_field['id'], isset( $single_field['default'] )?$single_field['default']:'');
+
 							fieldpress_render_field( $field_id, $single_field, $value );
 						}
 					}
@@ -600,12 +597,7 @@ if(!class_exists('FieldPress_Menu_Framework')) {
 							$single_field['attr']['id']   = $single_field['id'];
 							$single_field['attr']['name'] = $single_field['id'];
 
-							$value = $this->get_field_value( $single_field['id'] );
-							if ( ! $value ) {
-								if ( isset( $single_field['default'] ) ) {
-									$value = $single_field['default'];
-								}
-							}
+							$value = $this->get_field_value( $single_field['id'], isset( $single_field['default'] )?$single_field['default']:'');
 							fieldpress_render_field( $field_id, $single_field, $value );
 						}
 						echo "</div>";/*.fieldpress-tabs-content-wrapper*/
@@ -748,7 +740,6 @@ if(!class_exists('FieldPress_Menu_Framework')) {
 			if ( $old_value == $new_value ){
 				return;
 			}
-			delete_option( $field_name );
 			update_option( $field_name, $new_value );
 
 			do_action( 'fieldpress_menu_save_field_after',$field_name, $single_field, $old_value, $new_value );
