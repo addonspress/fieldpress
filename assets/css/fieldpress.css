@@ -990,6 +990,10 @@
   width: 70%;
   margin-left: 30%;
 }
+.fieldpress-addons .fieldpress-tabs .fieldpress-fields-box .fieldpress-inner-tabs-content .fieldpress-empty-label .fieldpress-fields-box {
+  width: 100%;
+  margin-left: 0;
+}
 .fieldpress-addons .fieldpress-tabs .fieldpress-fields-box .fieldpress-repeater {
   max-width: 100%;
 }

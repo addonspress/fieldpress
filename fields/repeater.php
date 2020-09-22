@@ -113,7 +113,7 @@ function fieldpress_render_repeater( $field_details, $field_value ) {
 	}
 
 	/*create all fields once more for js function and catch with object buffer*/
-	echo '<script type="text/template" class="fieldpress-code-for-repeater" style="display: none">';
+	echo '<div type="text/template" class="fieldpress-code-for-repeater" style="display: none">';
 	ob_start();
 	echo '<div class="fieldpress-repeater-top">
 				<div class="fieldpress-repeater-title-action">
@@ -177,7 +177,7 @@ function fieldpress_render_repeater( $field_details, $field_value ) {
 	$encode_content = ob_get_contents();
 	ob_end_clean();
 	echo $encode_content;
-	echo'</script>';/*.fieldpress-code-for-repeater*/
+	echo'</div>';/*.fieldpress-code-for-repeater*/
 
 	/*most important section for repeater*/
 	echo '<input class="fieldpress-total-repeater" type="hidden" value="'.$total_repeater.'">';

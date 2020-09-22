@@ -407,6 +407,7 @@ function fieldpress_sanitize_field ( $field_details, $field_value){
 
 		case 'repeater':
 
+
 			$output = array();
 			if( is_array( $field_details['fields'] ) ){
 
@@ -428,6 +429,10 @@ function fieldpress_sanitize_field ( $field_details, $field_value){
 				foreach ( $field_details['fields'] as $field_id => $single_field ){
 					if( is_array( $field_value ) ){
 						foreach ( $field_value as $key=> $field_val ){
+                            if (strpos($key, 'coderRepeaterDepth_') !== false) {
+                                continue;
+                            }
+
 						    if( isset( $field_val[$field_id] ) ){
 							    $actual_value = $field_val[$field_id];
 							    $single_field['id'] = $field_id;

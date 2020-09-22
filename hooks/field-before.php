@@ -33,6 +33,30 @@ function fieldpress_field_wrap( $field_details, $field_value ) {
 }
 add_action('fieldpress_render_field_before', 'fieldpress_field_wrap', 10, 2 );
 
+
+/**
+ * Add Classes for conditional
+ *
+ * @since 0.0.1
+ * @param array $classes
+ * @param array $class
+ * @param array $field_details
+ * @param array $field_value
+ * @return array
+ *
+ */
+function fieldpress_field_wrap_no_label_class( $classes, $class, $field_details, $field_value ) {
+
+    if (!isset( $field_details['label']) ||
+        (isset( $field_details['label']) && ( $field_details['label'] == '' || $field_details['label'] == FALSE )) ) {
+        $classes[] = 'fieldpress-empty-label';
+
+    }
+
+    return $classes;
+}
+add_filter('fieldpress_get_field_wrap_class', 'fieldpress_field_wrap_no_label_class',10, 4 );
+
 /**
  * Show description before and after every label
  * $field_details['desc']['before-label']

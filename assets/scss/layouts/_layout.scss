@@ -545,6 +545,12 @@
 						width: 70%;
 						margin-left: 30%;
 					}
+					.fieldpress-empty-label{
+						.fieldpress-fields-box{
+							width: 100%;
+							margin-left: 0;
+						}
+					}
 				}
 				.fieldpress-repeater{
 					max-width:100%;
