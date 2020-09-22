@@ -73,22 +73,26 @@ require_once plugin_dir_path( __FILE__ ). 'library/fieldpress/fieldpress.php';
 
    These are the main fields of this framework. And these fields contains their several types like Check-box with multiple check-box options and so on. 
 
+- Accordion
+- Box
 - Checkbox
 - Colors
 - Date
 - Email
 - File Upload
 - Gallery
-- Image
 - Icon
+- Image
 - Map
+- Message
 - Number
+- Order
 - Radio
 - Repeater
 - Nested Repeater
 - Nested Menu Repeater
-- Select Image
 - Select
+- Select Image
 - Sorter
 - Switcher
 - Tabs

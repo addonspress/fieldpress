@@ -18,26 +18,6 @@ if( class_exists('FieldPress_Meta_Framework' ) ) {
 		),
 
 		'fields'=> array(
-
-			/*
-			--------------------------------------------------------------------
-			 fields listed in "Type / Contents / Settings  Meta-Box
-			---------------------------------------------------------------------*/
-
-			'sp-slider-theme-type'  => array(
-				'type'  		=> 'select',
-				'desc' 		=> array(
-					'before-field' => esc_html__( 'Select Slider Theme : ', 'slider-press' ),
-				),
-				'choices' 		=> array(
-					'theme1' => esc_html__( 'Theme 1', 'slider-press' ),
-					'theme2' => esc_html__( 'Theme 2', 'slider-press' ),
-					'theme3' => esc_html__( 'Theme 3', 'slider-press' ),
-					'theme4' => esc_html__( 'Theme 4', 'slider-press' ),
-				),
-				'meta_box' 		=> 'sp-meta-content',
-				'priority' 		=> 10,
-			),
 			//---------------add slide content fields--------------------*/
 
 			'sp-add-slide-data' => array(
