@@ -107,24 +107,24 @@ if( class_exists('FieldPress_Menu_Framework' ) ) {
                                         'type' 			=> 'tabs',
                                         'tabs'			=> array(
                                             'fp-overview-general-repeat-tab1-1'=>array(
-                                                'label' => esc_html__( 'Repeater Tab1', 'fieldpress' ),
+                                                'label' => esc_html__( 'Repeater Tab1 1', 'fieldpress' ),
                                             ),
-                                            'fp-overview-general-repeat-tab2-2'=>array(
-                                                'label' => esc_html__( 'Repeater Tab2', 'fieldpress' ),
+                                            'fp-overview-general-repeat-tab2-1'=>array(
+                                                'label' => esc_html__( 'Repeater Tab2 1', 'fieldpress' ),
                                             ),
-                                            'fp-overview-general-repeat-tab3-3'=>array(
-                                                'label' => esc_html__( 'Repeater Tab3', 'fieldpress' ),
+                                            'fp-overview-general-repeat-tab3-1'=>array(
+                                                'label' => esc_html__( 'Repeater Tab3 1', 'fieldpress' ),
                                             ),
                                         ),
                                         'fields'=> array(
                                             'overview-repeater-tab-text-1'  => array(
                                                 'type'  => 'text',
-                                                'label' => esc_html__( 'Text', 'fieldpress' ),
+                                                'label' => esc_html__( 'Text 1', 'fieldpress' ),
                                                 'tab'   => 'fp-overview-general-repeat-tab1-1',
                                             ),
                                             'overview-repeater-tab-radio-1'  => array(
                                                 'type'  => 'radio',
-                                                'label' => esc_html__( 'Radio', 'fieldpress' ),
+                                                'label' => esc_html__( 'Radio 1', 'fieldpress' ),
                                                 'choices' => array(
                                                     'red' 	=> esc_html__( 'Red', 'fieldpress' ),
                                                     'green' => esc_html__( 'Green', 'fieldpress' ),
@@ -136,22 +136,22 @@ if( class_exists('FieldPress_Menu_Framework' ) ) {
                                             ),
                                             'overview-repeater-tab-number-1'  => array(
                                                 'type'  => 'number',
-                                                'label' => esc_html__( 'Number', 'fieldpress' ),
+                                                'label' => esc_html__( 'Number 1', 'fieldpress' ),
                                                 'tab'   => 'fp-overview-general-repeat-tab2-1',
                                             ),
                                             'overview-repeater-tab-textarea-1'  => array(
                                                 'type'  => 'textarea',
-                                                'label' => esc_html__( 'Textarea', 'fieldpress' ),
+                                                'label' => esc_html__( 'Textarea 1', 'fieldpress' ),
                                                 'tab'   => 'fp-overview-general-repeat-tab2-1',
                                             ),
                                             'overview-repeater-tab-url-1'  => array(
                                                 'type'  => 'url',
-                                                'label' => esc_html__( 'Url', 'fieldpress' ),
+                                                'label' => esc_html__( 'Url 1', 'fieldpress' ),
                                                 'tab'   => 'fp-overview-general-repeat-tab3-1',
                                             ),
                                             'overview-repeater-tab-checkbox-multiple-1'  => array(
                                                 'type'  => 'checkbox',
-                                                'label' => esc_html__( 'Checkbox Multiple', 'fieldpress' ),
+                                                'label' => esc_html__( 'Checkbox Multiple 1', 'fieldpress' ),
                                                 'choices'=> array(
                                                     'red'   => esc_html__( 'Red', 'fieldpress' ),
                                                     'green' => esc_html__( 'Green', 'fieldpress' ),

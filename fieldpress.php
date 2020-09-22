@@ -109,4 +109,4 @@ if( !function_exists( 'fieldpress')){
 //fieldpress_load_file('example/menu.php');
 //fieldpress_load_file('example/meta.php');
 //fieldpress_load_file('example/repeater-order.php');
-fieldpress_load_file('example/repeater-tabs.php');
+//fieldpress_load_file('example/repeater-tabs.php');
