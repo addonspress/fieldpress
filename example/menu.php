@@ -43,6 +43,14 @@ if(class_exists('FieldPress_Menu_Framework')) {
 			section listed in "FieldPress Options" Menu
 			-------------------------------------------
 			*/
+            'fp-option-accordion' => array(
+                'title' => esc_html__('Accordion','fieldpress'),
+                'menu'  => 'fp-menus-options'
+            ),
+            'fp-option-box' => array(
+                'title' => esc_html__('Box(CSS)','fieldpress'),
+                'menu'  => 'fp-menus-options'
+            ),
 			'fp-option-checkbox' => array(
 				'title' => esc_html__('Checkbox','fieldpress'),
 				'menu'  => 'fp-menus-options'
@@ -51,6 +59,10 @@ if(class_exists('FieldPress_Menu_Framework')) {
 				'title' => esc_html__('Colors','fieldpress'),
 				'menu'  => 'fp-menus-options'
 			),
+            'fp-conditional-field' => array(
+                'title' => esc_html__('Conditional','fieldpress'),
+                'menu'  => 'fp-menus-options'
+            ),
 			'fp-option-date' => array(
 				'title' => esc_html__('Date','fieldpress'),
 				'menu'  => 'fp-menus-options'
@@ -83,6 +95,10 @@ if(class_exists('FieldPress_Menu_Framework')) {
 				'title' => esc_html__('Number','fieldpress'),
 				'menu'  => 'fp-menus-options'
 			),
+            'fp-option-order' => array(
+                'title' => esc_html__('Order','fieldpress'),
+                'menu'  => 'fp-menus-options'
+            ),
 			'fp-option-radio' => array(
 				'title' => esc_html__('Radio','fieldpress'),
 				'menu'  => 'fp-menus-options'
@@ -92,11 +108,11 @@ if(class_exists('FieldPress_Menu_Framework')) {
 				'menu'  => 'fp-menus-options'
 			),
 			'fp-option-nested-repeater' => array(
-				'title' => esc_html__('Nested Repeater','fieldpress'),
+				'title' => esc_html__('Repeater Nested','fieldpress'),
 				'menu'  => 'fp-menus-options'
 			),
 			'fp-option-nested-menu-repeater' => array(
-				'title' => esc_html__('Nested Menu Repeater','fieldpress'),
+				'title' => esc_html__('Repeater Nested Menu','fieldpress'),
 				'menu'  => 'fp-menus-options'
 			),
 			'fp-option-select-image' => array(
@@ -135,22 +151,6 @@ if(class_exists('FieldPress_Menu_Framework')) {
 				'title' => esc_html__('Wysiwyg','fieldpress'),
 				'menu'  => 'fp-menus-options'
 			),
-			'fp-option-order' => array(
-				'title' => esc_html__('Order','fieldpress'),
-				'menu'  => 'fp-menus-options'
-			),
-			'fp-option-accordion' => array(
-				'title' => esc_html__('Accordion','fieldpress'),
-				'menu'  => 'fp-menus-options'
-			),
-			'fp-option-box' => array(
-				'title' => esc_html__('Box(CSS)','fieldpress'),
-				'menu'  => 'fp-menus-options'
-			),
-			'fp-conditional-field' => array(
-				'title' => esc_html__('Conditional','fieldpress'),
-				'menu'  => 'fp-menus-options'
-			),
 			'fp-option-general-option' => array(
 				'title' => esc_html__('General Options','fieldpress'),
 				'menu'  => 'fp-menus-options'
@@ -163,6 +163,75 @@ if(class_exists('FieldPress_Menu_Framework')) {
 			fields listed in "FieldPress General" Menu
 			-------------------------------------------
 			*/
+            /*accordion*/
+            'fp-field-general-accordions' => array(
+                'section' => 'fp-option-accordion',
+                'type' 			=> 'accordions',
+                'accordions'			=> array(
+                    'fb-accordion-title'=>array(
+                        'label' => esc_html__( 'Title', 'fieldpress' ),
+                        'checkbox' => true,
+                    ),
+                    'fb-accordion-image'=>array(
+                        'label' => esc_html__( 'Image', 'fieldpress' ),
+                        'checkbox' => false,
+                    ),
+                    'fb-accordion-social'=>array(
+                        'label' => esc_html__( 'Social', 'fieldpress' ),
+                        'checkbox' => true,
+                    ),
+                ),
+                'fields'=> array(
+                    'fp-field-general-accordion-text'  => array(
+                        'type'  => 'text',
+                        'label' => esc_html__( 'Text', 'fieldpress' ),
+                        'accordion'   => 'fb-accordion-title',
+                    ),
+                    'fp-field-general-accordion-radio'  => array(
+                        'type'  => 'radio',
+                        'label' => esc_html__( 'Radio', 'fieldpress' ),
+                        'choices' => array(
+                            'red' 	=> esc_html__( 'Red', 'fieldpress' ),
+                            'green' => esc_html__( 'Green', 'fieldpress' ),
+                            'blue' 	=> esc_html__( 'Blue', 'fieldpress' ),
+                            'yellow'=> esc_html__( 'Yellow', 'fieldpress' ),
+                        ),
+                        "default" => 'yellow',
+                        'accordion'   => 'fb-accordion-title',
+                    ),
+                    'fp-field-general-accordion-number'  => array(
+                        'type'  => 'number',
+                        'label' => esc_html__( 'Number', 'fieldpress' ),
+                        'accordion'   => 'fb-accordion-title',
+                    ),
+                    'fp-field-general-accordion-textarea'  => array(
+                        'type'  => 'textarea',
+                        'label' => esc_html__( 'Textarea', 'fieldpress' ),
+                        'accordion'   => 'fb-accordion-title',
+                    ),
+                    'fp-field-general-accordion-url'  => array(
+                        'type'  => 'url',
+                        'label' => esc_html__( 'Url', 'fieldpress' ),
+                        'tab'   => 'fp-overview-general-repeat-tab3',
+                        'accordion'   => 'fb-accordion-image',
+
+                    ),
+                    'fp-field-general-accordion-multiple'  => array(
+                        'type'  => 'checkbox',
+                        'label' => esc_html__( 'Checkbox Multiple', 'fieldpress' ),
+                        'choices'=> array(
+                            'red'   => esc_html__( 'Red', 'fieldpress' ),
+                            'green' => esc_html__( 'Green', 'fieldpress' ),
+                            'blue'  => esc_html__( 'Blue', 'fieldpress' ),
+                            'yellow'=> esc_html__( 'Yellow', 'fieldpress' ),
+                        ),
+                        'wrap-attr' => array(
+                            'class' => 'inline-block',
+                        ),
+                        'accordion'   => 'fb-accordion-social',
+                    ),
+                ),
+            ),
 			'fp-overview-checkbox'  => array(
 				'type'  	=> 'checkbox',
 				'label' 	=> esc_html__( 'Checkbox', 'fieldpress' ),
@@ -365,8 +434,8 @@ if(class_exists('FieldPress_Menu_Framework')) {
 				'type'  => 'select-image',
 				'label' => esc_html__( 'Select Image', 'fieldpress' ),
 				'choices' => array(
-					'red'   => 'https://addonspress.com/wp-content/uploads/edd/2018/07/documentation-press.jpg',
-					'green' => 'https://addonspress.com/wp-content/uploads/edd/2018/07/field-press.jpg',
+					'red'   => 'https://i0.wp.com/themes.svn.wordpress.org/cosmoswp/1.2.0/screenshot.jpg',
+					'green' => 'https://i0.wp.com/themes.svn.wordpress.org/online-shop/3.0.3/screenshot.jpg',
 				),
 				'section' => 'fp-overview'
 			),
@@ -1401,8 +1470,8 @@ if(class_exists('FieldPress_Menu_Framework')) {
 						'type'  => 'select-image',
 						'label' => esc_html__( 'Select Image', 'fieldpress' ),
 						'choices' => array(
-							'red'   => 'https://addonspress.com/wp-content/uploads/edd/2018/07/documentation-press.jpg',
-							'green' => 'https://addonspress.com/wp-content/uploads/edd/2018/07/field-press.jpg',
+							'red'   => 'https://i0.wp.com/themes.svn.wordpress.org/cosmoswp/1.2.0/screenshot.jpg',
+							'green' => 'https://i0.wp.com/themes.svn.wordpress.org/online-shop/3.0.3/screenshot.jpg',
 						),
 					),
 					'fp-option-repeater-select'  => array(
@@ -1792,8 +1861,8 @@ if(class_exists('FieldPress_Menu_Framework')) {
 				'type'  => 'select-image',
 				'label' => esc_html__( 'Select Image', 'fieldpress' ),
 				'choices' => array(
-					'red'   => 'https://addonspress.com/wp-content/uploads/edd/2018/07/documentation-press.jpg',
-					'green' => 'https://addonspress.com/wp-content/uploads/edd/2018/07/field-press.jpg',
+					'red'   => 'https://i0.wp.com/themes.svn.wordpress.org/cosmoswp/1.2.0/screenshot.jpg',
+					'green' => 'https://i0.wp.com/themes.svn.wordpress.org/online-shop/3.0.3/screenshot.jpg',
 				),
 				'section' => 'fp-option-select-image'
 			),
@@ -1803,8 +1872,8 @@ if(class_exists('FieldPress_Menu_Framework')) {
 				'label' => esc_html__( 'Select Image With Default', 'fieldpress' ),
 				'default' => array('red'),
 				'choices' => array(
-					'red'   => 'https://addonspress.com/wp-content/uploads/edd/2018/07/documentation-press.jpg',
-					'green' => 'https://addonspress.com/wp-content/uploads/edd/2018/07/field-press.jpg',
+					'red'   => 'https://i0.wp.com/themes.svn.wordpress.org/cosmoswp/1.2.0/screenshot.jpg',
+					'green' => 'https://i0.wp.com/themes.svn.wordpress.org/online-shop/3.0.3/screenshot.jpg',
 				),
 				'section' => 'fp-option-select-image'
 			),
@@ -1813,8 +1882,8 @@ if(class_exists('FieldPress_Menu_Framework')) {
 				'type'  => 'select-image',
 				'label' => esc_html__( 'Select Image With Multiple Select', 'fieldpress' ),
 				'choices' => array(
-					'red'   => 'https://addonspress.com/wp-content/uploads/edd/2018/07/documentation-press.jpg',
-					'green' => 'https://addonspress.com/wp-content/uploads/edd/2018/07/field-press.jpg',
+					'red'   => 'https://i0.wp.com/themes.svn.wordpress.org/cosmoswp/1.2.0/screenshot.jpg',
+					'green' => 'https://i0.wp.com/themes.svn.wordpress.org/online-shop/3.0.3/screenshot.jpg',
 				),
 				'attr' => array(
 					'multiple'  => 'multiple',
@@ -1827,8 +1896,8 @@ if(class_exists('FieldPress_Menu_Framework')) {
 				'label' => esc_html__( 'Select Image With Help Information', 'fieldpress' ),
 				'info' => esc_html__( 'Select Image for Slider', 'fieldpress' ),
 				'choices' => array(
-					'red'   => 'https://addonspress.com/wp-content/uploads/edd/2018/07/documentation-press.jpg',
-					'green' => 'https://addonspress.com/wp-content/uploads/edd/2018/07/field-press.jpg',
+					'red'   => 'https://i0.wp.com/themes.svn.wordpress.org/cosmoswp/1.2.0/screenshot.jpg',
+					'green' => 'https://i0.wp.com/themes.svn.wordpress.org/online-shop/3.0.3/screenshot.jpg',
 				),
 				'section' => 'fp-option-select-image'
 			),
@@ -1840,8 +1909,8 @@ if(class_exists('FieldPress_Menu_Framework')) {
 				),
 				'label' => esc_html__( 'Select Image With Before Field Text', 'fieldpress' ),
 				'choices' => array(
-					'red'   => 'https://addonspress.com/wp-content/uploads/edd/2018/07/documentation-press.jpg',
-					'green' => 'https://addonspress.com/wp-content/uploads/edd/2018/07/field-press.jpg',
+					'red'   => 'https://i0.wp.com/themes.svn.wordpress.org/cosmoswp/1.2.0/screenshot.jpg',
+					'green' => 'https://i0.wp.com/themes.svn.wordpress.org/online-shop/3.0.3/screenshot.jpg',
 				),
 				'section' => 'fp-option-select-image'
 			),
@@ -1853,8 +1922,8 @@ if(class_exists('FieldPress_Menu_Framework')) {
 				),
 				'label' => esc_html__( 'Select Image With After Field Text', 'fieldpress' ),
 				'choices' => array(
-					'red'   => 'https://addonspress.com/wp-content/uploads/edd/2018/07/documentation-press.jpg',
-					'green' => 'https://addonspress.com/wp-content/uploads/edd/2018/07/field-press.jpg',
+					'red'   => 'https://i0.wp.com/themes.svn.wordpress.org/cosmoswp/1.2.0/screenshot.jpg',
+					'green' => 'https://i0.wp.com/themes.svn.wordpress.org/online-shop/3.0.3/screenshot.jpg',
 				),
 				'section' => 'fp-option-select-image'
 			),
@@ -3728,77 +3797,7 @@ if(class_exists('FieldPress_Menu_Framework')) {
 					),
 				),
 			),
-			/*Team PRess*/
-
-			/*accordion*/
-			'fp-field-general-accordions' => array(
-				'section' => 'fp-option-accordion',
-				'type' 			=> 'accordions',
-				'accordions'			=> array(
-					'fb-accordion-title'=>array(
-						'label' => esc_html__( 'Title', 'fieldpress' ),
-						'checkbox' => true,
-					),
-					'fb-accordion-image'=>array(
-						'label' => esc_html__( 'Image', 'fieldpress' ),
-						'checkbox' => false,
-					),
-					'fb-accordion-social'=>array(
-						'label' => esc_html__( 'Social', 'fieldpress' ),
-						'checkbox' => true,
-					),
-				),
-				'fields'=> array(
-					'fp-field-general-accordion-text'  => array(
-						'type'  => 'text',
-						'label' => esc_html__( 'Text', 'fieldpress' ),
-						'accordion'   => 'fb-accordion-title',
-					),
-					'fp-field-general-accordion-radio'  => array(
-						'type'  => 'radio',
-						'label' => esc_html__( 'Radio', 'fieldpress' ),
-						'choices' => array(
-							'red' 	=> esc_html__( 'Red', 'fieldpress' ),
-							'green' => esc_html__( 'Green', 'fieldpress' ),
-							'blue' 	=> esc_html__( 'Blue', 'fieldpress' ),
-							'yellow'=> esc_html__( 'Yellow', 'fieldpress' ),
-						),
-						"default" => 'yellow',
-						'accordion'   => 'fb-accordion-title',
-					),
-					'fp-field-general-accordion-number'  => array(
-						'type'  => 'number',
-						'label' => esc_html__( 'Number', 'fieldpress' ),
-						'accordion'   => 'fb-accordion-title',
-					),
-					'fp-field-general-accordion-textarea'  => array(
-						'type'  => 'textarea',
-						'label' => esc_html__( 'Textarea', 'fieldpress' ),
-						'accordion'   => 'fb-accordion-title',
-					),
-					'fp-field-general-accordion-url'  => array(
-						'type'  => 'url',
-						'label' => esc_html__( 'Url', 'fieldpress' ),
-						'tab'   => 'fp-overview-general-repeat-tab3',
-						'accordion'   => 'fb-accordion-title',
-
-					),
-					'fp-field-general-accordion-multiple'  => array(
-						'type'  => 'checkbox',
-						'label' => esc_html__( 'Checkbox Multiple', 'fieldpress' ),
-						'choices'=> array(
-							'red'   => esc_html__( 'Red', 'fieldpress' ),
-							'green' => esc_html__( 'Green', 'fieldpress' ),
-							'blue'  => esc_html__( 'Blue', 'fieldpress' ),
-							'yellow'=> esc_html__( 'Yellow', 'fieldpress' ),
-						),
-						'wrap-attr' => array(
-							'class' => 'inline-block',
-						),
-						'accordion'   => 'fb-accordion-title',
-					),
-				),
-			),
+			/*Team Press*/
 
 			/*box*/
 			'fp-field-general-box' => array(

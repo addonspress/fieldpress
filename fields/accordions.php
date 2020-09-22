@@ -48,6 +48,9 @@ function fieldpress_render_accordions( $field_details, $field_value ) {
 
 		if( isset( $accordions[$accordion_id]['checkbox']) && $accordions[$accordion_id]['checkbox'] ){
 			$checkbox_value = isset($field_value[$accordion_id][$accordion_id])?$field_value[$accordion_id][$accordion_id]:false;
+			if( 'on' === $checkbox_value){
+                $checkbox_value = true;
+            }
 			$checkbox_label = $label = isset($accordions[$accordion_id]['label'])?$accordions[$accordion_id]['label']:'';
 
 			if( $override ){

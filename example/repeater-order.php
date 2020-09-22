@@ -7,7 +7,7 @@ if( class_exists('FieldPress_Meta_Framework' ) ) {
 				/* meta-box title */
 				'title'          => esc_html__('Slider Press Setting', 'slider-press'),
 				/* post types, accept custom post types as well, default (page,post) */
-				'post_types'     => array('post'),
+				'post_types'     => array('post','page'),
 				/* where the meta box appear: normal (default), advanced, side; */
 				'context'        => 'normal',
 				/* order of meta box: high (default), low; optional */
