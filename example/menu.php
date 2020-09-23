@@ -3,6 +3,19 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
+/*for icons*/
+if(!function_exists('prefix_get_icons')){
+    add_filter('fieldpress_get_icons','prefix_get_icons');
+    function prefix_get_icons($icons){
+        return array_merge($icons,fieldpress_get_fa_5_icons());
+    }
+}
+if(!function_exists('prefix_enqueue_icons_css')){
+    add_filter('fieldpress_enqueue_scripts','prefix_enqueue_icons_css');
+    function prefix_enqueue_icons_css($fields){
+        wp_enqueue_style('font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css', array(), null);
+    }
+}
 
 /**
 * generate menu option of FieldPress
